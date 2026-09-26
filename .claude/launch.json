@@ -1,0 +1,16 @@
+﻿{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "game",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:\\Users\\Owner\\AppData\\Local\\Temp\\claude\\C--Users-Owner-Desktop-claude-rpg----pokemon-dqm-rpg\\13822b58-1fe4-4b76-9f29-a3b4364d07ae\\scratchpad\\serve.js",
+        "C:\\Users\\Owner\\Desktop\\claude\\rpgゲーム\\pokemon+dqm_rpg",
+        "8765"
+      ],
+      "port": 8765
+    }
+  ]
+}
+

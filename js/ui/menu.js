@@ -1,0 +1,364 @@
+// フィールドメニュー（X / Esc）と、そこから開く画面
+(function (G) {
+  'use strict';
+
+  const esc = (s) => G.escapeHtml(s);
+  const P = () => G.UIParts;
+
+  const ENTRIES = [
+    { id: 'monsters', label: '幻獣' },
+    { id: 'items', label: 'もちもの' },
+    { id: 'status', label: '主人公' },
+    { id: 'dex', label: '図鑑' },
+    { id: 'save', label: 'セーブ' },
+    { id: 'settings', label: 'せってい' },
+    { id: 'close', label: 'とじる' },
+  ];
+
+  let lastSel = 0;
+
+  function cycle(i, n, d) { return (i + d + n) % n; }
+
+  G.UIScreens = {
+    menu() {
+      return {
+        layout: 'menu',
+        sel: lastSel,
+        update(In) {
+          if (In.consume('up')) { this.sel = cycle(this.sel, ENTRIES.length, -1); G.Screens.render(); }
+          if (In.consume('down')) { this.sel = cycle(this.sel, ENTRIES.length, 1); G.Screens.render(); }
+          if (In.consume('cancel')) return G.Screens.close();
+          if (In.consume('confirm')) {
+            const e = ENTRIES[this.sel];
+            lastSel = this.sel;
+            if (e.disabled) return;
+            if (e.id === 'close') return G.Screens.close();
+            if (e.id === 'monsters') G.Screens.open(G.UIScreens.party());
+            if (e.id === 'items') G.Screens.open(G.UIScreens.items());
+            if (e.id === 'status') G.Screens.open(G.UIScreens.status());
+            if (e.id === 'dex') G.Screens.open(G.UIScreens.dex());
+            if (e.id === 'save') G.Screens.open(G.UIScreens.save());
+            if (e.id === 'settings') G.Screens.open(G.UIScreens.settings());
+          }
+        },
+        html() {
+          return '<div class="menu-title">メニュー</div>' + ENTRIES.map((e, i) =>
+            `<div class="menu-row${i === this.sel ? ' sel' : ''}${e.disabled ? ' disabled' : ''}">` +
+            `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${e.label}` +
+            `${e.disabled ? '<span class="soon">準備中</span>' : ''}</div>`).join('');
+        },
+      };
+    },
+
+    items() {
+      return {
+        layout: 'menu wide',
+        sel: 0,
+        target: null, // 使う道具を選んだ後、対象を選ぶ
+        tsel: 0,
+        note: '',
+        update(In) {
+          const ids = Object.keys(G.state.items);
+          if (this.target) {
+            const n = G.state.party.length;
+            if (In.consume('up')) { this.tsel = cycle(this.tsel, n, -1); this.note = ''; G.Screens.render(); }
+            if (In.consume('down')) { this.tsel = cycle(this.tsel, n, 1); this.note = ''; G.Screens.render(); }
+            if (In.consume('cancel')) { this.target = null; this.note = ''; G.Screens.render(); return; }
+            if (In.consume('confirm')) this.apply(this.target, G.state.party[this.tsel]);
+            return;
+          }
+          if (ids.length && In.consume('up')) { this.sel = cycle(this.sel, ids.length, -1); this.note = ''; G.Screens.render(); }
+          if (ids.length && In.consume('down')) { this.sel = cycle(this.sel, ids.length, 1); this.note = ''; G.Screens.render(); }
+          if (In.consume('cancel')) return G.Screens.close();
+          if (In.consume('confirm') && ids.length) {
+            const it = G.Items[ids[this.sel]];
+            if (['heal', 'status', 'evolve', 'boost'].includes(it.type)) {
+              if (!G.state.party.length) this.note = '幻獣を 連れていない。';
+              else { this.target = ids[this.sel]; this.tsel = 0; }
+            } else {
+              this.note = it.type === 'capture' ? '野生の幻獣との 戦いで 使う道具だ。' : 'ここでは 使えない。';
+            }
+            G.Screens.render();
+          }
+        },
+        apply(id, m) {
+          const it = G.Items[id];
+          if (it.type === 'evolve') {
+            const to = G.Growth.evolutionTarget(m, { item: id });
+            if (!to) { this.note = '使っても 効果が ないようだ。'; G.Screens.render(); return; }
+            G.addItem(id, -1);
+            G.Screens.closeAll();
+            G.Events.run((E) => G.Growth.evolve(m, to, E));
+            return;
+          }
+          if (it.type === 'boost') {
+            m.boost = m.boost || {};
+            m.boost.atk = (m.boost.atk || 0) + 2;
+            G.addItem(id, -1);
+            this.note = `${m.name}の 攻撃が 永続的に 2 上がった！`;
+          } else {
+            this.note = G.ItemUse.use(id, m) || '使っても 効果が ないようだ。';
+          }
+          if (!G.state.items[id]) { this.target = null; this.sel = 0; }
+          G.UI.refresh();
+          G.Screens.render();
+        },
+        html() {
+          const ids = Object.keys(G.state.items);
+          if (this.target) {
+            return `<div class="menu-title">${G.Items[this.target].name}を だれに使う？</div>` +
+              G.state.party.map((m, i) => P().row(m, i === this.tsel, m.status ? ` <span class="tag">${G.Battle.STATUS[m.status].short}</span>` : '')).join('') +
+              `<div class="menu-desc">${esc(this.note)}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
+          }
+          const rows = ids.length
+            ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
+              `${G.Items[id].name}<span class="count">×${G.state.items[id]}</span></div>`).join('')
+            : '<div class="menu-empty">なにも持っていない。</div>';
+          const cur = ids[this.sel];
+          return '<div class="menu-title">もちもの</div>' + rows +
+            `<div class="menu-desc">${this.note ? esc(this.note) : cur ? G.Items[cur].desc : ''}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
+        },
+      };
+    },
+
+    status() {
+      return {
+        layout: 'menu wide',
+        update(In) { if (In.consume('cancel') || In.consume('confirm')) G.Screens.close(); },
+        html() {
+          const s = G.state;
+          const dexOwned = Object.values(s.dex).filter((d) => d.owned).length;
+          return '<div class="menu-title">主人公</div>' +
+            `<table class="status"><tr><th>なまえ</th><td>${esc(s.player.name)}</td></tr>` +
+            `<tr><th>しゅべつ</th><td>${s.player.gender === 'girl' ? '少女' : '少年'}・幻獣使い見習い</td></tr>` +
+            `<tr><th>所持金</th><td>${s.money.toLocaleString()} G</td></tr>` +
+            `<tr><th>仲間の幻獣</th><td>パーティ ${s.party.length} 体／預かり所 ${s.storage.length} 体</td></tr>` +
+            `<tr><th>図鑑</th><td>${dexOwned} / ${G.SpeciesOrder.length} 種</td></tr>` +
+            `<tr><th>配合回数</th><td>${s.fusionCount || 0} 回</td></tr>` +
+            `<tr><th>紋章</th><td>${s.items.kizunaEmblem ? '絆の紋章' : 'なし'}</td></tr>` +
+            `<tr><th>プレイ時間</th><td>${G.Util.formatTime(s.playTime)}</td></tr></table>` +
+            '<div class="menu-hint">X：もどる</div>';
+        },
+      };
+    },
+
+    // セーブ（既存データがあれば上書き確認）
+    save() {
+      return {
+        layout: 'menu wide center',
+        yes: true,
+        result: null,
+        prev: G.Save.info(),
+        update(In) {
+          if (this.result) { if (In.consume('confirm') || In.consume('cancel')) G.Screens.close(); return; }
+          if (In.consume('left') || In.consume('right') || In.consume('up') || In.consume('down')) { this.yes = !this.yes; G.Screens.render(); }
+          if (In.consume('cancel')) return G.Screens.close();
+          if (In.consume('confirm')) {
+            if (!this.yes) return G.Screens.close();
+            this.result = G.Save.save();
+            if (this.result.ok) G.Audio.se('save');
+            G.Screens.render();
+          }
+        },
+        html() {
+          const s = G.state;
+          const cur = `<table class="status"><tr><th>なまえ</th><td>${esc(s.player.name)}</td></tr>` +
+            `<tr><th>現在地</th><td>${esc(G.format(G.MapData[s.player.map].name))}</td></tr>` +
+            `<tr><th>プレイ時間</th><td>${G.Util.formatTime(s.playTime)}</td></tr>` +
+            `<tr><th>仲間</th><td>${s.party.length}体（預かり所 ${s.storage.length}体）</td></tr></table>`;
+          if (this.result) {
+            return '<div class="menu-title">セーブ</div>' + cur +
+              `<div class="menu-desc">${this.result.ok ? '冒険の記録を 書きこみました！' : esc(this.result.error)}</div>` +
+              '<div class="menu-hint">Z：とじる</div>';
+          }
+          const prev = this.prev
+            ? `<div class="small">前回の記録：${esc(this.prev.name)}／${esc(this.prev.place)}／${this.prev.playTime}<br>（${this.prev.savedAt}）</div>`
+            : '<div class="small">記録はまだありません。</div>';
+          return '<div class="menu-title">セーブ</div>' + cur + prev +
+            `<div class="menu-desc">${this.prev ? '前回の記録に 上書きしますか？' : '冒険の記録を 書きこみますか？'}</div>` +
+            `<div class="yesno"><span class="${this.yes ? 'sel' : ''}">${this.yes ? '▶' : '　'}はい</span>` +
+            `<span class="${this.yes ? '' : 'sel'}">${this.yes ? '　' : '▶'}いいえ</span></div>` +
+            '<div class="menu-hint">←→：えらぶ　Z：けってい　X：やめる</div>';
+        },
+      };
+    },
+
+    // 設定：文字の速さ・音量・オートセーブ
+    settings() {
+      const S = G.Settings;
+      const ROWS = [
+        { key: 'textSpeed', label: '文字の速さ', show: () => G.TEXT_SPEED_NAMES[S.textSpeed], step: (d) => { S.textSpeed = Math.max(0, Math.min(2, S.textSpeed + d)); } },
+        { key: 'bgm', label: 'BGMの音量', show: () => vol(S.bgm), step: (d) => { S.bgm = Math.max(0, Math.min(10, S.bgm + d)); } },
+        { key: 'se', label: '効果音の音量', show: () => vol(S.se), step: (d) => { S.se = Math.max(0, Math.min(10, S.se + d)); G.Audio.se('confirm'); } },
+        { key: 'muted', label: 'サウンド', show: () => (S.muted ? 'OFF' : 'ON'), step: () => { S.muted = !S.muted; } },
+        { key: 'autosave', label: 'オートセーブ', show: () => (S.autosave ? 'ON' : 'OFF'), step: () => { S.autosave = !S.autosave; } },
+        { key: 'touch', label: 'タッチボタン', show: () => ({ auto: '自動', on: '表示', off: '非表示' })[S.touch || 'auto'],
+          step: (d) => { const o = ['auto', 'on', 'off']; S.touch = o[(o.indexOf(S.touch || 'auto') + (d || 1) + 3) % 3]; } },
+      ];
+      function vol(v) { return `<span class="vol">${'■'.repeat(v)}${'□'.repeat(10 - v)}</span> ${v}`; }
+      return {
+        layout: 'menu wide center',
+        sel: 0,
+        update(In) {
+          if (In.consume('up')) { this.sel = cycle(this.sel, ROWS.length, -1); G.Screens.render(); }
+          if (In.consume('down')) { this.sel = cycle(this.sel, ROWS.length, 1); G.Screens.render(); }
+          const d = In.consume('right') ? 1 : In.consume('left') ? -1 : 0;
+          if (d || In.consume('confirm')) { ROWS[this.sel].step(d || 1); G.saveSettings(); G.Screens.render(); }
+          if (In.consume('cancel')) G.Screens.close();
+        },
+        html() {
+          return '<div class="menu-title">せってい</div>' + ROWS.map((r, i) =>
+            `<div class="menu-row setting-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
+            `${r.label}<span class="count">◀ ${r.show()} ▶</span></div>`).join('') +
+            '<div class="menu-desc">オートセーブ：村に着いたとき・回復したとき・大事な戦いのあとに、自動で記録します。<br>Mキーで いつでもサウンドのON/OFFを切りかえられます。</div>' +
+            '<div class="menu-hint">↑↓：えらぶ　←→：変更　X：もどる</div>';
+        },
+      };
+    },
+
+    // 章クリア画面（opts: chapter, title, next）
+    chapterEnd(opts = {}) {
+      const o = Object.assign({ chapter: '第1章', title: '絆の紋章', next: 'To be continued…… 第2章「空を渡る竜」' }, opts);
+      const res = (k) => (s) => (s.flags[k + 'Done'] || s.flags[k + 'Won'] ? (s.flags[k + 'Won'] ? '勝ち' : '負け') : '―');
+      return {
+        layout: 'full ending',
+        t: 0,
+        update(In, dt = 1 / 60) {
+          this.t += dt;
+          if (this.t > 1.5 && (In.consume('confirm') || In.consume('cancel'))) G.Screens.close();
+        },
+        html() {
+          const s = G.state;
+          const owned = Object.values(s.dex).filter((d) => d.owned).length;
+          const lead = s.party[0];
+          return '<div class="ending">' +
+            `<div class="ending-sub">${esc(o.chapter)}</div><div class="ending-title">${esc(o.title)}</div><div class="ending-sub">―― 完 ――</div>` +
+            (lead ? `<div class="ending-mon">${P().img(lead.speciesId, 'big')}<div>${esc(lead.name)} Lv${lead.level}</div></div>` : '') +
+            `<table class="status ending-stats"><tr><th>幻獣使い</th><td>${esc(s.player.name)}</td></tr>` +
+            `<tr><th>プレイ時間</th><td>${G.Util.formatTime(s.playTime)}</td></tr>` +
+            `<tr><th>図鑑</th><td>${owned} / ${G.SpeciesOrder.length} 種</td></tr>` +
+            `<tr><th>配合回数</th><td>${s.fusionCount || 0} 回</td></tr>` +
+            `<tr><th>ライバル戦</th><td>${s.flags.rival1Won ? '勝ち' : '負け'} ／ ${res('rival2')(s)} ／ ${res('rival3')(s)}</td></tr></table>` +
+            `<div class="ending-next">${esc(o.next)}</div>` +
+            '<div class="scr-hint">Z：つづける</div></div>';
+        },
+      };
+    },
+
+    // 手持ち・預かり所の一覧と詳細
+    party() {
+      return {
+        layout: 'full',
+        tab: 'party',
+        sel: 0,
+        mode: 'list',   // list | actions | swap
+        act: 0,
+        swapFrom: -1,
+        note: '',
+        list() { return this.tab === 'party' ? G.state.party : G.state.storage; },
+        actions() { return this.tab === 'party' ? ['系譜を見る', '並べかえ', '預ける', 'やめる'] : ['系譜を見る', 'パーティに加える', 'やめる']; },
+        update(In) {
+          const list = this.list();
+          const n = list.length;
+          const r = () => G.Screens.render();
+          if (this.mode === 'actions') {
+            const acts = this.actions();
+            if (In.consume('up')) { this.act = cycle(this.act, acts.length, -1); r(); }
+            if (In.consume('down')) { this.act = cycle(this.act, acts.length, 1); r(); }
+            if (In.consume('cancel')) { this.mode = 'list'; r(); return; }
+            if (In.consume('confirm')) this.doAction(acts[this.act]);
+            return;
+          }
+          if (n && In.consume('up')) { this.sel = cycle(this.sel, n, -1); this.note = ''; r(); }
+          if (n && In.consume('down')) { this.sel = cycle(this.sel, n, 1); this.note = ''; r(); }
+          if (this.mode === 'swap') {
+            if (In.consume('cancel')) { this.mode = 'list'; this.note = ''; r(); return; }
+            if (In.consume('confirm')) {
+              const p = G.state.party;
+              [p[this.swapFrom], p[this.sel]] = [p[this.sel], p[this.swapFrom]];
+              this.mode = 'list';
+              this.note = '並びを 入れかえた。先頭の幻獣が 最初に戦う。';
+              r();
+            }
+            return;
+          }
+          if (In.consume('left') || In.consume('right')) {
+            this.tab = this.tab === 'party' ? 'storage' : 'party';
+            this.sel = 0; this.note = '';
+            r();
+          }
+          if (In.consume('cancel')) return G.Screens.close();
+          if (In.consume('confirm') && n) { this.mode = 'actions'; this.act = 0; r(); }
+        },
+        doAction(a) {
+          const m = this.list()[this.sel];
+          this.mode = 'list';
+          if (a === '系譜を見る') { G.Screens.open(G.UIScreens.lineage(m)); return; }
+          if (a === '並べかえ') { this.mode = 'swap'; this.swapFrom = this.sel; this.note = 'どの幻獣と 入れかえる？'; }
+          else if (a === '預ける') {
+            if (G.state.party.filter((x) => x !== m && x.hp > 0).length === 0) this.note = '戦える幻獣が いなくなってしまう！';
+            else { G.Party.remove(m); G.state.storage.push(m); this.note = `${m.name}を 預かり所へ 預けた。`; this.sel = Math.max(0, this.sel - 1); }
+          } else if (a === 'パーティに加える') {
+            if (G.state.party.length >= G.Monster.PARTY_MAX) this.note = 'パーティが いっぱいだ！';
+            else { G.Party.remove(m); G.state.party.push(m); this.note = `${m.name}が パーティに 加わった。`; this.sel = Math.max(0, this.sel - 1); }
+          }
+          G.UI.refresh();
+          G.Screens.render();
+        },
+        html() {
+          const list = this.list();
+          const tabs = `<span class="tab${this.tab === 'party' ? ' on' : ''}">パーティ ${G.state.party.length}/6</span>` +
+            `<span class="tab${this.tab === 'storage' ? ' on' : ''}">預かり所 ${G.state.storage.length}</span>`;
+          const rows = list.length
+            ? list.map((m, i) => P().row(m, i === this.sel, this.mode === 'swap' && i === this.swapFrom ? ' <span class="tag">入替元</span>' : '')).join('')
+            : `<div class="menu-empty">${this.tab === 'party' ? 'まだ幻獣を連れていない。' : '預けている幻獣はいない。'}</div>`;
+          const acts = this.mode === 'actions'
+            ? `<div class="mon-actions">${this.actions().map((a, i) => `<div class="menu-row${i === this.act ? ' sel' : ''}"><span class="cursor">${i === this.act ? '▶' : ''}</span>${a}</div>`).join('')}</div>` : '';
+          const cur = list[this.sel];
+          return `<div class="scr-title">幻獣 ${tabs}</div>` +
+            `<div class="scr-body two-col"><div class="mon-list">${rows}${acts}${this.note ? `<div class="bt-note">${esc(this.note)}</div>` : ''}</div>` +
+            `<div class="mon-detail">${cur ? P().detail(cur) : ''}</div></div>` +
+            '<div class="scr-hint">↑↓：えらぶ　Z：操作　←→：パーティ／預かり所　X：もどる</div>';
+        },
+      };
+    },
+
+    // 最初の3体から1体を選ぶ
+    starter(ids, preselect = 0) {
+      return {
+        layout: 'full',
+        sel: preselect,
+        confirm: false,
+        update(In) {
+          if (this.confirm) {
+            if (In.consume('confirm')) return G.Screens.close(ids[this.sel]);
+            if (In.consume('cancel')) { this.confirm = false; G.Screens.render(); }
+            return;
+          }
+          if (In.consume('left')) { this.sel = cycle(this.sel, ids.length, -1); G.Screens.render(); }
+          if (In.consume('right')) { this.sel = cycle(this.sel, ids.length, 1); G.Screens.render(); }
+          if (In.consume('confirm')) { this.confirm = true; G.Screens.render(); }
+          if (In.consume('cancel')) G.Screens.close(null);
+        },
+        html() {
+          const cards = ids.map((id, i) => {
+            const sp = G.Species[id];
+            const st = G.Monster.stats({ speciesId: id, level: 50, fusionBonus: 0, individualBonus: { hp: 8, mp: 8, atk: 8, def: 8, spd: 8, sat: 8, sdf: 8 } });
+            const bars = ['hp', 'atk', 'def', 'spd', 'sat', 'sdf'].map((k) =>
+              `<div class="mini-stat"><span>${G.Monster.STAT_NAMES[k]}</span>${P().bar(st[k], k === 'hp' ? 170 : 120, 'stat')}</div>`).join('');
+            return `<div class="starter-card${i === this.sel ? ' sel' : ''}">${P().img(id, 'big')}` +
+              `<div class="detail-name">${sp.name}</div>${P().speciesHead(sp)}` +
+              `<div class="small">特性：${G.Traits[sp.traits[0]].name}</div>` +
+              `<div class="desc">${sp.desc}</div>${bars}</div>`;
+          }).join('');
+          const sp = G.Species[ids[this.sel]];
+          const foot = this.confirm
+            ? `<div class="confirm-box">${sp.name}を相棒にしますか？　<b>Z：はい</b>　X：いいえ</div>`
+            : '<div class="scr-hint">←→：えらぶ　Z：けってい　X：やめる</div>';
+          return '<div class="scr-title">相棒にする幻獣を選んでください</div>' +
+            `<div class="starter-cards">${cards}</div>${foot}`;
+        },
+      };
+    },
+  };
+})(window.Game);

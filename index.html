@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>幻獣フロンティア ～絆の紋章～</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 上部：主人公情報 -->
+    <header id="hud">
+      <div class="hud-item"><span class="hud-label">幻獣使い</span><span id="hud-name">---</span></div>
+      <div class="hud-item"><span class="hud-label">所持金</span><span id="hud-money">---</span><span class="unit">G</span></div>
+      <div class="hud-item"><span class="hud-label">仲間</span><span id="hud-party">0</span><span class="unit">/6</span></div>
+      <div class="hud-item hud-loc"><span class="hud-label">現在地</span><span id="hud-location">---</span></div>
+    </header>
+
+    <!-- 中央：ゲーム画面 -->
+    <main id="screen">
+      <canvas id="game" width="960" height="704"></canvas>
+      <div id="location-banner"></div>
+      <div id="ui-layer" class="hidden"></div>
+
+      <div id="name-entry" class="overlay hidden">
+        <div class="panel">
+          <h2>主人公の名前を入力してください</h2>
+          <div class="name-row">
+            <canvas id="name-preview" width="96" height="96"></canvas>
+            <div class="name-fields">
+              <input id="name-input" type="text" maxlength="8" placeholder="なまえ（8文字まで）" autocomplete="off">
+              <div class="gender">
+                <button type="button" data-gender="boy" class="selected">少年</button>
+                <button type="button" data-gender="girl">少女</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="name-ok" class="primary">けってい</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- 下部：メッセージ・操作説明 -->
+    <footer id="bottom">
+      <div id="message" class="idle">
+        <div id="message-speaker"></div>
+        <div id="message-text"></div>
+        <div id="message-choices"></div>
+        <div id="message-next" class="hidden">▼</div>
+      </div>
+      <div id="controls"></div>
+
+      <!-- タッチ操作（スマホ・タブレット） -->
+      <div id="touch-pad" class="hidden">
+        <div class="dpad">
+          <button type="button" class="tp up" data-act="up" aria-label="上">▲</button>
+          <button type="button" class="tp left" data-act="left" aria-label="左">◀</button>
+          <button type="button" class="tp right" data-act="right" aria-label="右">▶</button>
+          <button type="button" class="tp down" data-act="down" aria-label="下">▼</button>
+        </div>
+        <button type="button" class="tp dash" data-act="dash">ダッシュ</button>
+        <div class="ab">
+          <button type="button" class="tp b" data-act="cancel">B<small>もどる</small></button>
+          <button type="button" class="tp a" data-act="confirm">A<small>決定</small></button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- コア -->
+  <script src="js/core/util.js"></script>
+  <script src="js/core/input.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/maploader.js"></script>
+  <script src="js/systems/settings.js"></script>
+  <script src="js/data/music.js"></script>
+  <script src="js/systems/audio.js"></script>
+  <!-- データ（ロジックと分離） -->
+  <script src="js/data/tiles.js"></script>
+  <script src="js/data/items.js"></script>
+  <script src="js/data/story.js"></script>
+  <script src="js/data/elements.js"></script>
+  <script src="js/data/traits.js"></script>
+  <script src="js/data/moves.js"></script>
+  <!-- 公式モンスターデータ（100種）：正本は data/monster_frontier_100.json、変換は node tools/build-data.js -->
+  <script src="js/data/monster_frontier_100.js"></script>
+  <script src="js/data/monsterLoader.js"></script>
+  <script src="js/data/fusionRules.js"></script>
+  <script src="js/data/evolutions.js"></script>
+  <script src="js/data/encounters.js"></script>
+  <script src="js/data/shops.js"></script>
+  <script src="js/data/trainers.js"></script>
+  <script src="js/data/maps/town.js"></script>
+  <script src="js/data/maps/interiors.js"></script>
+  <script src="js/data/maps/meadow.js"></script>
+  <script src="js/data/maps/forest.js"></script>
+  <script src="js/data/maps/cave.js"></script>
+  <script src="js/data/maps/chapter2.js"></script>
+  <!-- グラフィック -->
+  <script src="js/gfx/tiles.js"></script>
+  <script src="js/gfx/sprites.js"></script>
+  <script src="js/gfx/monsters.js"></script>
+  <!-- UI・システム -->
+  <script src="js/ui/hud.js"></script>
+  <script src="js/ui/dialog.js"></script>
+  <script src="js/ui/screens.js"></script>
+  <script src="js/ui/menu.js"></script>
+  <script src="js/ui/fusionui.js"></script>
+  <script src="js/ui/battleui.js"></script>
+  <script src="js/ui/growthui.js"></script>
+  <script src="js/ui/shopui.js"></script>
+  <script src="js/ui/dexui.js"></script>
+  <script src="js/ui/lineageui.js"></script>
+  <script src="js/ui/touch.js"></script>
+  <script src="js/systems/events.js"></script>
+  <script src="js/systems/monster.js"></script>
+  <script src="js/systems/fusion.js"></script>
+  <script src="js/systems/items.js"></script>
+  <script src="js/systems/growth.js"></script>
+  <script src="js/systems/save.js"></script>
+  <script src="js/systems/battle.js"></script>
+  <!-- シーン -->
+  <script src="js/scenes/title.js"></script>
+  <script src="js/scenes/intro.js"></script>
+  <script src="js/scenes/field.js"></script>
+  <script src="js/scenes/battle.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
