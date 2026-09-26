@@ -34,7 +34,7 @@
       { x: 3, y: 5, w: 6, h: 4, style: 'healer', label: '癒しの泉', door: { x: 5, to: 'lumiere_heal', tx: 4, ty: 6 } },
       { x: 21, y: 5, w: 5, h: 4, style: 'shop', label: '港商会', door: { x: 23, to: 'lumiere_shop', tx: 4, ty: 6 } },
       { x: 26, y: 12, w: 3, h: 4, style: 'lab', label: '灯台', door: { x: 27, locked: '灯台の扉には鍵がかかっている。\n中から、波の音にまじって古い歌が聞こえる……。' } },
-      { x: 3, y: 12, w: 5, h: 3, style: 'house', door: { x: 5, locked: '留守のようだ。' } },
+      { x: 3, y: 12, w: 5, h: 3, style: 'house', label: '鑑定屋', door: { x: 5, to: 'lumiere_appraise', tx: 4, ty: 6 } },
     ],
     signs: [
       { x: 14, y: 8, text: '港町リュミエール\n↑ 北：風鳴りの高原　→ 東：火山の麓\n← 西：灯石の洞窟' },
@@ -138,6 +138,49 @@
         const c = await E.ask('商人', 'いらっしゃい！　港商会へようこそ。', ['買う', '売る', 'やめる'], 2);
         if (c === 2) return;
         await E.shop('lumiere', c === 0 ? 'buy' : 'sell');
+      },
+    }],
+  });
+
+  // ---------------- 鑑定屋：個体値（生まれつきの才能）を鑑定できるようにする ----------------
+  const GRADE = [[170, '伝説級の器'], [150, '逸材'], [120, '優秀'], [90, '平均的']];
+  G.registerMap({
+    id: 'lumiere_appraise', name: '鑑定屋 ヨミの館',
+    tiles: ['wwwwwwwwww', 'wkkkppkkkw', 'w________w', 'w__cccc__w', 'w________w', 'wm______mw', 'w________w', 'wwwwxxwwww'],
+    warps: [{ x: 4, y: 7, w: 2, h: 1, to: 'lumiere', tx: 5, ty: 15, dir: 'down' }],
+    inspect: { k: ['『才能の書』\n……幻獣の才は6つ。HP・攻撃・防御・素早さ・特殊攻撃・特殊防御。\n才の高き能力ほど、よく伸びる……', '『血の継承』\n……親の才は、子に受け継がれる。優れた親からは、優れた子が生まれやすい……'], c: '水晶玉が置かれたカウンターだ。' },
+    npcs: [{
+      id: 'appraiser', name: '鑑定士ヨミ', x: 4, y: 2, dir: 'down',
+      look: { hood: '#3a2a5a', coat: '#4a3a7a', shirt: '#c8b0f0', pants: '#2a1a3a', eyes: '#f0d040' },
+      talk: async (E) => {
+        const I = G.Individual;
+        const flag = G.GrowthConfig.APPRAISAL_FLAG;
+        if (!E.flag(flag)) {
+          await E.say('鑑定士ヨミ', [
+            'ようこそ、鑑定屋へ。わたしはヨミ。\n幻獣の「生まれつきの才能」を見る者です。',
+            '同じ種族でも、才能は一体一体ちがうもの。\n才能の高い能力ほど、レベルが上がったときによく伸びるのです。',
+            'あなたの幻獣たちの才能……\nこれからは、数値と評価で分かるようにしておきましょう。',
+          ]);
+          E.set(flag);
+          await E.narrate('幻獣の才能（個体値）が 見られるようになった！\n（メニュー → 幻獣 → 育成情報）');
+        }
+        const c = await E.ask('鑑定士ヨミ', '今日は何を見ましょう？', ['手持ちを鑑定', '才能について聞く', 'やめる'], 2);
+        if (c === 0) {
+          for (const m of E.state().party) {
+            const total = I.ivTotal(m);
+            const grade = (GRADE.find(([min]) => total >= min) || [0, '伸びしろあり'])[1];
+            const best = I.KEYS.slice().sort((x, y) => I.iv(m, y) - I.iv(m, x))[0];
+            const titles = I.titles(m).map((t) => `『${t.name}』`).join('');
+            await E.say('鑑定士ヨミ', `${m.name}……総合評価は「${grade}」（${total}）。\nいちばんの才能は ${I.NAMES[best]}（${I.iv(m, best)}・${I.rank(I.iv(m, best)).rank}）ですね。` +
+              (titles ? `\n……この子は ${titles} の称号にふさわしい。` : ''));
+          }
+        } else if (c === 1) {
+          await E.say('鑑定士ヨミ', [
+            '才能は 0〜31。E・D・C・B・A・S の6段階で表します。\nS は 28 以上、めったに見られない逸材です。',
+            '配合で生まれる子は、両親から2つずつ才能を受け継ぎ、\n残りは運しだい。ただし、親が優秀なほど子も優秀になりやすい。',
+            '才能の高い親どうしを掛け合わせ、代を重ねれば……\nいつか、すべてが極まった個体に出会えるかもしれませんね。',
+          ]);
+        }
       },
     }],
   });

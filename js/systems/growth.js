@@ -9,7 +9,7 @@
     // 倒した相手から得られる経験値
     expYield(enemy, isTrainer) {
       const sp = G.Species[enemy.speciesId];
-      const sum = sp.base.reduce((a, b) => a + b, 0);
+      const sum = sp.base.reduce((a, b) => a + b, 0); // 公式データの基礎値（換算後）の合計。種族値の導入前と同じ量
       const y = (sum / 5) * (1 + G.rankIndex(sp.rank) * 0.12) * (enemy.level / 6) * (isTrainer ? 1.5 : 1);
       return Math.max(1, Math.floor(y));
     },

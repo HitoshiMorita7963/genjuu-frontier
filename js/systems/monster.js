@@ -10,14 +10,21 @@
 //   inheritedTrait    親由来の追加特性（最大1つ、なければ null）
 //   generation        世代（野生・初期個体=0、配合で生まれるたびに 親の最大世代+1）
 //   parentInstanceIds 親の個体ID [a, b]（配合で生まれた個体のみ）
-//   individualBonus   個体ボーナス（能力ごとに0〜15）
+//   ivHp, ivAttack, ivDefense, ivSpeed, ivSpecialAttack, ivSpecialDefense
+//                     個体値（0〜31・生まれつきの才能。js/systems/individual.js）
+//   evHp, evAttack, evDefense, evSpeed, evSpecialAttack, evSpecialDefense
+//                     努力値（育成の結果。1能力252・合計510まで）
 //   fusionBonus       配合ボーナス（配合を重ねるほど能力が底上げされる、％）
 //   origin            入手方法と場所
+//   title, aura       （任意）イベントで授かった個体限定の称号・オーラ
 (function (G) {
   'use strict';
 
   const STAT_KEYS = ['hp', 'mp', 'atk', 'def', 'spd', 'sat', 'sdf'];
   const GROWTH_K = { fast: 0.8, normal: 1, slow: 1.25 };
+
+  // 装備・特性などによる能力値の補正。fn(m, out) で out を書きかえる（今は空。将来の装備などで使う）
+  G.StatModifiers = [];
 
   const Mon = G.Monster = {
     MAX_LEVEL: 50,
@@ -52,8 +59,6 @@
       if (!sp) throw new Error('未定義の幻獣: ' + speciesId);
       const s = G.state;
       s.uidSeq = (s.uidSeq || 0) + 1;
-      const bonus = {};
-      for (const k of STAT_KEYS) bonus[k] = G.Util.randInt(16);
       const m = {
         instanceId: s.uidSeq,
         speciesId,
@@ -68,32 +73,44 @@
         inheritedTrait: opts.inheritedTrait || null,
         generation: opts.generation || 0,
         parentInstanceIds: opts.parentInstanceIds || [],
-        individualBonus: opts.individualBonus || bonus,
         fusionBonus: opts.fusionBonus || 0,
         status: null,
         origin: { how: opts.how || 'wild', where: opts.where || '' },
       };
+      // 個体値：opts.ivs（数値 or 能力ごと）を指定しなければランダム。努力値は 0 から
+      G.Individual.setIvs(m, G.Individual.rollIvs(opts.ivs));
+      G.Individual.resetEvs(m);
       const st = Mon.stats(m);
       m.hp = st.hp;
       m.mp = st.mp;
       return m;
     },
 
-    // 能力値：種族の基礎値（子の種族データ）× レベル ＋ 個体ボーナス、さらに配合ボーナス％
+    // 能力値 ＝ 種族値 × Lv/50 × 個体値の成長補正 × 努力値の成長補正 ＋ 努力値の固定分 ＋ 5（HPは ＋Lv＋10）
+    //   → 配合値（％）・永続強化（boost）・G.StatModifiers（装備など）の順に補正
+    //   個体値・努力値は「伸び方」に効くため、種族値が高い能力ほどよく伸びる。設定は js/data/growthConfig.js
+    //   MP は個体値・努力値の対象外（種族のMP基礎値から計算）
     stats(m) {
       const sp = Mon.species(m);
+      const I = G.Individual;
       const L = m.level;
       const fb = 1 + (m.fusionBonus || 0) / 100;
       const out = {};
-      STAT_KEYS.forEach((k, i) => {
-        const b = sp.base[i] * 2 + (m.individualBonus[k] || 0);
+      for (const k of STAT_KEYS) {
         let v;
-        if (k === 'hp') v = Math.floor(b * L / 100) + L + 10;
-        else v = Math.floor(b * L / 100) + 5;
-        out[k] = Math.floor(v * fb) + ((m.boost && m.boost[k]) || 0); // boost = 種などによる永続強化
-      });
+        if (k === 'mp') {
+          v = Math.floor((sp.base[1] * 2 + 8) * L / 100) + 5;
+        } else {
+          const ev = I.ev(m, k);
+          const grow = sp.stats[k] * L / 50 * I.ivGrowth(I.iv(m, k)) * I.evGrowth(ev);
+          const flat = I.evFlat(ev, L) * (k === 'hp' ? 2 : 1);
+          v = Math.floor(grow + flat) + (k === 'hp' ? L + 10 : 5);
+        }
+        out[k] = Math.floor(v * fb) + ((m.boost && m.boost[k]) || 0); // boost = 旧データの種による永続強化
+      }
       out.acc = sp.acc;
       out.eva = sp.eva;
+      for (const f of G.StatModifiers) f(m, out);
       return out;
     },
 
@@ -123,12 +140,13 @@
         inheritedTrait: null,
         generation: m.gen || 0,
         parentInstanceIds: [],
-        individualBonus: m.iv || {},
+        individualBonus: m.iv || {},   // 下の ensure で個体値に換算される
         fusionBonus: m.plus || 0,
         boost: m.boost,
         status: null,
         origin: m.origin || { how: 'wild', where: '' },
       };
+      G.Individual.ensure(n);
       n.exp = Mon.expForLevel(sp, n.level);
       Mon.healFull(n);
       return n;
@@ -187,6 +205,7 @@
         generation: m.generation || 0,
         parentInstanceIds: (m.parentInstanceIds || []).slice(),
         how: m.origin ? m.origin.how : '',
+        ivs: m.ivs || G.Individual.ivs(m), // 親の個体値（配合で消えた後も参照できるように）
       };
     },
     record(m) {

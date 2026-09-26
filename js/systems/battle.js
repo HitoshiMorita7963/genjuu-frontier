@@ -515,7 +515,10 @@
         onLevel: (m) => this.leveled.add(m),
       };
       for (const m of this.participants) {
-        if (m.hp > 0 && G.state.party.includes(m)) await G.Growth.gainExp(m, amount, ui);
+        if (m.hp > 0 && G.state.party.includes(m)) {
+          G.Individual.evFromDefeat(m, enemy, !!this.trainer); // 努力値は、実際に戦った幻獣だけがもらえる
+          await G.Growth.gainExp(m, amount, ui);
+        }
       }
       // 戦っていない仲間も 3割 の経験値（配合で生まれた子を育てやすくする）
       const others = G.state.party.filter((m) => m.hp > 0 && !this.participants.has(m) && m.level < G.Monster.MAX_LEVEL);
@@ -635,7 +638,9 @@
     async fight(key, opts = {}) {
       const def = G.Trainers[key];
       const party = typeof def.party === 'function' ? def.party() : def.party;
-      const enemies = party.map(([id, lv]) => G.Monster.create(id, lv, { fusionBonus: def.fusionBonus || 0, how: 'trainer' }));
+      // トレーナーの幻獣は個体値を固定して、戦いの難しさが毎回同じになるようにする
+      const ivs = def.ivs !== undefined ? def.ivs : def.boss ? G.GrowthConfig.BOSS_IV : G.GrowthConfig.TRAINER_IV;
+      const enemies = party.map(([id, lv]) => G.Monster.create(id, lv, { fusionBonus: def.fusionBonus || 0, ivs, how: 'trainer' }));
       const trainer = Object.assign({}, def, {
         name: G.format(def.name),
         intro: (def.intro || []).map(G.format),

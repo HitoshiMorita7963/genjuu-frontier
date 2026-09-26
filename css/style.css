@@ -443,6 +443,64 @@ table.moves td { padding: 2px 4px 2px 0; }
 #touch-pad .ab .a { background: #3a6ad0; transform: translateY(-14px); }
 #touch-pad .ab .b { background: #6a3a5a; }
 
+/* ---------- 育成情報（種族値・個体値・努力値） ---------- */
+.bar.ev i { background: #d070f0; }
+.muted { color: var(--muted); }
+.nowrap { white-space: nowrap; }
+.info-body { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+.info-head { display: flex; gap: 10px; align-items: center; }
+.info-head .detail-name { font-size: 16px; }
+.portrait { position: relative; border-radius: 50%; flex: none; }
+.portrait.aura::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; z-index: 0; animation: aura-pulse 2.2s ease-in-out infinite; }
+.portrait img { position: relative; z-index: 1; }
+.portrait.aura-gold::before { box-shadow: 0 0 14px 6px rgba(255, 211, 90, 0.55); }
+.portrait.aura-silver::before { box-shadow: 0 0 12px 5px rgba(220, 230, 255, 0.45); }
+.portrait.aura-rainbow::before { box-shadow: 0 0 16px 7px rgba(255, 120, 200, 0.5); animation: aura-rainbow 3s linear infinite; }
+@keyframes aura-pulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+@keyframes aura-rainbow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+.aura-mark { font-size: 11px; }
+.aura-mark.aura-gold { color: var(--accent); }
+.aura-mark.aura-silver { color: #dfe6ff; }
+.aura-mark.aura-rainbow { color: #ff8ad0; }
+.titles { margin-top: 2px; }
+.title-badge { display: inline-block; font-size: 11px; padding: 0 6px; margin-right: 4px; border: 1px solid #6a6fa0; border-radius: 8px; color: var(--text); }
+.title-badge.aura-gold { border-color: var(--accent); color: var(--accent); }
+.title-badge.aura-silver { border-color: #dfe6ff; }
+.title-badge.aura-rainbow { border-color: #ff8ad0; color: #ffb0e0; }
+.info-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.info-table th, .info-table td { padding: 2px 4px; text-align: left; border-bottom: 1px solid #2e3456; white-space: nowrap; }
+.info-table th { color: var(--muted); font-weight: normal; }
+.info-table td.num { font-size: 15px; color: var(--accent); }
+.info-table .bar { width: 70px; margin-right: 4px; }
+.info-table tr.sum td, .info-table tr.sum th { border-bottom: none; }
+.iv-rank { display: inline-block; min-width: 14px; text-align: center; font-size: 11px; border-radius: 3px; padding: 0 2px; background: #3a3f63; }
+.iv-S { background: #d8a020; color: #1b1400; }
+.iv-A { background: #d0503a; }
+.iv-B { background: #3a8ad0; }
+.iv-C { background: #3aa070; }
+.iv-D { background: #6a6a7a; }
+.iv-E { background: #45455a; color: var(--muted); }
+.info-note { font-size: 13px; }
+.info-sub { color: var(--accent); font-size: 13px; margin: 4px 0 2px; }
+.info-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.talent-row, .ev-row { display: flex; gap: 6px; align-items: center; font-size: 13px; line-height: 1.6; }
+.ev-row span:first-child { width: 5em; color: var(--muted); }
+.ev-row .bar { width: 80px; }
+.talent-hint { color: #c8e0a0; }
+.info-lineage th { width: 7em; }
+.parents { display: flex; flex-direction: column; gap: 6px; }
+.info-lineage td small { display: block; }
+.parent-card { display: flex; gap: 6px; align-items: center; background: var(--panel2); border-radius: 6px; padding: 4px 8px; font-size: 13px; }
+.train-name { display: inline-block; width: 5em; }
+.train-val { display: inline-block; width: 3em; color: var(--accent); }
+@media (max-width: 640px) {
+  .info-cols { grid-template-columns: 1fr; }
+  .info-table { font-size: 11px; }
+  .info-table .bar, .ev-row .bar { display: none; }
+  .info-head .portrait img.big { width: 48px; height: 48px; }
+  .scr-title .tab { white-space: nowrap; }
+}
+
 .hidden { display: none !important; }
 
 @media (max-width: 640px) {
