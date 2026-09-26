@@ -1,0 +1,3475 @@
+// 自動生成ファイル（直接編集しないこと）
+//   元データ: data/monster_frontier_100.json
+//   再生成:   node tools/build-data.js
+window.Game = window.Game || {};
+window.Game.RawMonsterData = {
+ "title": "モンスターフロンティア",
+ "version": "1.1",
+ "rules": {
+  "partyLimit": 6,
+  "maxEquippedMoves": 4,
+  "fusionConsumesParents": true
+ },
+ "monsters": [
+  {
+   "id": "001",
+   "name": "ヒノコロ",
+   "family": "獣",
+   "element": "炎",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 24,
+    "攻撃": 15,
+    "防御": 9,
+    "素早さ": 12,
+    "特殊攻撃": 10,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "002",
+   "name": "ミズリス",
+   "family": "獣",
+   "element": "水",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 8,
+    "防御": 16,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は水。"
+  },
+  {
+   "id": "003",
+   "name": "カゼネコ",
+   "family": "獣",
+   "element": "風",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "速度",
+   "baseStats": {
+    "HP": 22,
+    "攻撃": 10,
+    "防御": 8,
+    "素早さ": 20,
+    "特殊攻撃": 9,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は風。"
+  },
+  {
+   "id": "004",
+   "name": "ツチモグラ",
+   "family": "獣",
+   "element": "地",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 8,
+    "防御": 16,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は地。"
+  },
+  {
+   "id": "005",
+   "name": "ライポン",
+   "family": "獣",
+   "element": "雷",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "速度",
+   "baseStats": {
+    "HP": 22,
+    "攻撃": 10,
+    "防御": 8,
+    "素早さ": 20,
+    "特殊攻撃": 9,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
+  },
+  {
+   "id": "006",
+   "name": "ハネピヨ",
+   "family": "鳥",
+   "element": "風",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "速度",
+   "baseStats": {
+    "HP": 22,
+    "攻撃": 10,
+    "防御": 8,
+    "素早さ": 20,
+    "特殊攻撃": 9,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は風。"
+  },
+  {
+   "id": "007",
+   "name": "アカツバメ",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 24,
+    "攻撃": 15,
+    "防御": 9,
+    "素早さ": 12,
+    "特殊攻撃": 10,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
+  },
+  {
+   "id": "008",
+   "name": "ミズカモ",
+   "family": "鳥",
+   "element": "水",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "支援",
+   "baseStats": {
+    "HP": 26,
+    "攻撃": 7,
+    "防御": 11,
+    "素早さ": 12,
+    "特殊攻撃": 14,
+    "特殊防御": 15,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は水。"
+  },
+  {
+   "id": "009",
+   "name": "コモリバナ",
+   "family": "植物",
+   "element": "地",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 8,
+    "防御": 16,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "自然の力を蓄え、持久戦に強い。 属性は地。"
+  },
+  {
+   "id": "010",
+   "name": "ヒカリソウ",
+   "family": "植物",
+   "element": "光",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "支援",
+   "baseStats": {
+    "HP": 26,
+    "攻撃": 7,
+    "防御": 11,
+    "素早さ": 12,
+    "特殊攻撃": 14,
+    "特殊防御": 15,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "自然の力を蓄え、持久戦に強い。 属性は光。"
+  },
+  {
+   "id": "011",
+   "name": "ミズタマリ",
+   "family": "水棲",
+   "element": "水",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "清流の岸辺",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 8,
+    "防御": 16,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は水。"
+  },
+  {
+   "id": "012",
+   "name": "イワガメ",
+   "family": "水棲",
+   "element": "地",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "清流の岸辺",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 8,
+    "防御": 16,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
+  },
+  {
+   "id": "013",
+   "name": "ビリクラゲ",
+   "family": "水棲",
+   "element": "雷",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "清流の岸辺",
+   "role": "特殊",
+   "baseStats": {
+    "HP": 22,
+    "攻撃": 8,
+    "防御": 8,
+    "素早さ": 13,
+    "特殊攻撃": 18,
+    "特殊防御": 15,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。"
+  },
+  {
+   "id": "014",
+   "name": "ハネムシ",
+   "family": "虫",
+   "element": "風",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "速度",
+   "baseStats": {
+    "HP": 22,
+    "攻撃": 10,
+    "防御": 8,
+    "素早さ": 20,
+    "特殊攻撃": 9,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は風。"
+  },
+  {
+   "id": "015",
+   "name": "ヒノムシ",
+   "family": "虫",
+   "element": "炎",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 24,
+    "攻撃": 15,
+    "防御": 9,
+    "素早さ": 12,
+    "特殊攻撃": 10,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "016",
+   "name": "ツノムシ",
+   "family": "虫",
+   "element": "地",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 8,
+    "防御": 16,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は地。"
+  },
+  {
+   "id": "017",
+   "name": "ヤミコウモリ",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "特殊",
+   "baseStats": {
+    "HP": 22,
+    "攻撃": 8,
+    "防御": 8,
+    "素早さ": 13,
+    "特殊攻撃": 18,
+    "特殊防御": 15,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "018",
+   "name": "ヨルネコ",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "速度",
+   "baseStats": {
+    "HP": 22,
+    "攻撃": 10,
+    "防御": 8,
+    "素早さ": 20,
+    "特殊攻撃": 9,
+    "特殊防御": 9,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "019",
+   "name": "コダマ",
+   "family": "精霊",
+   "element": "光",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "古木の祠",
+   "role": "支援",
+   "baseStats": {
+    "HP": 26,
+    "攻撃": 7,
+    "防御": 11,
+    "素早さ": 12,
+    "特殊攻撃": 14,
+    "特殊防御": 15,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "状態異常耐性",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
+  },
+  {
+   "id": "020",
+   "name": "スナタマ",
+   "family": "精霊",
+   "element": "地",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "砂礫の丘",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 8,
+    "防御": 16,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
+  },
+  {
+   "id": "021",
+   "name": "ホムラネコ",
+   "family": "獣",
+   "element": "炎",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 34,
+    "攻撃": 22,
+    "防御": 14,
+    "素早さ": 17,
+    "特殊攻撃": 16,
+    "特殊防御": 14,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "001",
+     "003"
+    ],
+    "resultId": "021",
+    "display": "ヒノコロ + カゼネコ → ホムラネコ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "022",
+   "name": "ヌマモグラ",
+   "family": "獣",
+   "element": "水",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 42,
+    "攻撃": 15,
+    "防御": 21,
+    "素早さ": 14,
+    "特殊攻撃": 15,
+    "特殊防御": 18,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "002",
+     "004"
+    ],
+    "resultId": "022",
+    "display": "ミズリス + ツチモグラ → ヌマモグラ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は水。"
+  },
+  {
+   "id": "023",
+   "name": "ライガネコ",
+   "family": "獣",
+   "element": "雷",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 17,
+    "防御": 13,
+    "素早さ": 25,
+    "特殊攻撃": 15,
+    "特殊防御": 14,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "005",
+     "003"
+    ],
+    "resultId": "023",
+    "display": "ライポン + カゼネコ → ライガネコ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
+  },
+  {
+   "id": "024",
+   "name": "ヒバネドリ",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 34,
+    "攻撃": 22,
+    "防御": 14,
+    "素早さ": 17,
+    "特殊攻撃": 16,
+    "特殊防御": 14,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "006",
+     "007"
+    ],
+    "resultId": "024",
+    "display": "ハネピヨ + アカツバメ → ヒバネドリ"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
+  },
+  {
+   "id": "025",
+   "name": "アオツバサ",
+   "family": "鳥",
+   "element": "水",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 36,
+    "攻撃": 14,
+    "防御": 16,
+    "素早さ": 17,
+    "特殊攻撃": 20,
+    "特殊防御": 20,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "006",
+     "008"
+    ],
+    "resultId": "025",
+    "display": "ハネピヨ + ミズカモ → アオツバサ"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は水。"
+  },
+  {
+   "id": "026",
+   "name": "ヒカリバナ",
+   "family": "植物",
+   "element": "光",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 36,
+    "攻撃": 14,
+    "防御": 16,
+    "素早さ": 17,
+    "特殊攻撃": 20,
+    "特殊防御": 20,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "009",
+     "010"
+    ],
+    "resultId": "026",
+    "display": "コモリバナ + ヒカリソウ → ヒカリバナ"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は光。"
+  },
+  {
+   "id": "027",
+   "name": "ホノオツタ",
+   "family": "植物",
+   "element": "炎",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 15,
+    "防御": 13,
+    "素早さ": 18,
+    "特殊攻撃": 24,
+    "特殊防御": 20,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "009",
+     "015"
+    ],
+    "resultId": "027",
+    "display": "コモリバナ + ヒノムシ → ホノオツタ"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は炎。"
+  },
+  {
+   "id": "028",
+   "name": "デンキクラゲ",
+   "family": "水棲",
+   "element": "雷",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 15,
+    "防御": 13,
+    "素早さ": 18,
+    "特殊攻撃": 24,
+    "特殊防御": 20,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "011",
+     "013"
+    ],
+    "resultId": "028",
+    "display": "ミズタマリ + ビリクラゲ → デンキクラゲ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。"
+  },
+  {
+   "id": "029",
+   "name": "イシガメ",
+   "family": "水棲",
+   "element": "地",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 42,
+    "攻撃": 15,
+    "防御": 21,
+    "素早さ": 14,
+    "特殊攻撃": 15,
+    "特殊防御": 18,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "012",
+     "011"
+    ],
+    "resultId": "029",
+    "display": "イワガメ + ミズタマリ → イシガメ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
+  },
+  {
+   "id": "030",
+   "name": "ツノバチ",
+   "family": "虫",
+   "element": "風",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 17,
+    "防御": 13,
+    "素早さ": 25,
+    "特殊攻撃": 15,
+    "特殊防御": 14,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "014",
+     "016"
+    ],
+    "resultId": "030",
+    "display": "ハネムシ + ツノムシ → ツノバチ"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は風。"
+  },
+  {
+   "id": "031",
+   "name": "ホノオガ",
+   "family": "虫",
+   "element": "炎",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 34,
+    "攻撃": 22,
+    "防御": 14,
+    "素早さ": 17,
+    "特殊攻撃": 16,
+    "特殊防御": 14,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "015",
+     "014"
+    ],
+    "resultId": "031",
+    "display": "ヒノムシ + ハネムシ → ホノオガ"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "032",
+   "name": "ヤミネコウモリ",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 32,
+    "攻撃": 15,
+    "防御": 13,
+    "素早さ": 18,
+    "特殊攻撃": 24,
+    "特殊防御": 20,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "017",
+     "018"
+    ],
+    "resultId": "032",
+    "display": "ヤミコウモリ + ヨルネコ → ヤミネコウモリ"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "033",
+   "name": "モリノタマ",
+   "family": "精霊",
+   "element": "光",
+   "rank": "E",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 36,
+    "攻撃": 14,
+    "防御": 16,
+    "素早さ": 17,
+    "特殊攻撃": 20,
+    "特殊防御": 20,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "019",
+     "020"
+    ],
+    "resultId": "033",
+    "display": "コダマ + スナタマ → モリノタマ"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
+  },
+  {
+   "id": "034",
+   "name": "フレアフェザー",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "D",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 48,
+    "攻撃": 30,
+    "防御": 21,
+    "素早さ": 24,
+    "特殊攻撃": 24,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "021",
+     "024"
+    ],
+    "resultId": "034",
+    "display": "ホムラネコ + ヒバネドリ → フレアフェザー"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
+  },
+  {
+   "id": "035",
+   "name": "ヌマガメ",
+   "family": "水棲",
+   "element": "水",
+   "rank": "D",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 23,
+    "防御": 28,
+    "素早さ": 21,
+    "特殊攻撃": 23,
+    "特殊防御": 25,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "022",
+     "029"
+    ],
+    "resultId": "035",
+    "display": "ヌマモグラ + イシガメ → ヌマガメ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は水。"
+  },
+  {
+   "id": "036",
+   "name": "ライジンネコ",
+   "family": "魔獣",
+   "element": "雷",
+   "rank": "D",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 25,
+    "防御": 20,
+    "素早さ": 32,
+    "特殊攻撃": 23,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "023",
+     "028"
+    ],
+    "resultId": "036",
+    "display": "ライガネコ + デンキクラゲ → ライジンネコ"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は雷。"
+  },
+  {
+   "id": "037",
+   "name": "セイクリッドフラワー",
+   "family": "植物",
+   "element": "光",
+   "rank": "D",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 50,
+    "攻撃": 22,
+    "防御": 23,
+    "素早さ": 24,
+    "特殊攻撃": 28,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "026",
+     "033"
+    ],
+    "resultId": "037",
+    "display": "ヒカリバナ + モリノタマ → セイクリッドフラワー"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は光。"
+  },
+  {
+   "id": "038",
+   "name": "カエンビー",
+   "family": "虫",
+   "element": "炎",
+   "rank": "D",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 48,
+    "攻撃": 30,
+    "防御": 21,
+    "素早さ": 24,
+    "特殊攻撃": 24,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "連撃の才",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "030",
+     "031"
+    ],
+    "resultId": "038",
+    "display": "ツノバチ + ホノオガ → カエンビー"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "039",
+   "name": "ヨルサソリ",
+   "family": "虫",
+   "element": "闇",
+   "rank": "D",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 23,
+    "防御": 20,
+    "素早さ": 25,
+    "特殊攻撃": 32,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "032",
+     "020"
+    ],
+    "resultId": "039",
+    "display": "ヤミネコウモリ + スナタマ → ヨルサソリ"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は闇。"
+  },
+  {
+   "id": "040",
+   "name": "フェニクス",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "D",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 50,
+    "攻撃": 22,
+    "防御": 23,
+    "素早さ": 24,
+    "特殊攻撃": 28,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "034",
+     "037"
+    ],
+    "resultId": "040",
+    "display": "フレアフェザー + セイクリッドフラワー → フェニクス"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
+  },
+  {
+   "id": "041",
+   "name": "フレイムウルフ",
+   "family": "獣",
+   "element": "炎",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "火山の麓",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 48,
+    "攻撃": 30,
+    "防御": 21,
+    "素早さ": 24,
+    "特殊攻撃": 24,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "021",
+     "031"
+    ],
+    "resultId": "041",
+    "display": "ホムラネコ + ホノオガ → フレイムウルフ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "042",
+   "name": "アクアウルフ",
+   "family": "獣",
+   "element": "水",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "清流の洞窟",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 23,
+    "防御": 28,
+    "素早さ": 21,
+    "特殊攻撃": 23,
+    "特殊防御": 25,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "022",
+     "025"
+    ],
+    "resultId": "042",
+    "display": "ヌマモグラ + アオツバサ → アクアウルフ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は水。"
+  },
+  {
+   "id": "043",
+   "name": "ライガーハウンド",
+   "family": "獣",
+   "element": "雷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "雷鳴平原",
+   "role": "速度",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 25,
+    "防御": 20,
+    "素早さ": 32,
+    "特殊攻撃": 23,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "023",
+     "036"
+    ],
+    "resultId": "043",
+    "display": "ライガネコ + ライジンネコ → ライガーハウンド"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
+  },
+  {
+   "id": "044",
+   "name": "ストームホーク",
+   "family": "鳥",
+   "element": "風",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "風切り高原",
+   "role": "速度",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 25,
+    "防御": 20,
+    "素早さ": 32,
+    "特殊攻撃": 23,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "025",
+     "030"
+    ],
+    "resultId": "044",
+    "display": "アオツバサ + ツノバチ → ストームホーク"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は風。"
+  },
+  {
+   "id": "045",
+   "name": "ブレイズホーク",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "火山の麓",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 48,
+    "攻撃": 30,
+    "防御": 21,
+    "素早さ": 24,
+    "特殊攻撃": 24,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "024",
+     "031"
+    ],
+    "resultId": "045",
+    "display": "ヒバネドリ + ホノオガ → ブレイズホーク"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
+  },
+  {
+   "id": "046",
+   "name": "アクアフェザー",
+   "family": "鳥",
+   "element": "水",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "支援",
+   "baseStats": {
+    "HP": 50,
+    "攻撃": 22,
+    "防御": 23,
+    "素早さ": 24,
+    "特殊攻撃": 28,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "025",
+     "035"
+    ],
+    "resultId": "046",
+    "display": "アオツバサ + ヌマガメ → アクアフェザー"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は水。"
+  },
+  {
+   "id": "047",
+   "name": "ドライアド",
+   "family": "植物",
+   "element": "地",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "古樹の森",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 23,
+    "防御": 28,
+    "素早さ": 21,
+    "特殊攻撃": 23,
+    "特殊防御": 25,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "027",
+     "033"
+    ],
+    "resultId": "047",
+    "display": "ホノオツタ + モリノタマ → ドライアド"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は地。"
+  },
+  {
+   "id": "048",
+   "name": "フローラルフェアリー",
+   "family": "精霊",
+   "element": "光",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "花冠の庭",
+   "role": "支援",
+   "baseStats": {
+    "HP": 50,
+    "攻撃": 22,
+    "防御": 23,
+    "素早さ": 24,
+    "特殊攻撃": 28,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "019",
+     "026"
+    ],
+    "resultId": "048",
+    "display": "コダマ + ヒカリバナ → フローラルフェアリー"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
+  },
+  {
+   "id": "049",
+   "name": "サンダーリーフ",
+   "family": "植物",
+   "element": "雷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "雷鳴平原",
+   "role": "特殊",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 23,
+    "防御": 20,
+    "素早さ": 25,
+    "特殊攻撃": 32,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "028",
+     "037"
+    ],
+    "resultId": "049",
+    "display": "デンキクラゲ + セイクリッドフラワー → サンダーリーフ"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は雷。"
+  },
+  {
+   "id": "050",
+   "name": "アビスフィッシュ",
+   "family": "水棲",
+   "element": "闇",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "深水洞",
+   "role": "特殊",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 23,
+    "防御": 20,
+    "素早さ": 25,
+    "特殊攻撃": 32,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "032",
+     "035"
+    ],
+    "resultId": "050",
+    "display": "ヤミネコウモリ + ヌマガメ → アビスフィッシュ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は闇。"
+  },
+  {
+   "id": "051",
+   "name": "サンダーシャーク",
+   "family": "水棲",
+   "element": "雷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "雷鳴の海",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 48,
+    "攻撃": 30,
+    "防御": 21,
+    "素早さ": 24,
+    "特殊攻撃": 24,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "028",
+     "036"
+    ],
+    "resultId": "051",
+    "display": "デンキクラゲ + ライジンネコ → サンダーシャーク"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。"
+  },
+  {
+   "id": "052",
+   "name": "ロックタートル",
+   "family": "水棲",
+   "element": "地",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "岩礁海岸",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 23,
+    "防御": 28,
+    "素早さ": 21,
+    "特殊攻撃": 23,
+    "特殊防御": 25,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "029",
+     "035"
+    ],
+    "resultId": "052",
+    "display": "イシガメ + ヌマガメ → ロックタートル"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
+  },
+  {
+   "id": "053",
+   "name": "スカイビートル",
+   "family": "虫",
+   "element": "風",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "風切り高原",
+   "role": "速度",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 25,
+    "防御": 20,
+    "素早さ": 32,
+    "特殊攻撃": 23,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "014",
+     "025"
+    ],
+    "resultId": "053",
+    "display": "ハネムシ + アオツバサ → スカイビートル"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は風。"
+  },
+  {
+   "id": "054",
+   "name": "インフェルノビー",
+   "family": "虫",
+   "element": "炎",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "火山の麓",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 48,
+    "攻撃": 30,
+    "防御": 21,
+    "素早さ": 24,
+    "特殊攻撃": 24,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "038",
+     "031"
+    ],
+    "resultId": "054",
+    "display": "カエンビー + ホノオガ → インフェルノビー"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "055",
+   "name": "ダークホーネット",
+   "family": "虫",
+   "element": "闇",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "特殊",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 23,
+    "防御": 20,
+    "素早さ": 25,
+    "特殊攻撃": 32,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "039",
+     "030"
+    ],
+    "resultId": "055",
+    "display": "ヨルサソリ + ツノバチ → ダークホーネット"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は闇。"
+  },
+  {
+   "id": "056",
+   "name": "デビルキャット",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 48,
+    "攻撃": 30,
+    "防御": 21,
+    "素早さ": 24,
+    "特殊攻撃": 24,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "032",
+     "036"
+    ],
+    "resultId": "056",
+    "display": "ヤミネコウモリ + ライジンネコ → デビルキャット"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "057",
+   "name": "ライトウルフ",
+   "family": "魔獣",
+   "element": "光",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "花冠の庭",
+   "role": "支援",
+   "baseStats": {
+    "HP": 50,
+    "攻撃": 22,
+    "防御": 23,
+    "素早さ": 24,
+    "特殊攻撃": 28,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "037",
+     "033"
+    ],
+    "resultId": "057",
+    "display": "セイクリッドフラワー + モリノタマ → ライトウルフ"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は光。"
+  },
+  {
+   "id": "058",
+   "name": "ウィンドスピリット",
+   "family": "精霊",
+   "element": "風",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "風の祭壇",
+   "role": "速度",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 25,
+    "防御": 20,
+    "素早さ": 32,
+    "特殊攻撃": 23,
+    "特殊防御": 21,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "025",
+     "033"
+    ],
+    "resultId": "058",
+    "display": "アオツバサ + モリノタマ → ウィンドスピリット"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は風。"
+  },
+  {
+   "id": "059",
+   "name": "アーススピリット",
+   "family": "精霊",
+   "element": "地",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "大地の祠",
+   "role": "耐久",
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 23,
+    "防御": 28,
+    "素早さ": 21,
+    "特殊攻撃": 23,
+    "特殊防御": 25,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "029",
+     "033"
+    ],
+    "resultId": "059",
+    "display": "イシガメ + モリノタマ → アーススピリット"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
+  },
+  {
+   "id": "060",
+   "name": "サンダースピリット",
+   "family": "精霊",
+   "element": "雷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "雷の祭壇",
+   "role": "特殊",
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 23,
+    "防御": 20,
+    "素早さ": 25,
+    "特殊攻撃": 32,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "028",
+     "033"
+    ],
+    "resultId": "060",
+    "display": "デンキクラゲ + モリノタマ → サンダースピリット"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は雷。"
+  },
+  {
+   "id": "061",
+   "name": "フェンリル",
+   "family": "獣",
+   "element": "氷",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 66,
+    "攻撃": 41,
+    "防御": 31,
+    "素早さ": 34,
+    "特殊攻撃": 35,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "041",
+     "042"
+    ],
+    "resultId": "061",
+    "display": "フレイムウルフ + アクアウルフ → フェンリル"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は氷。"
+  },
+  {
+   "id": "062",
+   "name": "雷獣ライガ",
+   "family": "獣",
+   "element": "雷",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 64,
+    "攻撃": 36,
+    "防御": 30,
+    "素早さ": 42,
+    "特殊攻撃": 34,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "043",
+     "060"
+    ],
+    "resultId": "062",
+    "display": "ライガーハウンド + サンダースピリット → 雷獣ライガ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
+  },
+  {
+   "id": "063",
+   "name": "天空鳥ガルーダ",
+   "family": "鳥",
+   "element": "風",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 64,
+    "攻撃": 36,
+    "防御": 30,
+    "素早さ": 42,
+    "特殊攻撃": 34,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "058"
+    ],
+    "resultId": "063",
+    "display": "ストームホーク + ウィンドスピリット → 天空鳥ガルーダ"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は風。"
+  },
+  {
+   "id": "064",
+   "name": "炎翼鳥イグニス",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 66,
+    "攻撃": 41,
+    "防御": 31,
+    "素早さ": 34,
+    "特殊攻撃": 35,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "045",
+     "040"
+    ],
+    "resultId": "064",
+    "display": "ブレイズホーク + フェニクス → 炎翼鳥イグニス"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
+  },
+  {
+   "id": "065",
+   "name": "世界樹の妖精",
+   "family": "精霊",
+   "element": "光",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 68,
+    "攻撃": 33,
+    "防御": 33,
+    "素早さ": 34,
+    "特殊攻撃": 39,
+    "特殊防御": 37,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "047",
+     "048"
+    ],
+    "resultId": "065",
+    "display": "ドライアド + フローラルフェアリー → 世界樹の妖精"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
+  },
+  {
+   "id": "066",
+   "name": "雷樹獣",
+   "family": "魔獣",
+   "element": "雷",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 64,
+    "攻撃": 34,
+    "防御": 30,
+    "素早さ": 35,
+    "特殊攻撃": 43,
+    "特殊防御": 37,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "049",
+     "062"
+    ],
+    "resultId": "066",
+    "display": "サンダーリーフ + 雷獣ライガ → 雷樹獣"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は雷。"
+  },
+  {
+   "id": "067",
+   "name": "深淵鮫",
+   "family": "水棲",
+   "element": "闇",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 66,
+    "攻撃": 41,
+    "防御": 31,
+    "素早さ": 34,
+    "特殊攻撃": 35,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "050",
+     "051"
+    ],
+    "resultId": "067",
+    "display": "アビスフィッシュ + サンダーシャーク → 深淵鮫"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は闇。"
+  },
+  {
+   "id": "068",
+   "name": "大地亀王",
+   "family": "水棲",
+   "element": "地",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 74,
+    "攻撃": 34,
+    "防御": 38,
+    "素早さ": 31,
+    "特殊攻撃": 34,
+    "特殊防御": 35,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "052",
+     "059"
+    ],
+    "resultId": "068",
+    "display": "ロックタートル + アーススピリット → 大地亀王"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
+  },
+  {
+   "id": "069",
+   "name": "天空甲虫",
+   "family": "虫",
+   "element": "雷",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 64,
+    "攻撃": 36,
+    "防御": 30,
+    "素早さ": 42,
+    "特殊攻撃": 34,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "053",
+     "060"
+    ],
+    "resultId": "069",
+    "display": "スカイビートル + サンダースピリット → 天空甲虫"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は雷。"
+  },
+  {
+   "id": "070",
+   "name": "炎獄蜂",
+   "family": "虫",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 66,
+    "攻撃": 41,
+    "防御": 31,
+    "素早さ": 34,
+    "特殊攻撃": 35,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "054",
+     "055"
+    ],
+    "resultId": "070",
+    "display": "インフェルノビー + ダークホーネット → 炎獄蜂"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
+  },
+  {
+   "id": "071",
+   "name": "魔獣王ケルベロス",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 88,
+    "攻撃": 54,
+    "防御": 43,
+    "素早さ": 47,
+    "特殊攻撃": 48,
+    "特殊防御": 43,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "056",
+     "061"
+    ],
+    "resultId": "071",
+    "display": "デビルキャット + フェンリル → 魔獣王ケルベロス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "072",
+   "name": "光狼セレス",
+   "family": "魔獣",
+   "element": "光",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 90,
+    "攻撃": 46,
+    "防御": 45,
+    "素早さ": 47,
+    "特殊攻撃": 52,
+    "特殊防御": 49,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "057",
+     "065"
+    ],
+    "resultId": "072",
+    "display": "ライトウルフ + 世界樹の妖精 → 光狼セレス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は光。"
+  },
+  {
+   "id": "073",
+   "name": "風神スピリオン",
+   "family": "精霊",
+   "element": "風",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 86,
+    "攻撃": 49,
+    "防御": 42,
+    "素早さ": 55,
+    "特殊攻撃": 47,
+    "特殊防御": 43,
+    "命中": 95,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "058",
+     "063"
+    ],
+    "resultId": "073",
+    "display": "ウィンドスピリット + 天空鳥ガルーダ → 風神スピリオン"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は風。"
+  },
+  {
+   "id": "074",
+   "name": "大地神ガイア",
+   "family": "精霊",
+   "element": "地",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 96,
+    "攻撃": 47,
+    "防御": 50,
+    "素早さ": 44,
+    "特殊攻撃": 47,
+    "特殊防御": 47,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "059",
+     "068"
+    ],
+    "resultId": "074",
+    "display": "アーススピリット + 大地亀王 → 大地神ガイア"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
+  },
+  {
+   "id": "075",
+   "name": "雷神ヴォルト",
+   "family": "精霊",
+   "element": "雷",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 86,
+    "攻撃": 47,
+    "防御": 42,
+    "素早さ": 48,
+    "特殊攻撃": 56,
+    "特殊防御": 49,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "060",
+     "062"
+    ],
+    "resultId": "075",
+    "display": "サンダースピリット + 雷獣ライガ → 雷神ヴォルト"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は雷。"
+  },
+  {
+   "id": "076",
+   "name": "炎帝フェニクス",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 115,
+    "攻撃": 70,
+    "防御": 57,
+    "素早さ": 62,
+    "特殊攻撃": 64,
+    "特殊防御": 59,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "040",
+     "064"
+    ],
+    "resultId": "076",
+    "display": "フェニクス + 炎翼鳥イグニス → 炎帝フェニクス"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
+  },
+  {
+   "id": "077",
+   "name": "深海龍リヴァル",
+   "family": "竜",
+   "element": "水",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 123,
+    "攻撃": 63,
+    "防御": 64,
+    "素早さ": 59,
+    "特殊攻撃": 63,
+    "特殊防御": 63,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "067",
+     "068"
+    ],
+    "resultId": "077",
+    "display": "深淵鮫 + 大地亀王 → 深海龍リヴァル"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。"
+  },
+  {
+   "id": "078",
+   "name": "森羅獣ユグドラ",
+   "family": "精霊",
+   "element": "地",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 117,
+    "攻撃": 62,
+    "防御": 59,
+    "素早さ": 62,
+    "特殊攻撃": 68,
+    "特殊防御": 65,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "065",
+     "074"
+    ],
+    "resultId": "078",
+    "display": "世界樹の妖精 + 大地神ガイア → 森羅獣ユグドラ"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
+  },
+  {
+   "id": "079",
+   "name": "雷帝獣ゼノライガ",
+   "family": "獣",
+   "element": "雷",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 113,
+    "攻撃": 65,
+    "防御": 56,
+    "素早さ": 70,
+    "特殊攻撃": 63,
+    "特殊防御": 59,
+    "命中": 96,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "066",
+     "075"
+    ],
+    "resultId": "079",
+    "display": "雷樹獣 + 雷神ヴォルト → 雷帝獣ゼノライガ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
+  },
+  {
+   "id": "080",
+   "name": "暗黒魔獣バルガス",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 115,
+    "攻撃": 70,
+    "防御": 57,
+    "素早さ": 62,
+    "特殊攻撃": 64,
+    "特殊防御": 59,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "071",
+     "067"
+    ],
+    "resultId": "080",
+    "display": "魔獣王ケルベロス + 深淵鮫 → 暗黒魔獣バルガス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "081",
+   "name": "聖獣セラフィム",
+   "family": "獣",
+   "element": "光",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 117,
+    "攻撃": 62,
+    "防御": 59,
+    "素早さ": 62,
+    "特殊攻撃": 68,
+    "特殊防御": 65,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "072",
+     "073"
+    ],
+    "resultId": "081",
+    "display": "光狼セレス + 風神スピリオン → 聖獣セラフィム"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は光。"
+  },
+  {
+   "id": "082",
+   "name": "天空竜アストラ",
+   "family": "竜",
+   "element": "風",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 113,
+    "攻撃": 65,
+    "防御": 56,
+    "素早さ": 70,
+    "特殊攻撃": 63,
+    "特殊防御": 59,
+    "命中": 96,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "063",
+     "073"
+    ],
+    "resultId": "082",
+    "display": "天空鳥ガルーダ + 風神スピリオン → 天空竜アストラ"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は風。"
+  },
+  {
+   "id": "083",
+   "name": "地帝巨獣グラン",
+   "family": "魔獣",
+   "element": "地",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 123,
+    "攻撃": 63,
+    "防御": 64,
+    "素早さ": 59,
+    "特殊攻撃": 63,
+    "特殊防御": 63,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "074",
+     "071"
+    ],
+    "resultId": "083",
+    "display": "大地神ガイア + 魔獣王ケルベロス → 地帝巨獣グラン"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は地。"
+  },
+  {
+   "id": "084",
+   "name": "雷光竜ゼノス",
+   "family": "竜",
+   "element": "雷",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 113,
+    "攻撃": 63,
+    "防御": 56,
+    "素早さ": 63,
+    "特殊攻撃": 72,
+    "特殊防御": 65,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "075",
+     "081"
+    ],
+    "resultId": "084",
+    "display": "雷神ヴォルト + 聖獣セラフィム → 雷光竜ゼノス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。"
+  },
+  {
+   "id": "085",
+   "name": "黒翼竜ノクス",
+   "family": "竜",
+   "element": "闇",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 113,
+    "攻撃": 63,
+    "防御": 56,
+    "素早さ": 63,
+    "特殊攻撃": 72,
+    "特殊防御": 65,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "080",
+     "082"
+    ],
+    "resultId": "085",
+    "display": "暗黒魔獣バルガス + 天空竜アストラ → 黒翼竜ノクス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。"
+  },
+  {
+   "id": "086",
+   "name": "炎天竜イグナード",
+   "family": "竜",
+   "element": "炎",
+   "rank": "S",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 145,
+    "攻撃": 87,
+    "防御": 74,
+    "素早さ": 78,
+    "特殊攻撃": 82,
+    "特殊防御": 75,
+    "命中": 97,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "076",
+     "084"
+    ],
+    "resultId": "086",
+    "display": "炎帝フェニクス + 雷光竜ゼノス → 炎天竜イグナード"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は炎。"
+  },
+  {
+   "id": "087",
+   "name": "海皇龍ネプティア",
+   "family": "竜",
+   "element": "水",
+   "rank": "S",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 153,
+    "攻撃": 80,
+    "防御": 81,
+    "素早さ": 75,
+    "特殊攻撃": 81,
+    "特殊防御": 79,
+    "命中": 97,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "077",
+     "081"
+    ],
+    "resultId": "087",
+    "display": "深海龍リヴァル + 聖獣セラフィム → 海皇龍ネプティア"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。"
+  },
+  {
+   "id": "088",
+   "name": "世界樹竜ユグドラシル",
+   "family": "竜",
+   "element": "光",
+   "rank": "S",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 147,
+    "攻撃": 79,
+    "防御": 76,
+    "素早さ": 78,
+    "特殊攻撃": 86,
+    "特殊防御": 81,
+    "命中": 97,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "078",
+     "082"
+    ],
+    "resultId": "088",
+    "display": "森羅獣ユグドラ + 天空竜アストラ → 世界樹竜ユグドラシル"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は光。"
+  },
+  {
+   "id": "089",
+   "name": "雷獄竜ヴァルゼオン",
+   "family": "竜",
+   "element": "雷",
+   "rank": "S",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "baseStats": {
+    "HP": 143,
+    "攻撃": 82,
+    "防御": 73,
+    "素早さ": 86,
+    "特殊攻撃": 81,
+    "特殊防御": 75,
+    "命中": 97,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "079",
+     "085"
+    ],
+    "resultId": "089",
+    "display": "雷帝獣ゼノライガ + 黒翼竜ノクス → 雷獄竜ヴァルゼオン"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。"
+  },
+  {
+   "id": "090",
+   "name": "終魔獣アビス",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "S",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 143,
+    "攻撃": 80,
+    "防御": 73,
+    "素早さ": 79,
+    "特殊攻撃": 90,
+    "特殊防御": 81,
+    "命中": 97,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "080",
+     "083"
+    ],
+    "resultId": "090",
+    "display": "暗黒魔獣バルガス + 地帝巨獣グラン → 終魔獣アビス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "091",
+   "name": "炎神竜アグニア",
+   "family": "竜",
+   "element": "炎",
+   "rank": "SS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 175,
+    "攻撃": 105,
+    "防御": 91,
+    "素早さ": 94,
+    "特殊攻撃": 100,
+    "特殊防御": 93,
+    "命中": 98,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "086",
+     "088"
+    ],
+    "resultId": "091",
+    "display": "炎天竜イグナード + 世界樹竜ユグドラシル → 炎神竜アグニア"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は炎。"
+  },
+  {
+   "id": "092",
+   "name": "海神竜ポセイディア",
+   "family": "竜",
+   "element": "水",
+   "rank": "SS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 183,
+    "攻撃": 98,
+    "防御": 98,
+    "素早さ": 91,
+    "特殊攻撃": 99,
+    "特殊防御": 97,
+    "命中": 98,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "087",
+     "088"
+    ],
+    "resultId": "092",
+    "display": "海皇龍ネプティア + 世界樹竜ユグドラシル → 海神竜ポセイディア"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。"
+  },
+  {
+   "id": "093",
+   "name": "雷神竜ゼウレウス",
+   "family": "竜",
+   "element": "雷",
+   "rank": "SS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 173,
+    "攻撃": 98,
+    "防御": 90,
+    "素早さ": 95,
+    "特殊攻撃": 108,
+    "特殊防御": 99,
+    "命中": 98,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "086",
+     "089"
+    ],
+    "resultId": "093",
+    "display": "炎天竜イグナード + 雷獄竜ヴァルゼオン → 雷神竜ゼウレウス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。"
+  },
+  {
+   "id": "094",
+   "name": "闇神竜ネメシス",
+   "family": "竜",
+   "element": "闇",
+   "rank": "SS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 173,
+    "攻撃": 98,
+    "防御": 90,
+    "素早さ": 95,
+    "特殊攻撃": 108,
+    "特殊防御": 99,
+    "命中": 98,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "089",
+     "090"
+    ],
+    "resultId": "094",
+    "display": "雷獄竜ヴァルゼオン + 終魔獣アビス → 闇神竜ネメシス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。"
+  },
+  {
+   "id": "095",
+   "name": "天界獣セレスティア",
+   "family": "精霊",
+   "element": "光",
+   "rank": "SS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 177,
+    "攻撃": 97,
+    "防御": 93,
+    "素早さ": 94,
+    "特殊攻撃": 104,
+    "特殊防御": 99,
+    "命中": 98,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "081",
+     "091"
+    ],
+    "resultId": "095",
+    "display": "聖獣セラフィム + 炎神竜アグニア → 天界獣セレスティア"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
+  },
+  {
+   "id": "096",
+   "name": "深淵王アビスロード",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "SS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "baseStats": {
+    "HP": 183,
+    "攻撃": 98,
+    "防御": 98,
+    "素早さ": 91,
+    "特殊攻撃": 99,
+    "特殊防御": 97,
+    "命中": 98,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "090",
+     "094"
+    ],
+    "resultId": "096",
+    "display": "終魔獣アビス + 闇神竜ネメシス → 深淵王アビスロード"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
+  },
+  {
+   "id": "097",
+   "name": "天空神龍オルフェウス",
+   "family": "竜",
+   "element": "光",
+   "rank": "SSS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "baseStats": {
+    "HP": 203,
+    "攻撃": 116,
+    "防御": 106,
+    "素早さ": 113,
+    "特殊攻撃": 126,
+    "特殊防御": 115,
+    "命中": 99,
+    "回避": 47
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "092",
+     "093"
+    ],
+    "resultId": "097",
+    "display": "海神竜ポセイディア + 雷神竜ゼウレウス → 天空神龍オルフェウス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は光。"
+  },
+  {
+   "id": "098",
+   "name": "混沌竜カオス",
+   "family": "竜",
+   "element": "闇",
+   "rank": "SSS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "baseStats": {
+    "HP": 205,
+    "攻撃": 123,
+    "防御": 107,
+    "素早さ": 112,
+    "特殊攻撃": 118,
+    "特殊防御": 109,
+    "命中": 99,
+    "回避": 47
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "連撃の才",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "094",
+     "097"
+    ],
+    "resultId": "098",
+    "display": "闇神竜ネメシス + 天空神龍オルフェウス → 混沌竜カオス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。"
+  },
+  {
+   "id": "099",
+   "name": "神獣エターナル",
+   "family": "精霊",
+   "element": "光",
+   "rank": "SSS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "baseStats": {
+    "HP": 207,
+    "攻撃": 115,
+    "防御": 109,
+    "素早さ": 112,
+    "特殊攻撃": 122,
+    "特殊防御": 115,
+    "命中": 99,
+    "回避": 47
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "状態異常耐性",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "095",
+     "096"
+    ],
+    "resultId": "099",
+    "display": "天界獣セレスティア + 深淵王アビスロード → 神獣エターナル"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
+  },
+  {
+   "id": "100",
+   "name": "創世竜アーク",
+   "family": "竜",
+   "element": "無",
+   "rank": "EX",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "万能",
+   "baseStats": {
+    "HP": 240,
+    "攻撃": 130,
+    "防御": 125,
+    "素早さ": 120,
+    "特殊攻撃": 130,
+    "特殊防御": 125,
+    "命中": 99,
+    "回避": 50
+   },
+   "initialMoveCandidates": [
+    "星砕き",
+    "全能の波動",
+    "創世の息吹"
+   ],
+   "innateTrait": "無限の可能性",
+   "growthType": "万能",
+   "recipe": {
+    "parentIds": [
+     "098",
+     "099"
+    ],
+    "resultId": "100",
+    "display": "混沌竜カオス + 神獣エターナル → 創世竜アーク"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は無。"
+  }
+ ]
+};

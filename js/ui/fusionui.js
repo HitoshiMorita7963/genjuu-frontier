@@ -1,0 +1,191 @@
+// 配合の館：親A・親Bを選び、確認 → 技の継承 → 誕生
+//   結果は「？？？？」で隠す（すでに発見したレシピなら、図鑑の記録から名前がわかる）
+//   キャンセルした場合は何も消費しない
+(function (G) {
+  'use strict';
+
+  const esc = (s) => G.escapeHtml(s);
+  const P = () => G.UIParts;
+  const TIER_TEXT = {
+    rule: '新たな命が誕生した！',
+    recipe: '特別な組み合わせだ！　新たな命が誕生した！',
+    rare: 'すさまじい力を秘めた幻獣が生まれた……！！',
+    super: '伝説に名を刻む幻獣が誕生した……！！！',
+  };
+
+  G.UIScreens.fusion = function () {
+    return {
+      layout: 'full',
+      step: 'a',      // a → b → confirm → inherit → anim → done
+      sel: 0,
+      a: null,
+      b: null,
+      yes: true,
+      note: '',
+      picks: [],
+      isel: 0,
+      result: null,
+
+      candidates() {
+        const all = G.Party.all();
+        return this.step === 'b' ? all.filter((m) => m !== this.a) : all;
+      },
+
+      update(In, dt = 1 / 60) {
+        const list = this.candidates();
+        const r = () => G.Screens.render();
+        if (this.step === 'a' || this.step === 'b') {
+          if (list.length && In.consume('up')) { this.sel = (this.sel - 1 + list.length) % list.length; this.note = ''; r(); }
+          if (list.length && In.consume('down')) { this.sel = (this.sel + 1) % list.length; this.note = ''; r(); }
+          if (In.consume('confirm') && list.length) {
+            if (this.step === 'a') { this.a = list[this.sel]; this.step = 'b'; this.sel = 0; this.note = ''; }
+            else {
+              const why = G.Fusion.check(this.a, list[this.sel]);
+              if (why) this.note = why;
+              else { this.b = list[this.sel]; this.step = 'confirm'; this.yes = true; this.note = ''; }
+            }
+            r();
+          }
+          if (In.consume('cancel')) {
+            if (this.step === 'a') return G.Screens.close(null);
+            this.step = 'a'; this.a = null; this.sel = 0; this.note = '';
+            r();
+          }
+        } else if (this.step === 'confirm') {
+          if (In.consume('left') || In.consume('right') || In.consume('up') || In.consume('down')) { this.yes = !this.yes; r(); }
+          if (In.consume('cancel')) { this.step = 'b'; this.b = null; r(); return; }
+          if (In.consume('confirm')) {
+            if (!this.yes) { this.step = 'b'; this.b = null; r(); return; }
+            this.step = 'inherit';
+            this.picks = [];
+            this.isel = 0;
+            r();
+          }
+        } else if (this.step === 'inherit') {
+          const moves = G.Fusion.inheritableMoves(this.a, this.b);
+          const n = moves.length + 1; // 最後の行 = 決定
+          if (In.consume('up')) { this.isel = (this.isel - 1 + n) % n; r(); }
+          if (In.consume('down')) { this.isel = (this.isel + 1) % n; r(); }
+          if (In.consume('cancel')) { this.step = 'confirm'; r(); return; }
+          if (In.consume('confirm')) {
+            if (this.isel < moves.length) {
+              const id = moves[this.isel];
+              const i = this.picks.indexOf(id);
+              if (i >= 0) this.picks.splice(i, 1);
+              else if (this.picks.length < G.Fusion.INHERIT_MAX) this.picks.push(id);
+              r();
+              return;
+            }
+            this.step = 'anim';
+            this.animT = 0;
+            r();
+          }
+        } else if (this.step === 'anim') {
+          this.animT += dt;
+          if (this.animT >= 2.2) {
+            try {
+              this.result = G.Fusion.perform(this.a, this.b, { inherit: this.picks });
+              G.Audio.se('fanfare');
+              this.step = 'done';
+            } catch (e) {
+              // 失敗時は何も消費されていない（fusion.js が元に戻す）
+              console.error('[fusion]', e);
+              this.note = '配合に失敗しました：' + e.message;
+              this.step = 'b'; this.b = null;
+            }
+            G.UI.refresh();
+            r();
+          }
+        } else if (this.step === 'done') {
+          if (In.consume('confirm') || In.consume('cancel')) G.Screens.close(this.result);
+        }
+      },
+
+      slot(label, m) {
+        if (!m) return `<div class="fz-slot empty"><div class="fz-label">${label}</div><div class="fz-q">―</div></div>`;
+        const sp = G.Species[m.speciesId];
+        return `<div class="fz-slot"><div class="fz-label">${label}</div>${P().img(m.speciesId, 'mid')}` +
+          `<div><div><small>No.${sp.id}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>${P().speciesHead(sp)}` +
+          `<div class="small">世代${m.generation}　+${m.fusionBonus}</div></div></div>`;
+      },
+
+      childSlot() {
+        if (this.step === 'done') {
+          const c = this.result.child;
+          const sp = G.Species[c.speciesId];
+          return `<div class="fz-slot child born"><div class="fz-label">誕生した幻獣</div>${P().img(c.speciesId, 'mid')}` +
+            `<div><div><small>No.${sp.id}</small> ${esc(c.name)} <small>Lv${c.level}</small></div>${P().speciesHead(sp)}` +
+            `<div class="small">世代${c.generation}　+${c.fusionBonus}</div></div></div>`;
+        }
+        const cls = this.step === 'anim' ? ' glowing' : '';
+        // すでに発見したレシピなら、図鑑の記録から子の名前がわかる
+        const res = this.a && this.b ? G.Fusion.resolve(this.a, this.b) : null;
+        const known = res && G.Fusion.known(this.a, this.b);
+        const inner = known
+          ? `${P().img(res.speciesId, 'mid')}<div><div>${esc(G.Species[res.speciesId].name)}</div><div class="small">（以前に試した組み合わせ）</div></div>`
+          : '<div class="fz-q">？？？？</div>';
+        return `<div class="fz-slot child${cls}"><div class="fz-label">誕生する幻獣</div>${inner}</div>`;
+      },
+
+      html() {
+        const diagram = `<div class="fz-diagram">${this.slot('親A', this.a)}<div class="fz-arrow">＋</div>` +
+          `${this.slot('親B', this.b)}<div class="fz-arrow">↓</div>${this.childSlot()}</div>`;
+        let left = '';
+        let hint = '';
+        if (this.step === 'a' || this.step === 'b') {
+          const list = this.candidates();
+          const tag = (m) => {
+            let t = G.Party.where(m) === 'storage' ? ' <span class="tag">預</span>' : '';
+            // 2体目の候補：1体目と「特別な組み合わせ」（公式レシピ）になる相手に印（結果は伏せたまま）
+            const res = this.step === 'b' ? G.Fusion.resolve(this.a, m) : null;
+            if (res && res.kind === 'recipe') t += ' <span class="tag fz">特別</span>';
+            return t;
+          };
+          left = `<div class="fz-prompt">${this.step === 'a' ? '1体目の親を選んでください' : '2体目の親を選んでください'}</div>` +
+            (list.length ? list.map((m, i) => P().row(m, i === this.sel, tag(m))).join('') : '<div class="menu-empty">配合できる幻獣がいない。</div>') +
+            (this.note ? `<div class="bt-note">${esc(this.note)}</div>` : '');
+          hint = `↑↓：えらぶ　Z：けってい　X：${this.step === 'a' ? 'やめる' : 'もどる'}`;
+        } else if (this.step === 'confirm') {
+          left = '<div class="fz-prompt">この2体を配合しますか？</div>' +
+            '<div class="fz-warn">※配合すると、親の2体はいなくなります（系譜には記録されます）。<br>' +
+            `生まれる子はレベル${G.Fusion.childLevel(this.a, this.b)}・世代${Math.max(this.a.generation, this.b.generation) + 1}からのスタートです。</div>` +
+            `<div class="yesno"><span class="${this.yes ? 'sel' : ''}">${this.yes ? '▶' : '　'}はい</span>` +
+            `<span class="${this.yes ? '' : 'sel'}">${this.yes ? '　' : '▶'}いいえ</span></div>`;
+          hint = '←→：えらぶ　Z：けってい　X：もどる';
+        } else if (this.step === 'inherit') {
+          const moves = G.Fusion.inheritableMoves(this.a, this.b);
+          const locked = G.Fusion.lockedMoves(this.a, this.b);
+          left = `<div class="fz-prompt">子に受け継がせる技を選んでください（${this.picks.length}/${G.Fusion.INHERIT_MAX}）</div>` +
+            moves.map((id, i) => {
+              const mv = G.Moves[id];
+              const on = this.picks.includes(id);
+              return `<div class="menu-row${i === this.isel ? ' sel' : ''}"><span class="cursor">${i === this.isel ? '▶' : ''}</span>` +
+                `<span class="check">${on ? '■' : '□'}</span>${P().el(mv.el)}${esc(mv.name)}<span class="count">威力${mv.pow || '-'} MP${mv.mp}</span></div>`;
+            }).join('') +
+            locked.map((id) => `<div class="menu-row disabled"><span class="cursor"></span><span class="check">×</span>${esc(G.Moves[id].name)}<span class="count">固有技は継承不可</span></div>`).join('') +
+            `<div class="menu-row${this.isel === moves.length ? ' sel' : ''}"><span class="cursor">${this.isel === moves.length ? '▶' : ''}</span><b>この技で 配合する</b></div>` +
+            `<div class="fz-warn">装備できる技は${G.Monster.MAX_MOVES}つまで。残りは子の初期技で埋まります。<br>固有特性に加えて、親の特性を1つ受け継ぐことがあります。</div>`;
+          hint = '↑↓：えらぶ　Z：選ぶ／けってい　X：もどる';
+        } else if (this.step === 'anim') {
+          left = '<div class="fz-prompt">2つの命が、光の中でひとつに溶けあっていく……</div>';
+        } else {
+          const r = this.result;
+          const c = r.child;
+          const sp = G.Species[c.speciesId];
+          const moves = c.moves.map((id) => `${esc(G.Moves[id].name)}${r.inheritedMoves.includes(id) ? '<span class="tag">継承</span>' : ''}`).join('　');
+          const traits = G.traitsOf(c).map((t) => `${G.Traits[t].name}${t === c.inheritedTrait ? '<span class="tag">継承</span>' : ''}`).join('　');
+          left = `<div class="fz-prompt">${TIER_TEXT[r.tier] || ''}</div>` +
+            `<div class="fz-born">${esc(sp.name)}が 誕生した！</div>` +
+            `<div class="small">${r.recipe ? `レシピ：${esc(r.recipe.display)}` : '（系統の組み合わせで生まれた）'}</div>` +
+            `<div class="small">技：${moves}</div><div class="small">特性：${traits}</div>` +
+            `<div class="small">世代${c.generation}／親：${esc(this.a.name)} ＋ ${esc(this.b.name)}</div>` +
+            `<div class="small">${r.dest === 'party' ? 'パーティに加わった。' : 'パーティがいっぱいなので、預かり所へ送られた。'}</div>`;
+          hint = 'Z：とじる';
+        }
+        return '<div class="scr-title">配合の館</div>' +
+          `<div class="scr-body two-col fz"><div class="mon-list">${left}</div>${diagram}</div>` +
+          `<div class="scr-hint">${hint}</div>`;
+      },
+    };
+  };
+})(window.Game);
