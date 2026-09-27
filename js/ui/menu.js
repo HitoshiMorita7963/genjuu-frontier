@@ -72,7 +72,7 @@
           if (In.consume('cancel')) return G.Screens.close();
           if (In.consume('confirm') && ids.length) {
             const it = G.Items[ids[this.sel]];
-            if (['heal', 'status', 'evolve', 'boost'].includes(it.type)) {
+            if (['heal', 'status', 'evolve', 'boost', 'ev', 'evreset'].includes(it.type)) {
               if (!G.state.party.length) this.note = '幻獣を 連れていない。';
               else { this.target = ids[this.sel]; this.tsel = 0; }
             } else {
@@ -91,11 +91,21 @@
             G.Events.run((E) => G.Growth.evolve(m, to, E));
             return;
           }
-          if (it.type === 'boost') {
-            m.boost = m.boost || {};
-            m.boost.atk = (m.boost.atk || 0) + 2;
+          if (it.type === 'ev') {
+            const I = G.Individual;
+            const before = G.Monster.stats(m).hp;
+            const got = I.addEv(m, it.stat, it.gain || G.GrowthConfig.EV_ITEM_GAIN);
+            m.hp += G.Monster.stats(m).hp - before; // 最大HPが増えた分だけ、今のHPも増やす
+            if (!got) { this.note = `${m.name}の ${I.NAMES[it.stat]}は これ以上 鍛えられない。`; G.Screens.render(); return; }
             G.addItem(id, -1);
-            this.note = `${m.name}の 攻撃が 永続的に 2 上がった！`;
+            this.note = `${m.name}の ${I.NAMES[it.stat]}の努力値が ${got} 上がった！（${I.ev(m, it.stat)}／${G.GrowthConfig.EV_MAX_STAT}）`;
+          } else if (it.type === 'evreset') {
+            if (!G.Individual.evTotal(m)) { this.note = `${m.name}は まだ 育成されていない。`; G.Screens.render(); return; }
+            G.Individual.resetEvs(m);
+            const max = G.Monster.stats(m);
+            m.hp = Math.min(m.hp, max.hp); m.mp = Math.min(m.mp, max.mp);
+            G.addItem(id, -1);
+            this.note = `${m.name}の 努力値が すべて 0 に もどった。`;
           } else {
             this.note = G.ItemUse.use(id, m) || '使っても 効果が ないようだ。';
           }
@@ -256,7 +266,7 @@
         swapFrom: -1,
         note: '',
         list() { return this.tab === 'party' ? G.state.party : G.state.storage; },
-        actions() { return this.tab === 'party' ? ['系譜を見る', '並べかえ', '預ける', 'やめる'] : ['系譜を見る', 'パーティに加える', 'やめる']; },
+        actions() { return this.tab === 'party' ? ['育成情報', '系譜を見る', '並べかえ', '預ける', 'やめる'] : ['育成情報', '系譜を見る', 'パーティに加える', 'やめる']; },
         update(In) {
           const list = this.list();
           const n = list.length;
@@ -293,6 +303,7 @@
         doAction(a) {
           const m = this.list()[this.sel];
           this.mode = 'list';
+          if (a === '育成情報') { G.Screens.open(G.UIScreens.monsterInfo(m)); return; }
           if (a === '系譜を見る') { G.Screens.open(G.UIScreens.lineage(m)); return; }
           if (a === '並べかえ') { this.mode = 'swap'; this.swapFrom = this.sel; this.note = 'どの幻獣と 入れかえる？'; }
           else if (a === '預ける') {
@@ -343,7 +354,7 @@
         html() {
           const cards = ids.map((id, i) => {
             const sp = G.Species[id];
-            const st = G.Monster.stats({ speciesId: id, level: 50, fusionBonus: 0, individualBonus: { hp: 8, mp: 8, atk: 8, def: 8, spd: 8, sat: 8, sdf: 8 } });
+            const st = G.Monster.stats({ speciesId: id, level: 50, fusionBonus: 0 }); // 平均的な個体（個体値15・努力値0）
             const bars = ['hp', 'atk', 'def', 'spd', 'sat', 'sdf'].map((k) =>
               `<div class="mini-stat"><span>${G.Monster.STAT_NAMES[k]}</span>${P().bar(st[k], k === 'hp' ? 170 : 120, 'stat')}</div>`).join('');
             return `<div class="starter-card${i === this.sel ? ' sel' : ''}">${P().img(id, 'big')}` +

@@ -4,6 +4,8 @@
 //   ・子の能力は子の種族データから計算し、親の能力値はコピーしない
 //   ・技：子の初期技に加え、親の習得済み技から最大2つを継承（装備は最大4つ）
 //   ・特性：固有特性は必ず持ち、親由来の追加特性は最大1つ
+//   ・個体値：親A・親Bから2能力ずつ継承（高い個体値ほど選ばれやすい）、残りはランダム（js/systems/individual.js）
+//   ・努力値：引き継がない（子は0から育て直す。完成個体のコピーを防ぐ）
 //   ・子の生成・親の消費・子の配置を1つの処理として行い、途中で失敗したら元に戻す
 (function (G) {
   'use strict';
@@ -144,7 +146,9 @@
         const allowed = F.inheritableMoves(a, b);
         const inherit = (opts.inherit || []).filter((id) => allowed.includes(id)).slice(0, INHERIT_MAX);
         const level = F.childLevel(a, b);
+        const iv = G.Individual.inheritIvs(a, b);
         const child = G.Monster.create(res.speciesId, level, {
+          ivs: iv.ivs,
           moves: F.childMoves(res.speciesId, level, inherit),
           inheritedMoves: inherit,
           inheritedTrait: F.childInheritedTrait(res.speciesId, a, b),
@@ -169,7 +173,7 @@
 
         const ri = G.rankIndex(G.Species[child.speciesId].rank);
         const tier = res.kind === 'rule' ? 'rule' : ri >= 7 ? 'super' : ri >= 5 ? 'rare' : 'recipe';
-        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, inheritedTrait: child.inheritedTrait };
+        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
       } catch (e) {
         // --- 失敗：親だけ消えた状態にならないよう、すべて元に戻す ---
         s.party.splice(0, s.party.length, ...backup.party);

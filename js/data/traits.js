@@ -57,7 +57,7 @@
   def('evasive', '霞隠れ', 35, '回避が10上がる。', { eva: 10 });
   def('hunter', '狩人の目', 35, '命中が10上がる。', { acc: 10 });
   def('lucky', '幸運', 45, '戦闘で得るお金が1.5倍になる。', { lucky: true });
-  def('breeder', '配合の才', 60, '配合したとき、子の「配合値」が大きく上がる。', { breeder: true });
+  def('breeder', '配合の才', 60, '配合したとき、子の「配合値」（血統の力）が大きく上がる。', { breeder: true });
   const blessings = { fire: '炎', water: '水', grass: '草', thunder: '雷', earth: '地', wind: '風', light: '光', dark: '闇' };
   for (const [el, n] of Object.entries(blessings)) {
     def(el + '_blessing', `${n}の加護`, 35, `${n}属性の技の威力が1.2倍になる。`, { element: el, power: 1.2 });

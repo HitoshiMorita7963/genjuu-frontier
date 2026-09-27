@@ -106,7 +106,7 @@
         const sp = G.Species[m.speciesId];
         return `<div class="fz-slot"><div class="fz-label">${label}</div>${P().img(m.speciesId, 'mid')}` +
           `<div><div><small>No.${sp.id}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>${P().speciesHead(sp)}` +
-          `<div class="small">世代${m.generation}　+${m.fusionBonus}</div></div></div>`;
+          `<div class="small">世代${m.generation}　配合値${m.fusionBonus || 0}</div></div></div>`;
       },
 
       childSlot() {
@@ -115,7 +115,7 @@
           const sp = G.Species[c.speciesId];
           return `<div class="fz-slot child born"><div class="fz-label">誕生した幻獣</div>${P().img(c.speciesId, 'mid')}` +
             `<div><div><small>No.${sp.id}</small> ${esc(c.name)} <small>Lv${c.level}</small></div>${P().speciesHead(sp)}` +
-            `<div class="small">世代${c.generation}　+${c.fusionBonus}</div></div></div>`;
+            `<div class="small">世代${c.generation}　配合値${c.fusionBonus || 0}</div></div></div>`;
         }
         const cls = this.step === 'anim' ? ' glowing' : '';
         // すでに発見したレシピなら、図鑑の記録から子の名前がわかる
@@ -178,6 +178,7 @@
             `<div class="fz-born">${esc(sp.name)}が 誕生した！</div>` +
             `<div class="small">${r.recipe ? `レシピ：${esc(r.recipe.display)}` : '（系統の組み合わせで生まれた）'}</div>` +
             `<div class="small">技：${moves}</div><div class="small">特性：${traits}</div>` +
+            `<div class="small">才能：${ivLine(c, r.ivSource)}</div>` +
             `<div class="small">世代${c.generation}／親：${esc(this.a.name)} ＋ ${esc(this.b.name)}</div>` +
             `<div class="small">${r.dest === 'party' ? 'パーティに加わった。' : 'パーティがいっぱいなので、預かり所へ送られた。'}</div>`;
           hint = 'Z：とじる';
@@ -188,4 +189,13 @@
       },
     };
   };
+
+  // 子の才能（個体値）。どちらの親から受け継いだかを示す。鑑定前は数値を出さず、ヒントだけ
+  function ivLine(c, source = {}) {
+    const I = G.Individual;
+    if (!I.appraised()) return esc(I.hints(c)[0]) + '<span class="small muted">（親の才能を 一部受け継いだ）</span>';
+    const tag = { a: '親A', b: '親B', random: '' };
+    return I.KEYS.map((k) => `<span class="nowrap">${I.NAMES[k]}${I.iv(c, k)}<span class="iv-rank iv-${I.rank(I.iv(c, k)).rank}">${I.rank(I.iv(c, k)).rank}</span>` +
+      (tag[source[k]] ? `<small class="muted">${tag[source[k]]}</small>` : '') + '</span>').join(' ');
+  }
 })(window.Game);

@@ -5,7 +5,7 @@
   'use strict';
 
   const KEY = 'genjuu-frontier/save/v1'; // 保存場所は据え置き（旧セーブも読めるように）
-  const VERSION = 2;                      // 2 = 公式モンスターデータ（100種）対応
+  const VERSION = 3;                      // 2 = 公式モンスターデータ（100種）対応 / 3 = 個体値・努力値
 
   // 旧データ（ver.1・42種）の種族 → 公式データの近い種族（属性・系統・ランクで対応づけ）
   const LEGACY_SPECIES = {
@@ -58,6 +58,13 @@
     out.player = Object.assign(base.player, st.player || {});
     for (const k of ['items', 'flags', 'dex', 'recipesFound', 'ruleFound', 'lineage']) out[k] = st[k] || {};
     for (const k of ['party', 'storage']) out[k] = (st[k] || []).filter((m) => m && G.Species[m.speciesId]);
+    // ver.2 以前の個体：個体ボーナス（0〜15）を個体値（0〜31）に換算し、努力値を 0 で追加（能力値はほぼ変わらない）
+    for (const m of out.party.concat(out.storage)) {
+      G.Individual.ensure(m);
+      const max = G.Monster.stats(m);
+      m.hp = Math.min(m.hp, max.hp);
+      m.mp = Math.min(m.mp, max.mp);
+    }
     // 個体IDの通し番号が既存の個体と重ならないようにする
     out.uidSeq = Math.max(out.uidSeq || 0, ...out.party.concat(out.storage).map((m) => m.instanceId || 0),
       ...Object.keys(out.lineage).map(Number));
