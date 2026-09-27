@@ -32,7 +32,8 @@
     const chain = G.evolutionChain(m.speciesId);
     if (chain.length < 2) return '進化しない';
     const known = (id) => id === m.speciesId || (G.state.dex[id] && G.state.dex[id].seen);
-    const names = chain.map((id) => (id === m.speciesId ? `<b>${esc(G.Species[id].name)}</b>` : known(id) ? esc(G.Species[id].name) : '？？？？')).join(' → ');
+    const name = (id) => (id === m.speciesId ? `<b>${esc(G.Species[id].name)}</b>` : known(id) ? esc(G.Species[id].name) : '？？？？');
+    const names = chain.map((stage) => stage.map(name).join('／')).join(' → ');
     const evo = G.Species[m.speciesId].evo;
     return names + `<small>${evo ? `次の進化：${esc(G.evolutionConditionText(evo))}` : '最後の姿'}</small>`;
   }

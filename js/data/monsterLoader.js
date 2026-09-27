@@ -26,7 +26,7 @@
   const GROWTH = { 速度: 'fast', 攻撃: 'normal', 特殊: 'normal', 支援: 'normal', 耐久: 'slow', 万能: 'slow' };
   // ランク → 捕獲しやすさ（配合限定は野生に出ないので実質使わない）
   const CATCH = { F: 190, E: 140, D: 90, C: 50, B: 30, A: 15, S: 6, SS: 4, SSS: 3, EX: 2 };
-  const OBTAIN = { 野生: 'wild', 配合限定: 'fusion' };
+  const OBTAIN = { 野生: 'wild', 配合限定: 'fusion', 進化: 'evolve' }; // 進化 = 進化でのみ出会える
 
   // ---------------- 見た目（ドット絵のパラメータ）を系統・属性・名前から決める ----------------
   const PAL = {
@@ -148,7 +148,7 @@
         obtain: OBTAIN[r.obtain] || 'fusion',
         wild: r.obtain === '野生',
         region: r.region,
-        habitat: r.region || '配合でのみ誕生',
+        habitat: r.region || (r.obtain === '進化' ? '進化でのみ出会える' : '配合でのみ誕生'),
         base: [conv(bs.HP), mpBase(bs, r.role), conv(bs['攻撃']), conv(bs['防御']), conv(bs['素早さ']), conv(bs['特殊攻撃']), conv(bs['特殊防御'])],
         raw: bs,                   // 設計書の基礎値（MP・経験値・命中・回避の計算に使う）
         stats,                     // 種族値 { hp, atk, def, spd, sat, sdf }
@@ -168,7 +168,8 @@
         catch: CATCH[r.rank] || 50,
         desc: r.description,
         recipeDisplay: r.recipe ? r.recipe.display : null,
-        look: lookFor(r, el || 'none', Math.max(0, ri)),
+        // 見た目：系統・属性・名前から自動で決め、JSON の look があれば上書き（分岐進化の姿を描き分けるときなど）
+        look: Object.assign(lookFor(r, el || 'none', Math.max(0, ri)), r.look || {}),
       };
       order.push(r.id);
     }
@@ -181,7 +182,7 @@
   const byPair = {};
   for (const r of (RAW && RAW.monsters) || []) {
     if (!r.recipe) {
-      if (r.obtain !== '野生') err(`${r.id} ${r.name}: 配合限定なのにレシピがありません`);
+      if (r.obtain === '配合限定') err(`${r.id} ${r.name}: 配合限定なのにレシピがありません`);
       continue;
     }
     const [a, b] = r.recipe.parentIds;

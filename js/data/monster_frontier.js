@@ -4,7 +4,7 @@
 window.Game = window.Game || {};
 window.Game.RawMonsterData = {
  "title": "モンスターフロンティア",
- "version": "2.0",
+ "version": "2.1",
  "rules": {
   "partyLimit": 6,
   "maxEquippedMoves": 4,
@@ -4985,6 +4985,1888 @@ window.Game.RawMonsterData = {
     "display": "混沌竜カオス + 神獣エターナル → 創世竜アーク"
    },
    "description": "高い基礎能力と強力な属性技を持つ。 属性は無。"
+  },
+  {
+   "id": "101",
+   "name": "カエンコロ",
+   "family": "獣",
+   "element": "炎",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "火山の麓",
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 67,
+    "攻撃": 86,
+    "防御": 46,
+    "素早さ": 51,
+    "特殊攻撃": 25,
+    "特殊防御": 43
+   },
+   "evYield": {
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 27,
+    "攻撃": 39,
+    "防御": 13,
+    "素早さ": 17,
+    "特殊攻撃": 5,
+    "特殊防御": 13,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ヒノコロが成長した姿。しっぽの炎が大きくなり、走るたびに火の粉を散らす。"
+  },
+  {
+   "id": "102",
+   "name": "ナミリス",
+   "family": "獣",
+   "element": "水",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "清流の岸辺",
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "特殊攻撃",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 83,
+    "攻撃": 32,
+    "防御": 47,
+    "素早さ": 32,
+    "特殊攻撃": 38,
+    "特殊防御": 86
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
+   "baseStats": {
+    "HP": 36,
+    "攻撃": 5,
+    "防御": 15,
+    "素早さ": 5,
+    "特殊攻撃": 9,
+    "特殊防御": 39,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "ミズリスが成長した姿。体をおおう水の膜が厚くなり、攻撃を受け流す。"
+  },
+  {
+   "id": "103",
+   "name": "ライキバ",
+   "family": "獣",
+   "element": "雷",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "雷鳴平原",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 58,
+    "攻撃": 76,
+    "防御": 34,
+    "素早さ": 80,
+    "特殊攻撃": 29,
+    "特殊防御": 41
+   },
+   "evYield": {
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 21,
+    "攻撃": 33,
+    "防御": 7,
+    "素早さ": 35,
+    "特殊攻撃": 5,
+    "特殊防御": 11,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ライポンが成長した姿。電気をためた牙で、すれちがいざまにかみつく。"
+  },
+  {
+   "id": "104",
+   "name": "カゼハネ",
+   "family": "鳥",
+   "element": "風",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "風切り高原",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 57,
+    "攻撃": 71,
+    "防御": 29,
+    "素早さ": 86,
+    "特殊攻撃": 34,
+    "特殊防御": 41
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 21,
+    "攻撃": 29,
+    "防御": 5,
+    "素早さ": 39,
+    "特殊攻撃": 7,
+    "特殊防御": 11,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ハネピヨが成長した姿。風をつかんで、ひと息に高く舞いあがる。"
+  },
+  {
+   "id": "105",
+   "name": "ヒエンツバメ",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "火山の麓",
+   "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 51,
+    "攻撃": 89,
+    "防御": 22,
+    "素早さ": 76,
+    "特殊攻撃": 45,
+    "特殊防御": 35
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 17,
+    "攻撃": 41,
+    "防御": 5,
+    "素早さ": 33,
+    "特殊攻撃": 13,
+    "特殊防御": 7,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "アカツバメが成長した姿。炎の軌跡を残しながら、稲妻のように飛ぶ。"
+  },
+  {
+   "id": "106",
+   "name": "ナミカモ",
+   "family": "鳥",
+   "element": "水",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "特殊防御",
+   "weakness": "防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 64,
+    "攻撃": 35,
+    "防御": 35,
+    "素早さ": 72,
+    "特殊攻撃": 49,
+    "特殊防御": 63
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
+   "baseStats": {
+    "HP": 25,
+    "攻撃": 7,
+    "防御": 7,
+    "素早さ": 31,
+    "特殊攻撃": 15,
+    "特殊防御": 24,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "ミズカモが成長した姿。水面をすべるように泳ぎ、仲間の傷を癒す。"
+  },
+  {
+   "id": "107",
+   "name": "イワネバナ",
+   "family": "植物",
+   "element": "地",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 82,
+    "攻撃": 33,
+    "防御": 54,
+    "素早さ": 24,
+    "特殊攻撃": 46,
+    "特殊防御": 79
+   },
+   "evYield": {
+    "防御": 1
+   },
+   "baseStats": {
+    "HP": 37,
+    "攻撃": 5,
+    "防御": 19,
+    "素早さ": 5,
+    "特殊攻撃": 13,
+    "特殊防御": 34,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "コモリバナが成長した姿。岩のすきまに根を張り、どんな嵐にも倒れない。"
+  },
+  {
+   "id": "108",
+   "name": "コケガメ",
+   "family": "水棲",
+   "element": "地",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 81,
+    "攻撃": 37,
+    "防御": 83,
+    "素早さ": 23,
+    "特殊攻撃": 37,
+    "特殊防御": 57
+   },
+   "evYield": {
+    "防御": 1
+   },
+   "baseStats": {
+    "HP": 37,
+    "攻撃": 9,
+    "防御": 37,
+    "素早さ": 5,
+    "特殊攻撃": 7,
+    "特殊防御": 21,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "イワガメが成長した姿。甲羅に苔が生え、洞窟の湿り気を好む。"
+  },
+  {
+   "id": "109",
+   "name": "カゼカブト",
+   "family": "虫",
+   "element": "風",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "風切り高原",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 57,
+    "攻撃": 70,
+    "防御": 35,
+    "素早さ": 86,
+    "特殊攻撃": 35,
+    "特殊防御": 35
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 21,
+    "攻撃": 29,
+    "防御": 7,
+    "素早さ": 39,
+    "特殊攻撃": 7,
+    "特殊防御": 7,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ハネムシが成長した姿。硬い角と羽で、風に乗って突進する。"
+  },
+  {
+   "id": "110",
+   "name": "ヒノコバチ",
+   "family": "虫",
+   "element": "炎",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "火山の麓",
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 66,
+    "攻撃": 86,
+    "防御": 44,
+    "素早さ": 51,
+    "特殊攻撃": 32,
+    "特殊防御": 39
+   },
+   "evYield": {
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 27,
+    "攻撃": 39,
+    "防御": 13,
+    "素早さ": 17,
+    "特殊攻撃": 5,
+    "特殊防御": 9,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ヒノムシが成長した姿。熱をおびた針をもち、群れで巣を守る。"
+  },
+  {
+   "id": "111",
+   "name": "ビリザメ",
+   "family": "水棲",
+   "element": "雷",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "雷鳴の海",
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 65,
+    "攻撃": 86,
+    "防御": 46,
+    "素早さ": 45,
+    "特殊攻撃": 32,
+    "特殊防御": 44
+   },
+   "evYield": {
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 27,
+    "攻撃": 39,
+    "防御": 13,
+    "素早さ": 13,
+    "特殊攻撃": 5,
+    "特殊防御": 13,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "電撃",
+    "麻痺針",
+    "雷鳴落とし"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ビリクラゲが姿を変えた、小さなサメ。電気をまとった体当たりが得意。"
+  },
+  {
+   "id": "112",
+   "name": "ツチダマ",
+   "family": "精霊",
+   "element": "地",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "砂礫の丘",
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "HP",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 76,
+    "攻撃": 32,
+    "防御": 54,
+    "素早さ": 32,
+    "特殊攻撃": 46,
+    "特殊防御": 78
+   },
+   "evYield": {
+    "防御": 1
+   },
+   "baseStats": {
+    "HP": 33,
+    "攻撃": 5,
+    "防御": 19,
+    "素早さ": 5,
+    "特殊攻撃": 13,
+    "特殊防御": 34,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "スナタマが成長した姿。砂を固めた殻をまとい、少しずつ体を直す。"
+  },
+  {
+   "id": "113",
+   "name": "ハヤテネコ",
+   "family": "獣",
+   "element": "風",
+   "rank": "E",
+   "obtain": "進化",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 60,
+    "攻撃": 74,
+    "防御": 37,
+    "素早さ": 90,
+    "特殊攻撃": 31,
+    "特殊防御": 43
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 23,
+    "攻撃": 31,
+    "防御": 8,
+    "素早さ": 41,
+    "特殊攻撃": 5,
+    "特殊防御": 13,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "素早さを鍛えたカゼネコの進化形。目にもとまらぬ速さで駆けぬける。",
+   "look": {
+    "c1": "#9ae8c8",
+    "c3": "#f0f8ff",
+    "tail": "thin",
+    "scale": 0.8
+   }
+  },
+  {
+   "id": "114",
+   "name": "ツムジネコ",
+   "family": "獣",
+   "element": "風",
+   "rank": "E",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 71,
+    "攻撃": 90,
+    "防御": 47,
+    "素早さ": 53,
+    "特殊攻撃": 26,
+    "特殊防御": 48
+   },
+   "evYield": {
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 29,
+    "攻撃": 41,
+    "防御": 14,
+    "素早さ": 19,
+    "特殊攻撃": 5,
+    "特殊防御": 14,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "攻撃を鍛えたカゼネコの進化形。つむじ風をまとった爪でなぎはらう。",
+   "look": {
+    "c1": "#3a9a7a",
+    "c3": "#e8f070",
+    "mane": "#e8f070",
+    "horn": "#f0f0f0",
+    "scale": 0.86
+   }
+  },
+  {
+   "id": "115",
+   "name": "ヨロイモグラ",
+   "family": "獣",
+   "element": "地",
+   "rank": "E",
+   "obtain": "進化",
+   "region": null,
+   "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 86,
+    "攻撃": 41,
+    "防御": 87,
+    "素早さ": 31,
+    "特殊攻撃": 29,
+    "特殊防御": 61
+   },
+   "evYield": {
+    "防御": 1
+   },
+   "baseStats": {
+    "HP": 39,
+    "攻撃": 10,
+    "防御": 39,
+    "素早さ": 5,
+    "特殊攻撃": 5,
+    "特殊防御": 23,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "防御を鍛えたツチモグラの進化形。岩のようなうろこで全身を守る。",
+   "look": {
+    "c1": "#8a8a7a",
+    "c3": "#5a5a4a",
+    "ears": "none",
+    "mane": "#6a6a5a",
+    "tail": "flat",
+    "scale": 0.88
+   }
+  },
+  {
+   "id": "116",
+   "name": "ドリルモグラ",
+   "family": "獣",
+   "element": "地",
+   "rank": "E",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 89,
+    "攻撃": 87,
+    "防御": 65,
+    "素早さ": 18,
+    "特殊攻撃": 29,
+    "特殊防御": 47
+   },
+   "evYield": {
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 41,
+    "攻撃": 39,
+    "防御": 25,
+    "素早さ": 5,
+    "特殊攻撃": 5,
+    "特殊防御": 14,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "攻撃を鍛えたツチモグラの進化形。回転する爪で岩盤をもうち砕く。",
+   "look": {
+    "c1": "#8a5a2a",
+    "c3": "#d8d8e0",
+    "ears": "none",
+    "horn": "#d8d8e0",
+    "tail": "thin",
+    "scale": 0.86
+   }
+  },
+  {
+   "id": "117",
+   "name": "ホシヨミソウ",
+   "family": "植物",
+   "element": "光",
+   "rank": "E",
+   "obtain": "進化",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 67,
+    "攻撃": 34,
+    "防御": 43,
+    "素早さ": 50,
+    "特殊攻撃": 90,
+    "特殊防御": 51
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
+   "baseStats": {
+    "HP": 27,
+    "攻撃": 6,
+    "防御": 13,
+    "素早さ": 16,
+    "特殊攻撃": 41,
+    "特殊防御": 16,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "特殊攻撃を鍛えたヒカリソウの進化形。星の光を集めて放つ。",
+   "look": {
+    "c1": "#a898f0",
+    "deco": "flower",
+    "accent": "#ffe070"
+   }
+  },
+  {
+   "id": "118",
+   "name": "イノリソウ",
+   "family": "植物",
+   "element": "光",
+   "rank": "E",
+   "obtain": "進化",
+   "region": null,
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 86,
+    "攻撃": 30,
+    "防御": 58,
+    "素早さ": 30,
+    "特殊攻撃": 50,
+    "特殊防御": 81
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
+   "baseStats": {
+    "HP": 39,
+    "攻撃": 5,
+    "防御": 21,
+    "素早さ": 5,
+    "特殊攻撃": 16,
+    "特殊防御": 36,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "特殊防御を鍛えたヒカリソウの進化形。祈るように花を閉じ、仲間を守る。",
+   "look": {
+    "c1": "#f0ecc0",
+    "deco": "bud",
+    "accent": "#ffb0d0"
+   }
+  },
+  {
+   "id": "119",
+   "name": "煉獄狼ヴォルグ",
+   "family": "獣",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 108,
+    "攻撃": 140,
+    "防御": 72,
+    "素早さ": 83,
+    "特殊攻撃": 44,
+    "特殊防御": 73
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 73,
+    "防御": 31,
+    "素早さ": 37,
+    "特殊攻撃": 11,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "長く共に戦ったフレイムウルフが至る姿。燃えさかる鬣は、主の闘志に応えて輝く。"
+  },
+  {
+   "id": "120",
+   "name": "嵐翼鷹シュトルム",
+   "family": "鳥",
+   "element": "風",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 94,
+    "攻撃": 114,
+    "防御": 48,
+    "素早さ": 140,
+    "特殊攻撃": 57,
+    "特殊防御": 67
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 44,
+    "攻撃": 56,
+    "防御": 14,
+    "素早さ": 73,
+    "特殊攻撃": 21,
+    "特殊防御": 28,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "追い風",
+    "旋風刃"
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "高原の風を受けて進化したストームホーク。羽ばたきひとつで嵐を呼ぶ。"
+  },
+  {
+   "id": "121",
+   "name": "森母樹シルヴァ",
+   "family": "植物",
+   "element": "地",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 134,
+    "攻撃": 48,
+    "防御": 99,
+    "素早さ": 47,
+    "特殊攻撃": 78,
+    "特殊防御": 114
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 69,
+    "攻撃": 14,
+    "防御": 47,
+    "素早さ": 14,
+    "特殊攻撃": 34,
+    "特殊防御": 56,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "月の雫を受けたドライアドの姿。森の命を育む、大樹の精。"
+  },
+  {
+   "id": "122",
+   "name": "ユキウサ",
+   "family": "獣",
+   "element": "氷",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 50,
+    "攻撃": 58,
+    "防御": 30,
+    "素早さ": 74,
+    "特殊攻撃": 26,
+    "特殊防御": 37
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 16,
+    "攻撃": 23,
+    "防御": 5,
+    "素早さ": 31,
+    "特殊攻撃": 5,
+    "特殊防御": 8,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "雪原を跳ねまわる白いウサギ。耳で冷たい風の向きを読む。",
+   "look": {
+    "c1": "#ffffff",
+    "c3": "#9ad8f0",
+    "ears": "round",
+    "tail": "bushy"
+   }
+  },
+  {
+   "id": "123",
+   "name": "フブキギツネ",
+   "family": "獣",
+   "element": "氷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 76,
+    "攻撃": 92,
+    "防御": 46,
+    "素早さ": 113,
+    "特殊攻撃": 38,
+    "特殊防御": 55
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 33,
+    "攻撃": 43,
+    "防御": 14,
+    "素早さ": 56,
+    "特殊攻撃": 9,
+    "特殊防御": 19,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "吹雪にまぎれて獲物に近づく、銀色のキツネ。"
+  },
+  {
+   "id": "124",
+   "name": "ツララムシ",
+   "family": "虫",
+   "element": "氷",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 71,
+    "攻撃": 32,
+    "防御": 71,
+    "素早さ": 25,
+    "特殊攻撃": 32,
+    "特殊防御": 44
+   },
+   "evYield": {
+    "防御": 1
+   },
+   "baseStats": {
+    "HP": 30,
+    "攻撃": 6,
+    "防御": 29,
+    "素早さ": 5,
+    "特殊攻撃": 5,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "つららのような殻をもつ虫。寒いほど殻が硬くなる。"
+  },
+  {
+   "id": "125",
+   "name": "アイスビートル",
+   "family": "虫",
+   "element": "氷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 51,
+    "防御": 109,
+    "素早さ": 39,
+    "特殊攻撃": 45,
+    "特殊防御": 67
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 17,
+    "防御": 53,
+    "素早さ": 9,
+    "特殊攻撃": 14,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "氷の鎧をまとった甲虫。体当たりで氷壁をも砕く。"
+  },
+  {
+   "id": "126",
+   "name": "ユキダマ",
+   "family": "精霊",
+   "element": "氷",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 52,
+    "攻撃": 26,
+    "防御": 35,
+    "素早さ": 47,
+    "特殊攻撃": 74,
+    "特殊防御": 41
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
+   "baseStats": {
+    "HP": 16,
+    "攻撃": 5,
+    "防御": 8,
+    "素早さ": 14,
+    "特殊攻撃": 31,
+    "特殊防御": 11,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "雪の結晶が集まって生まれた精霊。ふれると、ひんやり冷たい。"
+  },
+  {
+   "id": "127",
+   "name": "ヒョウガスピリット",
+   "family": "精霊",
+   "element": "氷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 77,
+    "攻撃": 41,
+    "防御": 55,
+    "素早さ": 71,
+    "特殊攻撃": 113,
+    "特殊防御": 63
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 33,
+    "攻撃": 11,
+    "防御": 19,
+    "素早さ": 29,
+    "特殊攻撃": 56,
+    "特殊防御": 24,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "氷河の奥に宿る精霊。凍てつく息で、あたりを白く染める。"
+  },
+  {
+   "id": "128",
+   "name": "モフリン",
+   "family": "獣",
+   "element": "無",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "万能",
+   "archetype": "万能",
+   "signature": "HP",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 63,
+    "攻撃": 44,
+    "防御": 44,
+    "素早さ": 44,
+    "特殊攻撃": 36,
+    "特殊防御": 44
+   },
+   "evYield": {
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 24,
+    "攻撃": 13,
+    "防御": 13,
+    "素早さ": 13,
+    "特殊攻撃": 8,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "突進",
+    "気合いため",
+    "渾身撃"
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "分厚い毛に包まれた、まるい獣。どんな土地にもすぐなじむ。",
+   "look": {
+    "c1": "#f4efe4",
+    "c3": "#e0c8a0",
+    "ears": "round",
+    "tail": "bushy"
+   }
+  },
+  {
+   "id": "129",
+   "name": "ギンモフ",
+   "family": "獣",
+   "element": "無",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "万能",
+   "archetype": "万能",
+   "signature": "HP",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 97,
+    "攻撃": 67,
+    "防御": 68,
+    "素早さ": 67,
+    "特殊攻撃": 53,
+    "特殊防御": 68
+   },
+   "evYield": {
+    "HP": 2
+   },
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 27,
+    "防御": 27,
+    "素早さ": 27,
+    "特殊攻撃": 19,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "突進",
+    "気合いため",
+    "渾身撃"
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "銀色の毛並みをもつモフリンの進化形。苦手なことが、ほとんどない。",
+   "look": {
+    "c1": "#c8ccd8",
+    "c3": "#a0a8c0",
+    "ears": "round",
+    "tail": "bushy",
+    "mane": "#e8ecf4"
+   }
+  },
+  {
+   "id": "130",
+   "name": "シモドリ",
+   "family": "鳥",
+   "element": "氷",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "北の氷原",
+   "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 55,
+    "攻撃": 32,
+    "防御": 28,
+    "素早さ": 69,
+    "特殊攻撃": 41,
+    "特殊防御": 50
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 19,
+    "攻撃": 5,
+    "防御": 5,
+    "素早さ": 28,
+    "特殊攻撃": 11,
+    "特殊防御": 16,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "霜の羽をもつ小鳥。群れで鳴きかわし、仲間に危険を知らせる。"
+  },
+  {
+   "id": "131",
+   "name": "マルハト",
+   "family": "鳥",
+   "element": "無",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "万能",
+   "archetype": "万能",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 58,
+    "攻撃": 43,
+    "防御": 40,
+    "素早さ": 49,
+    "特殊攻撃": 41,
+    "特殊防御": 44
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 21,
+    "攻撃": 13,
+    "防御": 9,
+    "素早さ": 16,
+    "特殊攻撃": 11,
+    "特殊防御": 13,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "突進",
+    "気合いため",
+    "渾身撃"
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "まんまるな体の鳩。人なつこく、村の広場でもよく見かける。"
+  },
+  {
+   "id": "132",
+   "name": "大地鳥ガイアホーク",
+   "family": "鳥",
+   "element": "地",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 147,
+    "攻撃": 130,
+    "防御": 113,
+    "素早さ": 27,
+    "特殊攻撃": 49,
+    "特殊防御": 75
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 76,
+    "攻撃": 66,
+    "防御": 56,
+    "素早さ": 5,
+    "特殊攻撃": 16,
+    "特殊防御": 33,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "052"
+    ],
+    "resultId": "132",
+    "display": "ストームホーク + ロックタートル → 大地鳥ガイアホーク"
+   },
+   "description": "岩の翼をもつ巨鳥。飛ぶことより、大地を踏みしめて戦うことを選んだ。"
+  },
+  {
+   "id": "133",
+   "name": "水蓮精ミナモ",
+   "family": "植物",
+   "element": "水",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 141,
+    "攻撃": 50,
+    "防御": 92,
+    "素早さ": 49,
+    "特殊攻撃": 79,
+    "特殊防御": 130
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 73,
+    "攻撃": 16,
+    "防御": 43,
+    "素早さ": 16,
+    "特殊攻撃": 36,
+    "特殊防御": 66,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "046",
+     "047"
+    ],
+    "resultId": "133",
+    "display": "アクアフェザー + ドライアド → 水蓮精ミナモ"
+   },
+   "description": "湖面に咲く蓮の精。その花びらは、傷ついた者の痛みを洗い流す。"
+  },
+  {
+   "id": "134",
+   "name": "炎魔ヘルハウンド",
+   "family": "魔獣",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 113,
+    "攻撃": 146,
+    "防御": 76,
+    "素早さ": 85,
+    "特殊攻撃": 55,
+    "特殊防御": 66
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 76,
+    "防御": 33,
+    "素早さ": 39,
+    "特殊攻撃": 19,
+    "特殊防御": 26,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "041",
+     "056"
+    ],
+    "resultId": "134",
+    "display": "フレイムウルフ + デビルキャット → 炎魔ヘルハウンド"
+   },
+   "description": "地の底の炎をまとう魔犬。吠え声は、岩をも溶かす熱を帯びる。"
+  },
+  {
+   "id": "135",
+   "name": "光甲虫ルミナビートル",
+   "family": "虫",
+   "element": "光",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 140,
+    "攻撃": 44,
+    "防御": 80,
+    "素早さ": 55,
+    "特殊攻撃": 76,
+    "特殊防御": 146
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 73,
+    "攻撃": 12,
+    "防御": 36,
+    "素早さ": 19,
+    "特殊攻撃": 33,
+    "特殊防御": 76,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "053",
+     "057"
+    ],
+    "resultId": "135",
+    "display": "スカイビートル + ライトウルフ → 光甲虫ルミナビートル"
+   },
+   "description": "光を宿す甲羅をもつ甲虫。闇の力をはね返す。"
+  },
+  {
+   "id": "136",
+   "name": "闇牙獣ヤトガ",
+   "family": "獣",
+   "element": "闇",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 96,
+    "攻撃": 130,
+    "防御": 60,
+    "素早さ": 136,
+    "特殊攻撃": 49,
+    "特殊防御": 70
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 66,
+    "防御": 23,
+    "素早さ": 69,
+    "特殊攻撃": 16,
+    "特殊防御": 29,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "043",
+     "056"
+    ],
+    "resultId": "136",
+    "display": "ライガーハウンド + デビルキャット → 闇牙獣ヤトガ"
+   },
+   "description": "夜の闇にとけこむ黒い獣。気づいたときには、牙がそこにある。"
+  },
+  {
+   "id": "137",
+   "name": "氷竜グラシア",
+   "family": "竜",
+   "element": "氷",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 122,
+    "攻撃": 61,
+    "防御": 78,
+    "素早さ": 92,
+    "特殊攻撃": 165,
+    "特殊防御": 92
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 61,
+    "攻撃": 23,
+    "防御": 34,
+    "素早さ": 43,
+    "特殊攻撃": 88,
+    "特殊防御": 42,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "061",
+     "127"
+    ],
+    "resultId": "137",
+    "display": "フェンリル + ヒョウガスピリット → 氷竜グラシア"
+   },
+   "description": "北の果てに棲む氷の竜。そのため息は、湖を一瞬で凍らせる。"
+  },
+  {
+   "id": "138",
+   "name": "氷晶竜ニヴル",
+   "family": "竜",
+   "element": "氷",
+   "rank": "SS",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 170,
+    "攻撃": 83,
+    "防御": 112,
+    "素早さ": 127,
+    "特殊攻撃": 229,
+    "特殊防御": 129
+   },
+   "evYield": {
+    "特殊攻撃": 3
+   },
+   "baseStats": {
+    "HP": 91,
+    "攻撃": 38,
+    "防御": 54,
+    "素早さ": 65,
+    "特殊攻撃": 128,
+    "特殊防御": 64,
+    "命中": 98,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "氷牙",
+    "冷気",
+    "凍結爪"
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "087",
+     "137"
+    ],
+    "resultId": "138",
+    "display": "海皇龍ネプティア + 氷竜グラシア → 氷晶竜ニヴル"
+   },
+   "description": "永久凍土の底で眠る伝説の竜。その身は、溶けることのない氷晶でできている。"
+  },
+  {
+   "id": "139",
+   "name": "始原獣オリジン",
+   "family": "獣",
+   "element": "無",
+   "rank": "S",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "万能",
+   "archetype": "万能",
+   "signature": "HP",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 179,
+    "攻撃": 125,
+    "防御": 125,
+    "素早さ": 125,
+    "特殊攻撃": 101,
+    "特殊防御": 125
+   },
+   "evYield": {
+    "HP": 3
+   },
+   "baseStats": {
+    "HP": 97,
+    "攻撃": 63,
+    "防御": 63,
+    "素早さ": 63,
+    "特殊攻撃": 48,
+    "特殊防御": 63,
+    "命中": 97,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "突進",
+    "気合いため",
+    "渾身撃"
+   ],
+   "innateTrait": "無限の可能性",
+   "growthType": "万能",
+   "recipe": {
+    "parentIds": [
+     "081",
+     "129"
+    ],
+    "resultId": "139",
+    "display": "聖獣セラフィム + ギンモフ → 始原獣オリジン"
+   },
+   "description": "すべての獣の祖とされる伝説の幻獣。あらゆる姿に変わる力を秘めている。"
+  },
+  {
+   "id": "140",
+   "name": "星海鯨アステル",
+   "family": "水棲",
+   "element": "光",
+   "rank": "S",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 202,
+    "攻撃": 70,
+    "防御": 134,
+    "素早さ": 70,
+    "特殊攻撃": 117,
+    "特殊防御": 187
+   },
+   "evYield": {
+    "特殊防御": 3
+   },
+   "baseStats": {
+    "HP": 112,
+    "攻撃": 29,
+    "防御": 68,
+    "素早さ": 29,
+    "特殊攻撃": 58,
+    "特殊防御": 102,
+    "命中": 97,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "聖なる守り"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "065",
+     "077"
+    ],
+    "resultId": "140",
+    "display": "世界樹の妖精 + 深海龍リヴァル → 星海鯨アステル"
+   },
+   "description": "夜空の海を泳ぐという伝説の鯨。背の星々は、迷う者を導く灯りとなる。"
   }
  ]
 };
