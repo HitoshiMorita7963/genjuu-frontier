@@ -70,9 +70,11 @@ const NAME_SIG = [[/カメ|タートル|亀|甲/, 'def'], [/ウルフ|狼|ハウ
 // 苦手な能力：系統で決める
 const WEAK = { 獣: 'sat', 鳥: 'def', 植物: 'spd', 水棲: 'spd', 虫: 'sdf', 魔獣: 'sdf', 精霊: 'hp', 竜: 'spd' };
 
+// 上位属性は、看板能力の決め方を下位の属性にそろえる
+const UPPER_BASE = { 焔: '炎', 嵐: '風', 霆: '雷', 晶: '地', 聖: '光', 冥: '闇' };
 function assignSignature(m, arche) {
   for (const [re, k] of NAME_SIG) if (re.test(m.name)) return k;
-  return SIG[GROUP[arche]][m.element] || 'hp';
+  return SIG[GROUP[arche]][m.element] || SIG[GROUP[arche]][UPPER_BASE[m.element]] || 'hp';
 }
 function assignWeakness(m, arche, sig) {
   let w = WEAK[m.family] || 'sat';

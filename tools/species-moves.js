@@ -36,12 +36,15 @@ const SETS = {
 const PHYS_TYPES = ['物理アタッカー', '重戦車', '一点特化', '高速アタッカー'];
 const KEEP = new Set([]); // 技候補を手で決めた種族のID
 
+// 上位属性の技がまだないときは、下位の属性の技で代用する（上位属性の技を作ったら SETS に足す）
+const UPPER_BASE = { 焔: '炎', 嵐: '風', 霆: '雷', 晶: '地', 聖: '光', 冥: '闇' };
+const setOf = (el) => SETS[el] || SETS[UPPER_BASE[el]];
 function movesFor(m) {
-  const S = SETS[m.element];
+  const S = setOf(m.element);
   const st = m.speciesStats;
   const physical = PHYS_TYPES.includes(m.archetype) || (m.archetype !== '特殊アタッカー' && st['攻撃'] > st['特殊攻撃']);
   // 複合タイプは、弱い技を2つめの属性にする（どちらもタイプ一致になり、相性の選択肢が増える）
-  const S2 = m.element2 ? SETS[m.element2] : S;
+  const S2 = m.element2 ? setOf(m.element2) : S;
   const W = physical ? S2.pW : S2.sW;
   const Str = physical ? S.pS : S.sS;
   let mid;

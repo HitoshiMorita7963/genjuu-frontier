@@ -35,6 +35,10 @@
     thunder: ['#e8c02a', '#fff8d0', '#3a3a4a'], light: ['#f4ecb0', '#ffffff', '#f0c8f0'],
     dark: ['#5a4a78', '#b8a8d8', '#f0d040'], ice: ['#9ad8f0', '#ffffff', '#5aa8d8'],
     none: ['#e8e4f0', '#ffffff', '#ffd35a'],
+    // 上位属性（下位より濃く・強い色）
+    blaze: ['#d8401e', '#ffe0b0', '#ffe070'], storm: ['#2e9a8a', '#e0f4ee', '#c8e8ff'],
+    bolt: ['#f0a818', '#fff4c0', '#5a3a8a'], crystal: ['#9a7ad0', '#f0e8ff', '#e0d0ff'],
+    holy: ['#fff0b8', '#ffffff', '#ffd35a'], abyss: ['#3a2458', '#9a80c0', '#e04070'],
   };
   function shade(hex, amt) {
     const n = parseInt(hex.slice(1), 16);
@@ -96,7 +100,10 @@
   }
 
   // ---------------- 配合ヒント（答えを直接言わない） ----------------
-  const EL_WORD = { fire: '炎を宿す', water: '水をまとう', wind: '風に乗る', earth: '大地の', thunder: '雷をはらむ', light: '光を放つ', dark: '闇にひそむ', ice: '凍てつく', none: 'まっさらな' };
+  const EL_WORD = {
+    fire: '炎を宿す', water: '水をまとう', wind: '風に乗る', earth: '大地の', thunder: '雷をはらむ', light: '光を放つ', dark: '闇にひそむ', ice: '凍てつく', none: 'まっさらな',
+    blaze: '焔を燃やす', storm: '嵐を呼ぶ', bolt: '霆をまとう', crystal: '結晶の', holy: '聖なる', abyss: '冥府の',
+  };
   const FAM_WORD = { 獣: '獣', 鳥: '鳥', 植物: '草花', 水棲: '水の生き物', 虫: '虫', 魔獣: '魔獣', 精霊: '精霊', 竜: '竜' };
   const phrase = (sp) => `${EL_WORD[sp.el]}${FAM_WORD[sp.family]}`;
 
@@ -111,6 +118,12 @@
       const el = G.ElementByName[r.element];
       const el2 = r.element2 ? G.ElementByName[r.element2] : null; // 複合タイプの2つめの属性
       if (r.element2 && (!el2 || el2 === el)) err(`${r.id} ${r.name}: 2つめの属性「${r.element2}」が不正です`);
+      if (el && el2 && G.baseElement(el) === G.baseElement(el2)) err(`${r.id} ${r.name}: 下位とその上位の属性（${r.element}・${r.element2}）は組み合わせられません`);
+      // 上位属性はDランク以上（北の氷原のFランクの氷4種は例外として認める）
+      const UPPER_OK_F = ['122', '124', '126', '130'];
+      if ([el, el2].some((e) => e && G.isUpperElement(e)) && G.rankIndex(r.rank) < G.rankIndex('D') && !UPPER_OK_F.includes(r.id)) {
+        err(`${r.id} ${r.name}: 上位属性はDランク以上の種族だけが持てます`);
+      }
       const line = G.LineageByName[r.family];
       const ri = G.rankIndex(r.rank);
       if (!el) err(`${r.id} ${r.name}: 未対応の属性「${r.element}」`);

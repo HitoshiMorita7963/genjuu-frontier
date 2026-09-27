@@ -141,9 +141,11 @@
     img(speciesId, cls = '') {
       return `<img class="mon-img ${cls}" src="${G.MonsterGfx.dataURL(speciesId)}" alt="">`;
     },
+    // 属性のバッジ（上位属性は ◆ 付き。例：◆氷）
     el(el) {
       const e = G.Elements[el];
-      return `<span class="badge el" style="--c:${e.color}">${e.name}</span>`;
+      const up = e.base ? ` upper" title="${G.Elements[e.base].name}の上位属性` : '';
+      return `<span class="badge el${up}" style="--c:${e.color}">${e.base ? '◆' : ''}${e.name}</span>`;
     },
     line(line) { return `<span class="badge line">${G.Lineages[line].name}</span>`; },
     rank(r) { return `<span class="badge rank rank-${r}">${r}</span>`; },

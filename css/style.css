@@ -458,6 +458,7 @@ table.moves td { padding: 2px 4px 2px 0; }
 .bar.ev i { background: #d070f0; }
 .muted { color: var(--muted); }
 .bt-info .charged { color: var(--accent); font-weight: normal; }
+.badge.el.upper { box-shadow: 0 0 0 1px #ffd35a inset; }
 .eff { font-weight: normal; font-size: 12px; }
 .eff.up { color: #ff9a5a; }
 .eff.down { color: #8a9ac0; }

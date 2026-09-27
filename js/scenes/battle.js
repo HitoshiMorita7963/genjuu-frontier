@@ -182,7 +182,8 @@
     els.forEach((el, i) => {
       const ex = x + 12 + nw + i * 20;
       ctx.fillStyle = el.color; ctx.fillRect(ex, y + 7, 18, 14);
-      ctx.fillStyle = '#141424'; ctx.fillText(el.name, ex + 3, y + 9);
+      if (el.base) { ctx.strokeStyle = '#ffd35a'; ctx.lineWidth = 1.5; ctx.strokeRect(ex + 0.5, y + 7.5, 17, 13); } // 上位属性は金の縁
+      ctx.fillStyle = el.base === 'dark' ? '#ffffff' : '#141424'; ctx.fillText(el.name, ex + 3, y + 9);
     });
     if (m.status) {
       const s = G.Battle.STATUS[m.status];
