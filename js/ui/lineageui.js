@@ -28,7 +28,10 @@
   G.UIScreens.lineage = function (m) {
     return {
       layout: 'full',
-      update(In) { if (In.consume('cancel') || In.consume('confirm')) G.Screens.close(); },
+      update(In) {
+        if (In.consume('cancel') || In.consume('confirm')) return G.Screens.close();
+        G.Screens.scrollKeys(In, '.lg-body', { horizontal: true }); // 大きな系譜は矢印キーで見わたす
+      },
       html() {
         const tree = G.Lineage.tree(m.instanceId, 4);
         const n = tree ? countAncestors(tree) : 0;
@@ -38,7 +41,7 @@
         return `<div class="scr-title">系譜 <span class="tab on">${esc(m.name)}</span>` +
           `<span class="dex-count">世代 ${m.generation}　記録された祖先 ${n}体</span></div>` +
           `<div class="scr-body lg-body">${body}</div>` +
-          '<div class="scr-hint">左が子、右へ行くほど祖先（最大4世代）　X：もどる</div>';
+          '<div class="scr-hint">左が子、右へ行くほど祖先（最大4世代）　↑↓←→：スクロール　X：もどる</div>';
       },
     };
   };

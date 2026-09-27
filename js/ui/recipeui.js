@@ -49,10 +49,6 @@
         if (In.consume('cancel')) G.Screens.close();
         In.consume('confirm');
       },
-      afterRender(el) {
-        const s = el.querySelector('.rc-row.sel');
-        if (s) s.scrollIntoView({ block: 'nearest' });
-      },
       html() {
         const rows = this.rows();
         const total = Object.keys(G.FusionRecipes.byPair).length;

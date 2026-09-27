@@ -47,7 +47,8 @@
       update(In) {
         if (In.consume('left')) { this.page = cycle(this.page, PAGES.length, -1); G.Screens.render(); }
         if (In.consume('right')) { this.page = cycle(this.page, PAGES.length, 1); G.Screens.render(); }
-        if (In.consume('cancel') || In.consume('confirm')) G.Screens.close();
+        if (In.consume('cancel') || In.consume('confirm')) return G.Screens.close();
+        G.Screens.scrollKeys(In, '.info-body'); // 画面に収まらないときは ↑↓ でスクロール
       },
       head() {
         const sp = G.Species[m.speciesId];
@@ -115,7 +116,7 @@
         const tabs = PAGES.map((p, i) => `<span class="tab${i === this.page ? ' on' : ''}">${p}</span>`).join('');
         const body = [this.pageStats, this.pageTalent, this.pageLineage][this.page].call(this);
         return `<div class="scr-title">育成情報 ${tabs}</div><div class="scr-body info-body">${this.head()}${body}</div>` +
-          '<div class="scr-hint">←→：ページ　X：もどる</div>';
+          '<div class="scr-hint">←→：ページ　↑↓：スクロール　X：もどる</div>';
       },
     };
   };

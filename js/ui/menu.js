@@ -119,7 +119,7 @@
           const ids = Object.keys(G.state.items);
           if (this.target) {
             return `<div class="menu-title">${G.Items[this.target].name}を だれに使う？</div>` +
-              G.state.party.map((m, i) => P().row(m, i === this.tsel, m.status ? ` <span class="tag">${G.Battle.STATUS[m.status].short}</span>` : '')).join('') +
+              `<div class="menu-list">${G.state.party.map((m, i) => P().row(m, i === this.tsel, m.status ? ` <span class="tag">${G.Battle.STATUS[m.status].short}</span>` : '')).join('')}</div>` +
               `<div class="menu-desc">${esc(this.note)}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
           }
           const rows = ids.length
@@ -127,7 +127,7 @@
               `${G.Items[id].name}<span class="count">×${G.state.items[id]}</span></div>`).join('')
             : '<div class="menu-empty">なにも持っていない。</div>';
           const cur = ids[this.sel];
-          return '<div class="menu-title">もちもの</div>' + rows +
+          return `<div class="menu-title">もちもの</div><div class="menu-list">${rows}</div>` +
             `<div class="menu-desc">${this.note ? esc(this.note) : cur ? G.Items[cur].desc : ''}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
         },
       };
