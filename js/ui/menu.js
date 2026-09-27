@@ -114,7 +114,7 @@
             this.note = `${s.name}を 使った！（${G.TamerConfig.SKILL.STEPS}歩のあいだ 効く）`;
             return;
           }
-          if (s.id === 'eye') { this.note = '鑑定眼は 覚えていれば いつも効く。絆石を 選ぶ画面で 相手の才能が 見える。'; return; }
+          if (s.id === 'eye') { this.note = '鑑定眼は 覚えていれば いつも効く。仲間の 育成情報で 才能の数値が、絆石を 選ぶ画面で 相手の才能が 見える。'; return; }
           if (s.id === 'heal') {
             const wait = T.healWait();
             if (wait > 0) { this.note = `まだ 使えない。（あと ${Math.floor(wait / 60)}分${wait % 60}秒）`; return; }
