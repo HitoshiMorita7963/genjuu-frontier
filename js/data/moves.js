@@ -21,6 +21,8 @@
     sutemi:     M('すてみ突進',   'none', 'phys', 90, 90, 6, { eff: { recoil: 0.25 }, desc: '反動で自分も傷つく。' }),
     // MP切れのときに自動で使う技（覚えることはできない）
     mogaku:     M('もがく',       'none', 'phys', 30, 100, 0, { eff: { recoil: 0.25 }, inherit: false, hidden: true, desc: 'MPが足りないときに、必死にもがく。' }),
+    // 通常攻撃：MPを使わない。攻撃と特殊攻撃の高い方で攻撃する（basic）。バトルの「たたかう」にいつも並ぶ
+    kougeki:    M('こうげき',     'none', 'phys', 40, 100, 0, { basic: true, inherit: false, hidden: true, desc: 'MPを使わない通常攻撃。攻撃と特殊攻撃の、高い方の能力で攻撃する。' }),
 
     // ---- 炎 ----
     hinoko:     M('ひのこ',   'fire', 'spec', 40, 100, 2, { eff: { status: 'burn', chance: 10 }, desc: '小さな炎を飛ばす。やけどさせることがある。' }),
@@ -136,4 +138,19 @@
     yomizaki:   M('黄泉咲き',   'dark', 'spec', 100, 90, 11, { inherit: false, eff: { drain: 0.3 }, desc: '【固有技】黄泉の花を咲かせ、命を吸う。' }),
     getsueizan: M('月影斬',     'dark', 'phys', 110, 95, 12, { inherit: false, desc: '【固有技】月の影より放つ必殺の一太刀。' }),
   };
+
+  // ---------------- 消費MPのルール ----------------
+  //   上の定義に書いた mp ではなく、ここで威力と種類から決める（序盤でも技を何回か使えるように）
+  //   攻撃技：威力 50以下 1／65以下 2／80以下 3／95以下 4／110以下 5／それより上 6
+  //   補助技：回復 3／それ以外 2
+  //   消費0の技（たいあたり・こうげき など）はそのまま0。個別に決めたい技は mpFixed: true を付ける
+  G.MP_COST_RULE = { steps: [[50, 1], [65, 2], [80, 3], [95, 4], [110, 5]], top: 6, heal: 3, stat: 2 };
+  G.mpCost = function (mv) {
+    const R = G.MP_COST_RULE;
+    if (mv.mpFixed || mv.mp === 0) return mv.mp;
+    if (mv.cat === 'stat') return mv.eff && (mv.eff.heal || mv.eff.healAll) ? R.heal : R.stat;
+    const s = R.steps.find(([max]) => mv.pow <= max);
+    return s ? s[1] : R.top;
+  };
+  for (const mv of Object.values(G.Moves)) mv.mp = G.mpCost(mv);
 })(window.Game);

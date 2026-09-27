@@ -214,7 +214,7 @@
       const me = this.sides.enemy.mon;
       const foe = this.sides.player.mon;
       const usable = me.moves.filter((id) => G.Moves[id].mp <= me.mp);
-      if (!usable.length) return { type: 'move', move: 'mogaku' };
+      if (!usable.length) return { type: 'move', move: 'kougeki' }; // MPが尽きたら通常攻撃
       const sp = G.Species[me.speciesId];
       const fsp = G.Species[foe.speciesId];
       const st = G.Monster.stats(me);
@@ -236,6 +236,8 @@
     }
 
     async playTurn(pAct) {
+      this.sides.player.guard = false; // ぼうぎょは、そのターンだけ
+      this.sides.enemy.guard = false;
       pAct.side = 'player';
       pAct.mon = this.sides.player.mon;
       const eAct = Object.assign(this.enemyAction(), { side: 'enemy', mon: this.sides.enemy.mon });
@@ -276,9 +278,42 @@
         G.UI.refresh();
         return undefined;
       }
+      if (a.type === 'guard') return this.guard(a.side);
+      if (a.type === 'charge') return this.charge(a.side);
+      if (a.type === 'meditate') return this.meditate(a.side);
       if (a.type === 'run') return this.tryRun();
       if (a.type === 'catch') return this.throwStone(a.item);
       return undefined;
+    }
+
+    // ぼうぎょ：そのターンに受けるダメージを半分にする。先に動ける
+    async guard(side) {
+      const s = this.sides[side];
+      s.guard = true;
+      await this.msg(`${s.mon.name}は 身を守っている！`, 0.6);
+    }
+
+    // めいそう：心を静めて、MPを最大の MEDITATE_MP_RATE（最低2）回復する。守りは固くならない
+    async meditate(side) {
+      const m = this.sides[side].mon;
+      const max = G.Monster.stats(m).mp;
+      await this.msg(`${m.name}は 目を閉じて 心を静めている……`, 0.6);
+      const gain = Math.min(max - m.mp, Math.max(2, Math.round(max * G.GrowthConfig.MEDITATE_MP_RATE)));
+      if (gain <= 0) { await this.msg('しかし MPは 満タンだ！', 0.6); return; }
+      m.mp += gain;
+      this.addFx('heal', side, '#8ab8f0', 0.5);
+      await this.waitBars();
+      await this.msg(`${m.name}の MPが ${gain} 回復した！`, 0.6);
+    }
+
+    // ためる：次の攻撃のダメージを CHARGE_MUL 倍にする（重ねがけはできない。入れかえると消える）
+    async charge(side) {
+      const s = this.sides[side];
+      const m = s.mon;
+      if (s.charged) { await this.msg(`${m.name}は もう じゅうぶん 力を ためている！`, 0.7); return; }
+      s.charged = true;
+      this.addFx('heal', side, '#ffd35a', 0.5);
+      await this.msg(`${m.name}は 力を ためている！`, 0.6);
     }
 
     async tryRun() {
@@ -314,9 +349,17 @@
       }
 
       let mv = G.Moves[moveId];
-      if (m.mp < mv.mp) { moveId = 'mogaku'; mv = G.Moves.mogaku; }
+      if (m.mp < mv.mp) { moveId = 'kougeki'; mv = G.Moves.kougeki; } // MPが足りなければ通常攻撃に
       m.mp -= mv.mp;
       await this.msg(`${m.name}の ${mv.name}！`, 0.5);
+
+      // ためた力：次の攻撃技で使う（外れても消える。補助技では消えない）
+      me.power = 1;
+      if (me.charged && mv.cat !== 'stat') {
+        me.charged = false;
+        me.power = G.GrowthConfig.CHARGE_MUL;
+        await this.msg('ためた力を 一気に 解きはなった！', 0.5);
+      }
 
       const selfTarget = mv.target === 'self';
       if (!selfTarget && !foe.mon) { await this.msg('しかし 相手がいない……'); return; }
@@ -404,7 +447,8 @@
     calcDamage(side, foeSide, mv) {
       const a = this.sides[side].mon, d = this.sides[foeSide].mon;
       const asp = G.Species[a.speciesId], dsp = G.Species[d.speciesId];
-      const phys = mv.cat === 'phys';
+      // 通常攻撃（こうげき）は、攻撃と特殊攻撃の高い方を使う
+      const phys = mv.basic ? this.stat(side, 'atk') >= this.stat(side, 'sat') : mv.cat === 'phys';
       let A = this.stat(side, phys ? 'atk' : 'sat');
       const D = Math.max(1, this.stat(foeSide, phys ? 'def' : 'sdf'));
       if (phys && a.status === 'burn') A *= 0.5;
@@ -419,6 +463,8 @@
       if (mul > 1 && af.superBoost) mod *= af.superBoost;                          // 弱点看破
       if (af.finisher && d.hp <= G.Monster.stats(d).hp / 2) mod *= af.finisher;   // 追撃本能
       if (!phys && df.guardSpec) mod *= df.guardSpec;                              // 水鏡の守り
+      if (this.sides[foeSide].guard) mod *= 0.5;                                   // ぼうぎょ中はダメージ半分
+      mod *= this.sides[side].power || 1;                                          // ためた力（ためる）
       dmg = mul === 0 ? 0 : Math.max(1, Math.floor(dmg * mod));
       return { dmg, mul, crit };
     }
@@ -475,8 +521,7 @@
           this.addFx('heal', side, '#8af08a', 0.5);
           await this.waitBars();
           await this.msg(`${m.name}は ${traitName(m, 'regen')}で 少し 回復した。`, 0.6);
-        }
-      }
+        }      }
     }
 
     async checkFaints() {
