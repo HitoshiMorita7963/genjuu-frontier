@@ -21,9 +21,9 @@
     sdfBook:     { name: '護心の書',     type: 'ev', stat: 'sdf', price: 1000, desc: '特殊防御の努力値が 10 上がる特訓の書。' },
     forgetHerb:  { name: '忘れ草の香',   type: 'evreset', price: 800, desc: '努力値をすべて 0 にもどす香。育て方を見直したいときに。' },
     // 経験値アイテム（配合の記念・野生の幻獣の落とし物・フィールドの落とし物で手に入る）
-    expS:        { name: '経験の実',     type: 'exp', exp: 800,   price: 200,  color: '#9ad86a', desc: '幻獣に食べさせると、経験値が 800 もらえる実。' },
-    expM:        { name: '経験の果実',   type: 'exp', exp: 4000,  price: 800,  color: '#f0a040', desc: '幻獣に食べさせると、経験値が 4000 もらえる果実。' },
-    expL:        { name: '黄金の果実',   type: 'exp', exp: 15000, price: 3000, color: '#f8d848', desc: '幻獣に食べさせると、経験値が 15000 もらえる、まばゆい果実。' },
+    expS:        { name: '経験の実',     type: 'exp', exp: 100,   price: 200,  color: '#9ad86a', desc: '幻獣に食べさせると、経験値が 100 もらえる実。' },
+    expM:        { name: '経験の果実',   type: 'exp', exp: 1000,  price: 800,  color: '#f0a040', desc: '幻獣に食べさせると、経験値が 1000 もらえる果実。' },
+    expL:        { name: '黄金の果実',   type: 'exp', exp: 10000, price: 3000, color: '#f8d848', desc: '幻獣に食べさせると、経験値が 10000 もらえる、まばゆい果実。' },
     levelDrop:   { name: '成長の雫',     type: 'exp', levels: 1,  price: 1500, color: '#8ad0f8', desc: '幻獣のレベルが 1 上がる、ふしぎな雫。' },
     lantern:     { name: '灯石のランタン', type: 'key', price: 0, desc: '灯石を閉じこめたランタン。暗い洞窟でも、まわりを明るく照らしてくれる。' },
     fireKey:     { name: '炎の鍵石', type: 'key', price: 0, desc: '大地の祠に納められていた、赤く熱をおびた鍵石。風の祭壇の封印に関わるという。' },
@@ -48,7 +48,7 @@
     // 野生の幻獣を倒したとき：たまに経験値アイテムを落としていく（ランクが高いほど良いものを落としやすい）
     wild: { rate: 0.15, table: [['expS', 80], ['expM', 18], ['expL', 2]], rankBonus: 0.04 },
     // 配合したとき：生まれた子のランクに応じて、記念にもらえる
-    fusion: { F: ['expS', 2], E: ['expS', 2], D: ['expM', 1], C: ['expM', 1], B: ['expM', 2], A: ['expM', 2], S: ['expL', 1], SS: ['expL', 1], SSS: ['expL', 1], EX: ['expL', 1] },
+    fusion: { F: ['expS', 2], E: ['expS', 5], D: ['expM', 1], C: ['expM', 1], B: ['expM', 2], A: ['expM', 2], S: ['expL', 1], SS: ['expL', 1], SSS: ['expL', 1], EX: ['expL', 1] },
   };
   // 重み付きの抽選 table: [[値, 重み, ...], ...] → その行
   G.ItemDrops.roll = (table) => {
