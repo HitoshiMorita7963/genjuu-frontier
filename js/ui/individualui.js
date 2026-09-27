@@ -27,6 +27,16 @@
     return `${P().bar(v, max, 'ev')}<small>${v}</small>`;
   }
 
+  // 進化の系統（図鑑で見たことのない姿は ？？？？）と、次の進化の条件
+  function evoText(m) {
+    const chain = G.evolutionChain(m.speciesId);
+    if (chain.length < 2) return '進化しない';
+    const known = (id) => id === m.speciesId || (G.state.dex[id] && G.state.dex[id].seen);
+    const names = chain.map((id) => (id === m.speciesId ? `<b>${esc(G.Species[id].name)}</b>` : known(id) ? esc(G.Species[id].name) : '？？？？')).join(' → ');
+    const evo = G.Species[m.speciesId].evo;
+    return names + `<small>${evo ? `次の進化：${esc(G.evolutionConditionText(evo))}` : '最後の姿'}</small>`;
+  }
+
   const PAGES = ['能力', '才能・育成', '系譜・継承'];
 
   G.UIScreens.monsterInfo = function (m, startPage = 0) {
@@ -96,7 +106,8 @@
           `<tr><th>配合値</th><td>${m.fusionBonus || 0}<small>${esc(I().bloodlineText(m))}</small></td></tr>` +
           `<tr><th>入手</th><td>${how}${m.origin && m.origin.where ? `（${esc(m.origin.where)}）` : ''}</td></tr>` +
           `<tr><th>継承した技</th><td>${inhMoves}</td></tr>` +
-          `<tr><th>継承した特性</th><td>${inhTrait}</td></tr></table>` +
+          `<tr><th>継承した特性</th><td>${inhTrait}</td></tr>` +
+          `<tr><th>進化</th><td>${evoText(m)}</td></tr></table>` +
           `<div><div class="info-sub">親</div>${pn.length ? `<div class="parents">${pn.map(parent).join('')}</div>` : '<div class="small muted">配合で生まれた個体ではない。</div>'}</div></div>`;
       },
       html() {
