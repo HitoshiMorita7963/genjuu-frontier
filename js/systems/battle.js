@@ -516,11 +516,7 @@
           this.addFx('heal', side, '#8af08a', 0.5);
           await this.waitBars();
           await this.msg(`${m.name}は ${traitName(m, 'regen')}で 少し 回復した。`, 0.6);
-        }
-        // MPは毎ターン少しずつ回復する（場に出ている幻獣だけ。文は出さず、バーが伸びる）
-        const maxMp = G.Monster.stats(m).mp;
-        if (m.hp > 0 && m.mp < maxMp) m.mp = Math.min(maxMp, m.mp + Math.max(1, Math.round(maxMp * G.GrowthConfig.MP_REGEN_RATE)));
-      }
+        }      }
     }
 
     async checkFaints() {
