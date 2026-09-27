@@ -227,6 +227,8 @@
 
   G.Species = G.monsterSpecies = S;
   G.SpeciesOrder = order;
+  // 図鑑の番号の表示（例：「No.082」）。会話などでは種族IDではなく、これを使う
+  G.dexNoLabel = (id) => `No.${String(S[id] ? S[id].no : 0).padStart(3, '0')}`;
   G.FusionRecipes = {
     recipes,          // 全レシピ（重複で使われないものも含む）
     byPair,           // 親IDペア → 採用レシピ
