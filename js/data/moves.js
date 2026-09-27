@@ -21,6 +21,8 @@
     sutemi:     M('すてみ突進',   'none', 'phys', 90, 90, 6, { eff: { recoil: 0.25 }, desc: '反動で自分も傷つく。' }),
     // MP切れのときに自動で使う技（覚えることはできない）
     mogaku:     M('もがく',       'none', 'phys', 30, 100, 0, { eff: { recoil: 0.25 }, inherit: false, hidden: true, desc: 'MPが足りないときに、必死にもがく。' }),
+    // 通常攻撃：MPを使わない。攻撃と特殊攻撃の高い方で攻撃する（basic）。バトルの「たたかう」にいつも並ぶ
+    kougeki:    M('こうげき',     'none', 'phys', 40, 100, 0, { basic: true, inherit: false, hidden: true, desc: 'MPを使わない通常攻撃。攻撃と特殊攻撃の、高い方の能力で攻撃する。' }),
 
     // ---- 炎 ----
     hinoko:     M('ひのこ',   'fire', 'spec', 40, 100, 2, { eff: { status: 'burn', chance: 10 }, desc: '小さな炎を飛ばす。やけどさせることがある。' }),

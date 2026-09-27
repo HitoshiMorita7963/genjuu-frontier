@@ -214,7 +214,7 @@
       const me = this.sides.enemy.mon;
       const foe = this.sides.player.mon;
       const usable = me.moves.filter((id) => G.Moves[id].mp <= me.mp);
-      if (!usable.length) return { type: 'move', move: 'mogaku' };
+      if (!usable.length) return { type: 'move', move: 'kougeki' }; // MPが尽きたら通常攻撃
       const sp = G.Species[me.speciesId];
       const fsp = G.Species[foe.speciesId];
       const st = G.Monster.stats(me);
@@ -236,6 +236,8 @@
     }
 
     async playTurn(pAct) {
+      this.sides.player.guard = false; // ぼうぎょは、そのターンだけ
+      this.sides.enemy.guard = false;
       pAct.side = 'player';
       pAct.mon = this.sides.player.mon;
       const eAct = Object.assign(this.enemyAction(), { side: 'enemy', mon: this.sides.enemy.mon });
@@ -276,9 +278,26 @@
         G.UI.refresh();
         return undefined;
       }
+      if (a.type === 'guard') return this.guard(a.side);
       if (a.type === 'run') return this.tryRun();
       if (a.type === 'catch') return this.throwStone(a.item);
       return undefined;
+    }
+
+    // ぼうぎょ：そのターンに受けるダメージを半分にし、MPを最大の1割（最低1）回復する。先に動ける
+    async guard(side) {
+      const s = this.sides[side];
+      const m = s.mon;
+      s.guard = true;
+      await this.msg(`${m.name}は 身を守っている！`, 0.6);
+      const max = G.Monster.stats(m).mp;
+      const gain = Math.min(max - m.mp, Math.max(1, Math.floor(max * G.GrowthConfig.GUARD_MP_RATE)));
+      if (gain > 0) {
+        m.mp += gain;
+        this.addFx('heal', side, '#8ab8f0', 0.5);
+        await this.waitBars();
+        await this.msg(`${m.name}の MPが ${gain} 回復した！`, 0.6);
+      }
     }
 
     async tryRun() {
@@ -314,7 +333,7 @@
       }
 
       let mv = G.Moves[moveId];
-      if (m.mp < mv.mp) { moveId = 'mogaku'; mv = G.Moves.mogaku; }
+      if (m.mp < mv.mp) { moveId = 'kougeki'; mv = G.Moves.kougeki; } // MPが足りなければ通常攻撃に
       m.mp -= mv.mp;
       await this.msg(`${m.name}の ${mv.name}！`, 0.5);
 
@@ -404,7 +423,8 @@
     calcDamage(side, foeSide, mv) {
       const a = this.sides[side].mon, d = this.sides[foeSide].mon;
       const asp = G.Species[a.speciesId], dsp = G.Species[d.speciesId];
-      const phys = mv.cat === 'phys';
+      // 通常攻撃（こうげき）は、攻撃と特殊攻撃の高い方を使う
+      const phys = mv.basic ? this.stat(side, 'atk') >= this.stat(side, 'sat') : mv.cat === 'phys';
       let A = this.stat(side, phys ? 'atk' : 'sat');
       const D = Math.max(1, this.stat(foeSide, phys ? 'def' : 'sdf'));
       if (phys && a.status === 'burn') A *= 0.5;
@@ -419,6 +439,7 @@
       if (mul > 1 && af.superBoost) mod *= af.superBoost;                          // 弱点看破
       if (af.finisher && d.hp <= G.Monster.stats(d).hp / 2) mod *= af.finisher;   // 追撃本能
       if (!phys && df.guardSpec) mod *= df.guardSpec;                              // 水鏡の守り
+      if (this.sides[foeSide].guard) mod *= 0.5;                                   // ぼうぎょ中はダメージ半分
       dmg = mul === 0 ? 0 : Math.max(1, Math.floor(dmg * mod));
       return { dmg, mul, crit };
     }

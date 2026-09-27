@@ -1,4 +1,6 @@
-// バトルのコマンド画面（たたかう／モンスター／捕獲／道具／逃げる）
+// バトルのコマンド画面（たたかう／ぼうぎょ／モンスター／捕獲／道具／逃げる）
+//   たたかう：いちばん上に MP を使わない「こうげき」、その下に覚えている技
+//   ぼうぎょ：そのターンのダメージを半分にして、MPを少し回復する（MPを使わない）
 (function (G) {
   'use strict';
 
@@ -6,6 +8,7 @@
   const P = () => G.UIParts;
   const CMDS = [
     { id: 'fight', label: 'たたかう' },
+    { id: 'guard', label: 'ぼうぎょ' },
     { id: 'party', label: 'モンスター' },
     { id: 'catch', label: '捕獲' },
     { id: 'item', label: '道具' },
@@ -31,11 +34,7 @@
       note: '',
       item: null,
       me() { return b.sides.player.mon; },
-      moveList() {
-        const m = this.me();
-        const usable = m.moves.filter((id) => G.Moves[id].mp <= m.mp);
-        return usable.length ? m.moves : ['mogaku'];
-      },
+      moveList() { return ['kougeki'].concat(this.me().moves); }, // 通常攻撃はいつも選べる
       go(view) { this.view = view; this.sel = 0; this.note = ''; G.Screens.render(); },
 
       update(In) {
@@ -56,6 +55,7 @@
               return this.go('catch');
             }
             if (c.id === 'run') return G.Screens.close({ type: 'run' });
+            if (c.id === 'guard') return G.Screens.close({ type: 'guard' });
             if (c.id === 'fight') return this.go('moves');
             if (c.id === 'party') return this.go('party');
             if (c.id === 'item') return this.go('items');
@@ -124,6 +124,7 @@
             `<div class="bt-cmd${i === this.sel ? ' sel' : ''}${c.soon ? ' disabled' : ''}${c.id === 'run' && b.type !== 'wild' ? ' disabled' : ''}">` +
             `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${c.label}</div>`).join('')}</div>`;
           hint = '↑↓←→：えらぶ　Z：けってい';
+          if (CMDS[this.sel].id === 'guard') body += '<div class="bt-info"><small>ダメージを半分にして、MPを少し回復する（先に動ける）</small></div>';
         } else if (this.view === 'moves') {
           const list = this.moveList();
           const cur = G.Moves[list[this.sel]];
@@ -134,7 +135,7 @@
               `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${P().el(mv.el)}<span class="mv-name">${esc(mv.name)}</span>` +
               `<small>MP${mv.mp}</small></div>`;
           }).join('')}</div>` +
-            `<div class="bt-info">${CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　` +
+            `<div class="bt-info">${cur.basic ? '物理か特殊（高い方）' : CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　` +
             `<span class="mp-now">残りMP ${this.me().mp}</span><br><small>${esc(cur.desc || '')}</small></div>`;
         } else if (this.view === 'party') {
           body = `<div class="bt-title">入れかえる幻獣は？</div>${partyRows(b, this.sel)}`;
