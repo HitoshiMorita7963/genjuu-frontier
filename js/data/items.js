@@ -48,7 +48,7 @@
     // 野生の幻獣を倒したとき：たまに経験値アイテムを落としていく（ランクが高いほど良いものを落としやすい）
     wild: { rate: 0.15, table: [['expS', 80], ['expM', 18], ['expL', 2]], rankBonus: 0.04 },
     // 配合したとき：生まれた子のランクに応じて、記念にもらえる
-    fusion: { F: ['expS', 2], E: ['expS', 5], D: ['expM', 1], C: ['expM', 1], B: ['expM', 2], A: ['expM', 2], S: ['expL', 1], SS: ['expL', 1], SSS: ['expL', 1], EX: ['expL', 1] },
+    fusion: { F: ['expS', 2], E: ['expS', 5], D: ['expM', 1], C: ['expM', 3], B: ['expM', 5], A: ['expM', 8], S: ['expL', 1], SS: ['expL', 1], SSS: ['expL', 1], EX: ['expL', 1] },
   };
   // 重み付きの抽選 table: [[値, 重み, ...], ...] → その行
   G.ItemDrops.roll = (table) => {
