@@ -279,6 +279,7 @@
         return undefined;
       }
       if (a.type === 'guard') return this.guard(a.side);
+      if (a.type === 'charge') return this.charge(a.side);
       if (a.type === 'run') return this.tryRun();
       if (a.type === 'catch') return this.throwStone(a.item);
       return undefined;
@@ -298,6 +299,16 @@
         await this.waitBars();
         await this.msg(`${m.name}の MPが ${gain} 回復した！`, 0.6);
       }
+    }
+
+    // ためる：次の攻撃のダメージを CHARGE_MUL 倍にする（重ねがけはできない。入れかえると消える）
+    async charge(side) {
+      const s = this.sides[side];
+      const m = s.mon;
+      if (s.charged) { await this.msg(`${m.name}は もう じゅうぶん 力を ためている！`, 0.7); return; }
+      s.charged = true;
+      this.addFx('heal', side, '#ffd35a', 0.5);
+      await this.msg(`${m.name}は 力を ためている！`, 0.6);
     }
 
     async tryRun() {
@@ -336,6 +347,14 @@
       if (m.mp < mv.mp) { moveId = 'kougeki'; mv = G.Moves.kougeki; } // MPが足りなければ通常攻撃に
       m.mp -= mv.mp;
       await this.msg(`${m.name}の ${mv.name}！`, 0.5);
+
+      // ためた力：次の攻撃技で使う（外れても消える。補助技では消えない）
+      me.power = 1;
+      if (me.charged && mv.cat !== 'stat') {
+        me.charged = false;
+        me.power = G.GrowthConfig.CHARGE_MUL;
+        await this.msg('ためた力を 一気に 解きはなった！', 0.5);
+      }
 
       const selfTarget = mv.target === 'self';
       if (!selfTarget && !foe.mon) { await this.msg('しかし 相手がいない……'); return; }
@@ -440,6 +459,7 @@
       if (af.finisher && d.hp <= G.Monster.stats(d).hp / 2) mod *= af.finisher;   // 追撃本能
       if (!phys && df.guardSpec) mod *= df.guardSpec;                              // 水鏡の守り
       if (this.sides[foeSide].guard) mod *= 0.5;                                   // ぼうぎょ中はダメージ半分
+      mod *= this.sides[side].power || 1;                                          // ためた力（ためる）
       dmg = mul === 0 ? 0 : Math.max(1, Math.floor(dmg * mod));
       return { dmg, mul, crit };
     }

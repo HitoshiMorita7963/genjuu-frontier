@@ -1,5 +1,6 @@
-// バトルのコマンド画面（たたかう／ぼうぎょ／モンスター／捕獲／道具／逃げる）
+// バトルのコマンド画面（たたかう／ためる／ぼうぎょ／モンスター／捕獲／道具／逃げる）
 //   たたかう：いちばん上に MP を使わない「こうげき」、その下に覚えている技
+//   ためる  ：次の攻撃のダメージが2倍になる（MPを使わない）
 //   ぼうぎょ：そのターンのダメージを半分にして、MPを少し回復する（MPを使わない）
 (function (G) {
   'use strict';
@@ -8,6 +9,7 @@
   const P = () => G.UIParts;
   const CMDS = [
     { id: 'fight', label: 'たたかう' },
+    { id: 'charge', label: 'ためる' },
     { id: 'guard', label: 'ぼうぎょ' },
     { id: 'party', label: 'モンスター' },
     { id: 'catch', label: '捕獲' },
@@ -46,7 +48,7 @@
         };
 
         if (this.view === 'main') {
-          move(CMDS.length, 2);
+          move(CMDS.length, 3); // メインは3列
           if (In.consume('confirm')) {
             const c = CMDS[this.sel];
             if (c.id === 'catch') {
@@ -56,6 +58,10 @@
             }
             if (c.id === 'run') return G.Screens.close({ type: 'run' });
             if (c.id === 'guard') return G.Screens.close({ type: 'guard' });
+            if (c.id === 'charge') {
+              if (b.sides.player.charged) { this.note = 'もう じゅうぶん 力を ためている！'; G.Screens.render(); return; }
+              return G.Screens.close({ type: 'charge' });
+            }
             if (c.id === 'fight') return this.go('moves');
             if (c.id === 'party') return this.go('party');
             if (c.id === 'item') return this.go('items');
@@ -120,11 +126,16 @@
         let body = '';
         let hint = 'Z：けってい　X：もどる';
         if (this.view === 'main') {
-          body = `<div class="bt-grid">${CMDS.map((c, i) =>
+          body = `<div class="bt-grid main">${CMDS.map((c, i) =>
             `<div class="bt-cmd${i === this.sel ? ' sel' : ''}${c.soon ? ' disabled' : ''}${c.id === 'run' && b.type !== 'wild' ? ' disabled' : ''}">` +
             `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${c.label}</div>`).join('')}</div>`;
           hint = '↑↓←→：えらぶ　Z：けってい';
-          if (CMDS[this.sel].id === 'guard') body += '<div class="bt-info"><small>ダメージを半分にして、MPを少し回復する（先に動ける）</small></div>';
+          const tip = {
+            guard: 'ダメージを半分にして、MPを少し回復する（先に動ける）',
+            charge: `次の攻撃のダメージが${G.GrowthConfig.CHARGE_MUL}倍になる（入れかえると消える）`,
+          }[CMDS[this.sel].id];
+          const charged = b.sides.player.charged ? '<b class="charged">力をためている！</b>　' : '';
+          if (tip || charged) body += `<div class="bt-info"><small>${charged}${tip || ''}</small></div>`;
         } else if (this.view === 'moves') {
           const list = this.moveList();
           const cur = G.Moves[list[this.sel]];
