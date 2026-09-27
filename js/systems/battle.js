@@ -36,6 +36,8 @@
       this.over = false;
       this.result = null;
       this.runAttempts = 0;
+      this.catchFails = 0;           // 捕獲に失敗した回数（G.CatchRules.maxFails で幻獣が怒る）
+      this.catchLocked = false;      // 怒って、もう捕まえられない
       this.participants = new Set(); // この敵と戦った幻獣（経験値の分配先）
       this.leveled = new Set();      // レベルが上がった幻獣（戦闘後の進化判定用）
       this.stone = null;             // 投げた絆石の演出状態
@@ -589,7 +591,7 @@
     async throwStone(itemId) {
       const it = G.Items[itemId];
       const foe = this.sides.enemy.mon;
-      G.addItem(itemId, -1);
+      if (!it.infinite) G.addItem(itemId, -1); // 絆石はなくならない
       await this.msg(`${G.state.player.name}は ${it.name}を 投げた！`, 0.4);
       this.stone = { item: itemId, x: 130, y: 230, rot: 0, glow: 0 };
       G.Audio.se('throw');
@@ -621,6 +623,24 @@
       G.Audio.se('breakout');
       await this.animate('enemy', 'breakout', 0.3);
       await this.msg(['ダメだ！ 絆を 結べなかった！', 'ああっ！ 石から 飛び出してしまった！', 'おしい！ もう少しだったのに！', 'あと ちょっとで 絆を 結べたのに！'][Math.min(3, shakes)], 1.0);
+      // 失敗が続くと怒る：逃げてしまうか、その戦闘ではもう捕まえられない
+      const R = G.CatchRules;
+      this.catchFails++;
+      if (this.catchFails < R.maxFails) {
+        if (R.maxFails - this.catchFails === 1) await this.msg(`${foe.name}は いらだっている……！\n（次に失敗すると 怒ってしまいそうだ）`, 1.0);
+        return;
+      }
+      this.addFx('down', 'enemy', '#f06060', 0.6);
+      await this.msg(`${foe.name}は 怒ってしまった！`, 1.0);
+      if (Math.random() < R.fleeRate) {
+        G.Audio.se('run');
+        await this.msg(`${foe.name}は 逃げていった……`, 1.2);
+        this.over = true;
+        this.result = 'run';
+      } else {
+        this.catchLocked = true;
+        await this.msg(`${foe.name}は 心を 閉ざしてしまった……\n（この戦いでは もう 絆を 結べない）`, 1.4);
+      }
     }
 
     async finish() {

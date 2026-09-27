@@ -57,6 +57,8 @@
     const out = Object.assign(base, st);
     out.player = Object.assign(base.player, st.player || {});
     for (const k of ['items', 'flags', 'dex', 'recipesFound', 'ruleFound', 'lineage']) out[k] = st[k] || {};
+    // 絆石はなくならない道具になった：持っていた数に関係なく1つ（博士からもらった後なら、使い切っていても）
+    if (out.items.bondstone || out.flags.gotStarter) out.items.bondstone = 1;
     for (const k of ['party', 'storage']) out[k] = (st[k] || []).filter((m) => m && G.Species[m.speciesId]);
     // ver.2 以前の個体：個体ボーナス（0〜15）を個体値（0〜31）に換算し、努力値を 0 で追加（能力値はほぼ変わらない）
     for (const m of out.party.concat(out.storage)) {

@@ -190,7 +190,7 @@
             }
             return `<div class="menu-title">${it.name}を いくつ使う？</div>` +
               `<div class="menu-list">${P().row(m, true, '')}</div>` +
-              `<div class="qty-box"><span class="qty-arrow">◀</span><b class="qty-num">× ${this.qty}</b><span class="qty-arrow">▶</span>` +
+              `<div class="use-qty"><span class="qty-arrow">◀</span><b class="qty-num">× ${this.qty}</b><span class="qty-arrow">▶</span>` +
               `<span class="count">持っている数 ${G.state.items[this.target] || 0}　最大 ${max}</span></div>` +
               `<div class="menu-desc">${esc(after)}</div><div class="menu-hint">←→：1ずつ　↑↓：10ずつ　Z：使う　X：もどる</div>`;
           }
@@ -201,7 +201,7 @@
           }
           const rows = ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
-              `${G.Items[id].name}<span class="count">×${G.state.items[id]}</span></div>`).join('')
+              `${G.Items[id].name}<span class="count">×${G.Items[id].infinite ? '∞' : G.state.items[id]}</span></div>`).join('')
             : '<div class="menu-empty">なにも持っていない。</div>';
           const cur = ids[this.sel];
           return `<div class="menu-title">もちもの</div><div class="menu-list">${rows}</div>` +

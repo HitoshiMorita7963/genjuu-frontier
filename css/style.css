@@ -116,10 +116,10 @@ body {
 .menu-row.disabled { color: #6c7090; }
 .menu-row .soon { margin-left: auto; font-size: 11px; color: #6c7090; padding-left: 10px; }
 .menu-row .count { margin-left: auto; padding-left: 16px; }
-.qty-box { display: flex; align-items: center; gap: 10px; margin: 8px 4px 0; }
-.qty-box .qty-num { font-size: 20px; color: #ffd35a; min-width: 4em; text-align: center; }
-.qty-box .qty-arrow { color: #8a90b8; font-size: 12px; }
-.qty-box .count { margin-left: auto; font-size: 12px; color: #a8b0d0; }
+.use-qty { display: flex; align-items: center; gap: 10px; margin: 8px 4px 0; }
+.use-qty .qty-num { font-size: 20px; color: #ffd35a; min-width: 4em; text-align: center; }
+.use-qty .qty-arrow { color: #8a90b8; font-size: 12px; }
+.use-qty .count { margin-left: auto; font-size: 12px; color: #a8b0d0; }
 .menu-desc { margin-top: 8px; min-height: 2.8em; font-size: 14px; color: #d0d4ea; border-top: 1px solid #3a4068; padding-top: 6px; }
 .menu-empty { color: var(--muted); }
 .menu-hint { margin-top: 6px; font-size: 12px; color: var(--muted); text-align: right; }

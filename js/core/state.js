@@ -29,6 +29,8 @@
 
   G.addItem = (id, n = 1) => {
     const items = G.state.items;
+    // なくならない道具（絆石）は、1つ持っていれば何度でも使える
+    if (G.Items[id] && G.Items[id].infinite) { if (n > 0) items[id] = 1; return; }
     items[id] = (items[id] || 0) + n;
     if (items[id] <= 0) delete items[id];
   };
