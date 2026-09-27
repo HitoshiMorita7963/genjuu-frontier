@@ -49,7 +49,7 @@
     const dock = narrow && /\bbattle\b/.test(layout);
     el.classList.toggle('expanded', wide);
     el.classList.toggle('docked', dock);
-    el.style.top = el.style.bottom = el.style.left = el.style.right = el.style.maxHeight = '';
+    el.style.top = el.style.bottom = el.style.left = el.style.right = el.style.maxHeight = el.style.height = '';
     if (!wide && !dock) return;
     const pad = document.getElementById('touch-pad');
     const padTop = pad && !pad.classList.contains('hidden') ? pad.getBoundingClientRect().top : window.innerHeight;
@@ -63,7 +63,7 @@
     el.style.top = `${msg.top}px`;
     el.style.left = `${msg.left}px`;
     el.style.right = `${window.innerWidth - msg.right}px`;
-    el.style.maxHeight = `${Math.max(msg.height, padTop - msg.top - 6)}px`;
+    el.style.maxHeight = el.style.height = `${Math.max(msg.height, padTop - msg.top - 6)}px`; // 高さは固定（中身で変わらない）
   }
   window.addEventListener('resize', () => { const s = G.Screens.top(); if (s && el) fitLayer(s); });
 

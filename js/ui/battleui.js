@@ -164,9 +164,9 @@
               `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${P().el(mv.el)}<span class="mv-name">${esc(mv.name)}${mv.stage > 1 ? `<small class="mv-plus">+${mv.stage - 1}</small>` : ''}</span>` +
               `${mark(mv)}<small>MP${mv.mp}</small></div>`;
           }).join('')}</div>` +
-            `<div class="bt-info">${cur.basic ? '物理か特殊（高い方）' : CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　${cur.maxStage > 1 ? `強化 +${cur.stage - 1}/+${cur.maxStage - 1}　` : ''}` +
+            `<div class="bt-info">${cur.basic ? '物理/特殊' : CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　${cur.maxStage > 1 ? `強化 +${cur.stage - 1}/+${cur.maxStage - 1}　` : ''}` +
             `${cur.cat !== 'stat' && G.isStab(cur.el, mySp) ? `<b class="eff stab">タイプ一致×${G.stabMultiplier(cur.el, mySp)}</b>　` : ''}${effText(cur)}　` +
-            `<span class="mp-now">残りMP ${this.me().mp}</span><br><small>${esc(cur.desc || '')}</small></div>`;
+            `<br><small>${esc(cur.desc || '')}</small></div>`;
         } else if (this.view === 'party') {
           body = `<div class="bt-title">入れかえる幻獣は？</div>${partyRows(b, this.sel)}`;
         } else if (this.view === 'catch') {
