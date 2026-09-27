@@ -193,6 +193,8 @@
   h.rect(13, 2, 10, 4, 'o');                          // 祭壇の広場
   h.blob(7, 8, 4, 3, ';').blob(28, 9, 5, 3, ';').blob(8, 21, 5, 3, ';').blob(28, 21, 5, 3, ';').blob(26, 15, 3, 2, ';');
   h.scatter('r', 14, 2, 2, 32, 24, ['.'], 5).scatter(',', 16, 2, 2, 32, 24, ['.'], 9);
+  h.rect(19, 9, 17, 2, '=');                          // 東の出口（北の氷原）
+  h.set(32, 9, '#').set(33, 9, '#');                  // 氷原への道は1マス幅（見張りが立つ）
   G.registerMap({
     id: 'highland', name: '風鳴りの高原', outdoor: true, bg: '#2a5a2a', encounter: 'highland', place: 'highland',
     tiles: h.rows(),
@@ -203,10 +205,14 @@
       },
       { type: 'altar', x: 31, y: 5, color: '#ffe070', text: '雷の祭壇だ。\nあたりには、雷をまとった精霊の気配がただよっている。' },
     ],
-    signs: [{ x: 16, y: 24, text: '↑ 風の祭壇　↓ 港町リュミエール　← 湖畔の森' }],
+    signs: [
+      { x: 16, y: 24, text: '↑ 風の祭壇　↓ 港町リュミエール　← 湖畔の森' },
+      { x: 30, y: 8, text: '→ 北の氷原\n（吹雪のため、許可なく立ち入らないこと）' },
+    ],
     warps: [
       { x: 17, y: 27, w: 2, h: 1, to: 'lumiere', tx: 15, ty: 1, keepX: true, dir: 'down' },
       { x: 0, y: 13, w: 1, h: 2, to: 'lakeside', tx: 31, ty: 13, keepY: true, dir: 'left' },
+      { x: 35, y: 9, w: 1, h: 2, to: 'snowfield', tx: 1, ty: 12, keepY: true, dir: 'right' },
     ],
     items: [
       { x: 30, y: 24, item: 'moondrop', count: 1, flag: 'item_high_moon' },
@@ -218,6 +224,15 @@
         talk: ['この高原は、風と雷の幻獣の住みかだ。\n風の精霊は、高原で育つと姿を変えるものもいるらしい。'],
       },
       { id: 'vel', name: 'ヴェル', x: 18, y: 3, dir: 'down', spawnOnly: true, look: G.Looks.vel, talk: ['……。'] },
+      {
+        // 第2章をクリアするまで、北の氷原への道をふさぐ
+        id: 'snowguard', name: '氷原の見張り', x: 33, y: 10, dir: 'left', look: TOWNFOLK.hiker,
+        visible: (s) => !s.flags.chapter2Clear,
+        talk: [
+          'この先は『北の氷原』。一年じゅう吹雪がやまない、きびしい土地だ。',
+          '黒環団が高原をうろついている今は、とても通せんな。\n……祭壇の騒ぎが片づいたら、また来るといい。',
+        ],
+      },
     ],
     triggers: [
       {
@@ -351,5 +366,43 @@
     G.autoSave();
     await E.screen(G.UIScreens.chapterEnd({ chapter: '第2章', title: '空を渡る竜', next: 'To be continued……' }));
     await E.narrate('――物語は、まだ続く。\n（天空竜アストラ（No.082）は、配合で生みだせるらしい……）');
+    E.hideNpc('snowguard');
+    await E.narrate('高原の東、『北の氷原』への道が開かれた。\n（氷と雪の幻獣たちが住んでいるという）');
   }
+
+  // ---------------- 北の氷原（第2章クリア後）：氷・無属性の幻獣が住む ----------------
+  const s = G.MapBuilder(32, 26, 'e');
+  s.border(2, 'P');
+  s.rect(0, 12, 10, 2, 'e');                                                 // 西の入口（高原から）
+  s.blob(19, 8, 6, 3, 'i').blob(8, 20, 4, 2, 'i');                            // 凍った湖
+  s.blob(6, 6, 3, 2, 'E').blob(14, 18, 3, 2, 'E').blob(25, 18, 3, 2, 'E').blob(26, 5, 2, 1, 'E').blob(11, 9, 2, 1, 'E');
+  s.scatter('I', 16, 2, 2, 28, 22, ['e'], 21).scatter('P', 12, 3, 3, 26, 20, ['e'], 22);
+  s.rect(0, 12, 6, 2, 'e');                                                   // 入口は必ず通れるように
+  G.registerMap({
+    id: 'snowfield', name: '北の氷原', outdoor: true, bg: '#8aa8c8', encounter: 'snowfield', place: 'snowfield',
+    tiles: s.rows(),
+    signs: [{ x: 4, y: 11, text: '北の氷原\n← 風鳴りの高原' }],
+    warps: [{ x: 0, y: 12, w: 1, h: 2, to: 'highland', tx: 34, ty: 9, keepY: true, dir: 'left' }],
+    items: [
+      { x: 28, y: 3, item: 'spdBook', count: 1, flag: 'item_snow_spdbook' },
+      { x: 3, y: 22, item: 'bondstone3', count: 2, flag: 'item_snow_bond3' },
+      { x: 22, y: 12, item: 'forgetHerb', count: 1, flag: 'item_snow_herb' },
+    ],
+    npcs: [
+      {
+        id: 'snowscholar', name: '氷原の研究者', x: 7, y: 13, dir: 'right', look: TOWNFOLK.luke,
+        talk: [
+          'やあ、ここまで来るとは。わたしは氷の幻獣を調べている。',
+          '雪の精霊ユキダマは、この氷原で育つと、ヒョウガスピリットに姿を変えるんだ。\n寒さが、力を呼び覚ますのかもしれない。',
+          'それから……吹雪の奥で、銀色の狼を見たという話がある。\nフェンリル――めったに姿を見せない、氷原のぬしだよ。',
+        ],
+      },
+    ],
+    onEnter: async (E) => {
+      if (E.flag('snowArrived')) return;
+      E.set('snowArrived');
+      await E.narrate('吐く息が、白くこおりつく。\n一面の雪原の向こうで、凍った湖が青く光っている。');
+      await E.narrate('……ここが『北の氷原』だ。\n（雪の積もった草むらには、氷の幻獣がひそんでいる）');
+    },
+  });
 })(window.Game);

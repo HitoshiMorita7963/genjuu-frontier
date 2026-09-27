@@ -4,7 +4,7 @@
 window.Game = window.Game || {};
 window.Game.RawMonsterData = {
  "title": "モンスターフロンティア",
- "version": "2.1",
+ "version": "2.2",
  "rules": {
   "partyLimit": 6,
   "maxEquippedMoves": 4,
@@ -46,9 +46,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -90,7 +90,7 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -135,8 +135,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -222,9 +222,9 @@ window.Game.RawMonsterData = {
     "回避": 13
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "雷走り",
    "growthType": "速度",
@@ -267,8 +267,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "疾風脚",
    "growthType": "速度",
@@ -310,9 +310,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "狩人の本能",
    "growthType": "攻撃",
@@ -354,7 +354,7 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -398,9 +398,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "不屈の肉体",
    "growthType": "耐久",
@@ -444,7 +444,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "精霊の加護",
    "growthType": "支援",
@@ -486,7 +486,7 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -575,7 +575,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "呪術の才",
@@ -619,8 +619,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
@@ -662,9 +662,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "急所狙い",
    "growthType": "攻撃",
@@ -706,9 +706,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "甲殻装甲",
    "growthType": "耐久",
@@ -750,7 +750,7 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -795,8 +795,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "idaten",
+    "奈落斬"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -840,7 +840,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "状態異常耐性",
    "growthType": "支援",
@@ -882,9 +882,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "再生皮膚",
    "growthType": "耐久",
@@ -926,9 +926,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -977,7 +977,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -1028,9 +1028,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -1079,9 +1079,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "破壊衝動",
    "growthType": "攻撃",
@@ -1130,7 +1130,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -1183,7 +1183,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "癒しの波動",
    "growthType": "支援",
@@ -1284,7 +1284,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "呪術の才",
@@ -1386,8 +1386,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "雷走り",
    "growthType": "速度",
@@ -1436,9 +1436,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -1487,7 +1487,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -1540,7 +1540,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "守護の祈り",
    "growthType": "支援",
@@ -1589,9 +1589,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "破壊衝動",
    "growthType": "攻撃",
@@ -1640,7 +1640,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -1691,9 +1691,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "疾風脚",
    "growthType": "速度",
@@ -1744,7 +1744,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "慈愛の光",
    "growthType": "支援",
@@ -1793,9 +1793,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "連撃の才",
    "growthType": "攻撃",
@@ -1844,7 +1844,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -1896,7 +1896,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "火花",
-    "烈火弾",
+    "小回復",
     "灼熱波"
    ],
    "innateTrait": "精霊の加護",
@@ -1946,9 +1946,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -1999,7 +1999,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "水刃",
     "癒しの雫",
-    "潮流撃"
+    "怒涛撃"
    ],
    "innateTrait": "水鏡の守り",
    "growthType": "耐久",
@@ -2048,9 +2048,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -2100,8 +2100,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
@@ -2150,9 +2150,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "急所狙い",
    "growthType": "攻撃",
@@ -2201,7 +2201,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -2252,9 +2252,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "水鏡の守り",
    "growthType": "耐久",
@@ -2305,7 +2305,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "守護の祈り",
    "growthType": "支援",
@@ -2355,7 +2355,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "魔力吸収",
@@ -2405,7 +2405,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -2456,9 +2456,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "気合いため",
+    "轟雷爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -2559,8 +2559,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -2609,9 +2609,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "破壊衝動",
    "growthType": "攻撃",
@@ -2660,7 +2660,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -2712,8 +2712,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "気合いため",
+    "奈落斬"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -2764,7 +2764,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "慈愛の光",
    "growthType": "支援",
@@ -2813,8 +2813,8 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "風切り",
-    "追い風",
+    "fujin",
+    "小回復",
     "旋風刃"
    ],
    "innateTrait": "残像",
@@ -2864,9 +2864,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "不屈の肉体",
    "growthType": "耐久",
@@ -2916,7 +2916,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "弱点看破",
@@ -2967,7 +2967,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "氷牙",
-    "冷気",
+    "気合いため",
     "凍結爪"
    ],
    "innateTrait": "猛火の闘志",
@@ -3017,9 +3017,9 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "先制感知",
    "growthType": "速度",
@@ -3069,8 +3069,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -3119,9 +3119,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "破壊衝動",
    "growthType": "攻撃",
@@ -3172,7 +3172,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "精霊の加護",
    "growthType": "支援",
@@ -3222,7 +3222,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "魔力増幅",
@@ -3273,8 +3273,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "気合いため",
+    "奈落斬"
    ],
    "innateTrait": "狩人の本能",
    "growthType": "攻撃",
@@ -3374,9 +3374,9 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
@@ -3425,9 +3425,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "急所狙い",
    "growthType": "攻撃",
@@ -3478,8 +3478,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "気合いため",
+    "奈落斬"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -3531,7 +3531,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "慈愛の光",
    "growthType": "支援",
@@ -3581,8 +3581,8 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "風切り",
-    "追い風",
+    "fujin",
+    "小回復",
     "旋風刃"
    ],
    "innateTrait": "残像",
@@ -3633,9 +3633,9 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "不屈の肉体",
    "growthType": "耐久",
@@ -3686,7 +3686,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "弱点看破",
@@ -3737,9 +3737,9 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -3789,7 +3789,7 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -3841,9 +3841,9 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "岩つぶて",
-    "硬化",
-    "大地震"
+    "砂塵",
+    "小回復",
+    "地脈波"
    ],
    "innateTrait": "守護の祈り",
    "growthType": "支援",
@@ -3893,9 +3893,9 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
@@ -3946,8 +3946,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "気合いため",
+    "奈落斬"
    ],
    "innateTrait": "急所狙い",
    "growthType": "攻撃",
@@ -3999,7 +3999,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "癒しの波動",
    "growthType": "支援",
@@ -4050,8 +4050,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "先制感知",
    "growthType": "速度",
@@ -4154,7 +4154,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "魔力吸収",
@@ -4205,7 +4205,7 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -4256,9 +4256,9 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -4307,7 +4307,7 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -4360,7 +4360,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "守護の祈り",
    "growthType": "支援",
@@ -4409,9 +4409,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
@@ -4460,7 +4460,7 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -4511,9 +4511,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -4562,7 +4562,7 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -4614,7 +4614,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "電撃",
-    "麻痺針",
+    "raigeki",
     "雷鳴落とし"
    ],
    "innateTrait": "呪術の才",
@@ -4664,7 +4664,7 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "noroigoe",
     "呪い霧",
     "暗黒波"
    ],
@@ -4717,7 +4717,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "精霊の加護",
    "growthType": "支援",
@@ -4767,8 +4767,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "気合いため",
+    "奈落斬"
    ],
    "innateTrait": "甲殻装甲",
    "growthType": "耐久",
@@ -4818,8 +4818,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "光弾",
-    "小回復",
-    "聖なる守り"
+    "seinaruya",
+    "極光"
    ],
    "innateTrait": "属性共鳴",
    "growthType": "特殊",
@@ -4869,8 +4869,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "気合いため",
+    "奈落斬"
    ],
    "innateTrait": "連撃の才",
    "growthType": "攻撃",
@@ -4921,7 +4921,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "状態異常耐性",
    "growthType": "支援",
@@ -5021,9 +5021,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -5065,7 +5065,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -5109,9 +5109,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
    ],
    "innateTrait": "雷走り",
    "growthType": "速度",
@@ -5154,8 +5154,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "疾風脚",
    "growthType": "速度",
@@ -5197,9 +5197,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "狩人の本能",
    "growthType": "攻撃",
@@ -5241,7 +5241,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -5285,9 +5285,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "大地の根",
    "growthType": "耐久",
@@ -5329,9 +5329,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "甲殻装甲",
    "growthType": "耐久",
@@ -5374,8 +5374,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
@@ -5417,9 +5417,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "急所狙い",
    "growthType": "攻撃",
@@ -5461,9 +5461,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "電撃",
-    "麻痺針",
-    "雷鳴落とし"
+    "jinraiga",
+    "気合いため",
+    "轟雷爪"
    ],
    "innateTrait": "雷走り",
    "growthType": "攻撃",
@@ -5505,9 +5505,9 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "砂塵",
     "硬化",
-    "大地震"
+    "地脈波"
    ],
    "innateTrait": "再生皮膚",
    "growthType": "耐久",
@@ -5550,8 +5550,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -5600,8 +5600,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "気合いため",
+    "烈風脚"
    ],
    "innateTrait": "疾風脚",
    "growthType": "攻撃",
@@ -5703,7 +5703,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "岩つぶて",
-    "硬化",
+    "気合いため",
     "大地震"
    ],
    "innateTrait": "破壊衝動",
@@ -5755,8 +5755,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "光弾",
-    "小回復",
-    "聖なる守り"
+    "seinaruya",
+    "極光"
    ],
    "innateTrait": "魔力増幅",
    "growthType": "特殊",
@@ -5805,7 +5805,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "癒しの波動",
    "growthType": "支援",
@@ -5852,9 +5852,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -5897,8 +5897,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "風切り",
-    "追い風",
-    "旋風刃"
+    "idaten",
+    "烈風脚"
    ],
    "innateTrait": "先制感知",
    "growthType": "速度",
@@ -5940,9 +5940,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "岩つぶて",
-    "硬化",
-    "大地震"
+    "砂塵",
+    "小回復",
+    "地脈波"
    ],
    "innateTrait": "慈愛の光",
    "growthType": "支援",
@@ -5985,7 +5985,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "氷牙",
-    "冷気",
+    "idaten",
     "凍結爪"
    ],
    "innateTrait": "残像",
@@ -6035,7 +6035,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "氷牙",
-    "冷気",
+    "idaten",
     "凍結爪"
    ],
    "innateTrait": "疾風脚",
@@ -6078,9 +6078,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "氷牙",
+    "氷礫",
     "冷気",
-    "凍結爪"
+    "雪嵐"
    ],
    "innateTrait": "甲殻装甲",
    "growthType": "耐久",
@@ -6166,9 +6166,9 @@ window.Game.RawMonsterData = {
     "回避": 8
    },
    "initialMoveCandidates": [
-    "氷牙",
+    "氷礫",
     "冷気",
-    "凍結爪"
+    "雪嵐"
    ],
    "innateTrait": "属性共鳴",
    "growthType": "特殊",
@@ -6210,9 +6210,9 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "氷牙",
+    "氷礫",
     "冷気",
-    "凍結爪"
+    "雪嵐"
    ],
    "innateTrait": "呪術の才",
    "growthType": "特殊",
@@ -6355,9 +6355,9 @@ window.Game.RawMonsterData = {
     "回避": 13
    },
    "initialMoveCandidates": [
-    "氷牙",
-    "冷気",
-    "凍結爪"
+    "氷礫",
+    "小回復",
+    "雪嵐"
    ],
    "innateTrait": "守護の祈り",
    "growthType": "支援",
@@ -6444,7 +6444,7 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "岩つぶて",
-    "硬化",
+    "気合いため",
     "大地震"
    ],
    "innateTrait": "不屈の肉体",
@@ -6494,7 +6494,7 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "水刃",
+    "mizutsubute",
     "癒しの雫",
     "潮流撃"
    ],
@@ -6545,9 +6545,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "火花",
-    "烈火弾",
-    "灼熱波"
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
    ],
    "innateTrait": "破壊衝動",
    "growthType": "攻撃",
@@ -6598,7 +6598,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "精霊の加護",
    "growthType": "耐久",
@@ -6648,8 +6648,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "影縫い",
-    "呪い霧",
-    "暗黒波"
+    "idaten",
+    "奈落斬"
    ],
    "innateTrait": "急所狙い",
    "growthType": "速度",
@@ -6699,9 +6699,9 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "氷牙",
+    "氷礫",
     "冷気",
-    "凍結爪"
+    "雪嵐"
    ],
    "innateTrait": "属性共鳴",
    "growthType": "特殊",
@@ -6750,9 +6750,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "氷牙",
+    "氷礫",
     "冷気",
-    "凍結爪"
+    "雪嵐"
    ],
    "innateTrait": "魔力吸収",
    "growthType": "特殊",
@@ -6854,7 +6854,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "光弾",
     "小回復",
-    "聖なる守り"
+    "極光"
    ],
    "innateTrait": "慈愛の光",
    "growthType": "支援",

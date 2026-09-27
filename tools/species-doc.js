@@ -9,6 +9,11 @@ const R = require('../js/data/statRules.js');
 const ROOT = path.join(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'monster_frontier.json'), 'utf8'));
 const K = R.KEYS.map((k) => R.JP[k]);
+global.window = { Game: {} };
+window.Game.escapeHtml = (s) => s;
+require('../js/data/elements.js');
+require('../js/data/moves.js');
+const moveName = (id) => (window.Game.Moves[id] ? window.Game.Moves[id].name : id);
 const RANKS = Object.keys(R.BUDGET);
 
 const lines = [];
@@ -36,14 +41,14 @@ for (const rank of RANKS) {
   if (!list.length) continue;
   lines.push(`## ${rank}ランク（${list.length}種）`);
   lines.push('');
-  lines.push('| ID | 名前 | 系統 | 属性 | 入手 | 型 | 看板 | 苦手 | 格 | ' + K.join(' | ') + ' | 合計 | 努力値 |');
-  lines.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | ' + K.map(() => '---:').join(' | ') + ' | ---: | --- |');
+  lines.push('| ID | 名前 | 系統 | 属性 | 入手 | 型 | 看板 | 苦手 | 格 | ' + K.join(' | ') + ' | 合計 | 努力値 | 技候補 |');
+  lines.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | ' + K.map(() => '---:').join(' | ') + ' | ---: | --- | --- |');
   for (const m of list) {
     const st = m.speciesStats || {};
     const total = K.reduce((a, k) => a + (st[k] || 0), 0);
     const ev = Object.entries(m.evYield || {}).map(([k, v]) => `${k}+${v}`).join(' ');
     lines.push(`| ${m.id} | ${m.name} | ${m.family} | ${m.element} | ${m.obtain} | ${m.archetype} | ${m.signature} | ${m.weakness} | ${m.tier} | ` +
-      K.map((k) => st[k]).join(' | ') + ` | ${total} | ${ev} |`);
+      K.map((k) => st[k]).join(' | ') + ` | ${total} | ${ev} | ${(m.initialMoveCandidates || []).map(moveName).join('・')} |`);
   }
   lines.push('');
 }
