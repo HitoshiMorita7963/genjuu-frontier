@@ -187,7 +187,7 @@
       const parents = pn.length === 2
         ? `<div class="small">親：${esc(pn[0].name)} ＋ ${esc(pn[1].name)}</div>` : '';
       return `<div class="detail-head">${P.img(m.speciesId, 'big')}<div>` +
-        `<div class="detail-name"><small>No.${sp.id}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
+        `<div class="detail-name"><small>${G.dexNoLabel(sp.id)}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
         `${P.speciesHead(sp)}` +
         `<div class="small">HP ${P.bar(m.hp, st.hp)} ${m.hp}/${st.hp}</div>` +
         `<div class="small">MP ${P.bar(m.mp, st.mp, 'mp')} ${m.mp}/${st.mp}</div>` +

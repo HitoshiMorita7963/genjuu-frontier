@@ -150,7 +150,7 @@
       }
       S[r.id] = {
         id: r.id,
-        no: Number(r.id),
+        no: r.dexNo || Number(r.id), // 図鑑の番号（進化した姿は進化前のすぐ後ろ。tools/dex-order.js で振る）
         name: r.name,
         family: r.family,          // 設計書の表記（表示用）
         element: r.element2 ? `${r.element}・${r.element2}` : r.element, // 表示用
@@ -226,7 +226,10 @@
   }
 
   G.Species = G.monsterSpecies = S;
-  G.SpeciesOrder = order;
+  G.SpeciesOrder = order; // 種族IDの順（内部用）
+  // 図鑑の番号の順（図鑑・配合表などの表示用）
+  G.DexOrder = order.slice().sort((a, b) => S[a].no - S[b].no);
+  G.DexOrder.forEach((id, i) => { if (i && S[id].no === S[G.DexOrder[i - 1]].no) err(`${id} ${S[id].name}: 図鑑番号 ${S[id].no} が重複しています`); });
   // 図鑑の番号の表示（例：「No.082」）。会話などでは種族IDではなく、これを使う
   G.dexNoLabel = (id) => `No.${String(S[id] ? S[id].no : 0).padStart(3, '0')}`;
   G.FusionRecipes = {

@@ -8,12 +8,12 @@ const G = require('./lib/load-game')();
 
 const ROOT = path.join(__dirname, '..');
 const S = G.Species;
-const ids = G.SpeciesOrder;
+const ids = G.DexOrder;
 const RANKS = ['F', 'E', 'D', 'C', 'B', 'A', 'S', 'SS', 'SSS', 'EX'];
 const OBTAIN = { wild: '野生', fusion: '配合限定', evolve: '進化' };
 const lineName = (l) => G.Lineages[l].name;
 const nm = (id) => `${S[id].name}`;
-const tag = (id) => `${id} ${S[id].name}`;
+const tag = (id) => `${G.dexNoLabel(id)} ${S[id].name}`;
 
 const recipes = Object.values(G.FusionRecipes.byPair);
 const L = [];
@@ -27,7 +27,7 @@ L.push('');
 L.push('## 1. 特別レシピ');
 L.push('');
 for (const r of RANKS) {
-  const list = recipes.filter((rc) => S[rc.resultId].rank === r).sort((a, b) => Number(a.resultId) - Number(b.resultId));
+  const list = recipes.filter((rc) => S[rc.resultId].rank === r).sort((a, b) => S[a.resultId].no - S[b.resultId].no);
   if (!list.length) continue;
   L.push(`### ${r}ランク（${list.length}）`);
   L.push('');

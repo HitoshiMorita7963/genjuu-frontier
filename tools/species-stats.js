@@ -124,7 +124,7 @@ for (const m of data.monsters) {
 }
 
 // 項目の並びをそろえる（読みやすさのため）
-const ORDER = ['id', 'name', 'family', 'element', 'rank', 'obtain', 'region', 'role', 'archetype', 'signature', 'weakness', 'tier',
+const ORDER = ['id', 'dexNo', 'name', 'family', 'element', 'element2', 'rank', 'obtain', 'region', 'role', 'archetype', 'signature', 'weakness', 'tier',
   'speciesStats', 'evYield', 'baseStats', 'initialMoveCandidates', 'innateTrait', 'growthType', 'recipe', 'description'];
 data.monsters = data.monsters.map((m) => {
   const o = {};
@@ -157,7 +157,6 @@ console.log('  型：' + Object.entries(arc).map(([a, n]) => `${a}${n}`).join(' 
 if (problems.length) { console.log('問題：\n- ' + problems.join('\n- ')); process.exitCode = 1; }
 
 if (!CHECK_ONLY && changed) {
-  data.version = '2.0';
   fs.writeFileSync(SRC, JSON.stringify(data, null, 2) + '\n', 'utf8');
   console.log(`data/monster_frontier.json を更新しました（${changed} 件）`);
   require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'build-data.js')], { stdio: 'inherit' });

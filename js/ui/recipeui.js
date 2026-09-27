@@ -33,12 +33,12 @@
       rows() {
         if (TABS[this.tab].id === 'recipe') {
           return Object.values(G.FusionRecipes.byPair)
-            .sort((x, y) => Number(x.resultId) - Number(y.resultId))
+            .sort((x, y) => G.Species[x.resultId].no - G.Species[y.resultId].no)
             .map((rc) => ({ a: rc.parentIds[0], b: rc.parentIds[1], c: rc.resultId, found: G.Dex.recipeFound(rc.resultId), hint: rc.hint }));
         }
         return Object.entries(G.state.ruleFound || {})
           .map(([key, c]) => { const [a, b] = key.split('+'); return { a, b, c, found: true }; })
-          .sort((x, y) => Number(x.c) - Number(y.c));
+          .sort((x, y) => G.Species[x.c].no - G.Species[y.c].no);
       },
       update(In) {
         const n = this.rows().length;
