@@ -57,6 +57,8 @@
     const out = Object.assign(base, st);
     out.player = Object.assign(base.player, st.player || {});
     for (const k of ['items', 'flags', 'dex', 'recipesFound', 'ruleFound', 'lineage']) out[k] = st[k] || {};
+    // 幻獣使いレベルがなかったころのセーブ：図鑑・レシピ・物語の進み具合から経験値を見積もる
+    if (!st.tamer) out.tamer = { exp: G.Tamer.estimate(out) };
     // 絆石はなくならない道具になった：持っていた数に関係なく1つ（博士からもらった後なら、使い切っていても）
     if (out.items.bondstone || out.flags.gotStarter) out.items.bondstone = 1;
     for (const k of ['party', 'storage']) out[k] = (st[k] || []).filter((m) => m && G.Species[m.speciesId]);

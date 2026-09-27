@@ -17,6 +17,7 @@
         ruleFound: {},    // 汎用ルールで試した組み合わせ { "親ID+親ID": 子の種族ID }
         lineage: {},      // 親子系譜 { 個体ID: { speciesId, name, level, generation, parentInstanceIds } }
         playTime: 0,
+        tamer: { exp: 0 }, // 幻獣使いレベルの経験値（js/systems/tamer.js）
       };
     },
   };
