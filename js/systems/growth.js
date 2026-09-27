@@ -20,11 +20,24 @@
     },
 
     // 経験値アイテムで得られる経験値（成長の雫は、指定のレベル数ぶん上がるだけの量）
-    expItemAmount(m, id) {
+    //   n 個まとめて使ったときの合計
+    expItemAmount(m, id, n = 1) {
       const it = G.Items[id];
-      if (!it.levels) return it.exp;
-      const to = Math.min(Mon().MAX_LEVEL, m.level + it.levels);
+      if (!it.levels) return it.exp * n;
+      const to = Math.min(Mon().MAX_LEVEL, m.level + it.levels * n);
       return Math.max(1, Mon().expForLevel(G.Species[m.speciesId], to) - m.exp);
+    },
+    // 経験値アイテムを n 個使ったあとのレベル（進化で種族が変わる分は考えない目安）
+    levelAfterExp(m, amount) {
+      const sp = G.Species[m.speciesId];
+      let lv = m.level;
+      while (lv < Mon().MAX_LEVEL && m.exp + amount >= Mon().expForLevel(sp, lv + 1)) lv++;
+      return lv;
+    },
+    // 最高レベルまでに必要な個数（これより多く使っても無駄になる）
+    expItemsToMax(m, id, have) {
+      for (let n = 1; n < have; n++) if (Gr.levelAfterExp(m, Gr.expItemAmount(m, id, n)) >= Mon().MAX_LEVEL) return n;
+      return have;
     },
 
     // 経験値を得る。レベルが上がったら true

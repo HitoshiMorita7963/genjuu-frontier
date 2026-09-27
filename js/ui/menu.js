@@ -58,15 +58,34 @@
         sel: 0,
         target: null, // 使う道具を選んだ後、対象を選ぶ
         tsel: 0,
+        qty: 0,       // 経験値アイテム・特訓の書：使う個数を選んでいるとき 1 以上
         note: '',
         update(In) {
           const ids = Object.keys(G.state.items);
+          if (this.target && this.qty) {
+            const max = this.maxQty(this.target, G.state.party[this.tsel]);
+            const step = (d) => { this.qty = Math.max(1, Math.min(max, this.qty + d)); G.Screens.render(); };
+            if (In.consume('left')) step(-1);
+            if (In.consume('right')) step(1);
+            if (In.consume('up')) step(10);
+            if (In.consume('down')) step(-10);
+            if (In.consume('cancel')) { this.qty = 0; G.Screens.render(); return; }
+            if (In.consume('confirm')) { const n = this.qty; this.qty = 0; this.apply(this.target, G.state.party[this.tsel], n); }
+            return;
+          }
           if (this.target) {
             const n = G.state.party.length;
             if (In.consume('up')) { this.tsel = cycle(this.tsel, n, -1); this.note = ''; G.Screens.render(); }
             if (In.consume('down')) { this.tsel = cycle(this.tsel, n, 1); this.note = ''; G.Screens.render(); }
             if (In.consume('cancel')) { this.target = null; this.note = ''; G.Screens.render(); return; }
-            if (In.consume('confirm')) this.apply(this.target, G.state.party[this.tsel]);
+            if (In.consume('confirm')) {
+              const m = G.state.party[this.tsel];
+              // 2個以上持っていて、まとめて使える道具なら、個数を選ぶ
+              const why = this.cannotUse(this.target, m);
+              if (why) { this.note = why; G.Screens.render(); }
+              else if (this.maxQty(this.target, m) > 1) { this.qty = 1; this.note = ''; G.Screens.render(); }
+              else this.apply(this.target, m, 1);
+            }
             return;
           }
           if (ids.length && In.consume('up')) { this.sel = cycle(this.sel, ids.length, -1); this.note = ''; G.Screens.render(); }
@@ -83,7 +102,22 @@
             G.Screens.render();
           }
         },
-        apply(id, m) {
+        // まとめて使える道具（経験値アイテム・特訓の書）で、使えないときの理由
+        cannotUse(id, m) {
+          const it = G.Items[id];
+          if (it.type === 'exp' && m.level >= G.Monster.MAX_LEVEL) return `${m.name}は もう これ以上 レベルが 上がらない。`;
+          if (it.type === 'ev' && !G.Individual.evRoom(m, it.stat)) return `${m.name}の ${G.Individual.NAMES[it.stat]}は これ以上 鍛えられない。`;
+          return null;
+        },
+        // まとめて使える最大の個数（持っている数まで。上限に届く数より多くは使わない）
+        maxQty(id, m) {
+          const it = G.Items[id];
+          const have = G.state.items[id] || 0;
+          if (it.type === 'exp') return G.Growth.expItemsToMax(m, id, have);
+          if (it.type === 'ev') return Math.max(1, Math.min(have, Math.ceil(G.Individual.evRoom(m, it.stat) / (it.gain || G.GrowthConfig.EV_ITEM_GAIN))));
+          return 1;
+        },
+        apply(id, m, n = 1) {
           const it = G.Items[id];
           if (it.type === 'evolve') {
             const to = G.Growth.evolutionTarget(m, { item: id });
@@ -96,13 +130,13 @@
           if (it.type === 'exp') {
             // 経験値アイテム：レベルアップ・技の習得・進化の演出があるので、メニューを閉じてイベントとして進める
             if (m.level >= G.Monster.MAX_LEVEL) { this.note = `${m.name}は もう これ以上 レベルが 上がらない。`; G.Screens.render(); return; }
-            const amount = G.Growth.expItemAmount(m, id);
+            const amount = G.Growth.expItemAmount(m, id, n);
             const back = { sel: this.sel, tsel: this.tsel, id };
-            G.addItem(id, -1);
+            G.addItem(id, -n);
             G.Screens.closeAll();
             G.Events.run(async (E) => {
               G.Audio.se('heal');
-              await E.narrate(`${m.name}は ${it.name}を 食べた！`);
+              await E.narrate(`${m.name}は ${it.name}を ${n > 1 ? `${n}こ ` : ''}食べた！`);
               const ui = { msg: (t) => E.narrate(t) };
               if (await G.Growth.gainExp(m, amount, ui)) await G.Field.checkEvolutions([m], E);
               G.UI.refresh();
@@ -117,10 +151,15 @@
           if (it.type === 'ev') {
             const I = G.Individual;
             const before = G.Monster.stats(m).hp;
-            const got = I.addEv(m, it.stat, it.gain || G.GrowthConfig.EV_ITEM_GAIN);
+            let got = 0, used = 0;
+            for (; used < n; used++) {
+              const g = I.addEv(m, it.stat, it.gain || G.GrowthConfig.EV_ITEM_GAIN);
+              if (!g) break;
+              got += g;
+            }
             m.hp += G.Monster.stats(m).hp - before; // 最大HPが増えた分だけ、今のHPも増やす
             if (!got) { this.note = `${m.name}の ${I.NAMES[it.stat]}は これ以上 鍛えられない。`; G.Screens.render(); return; }
-            G.addItem(id, -1);
+            G.addItem(id, -used);
             this.note = `${m.name}の ${I.NAMES[it.stat]}の努力値が ${got} 上がった！（${I.ev(m, it.stat)}／${G.GrowthConfig.EV_MAX_STAT}）`;
           } else if (it.type === 'evreset') {
             if (!G.Individual.evTotal(m)) { this.note = `${m.name}は まだ 育成されていない。`; G.Screens.render(); return; }
@@ -138,6 +177,23 @@
         },
         html() {
           const ids = Object.keys(G.state.items);
+          if (this.target && this.qty) {
+            const m = G.state.party[this.tsel];
+            const it = G.Items[this.target];
+            const max = this.maxQty(this.target, m);
+            let after = '';
+            if (it.type === 'exp') after = `Lv${m.level} → Lv${G.Growth.levelAfterExp(m, G.Growth.expItemAmount(m, this.target, this.qty))}（経験値 +${G.Growth.expItemAmount(m, this.target, this.qty)}）`;
+            if (it.type === 'ev') {
+              const I = G.Individual;
+              const add = Math.min(I.evRoom(m, it.stat), (it.gain || G.GrowthConfig.EV_ITEM_GAIN) * this.qty);
+              after = `${I.NAMES[it.stat]}の努力値 ${I.ev(m, it.stat)} → ${I.ev(m, it.stat) + add}（上限 ${G.GrowthConfig.EV_MAX_STAT}）`;
+            }
+            return `<div class="menu-title">${it.name}を いくつ使う？</div>` +
+              `<div class="menu-list">${P().row(m, true, '')}</div>` +
+              `<div class="qty-box"><span class="qty-arrow">◀</span><b class="qty-num">× ${this.qty}</b><span class="qty-arrow">▶</span>` +
+              `<span class="count">持っている数 ${G.state.items[this.target] || 0}　最大 ${max}</span></div>` +
+              `<div class="menu-desc">${esc(after)}</div><div class="menu-hint">←→：1ずつ　↑↓：10ずつ　Z：使う　X：もどる</div>`;
+          }
           if (this.target) {
             return `<div class="menu-title">${G.Items[this.target].name}を だれに使う？</div>` +
               `<div class="menu-list">${G.state.party.map((m, i) => P().row(m, i === this.tsel, m.status ? ` <span class="tag">${G.Battle.STATUS[m.status].short}</span>` : '')).join('')}</div>` +
