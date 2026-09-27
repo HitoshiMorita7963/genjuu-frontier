@@ -19,12 +19,12 @@
   // 公式データの表記 → 内部キー
   G.ElementByName = { 炎: 'fire', 水: 'water', 風: 'wind', 地: 'earth', 雷: 'thunder', 光: 'light', 闇: 'dark', 氷: 'ice', 無: 'none', 草: 'grass' };
 
-  // 相性：ジャンケンのような「めぐり」
-  //   水 → 炎 → 氷 → 地 → 雷 → 風 → 水 …（矢印の先に強い＝2倍、逆向きは弱い＝0.5倍）
-  //   （水は炎を消し、炎は氷をとかし、氷は大地を凍らせ、大地は雷を吸い、雷は風を裂き、風は水を吹き散らす）
-  //   光 ⇄ 闇（おたがいに2倍）。無属性は、どの属性とも等倍
-  //   どの属性も「得意な相手1つ・苦手な相手1つ」になる。無効（0倍）はない
-  G.ElementCycle = ['water', 'fire', 'ice', 'earth', 'thunder', 'wind'];
+  // 相性：ジャンケンのような「めぐり」（設計者の指定）
+  //   水 → 炎 → 風 → 地（土） → 雷 → 水 …（矢印の先に強い＝2倍、逆向きは弱い＝0.5倍）
+  //   光 ⇄ 闇（おたがいに2倍）
+  //   氷・無は、どの属性とも等倍（相性は未定。決まったらここに足す）
+  //   めぐりの属性は「得意な相手1つ・苦手な相手1つ」になる。無効（0倍）はない
+  G.ElementCycle = ['water', 'fire', 'wind', 'earth', 'thunder'];
   G.TypeChart = {};
   G.ElementCycle.forEach((el, i) => {
     const next = G.ElementCycle[(i + 1) % G.ElementCycle.length];
