@@ -108,7 +108,7 @@ for (const m of data.monsters) {
   if (need && !CHECK_ONLY) {
     const st = R.compute({
       rank: m.rank, archetype: m.archetype, signature: R.BY_JP[m.signature], weakness: R.BY_JP[m.weakness],
-      tier: m.tier, fusionOnly: m.obtain !== '野生', jitter: jitterFor(m.id),
+      tier: m.tier, fusionOnly: m.obtain === '配合限定', jitter: jitterFor(m.id),
     });
     m.speciesStats = toJp(st);
     const ev = {};
@@ -142,7 +142,7 @@ for (const m of data.monsters) {
   const st = m.speciesStats;
   if (!st || Object.keys(JP).some((k) => !(st[JP[k]] > 0))) { problems.push(`${m.id} ${m.name}: 種族値が不足`); continue; }
   const total = Object.values(st).reduce((a, b) => a + b, 0);
-  const expect = R.total(m.rank, m.tier, m.obtain !== '野生');
+  const expect = R.total(m.rank, m.tier, m.obtain === '配合限定');
   if (Math.abs(total / expect - 1) > 0.03) problems.push(`${m.id} ${m.name}: 合計 ${total} がルールの目安 ${expect} から3%以上ずれています`);
   sigs.add(Object.values(st).join('/'));
   (byRank[m.rank] = byRank[m.rank] || []).push(total);

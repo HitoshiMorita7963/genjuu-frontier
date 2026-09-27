@@ -252,6 +252,10 @@
         if (m.hp <= 0 || !G.state.party.includes(m)) continue;
         const to = G.Growth.evolutionTarget(m, { place });
         if (to) await G.Growth.evolve(m, to, G.E);
+        else {
+          const hint = G.Growth.branchHint(m, { place });
+          if (hint) await G.E.narrate(hint);
+        }
       }
       return;
     }

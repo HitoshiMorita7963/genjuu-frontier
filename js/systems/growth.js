@@ -68,10 +68,28 @@
     evolutionTarget(m, ctx = {}) {
       const e = G.Species[m.speciesId].evo;
       if (!e) return null;
-      if (e.item) return ctx.item === e.item ? e.to : null;
+      if (e.item) return ctx.item === e.item && !(e.level && m.level < e.level) ? e.to : null;
       if (e.level && m.level < e.level) return null;
       if (e.place && ctx.place !== e.place) return null;
+      if (e.branch) {
+        const b = Gr.branchChoice(m, e);
+        return b ? b.to : null;
+      }
       return e.to;
+    },
+    // 分岐進化：いちばん多く努力値を振った能力（同点が1位なら決まらない）に対応する進化先
+    branchChoice(m, e) {
+      const I = G.Individual;
+      const evs = I.KEYS.map((k) => [k, I.ev(m, k)]).sort((a, b) => b[1] - a[1]);
+      if (!evs[0][1] || evs[0][1] === evs[1][1]) return null;
+      return e.branch.find((b) => b.stat === evs[0][0]) || null;
+    },
+    // 分岐進化のレベルに届いているのに、鍛え方で進化先が決まらないとき：ヒントの文（なければ null）
+    branchHint(m, ctx = {}) {
+      const e = G.Species[m.speciesId].evo;
+      if (!e || !e.branch || (e.level && m.level < e.level) || (e.place && ctx.place !== e.place) || Gr.branchChoice(m, e)) return null;
+      const N = G.Individual.NAMES;
+      return `${m.name}は 進化の力を 秘めているようだ……\n（${e.branch.map((b) => `${N[b.stat]}`).join('か ')}を いちばん多く 鍛えると 進化する）`;
     },
 
     // 進化演出つきで進化させる（フィールドのイベント内から呼ぶ）

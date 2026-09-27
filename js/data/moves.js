@@ -113,6 +113,10 @@
     '星砕き':   M('星砕き',   'none', 'phys', 120, 95, 12, { inherit: false, desc: '【固有技】星をも砕く一撃。' }),
     '全能の波動': M('全能の波動', 'none', 'stat', 0, 100, 10, { target: 'self', inherit: false, eff: { stats: ['atk', 'def', 'spd', 'sat', 'sdf'], stages: 1 }, desc: '【固有技】すべての能力を上げる。' }),
     '創世の息吹': M('創世の息吹', 'none', 'spec', 130, 100, 16, { inherit: false, eff: { drain: 0.25 }, desc: '【固有技】世界を生みだした息吹。与えたダメージの一部を吸収する。' }),
+    // ---- 無属性（追加種族の技。どの属性にも等倍） ----
+    '突進':     M('突進',     'none', 'phys', 45, 100, 2, { desc: '全身でぶつかっていく。' }),
+    '気合いため': M('気合いため', 'none', 'stat', 0, 100, 4, { target: 'self', eff: { stat: 'atk', stages: 2 }, desc: '気合いをためて、攻撃を大きく上げる。' }),
+    '渾身撃':   M('渾身撃',   'none', 'phys', 90, 90, 9, { desc: '力のかぎりを込めた一撃。' }),
 
     yomizaki:   M('黄泉咲き',   'dark', 'spec', 100, 90, 11, { inherit: false, eff: { drain: 0.3 }, desc: '【固有技】黄泉の花を咲かせ、命を吸う。' }),
     getsueizan: M('月影斬',     'dark', 'phys', 110, 95, 12, { inherit: false, desc: '【固有技】月の影より放つ必殺の一太刀。' }),
