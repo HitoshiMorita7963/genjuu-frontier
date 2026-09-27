@@ -159,6 +159,14 @@
     ctx.fillRect(x, y, Math.round(w * r), h);
   }
 
+  // 同じ種族を持っているかのしるし：手持ち・預かり所にいる → 持 ／ いないが前に仲間にした（図鑑の記録）→ 済 ／ それ以外 → なし
+  function ownMark(speciesId) {
+    if (G.Party.all().some((x) => x.speciesId === speciesId)) return { text: '持', bg: '#3aa860', edge: '#a8f0b8', fg: '#ffffff' };
+    const d = G.state.dex[speciesId];
+    if (d && d.owned) return { text: '済', bg: '#4a5a80', edge: '#a8b8e0', fg: '#e8ecff' };
+    return null;
+  }
+
   function infoBox(ctx, b, side, x, y, w, detailed) {
     const m = b.sides[side].mon;
     if (!m) return;
@@ -168,15 +176,27 @@
     ctx.fillStyle = 'rgba(20,22,44,0.9)'; ctx.fillRect(x, y, w, h);
     const boss = side === 'enemy' && b.trainer && b.trainer.boss;
     ctx.strokeStyle = boss ? '#f06070' : '#e9e4d4'; ctx.lineWidth = 2; ctx.strokeRect(x + 1, y + 1, w - 2, h - 2);
-    ctx.textBaseline = 'top'; ctx.textAlign = 'left';
-    ctx.font = `14px ${FONT}`; ctx.fillStyle = '#ffffff';
-    ctx.fillText(m.name, x + 8, y + 6);
-    ctx.textAlign = 'right'; ctx.font = `12px ${FONT}`; ctx.fillStyle = '#ffd35a';
+    ctx.textBaseline = 'top'; ctx.textAlign = 'right'; ctx.font = `12px ${FONT}`; ctx.fillStyle = '#ffd35a';
     ctx.fillText(`Lv${m.level}`, x + w - 8, y + 8);
-    // 属性のしるし（複合タイプは2つ並べる）
+    const lvW = ctx.measureText(`Lv${m.level}`).width;
     const els = G.elementsOf(G.Species[m.speciesId]).map((k) => G.Elements[k]);
+    // 相手の幻獣：同じ種族を持っているか（持＝手持ちか預かり所にいる／済＝前に仲間にしたことがある）。Lvの左に出す
+    const own = side === 'enemy' ? ownMark(m.speciesId) : null;
+    const markX = x + w - 12 - lvW - 16;
+    if (own) {
+      ctx.fillStyle = own.bg; ctx.fillRect(markX, y + 7, 16, 14);
+      ctx.strokeStyle = own.edge; ctx.lineWidth = 1; ctx.strokeRect(markX + 0.5, y + 7.5, 15, 13);
+      ctx.textAlign = 'center'; ctx.font = `11px ${FONT}`; ctx.fillStyle = own.fg; ctx.fillText(own.text, markX + 8, y + 9);
+    }
+    // 名前：Lv・しるしと重なるときは、小さい字にする
     ctx.textAlign = 'left';
-    ctx.font = `14px ${FONT}`;
+    const room = (own ? markX : x + w - 12 - lvW) - 4 - (x + 12) - els.length * 20 - (m.status ? 30 : 0);
+    let nameSize = 14;
+    ctx.font = `${nameSize}px ${FONT}`;
+    while (nameSize > 10 && ctx.measureText(m.name).width > room) ctx.font = `${--nameSize}px ${FONT}`;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(m.name, x + 8, y + 6 + (14 - nameSize) / 2);
+    // 属性のしるし（複合タイプは2つ並べる）
     const nw = ctx.measureText(m.name).width;
     ctx.font = `11px ${FONT}`;
     els.forEach((el, i) => {
