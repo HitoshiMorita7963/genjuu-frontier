@@ -2,7 +2,7 @@
 //   ・結果は親の種族IDの組み合わせで固定（選ぶ順番は問わない）
 //     公式レシピがあればその子、無ければ汎用ルール（js/data/fusionRules.js：系統とランク）で決まる
 //   ・子の能力は子の種族データから計算し、親の能力値はコピーしない
-//   ・技：子の初期技に加え、親の習得済み技から最大2つを継承（装備は最大4つ）
+//   ・技：子の初期技に加え、親の習得済み技から最大2つを継承（装備はランクで 4〜6つ）
 //   ・特性：固有特性は必ず持ち、親由来の追加特性は最大1つ
 //   ・個体値：親A・親Bから2能力ずつ継承（高い個体値ほど選ばれやすい）、残りはランダム（js/systems/individual.js）
 //   ・努力値：引き継がない（子は0から育て直す。完成個体のコピーを防ぐ）
@@ -119,26 +119,40 @@
       return out;
     },
     // 誕生後に子の技を選びなおす（配合の館の「技を選ぶ」）
-    //   選べるのは、親から受け継げる技（最大 INHERIT_MAX）と、子が今のレベルまでに覚える技。合わせて1〜4つ
+    //   選べるのは、親から受け継げる技（最大 INHERIT_MAX）と、子が今のレベルまでに覚える技。合わせて1〜持てる数（ランクで 4〜6つ）
     //   親の技でも、子が自分で覚える技なら「子の技」として数える（受け継ぎの枠を使わない）
     childOwnMoves(child) { return G.Monster.learnedUpTo(G.Species[child.speciesId], child.level); },
-    setChildMoves(child, picks, parentMoves) {
+    //   受け継いだ技は、親のときの強化段階（+1 など）のまま
+    setChildMoves(child, picks, parentMoves, parentStages = {}) {
       const own = F.childOwnMoves(child);
       const moves = [];
       for (const id of picks) if (!moves.includes(id) && (own.includes(id) || parentMoves.includes(id))) moves.push(id);
       const inherited = moves.filter((id) => !own.includes(id));
-      if (!moves.length || moves.length > G.Monster.MAX_MOVES || inherited.length > INHERIT_MAX) return false;
+      if (!moves.length || moves.length > G.Monster.maxMoves(child.speciesId) || inherited.length > INHERIT_MAX) return false;
       child.moves = moves;
       child.inheritedMoves = inherited;
+      F.pinChildMoves(child, parentStages);
       G.Lineage.record(child);
       return true;
     },
+    // 子の技の強化段階：自分で覚える技は種族が覚えるレベルから、受け継いだ技は親の段階のまま
+    pinChildMoves(child, parentStages) {
+      child.moveLv = null;
+      G.MoveStage.pin(child);
+      for (const id of child.inheritedMoves) G.MoveStage.setStage(child, id, parentStages[id] || 1);
+    },
+    // 親の技の強化段階（両親とも持っていれば高い方）
+    parentStages(a, b) {
+      const out = {};
+      for (const p of [a, b]) for (const id of p.moves) out[id] = Math.max(out[id] || 1, G.MoveStage.stage(p, id));
+      return out;
+    },
 
-    // 子の装備技：継承技（最大2）→ 子の初期技 の順で最大4つ
+    // 子の装備技：継承技（最大2）→ 子の初期技 の順で、持てる数まで
     childMoves(speciesId, level, inherited) {
       const own = G.Monster.movesAtLevel(G.Species[speciesId], level);
       const moves = inherited.slice(0, INHERIT_MAX);
-      for (const id of own) if (moves.length < G.Monster.MAX_MOVES && !moves.includes(id)) moves.push(id);
+      for (const id of own) if (moves.length < G.Monster.maxMoves(speciesId) && !moves.includes(id)) moves.push(id);
       return moves;
     },
 
@@ -187,6 +201,8 @@
           how: 'fusion',
           where: '配合の館',
         });
+        const parentStages = F.parentStages(a, b);
+        F.pinChildMoves(child, parentStages);
 
         // --- 3) 系譜に親を記録 → 親を消費 → 子を配置 ---
         G.Lineage.record(a);
@@ -205,7 +221,7 @@
 
         const ri = G.rankIndex(G.Species[child.speciesId].rank);
         const tier = res.kind === 'rule' ? 'rule' : ri >= 7 ? 'super' : ri >= 5 ? 'rare' : 'recipe';
-        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, parentMoves: allowed, gift, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
+        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, parentMoves: allowed, parentStages, gift, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
       } catch (e) {
         // --- 失敗：親だけ消えた状態にならないよう、すべて元に戻す ---
         s.party.splice(0, s.party.length, ...backup.party);

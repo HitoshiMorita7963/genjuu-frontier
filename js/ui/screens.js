@@ -176,9 +176,10 @@
         .map((k) => `<tr><th>${G.Monster.STAT_NAMES[k]}</th><td>${st[k]}</td></tr>`).join('');
       const inh = m.inheritedMoves || [];
       const moves = m.moves.map((id) => {
-        const mv = G.Moves[id];
+        const mv = G.MoveStage.of(m, id); // 強化（+1 など）を反映
         const cat = { phys: '物理', spec: '特殊', stat: '補助' }[mv.cat];
-        return `<tr><td>${P.el(mv.el)}${esc(mv.name)}${mv.inherit ? '' : ' <span class="sig">固有</span>'}${inh.includes(id) ? ' <span class="tag">継承</span>' : ''}</td>` +
+        const next = mv.stage < mv.maxStage ? `<small class="muted">（次の強化 Lv${G.MoveStage.learnedAt(m, id) + mv.stage * G.MoveStage.STEP}）</small>` : '';
+        return `<tr><td>${P.el(mv.el)}${esc(G.MoveStage.label(m, id))}${next}${mv.inherit ? '' : ' <span class="sig">固有</span>'}${inh.includes(id) ? ' <span class="tag">継承</span>' : ''}</td>` +
           `<td>${cat}</td><td>${mv.pow || '-'}</td><td>${mv.acc}</td><td>${mv.mp}</td></tr>`;
       }).join('');
       const traits = G.traitsOf(m).map((t) =>

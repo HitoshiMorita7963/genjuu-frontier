@@ -61,7 +61,7 @@
             r();
           }
         } else if (this.step === 'moves') {
-          // 誕生した子の技を選ぶ：子が覚える技と、親から受け継げる技を合わせて最大4つ
+          // 誕生した子の技を選ぶ：子が覚える技と、親から受け継げる技を合わせて、持てる数まで
           const pool = this.movePool();
           const n = pool.length + 1; // 最後の行 = 決定
           if (In.consume('up')) { this.isel = (this.isel - 1 + n) % n; this.note = ''; r(); }
@@ -73,7 +73,7 @@
               const i = this.picks.indexOf(id);
               this.note = '';
               if (i >= 0) this.picks.splice(i, 1);
-              else if (this.picks.length >= G.Monster.MAX_MOVES) this.note = `技は${G.Monster.MAX_MOVES}つまでです。どれかを外してください。`;
+              else if (this.picks.length >= G.Monster.maxMoves(this.result.child.speciesId)) this.note = `技は${G.Monster.maxMoves(this.result.child.speciesId)}つまでです。どれかを外してください。`;
               else if (parent && this.parentPicks() >= G.Fusion.INHERIT_MAX) this.note = `親から受け継げる技は${G.Fusion.INHERIT_MAX}つまでです。`;
               else this.picks.push(id);
               r();
@@ -82,7 +82,7 @@
             if (!this.picks.length) { this.note = '技を1つ以上選んでください。'; r(); return; }
             // 選んだ順ではなく、一覧の順（子の技 → 親の技）に並べる
             const order = pool.map((x) => x.id).filter((id) => this.picks.includes(id));
-            if (G.Fusion.setChildMoves(this.result.child, order, this.result.parentMoves)) {
+            if (G.Fusion.setChildMoves(this.result.child, order, this.result.parentMoves, this.result.parentStages)) {
               this.result.inheritedMoves = this.result.child.inheritedMoves;
               this.step = 'done';
               this.note = '';
@@ -180,15 +180,17 @@
           const pool = this.movePool();
           const c = this.result.child;
           const row = ({ id, parent }, i) => {
-            const mv = G.Moves[id];
+            // 強化段階：子の技は子のレベルで、親の技は親の段階のまま
+            const st = parent ? (this.result.parentStages[id] || 1) : G.MoveStage.stage(c, id);
+            const mv = Object.assign(G.MoveStage.of(null, id), st > 1 ? { pow: G.Moves[id].pow ? Math.round(G.Moves[id].pow * G.MoveStage.MUL[st - 1]) : 0 } : {});
             const on = this.picks.includes(id);
             return `<div class="menu-row${i === this.isel ? ' sel' : ''}"><span class="cursor">${i === this.isel ? '▶' : ''}</span>` +
-              `<span class="check">${on ? '■' : '□'}</span>${P().el(mv.el)}${esc(mv.name)}${parent ? '<span class="tag">親</span>' : ''}` +
+              `<span class="check">${on ? '■' : '□'}</span>${P().el(mv.el)}${esc(mv.name)}${st > 1 ? `+${st - 1}` : ''}${parent ? '<span class="tag">親</span>' : ''}` +
               `<span class="count">${mv.cat === 'stat' ? '補助' : `威力${mv.pow}`} MP${mv.mp}</span></div>`;
           };
           const ownN = pool.filter((x) => !x.parent).length;
           left = `<div class="fz-born">${esc(G.Species[c.speciesId].name)}が 誕生した！</div>` +
-            `<div class="fz-prompt">最初に覚えている技を選んでください（${this.picks.length}/${G.Monster.MAX_MOVES}　親の技 ${this.parentPicks()}/${G.Fusion.INHERIT_MAX}）</div>` +
+            `<div class="fz-prompt">最初に覚えている技を選んでください（${this.picks.length}/${G.Monster.maxMoves(this.result.child.speciesId)}　親の技 ${this.parentPicks()}/${G.Fusion.INHERIT_MAX}）</div>` +
             '<div class="small muted">― 子が覚える技 ―</div>' + pool.slice(0, ownN).map((x, i) => row(x, i)).join('') +
             (pool.length > ownN ? '<div class="small muted">― 親から受け継ぐ技 ―</div>' + pool.slice(ownN).map((x, i) => row(x, ownN + i)).join('') : '') +
             `<div class="menu-row${this.isel === pool.length ? ' sel' : ''}"><span class="cursor">${this.isel === pool.length ? '▶' : ''}</span><b>この技に 決める</b></div>` +
