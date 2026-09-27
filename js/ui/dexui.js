@@ -22,7 +22,7 @@
       filter: 'all', // all | owned | fused
       list() {
         const d = G.state.dex;
-        return G.SpeciesOrder.filter((id) => {
+        return G.DexOrder.filter((id) => {
           if (this.filter === 'owned') return d[id] && d[id].owned;
           if (this.filter === 'fused') return d[id] && d[id].fused;
           return true;
@@ -45,13 +45,13 @@
       },
       html() {
         const d = G.state.dex;
-        const all = G.SpeciesOrder;
+        const all = G.DexOrder;
         const seen = all.filter((id) => d[id]).length;
         const owned = all.filter((id) => d[id] && d[id].owned).length;
         const list = this.list();
         const rows = list.length ? list.map((id, i) => {
           const e = d[id];
-          const no = String(all.indexOf(id) + 1).padStart(3, '0');
+          const no = String(G.Species[id].no).padStart(3, '0');
           const name = e ? G.Species[id].name : '？？？？';
           const icon = e
             ? `<img class="mon-img icon" src="${e.owned ? G.MonsterGfx.dataURL(id) : G.MonsterGfx.silhouetteURL(id)}" alt="">`
@@ -65,7 +65,7 @@
         if (id) {
           const e = d[id];
           const sp = G.Species[id];
-          const no = String(all.indexOf(id) + 1).padStart(3, '0');
+          const no = String(G.Species[id].no).padStart(3, '0');
           if (!e) {
             detail = `<div class="dex-detail-empty"><div class="dex-unknown big">?</div><div>No.${no}　？？？？</div>` +
               '<div class="small">まだ見たことのない幻獣だ。</div></div>';

@@ -32,6 +32,8 @@ HTML / CSS / JavaScript のみで作られており、外部ライブラリは�
 - 種族値：JSON の `speciesStats`（型・看板能力・苦手な能力・格から `node tools/species-stats.js` で計算。手で微調整してよい）
   - 作り方のルール（型の配分・ランクごとの合計値）：`js/data/statRules.js`
   - 一覧：`docs/種族一覧.md`（`node tools/species-doc.js` で再生成）
+- 図鑑番号：JSON の `dexNo`。進化した姿は進化前のすぐ後ろの番号（種族IDは内部用で変えない）
+  - 進化や種族を追加したら `node tools/dex-order.js` で振りなおす（`--check` で確認だけ）
 - 技候補：型に合わせて `node tools/species-moves.js` で決める（物理の型は物理技、特殊の型は特殊技 など）
 - 進化：`js/data/evolutions.js`（多段階・分岐進化も1行ずつ追加できる）
 - 配合表（開発用・答えが全部見える）：`docs/配合表.md`（`node tools/fusion-doc.js` で再生成）

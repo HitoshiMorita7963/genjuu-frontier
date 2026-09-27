@@ -41,13 +41,13 @@ for (const rank of RANKS) {
   if (!list.length) continue;
   lines.push(`## ${rank}ランク（${list.length}種）`);
   lines.push('');
-  lines.push('| ID | 名前 | 系統 | 属性 | 入手 | 型 | 看板 | 苦手 | 格 | ' + K.join(' | ') + ' | 合計 | 努力値 | 技候補 |');
-  lines.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | ' + K.map(() => '---:').join(' | ') + ' | ---: | --- | --- |');
+  lines.push('| ID | 図鑑 | 名前 | 系統 | 属性 | 入手 | 型 | 看板 | 苦手 | 格 | ' + K.join(' | ') + ' | 合計 | 努力値 | 技候補 |');
+  lines.push('| --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- | ' + K.map(() => '---:').join(' | ') + ' | ---: | --- | --- |');
   for (const m of list) {
     const st = m.speciesStats || {};
     const total = K.reduce((a, k) => a + (st[k] || 0), 0);
     const ev = Object.entries(m.evYield || {}).map(([k, v]) => `${k}+${v}`).join(' ');
-    lines.push(`| ${m.id} | ${m.name} | ${m.family} | ${m.element}${m.element2 ? '・' + m.element2 : ''} | ${m.obtain} | ${m.archetype} | ${m.signature} | ${m.weakness} | ${m.tier} | ` +
+    lines.push(`| ${m.id} | ${m.dexNo || ''} | ${m.name} | ${m.family} | ${m.element}${m.element2 ? '・' + m.element2 : ''} | ${m.obtain} | ${m.archetype} | ${m.signature} | ${m.weakness} | ${m.tier} | ` +
       K.map((k) => st[k]).join(' | ') + ` | ${total} | ${ev} | ${(m.initialMoveCandidates || []).map(moveName).join('・')} |`);
   }
   lines.push('');

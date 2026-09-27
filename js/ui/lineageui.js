@@ -11,7 +11,7 @@
     return `<div class="lg-card${isRoot ? ' root' : ''}">` +
       `<img class="mon-img lg-img" src="${G.MonsterGfx.dataURL(node.speciesId)}" alt="">` +
       `<div class="lg-text"><div class="lg-name">${esc(node.name)}</div>` +
-      `<div class="lg-sub">No.${sp ? sp.id : '---'} ${sp ? sp.rank : ''}　Lv${node.level}</div>` +
+      `<div class="lg-sub">${sp ? G.dexNoLabel(sp.id) : 'No.---'} ${sp ? sp.rank : ''}　Lv${node.level}</div>` +
       `<div class="lg-sub">世代${node.generation}${how ? '・' + how : ''}</div></div></div>`;
   }
 

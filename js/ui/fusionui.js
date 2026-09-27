@@ -105,7 +105,7 @@
         if (!m) return `<div class="fz-slot empty"><div class="fz-label">${label}</div><div class="fz-q">―</div></div>`;
         const sp = G.Species[m.speciesId];
         return `<div class="fz-slot"><div class="fz-label">${label}</div>${P().img(m.speciesId, 'mid')}` +
-          `<div><div><small>No.${sp.id}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>${P().speciesHead(sp)}` +
+          `<div><div><small>${G.dexNoLabel(sp.id)}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>${P().speciesHead(sp)}` +
           `<div class="small">世代${m.generation}　配合値${m.fusionBonus || 0}</div></div></div>`;
       },
 
@@ -114,7 +114,7 @@
           const c = this.result.child;
           const sp = G.Species[c.speciesId];
           return `<div class="fz-slot child born"><div class="fz-label">誕生した幻獣</div>${P().img(c.speciesId, 'mid')}` +
-            `<div><div><small>No.${sp.id}</small> ${esc(c.name)} <small>Lv${c.level}</small></div>${P().speciesHead(sp)}` +
+            `<div><div><small>${G.dexNoLabel(sp.id)}</small> ${esc(c.name)} <small>Lv${c.level}</small></div>${P().speciesHead(sp)}` +
             `<div class="small">世代${c.generation}　配合値${c.fusionBonus || 0}</div></div></div>`;
         }
         const cls = this.step === 'anim' ? ' glowing' : '';

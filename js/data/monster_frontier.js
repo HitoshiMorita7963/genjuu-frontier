@@ -4,7 +4,7 @@
 window.Game = window.Game || {};
 window.Game.RawMonsterData = {
  "title": "モンスターフロンティア",
- "version": "2.5",
+ "version": "3.0",
  "rules": {
   "partyLimit": 6,
   "maxEquippedMoves": 4,
@@ -13,6 +13,7 @@ window.Game.RawMonsterData = {
  "monsters": [
   {
    "id": "001",
+   "dexNo": 1,
    "name": "ヒノコロ",
    "family": "獣",
    "element": "炎",
@@ -57,6 +58,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "002",
+   "dexNo": 5,
    "name": "ミズリス",
    "family": "獣",
    "element": "水",
@@ -101,6 +103,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "003",
+   "dexNo": 9,
    "name": "カゼネコ",
    "family": "獣",
    "element": "風",
@@ -145,6 +148,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "004",
+   "dexNo": 14,
    "name": "ツチモグラ",
    "family": "獣",
    "element": "地",
@@ -189,6 +193,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "005",
+   "dexNo": 19,
    "name": "ライポン",
    "family": "獣",
    "element": "雷",
@@ -233,6 +238,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "006",
+   "dexNo": 23,
    "name": "ハネピヨ",
    "family": "鳥",
    "element": "風",
@@ -277,6 +283,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "007",
+   "dexNo": 27,
    "name": "アカツバメ",
    "family": "鳥",
    "element": "炎",
@@ -321,6 +328,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "008",
+   "dexNo": 31,
    "name": "ミズカモ",
    "family": "鳥",
    "element": "水",
@@ -365,6 +373,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "009",
+   "dexNo": 35,
    "name": "コモリバナ",
    "family": "植物",
    "element": "地",
@@ -409,6 +418,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "010",
+   "dexNo": 39,
    "name": "ヒカリソウ",
    "family": "植物",
    "element": "光",
@@ -453,6 +463,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "011",
+   "dexNo": 44,
    "name": "ミズタマリ",
    "family": "水棲",
    "element": "水",
@@ -497,6 +508,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "012",
+   "dexNo": 47,
    "name": "イワガメ",
    "family": "水棲",
    "element": "地",
@@ -541,6 +553,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "013",
+   "dexNo": 51,
    "name": "ビリクラゲ",
    "family": "水棲",
    "element": "雷",
@@ -585,6 +598,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "014",
+   "dexNo": 55,
    "name": "ハネムシ",
    "family": "虫",
    "element": "風",
@@ -629,6 +643,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "015",
+   "dexNo": 59,
    "name": "ヒノムシ",
    "family": "虫",
    "element": "炎",
@@ -673,6 +688,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "016",
+   "dexNo": 63,
    "name": "ツノムシ",
    "family": "虫",
    "element": "地",
@@ -717,6 +733,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "017",
+   "dexNo": 65,
    "name": "ヤミコウモリ",
    "family": "魔獣",
    "element": "闇",
@@ -761,6 +778,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "018",
+   "dexNo": 68,
    "name": "ヨルネコ",
    "family": "魔獣",
    "element": "闇",
@@ -805,6 +823,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "019",
+   "dexNo": 70,
    "name": "コダマ",
    "family": "精霊",
    "element": "光",
@@ -849,6 +868,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "020",
+   "dexNo": 72,
    "name": "スナタマ",
    "family": "精霊",
    "element": "地",
@@ -893,6 +913,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "021",
+   "dexNo": 76,
    "name": "ホムラネコ",
    "family": "獣",
    "element": "炎",
@@ -945,6 +966,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "022",
+   "dexNo": 77,
    "name": "ヌマモグラ",
    "family": "獣",
    "element": "水",
@@ -997,6 +1019,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "023",
+   "dexNo": 78,
    "name": "ライガネコ",
    "family": "獣",
    "element": "雷",
@@ -1049,6 +1072,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "024",
+   "dexNo": 79,
    "name": "ヒバネドリ",
    "family": "鳥",
    "element": "炎",
@@ -1101,6 +1125,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "025",
+   "dexNo": 80,
    "name": "アオツバサ",
    "family": "鳥",
    "element": "水",
@@ -1153,6 +1178,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "026",
+   "dexNo": 81,
    "name": "ヒカリバナ",
    "family": "植物",
    "element": "光",
@@ -1204,6 +1230,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "027",
+   "dexNo": 82,
    "name": "ホノオツタ",
    "family": "植物",
    "element": "炎",
@@ -1255,6 +1282,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "028",
+   "dexNo": 83,
    "name": "デンキクラゲ",
    "family": "水棲",
    "element": "雷",
@@ -1307,6 +1335,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "029",
+   "dexNo": 84,
    "name": "イシガメ",
    "family": "水棲",
    "element": "地",
@@ -1359,6 +1388,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "030",
+   "dexNo": 85,
    "name": "ツノバチ",
    "family": "虫",
    "element": "風",
@@ -1410,6 +1440,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "031",
+   "dexNo": 86,
    "name": "ホノオガ",
    "family": "虫",
    "element": "炎",
@@ -1462,6 +1493,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "032",
+   "dexNo": 87,
    "name": "ヤミネコウモリ",
    "family": "魔獣",
    "element": "闇",
@@ -1513,6 +1545,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "033",
+   "dexNo": 88,
    "name": "モリノタマ",
    "family": "精霊",
    "element": "光",
@@ -1564,6 +1597,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "034",
+   "dexNo": 90,
    "name": "フレアフェザー",
    "family": "鳥",
    "element": "炎",
@@ -1615,6 +1649,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "035",
+   "dexNo": 91,
    "name": "ヌマガメ",
    "family": "水棲",
    "element": "水",
@@ -1667,6 +1702,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "036",
+   "dexNo": 92,
    "name": "ライジンネコ",
    "family": "魔獣",
    "element": "雷",
@@ -1718,6 +1754,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "037",
+   "dexNo": 93,
    "name": "セイクリッドフラワー",
    "family": "植物",
    "element": "光",
@@ -1769,6 +1806,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "038",
+   "dexNo": 94,
    "name": "カエンビー",
    "family": "虫",
    "element": "炎",
@@ -1820,6 +1858,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "039",
+   "dexNo": 95,
    "name": "ヨルサソリ",
    "family": "虫",
    "element": "闇",
@@ -1872,6 +1911,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "040",
+   "dexNo": 96,
    "name": "フェニクス",
    "family": "鳥",
    "element": "炎",
@@ -1924,6 +1964,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "041",
+   "dexNo": 3,
    "name": "フレイムウルフ",
    "family": "獣",
    "element": "炎",
@@ -1968,6 +2009,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "042",
+   "dexNo": 7,
    "name": "アクアウルフ",
    "family": "獣",
    "element": "水",
@@ -2012,6 +2054,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "043",
+   "dexNo": 21,
    "name": "ライガーハウンド",
    "family": "獣",
    "element": "雷",
@@ -2056,6 +2099,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "044",
+   "dexNo": 25,
    "name": "ストームホーク",
    "family": "鳥",
    "element": "風",
@@ -2100,6 +2144,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "045",
+   "dexNo": 29,
    "name": "ブレイズホーク",
    "family": "鳥",
    "element": "炎",
@@ -2144,6 +2189,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "046",
+   "dexNo": 33,
    "name": "アクアフェザー",
    "family": "鳥",
    "element": "水",
@@ -2188,6 +2234,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "047",
+   "dexNo": 37,
    "name": "ドライアド",
    "family": "植物",
    "element": "地",
@@ -2232,6 +2279,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "048",
+   "dexNo": 71,
    "name": "フローラルフェアリー",
    "family": "精霊",
    "element": "光",
@@ -2276,6 +2324,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "049",
+   "dexNo": 97,
    "name": "サンダーリーフ",
    "family": "植物",
    "element": "雷",
@@ -2327,6 +2376,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "050",
+   "dexNo": 98,
    "name": "アビスフィッシュ",
    "family": "水棲",
    "element": "闇",
@@ -2379,6 +2429,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "051",
+   "dexNo": 53,
    "name": "サンダーシャーク",
    "family": "水棲",
    "element": "雷",
@@ -2424,6 +2475,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "052",
+   "dexNo": 49,
    "name": "ロックタートル",
    "family": "水棲",
    "element": "地",
@@ -2469,6 +2521,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "053",
+   "dexNo": 57,
    "name": "スカイビートル",
    "family": "虫",
    "element": "風",
@@ -2513,6 +2566,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "054",
+   "dexNo": 61,
    "name": "インフェルノビー",
    "family": "虫",
    "element": "炎",
@@ -2557,6 +2611,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "055",
+   "dexNo": 64,
    "name": "ダークホーネット",
    "family": "虫",
    "element": "闇",
@@ -2601,6 +2656,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "056",
+   "dexNo": 69,
    "name": "デビルキャット",
    "family": "魔獣",
    "element": "闇",
@@ -2645,6 +2701,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "057",
+   "dexNo": 99,
    "name": "ライトウルフ",
    "family": "魔獣",
    "element": "光",
@@ -2696,6 +2753,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "058",
+   "dexNo": 89,
    "name": "ウィンドスピリット",
    "family": "精霊",
    "element": "風",
@@ -2740,6 +2798,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "059",
+   "dexNo": 74,
    "name": "アーススピリット",
    "family": "精霊",
    "element": "地",
@@ -2784,6 +2843,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "060",
+   "dexNo": 100,
    "name": "サンダースピリット",
    "family": "精霊",
    "element": "雷",
@@ -2835,6 +2895,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "061",
+   "dexNo": 101,
    "name": "フェンリル",
    "family": "獣",
    "element": "氷",
@@ -2886,6 +2947,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "062",
+   "dexNo": 102,
    "name": "雷獣ライガ",
    "family": "獣",
    "element": "雷",
@@ -2937,6 +2999,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "063",
+   "dexNo": 103,
    "name": "天空鳥ガルーダ",
    "family": "鳥",
    "element": "風",
@@ -2988,6 +3051,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "064",
+   "dexNo": 104,
    "name": "炎翼鳥イグニス",
    "family": "鳥",
    "element": "炎",
@@ -3039,6 +3103,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "065",
+   "dexNo": 105,
    "name": "世界樹の妖精",
    "family": "精霊",
    "element": "光",
@@ -3090,6 +3155,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "066",
+   "dexNo": 106,
    "name": "雷樹獣",
    "family": "魔獣",
    "element": "雷",
@@ -3141,6 +3207,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "067",
+   "dexNo": 107,
    "name": "深淵鮫",
    "family": "水棲",
    "element": "闇",
@@ -3193,6 +3260,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "068",
+   "dexNo": 108,
    "name": "大地亀王",
    "family": "水棲",
    "element": "地",
@@ -3244,6 +3312,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "069",
+   "dexNo": 109,
    "name": "天空甲虫",
    "family": "虫",
    "element": "雷",
@@ -3296,6 +3365,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "070",
+   "dexNo": 110,
    "name": "炎獄蜂",
    "family": "虫",
    "element": "炎",
@@ -3348,6 +3418,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "071",
+   "dexNo": 111,
    "name": "魔獣王ケルベロス",
    "family": "魔獣",
    "element": "闇",
@@ -3400,6 +3471,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "072",
+   "dexNo": 112,
    "name": "光狼セレス",
    "family": "魔獣",
    "element": "光",
@@ -3452,6 +3524,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "073",
+   "dexNo": 113,
    "name": "風神スピリオン",
    "family": "精霊",
    "element": "嵐",
@@ -3504,6 +3577,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "074",
+   "dexNo": 114,
    "name": "大地神ガイア",
    "family": "精霊",
    "element": "晶",
@@ -3556,6 +3630,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "075",
+   "dexNo": 115,
    "name": "雷神ヴォルト",
    "family": "精霊",
    "element": "霆",
@@ -3608,6 +3683,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "076",
+   "dexNo": 116,
    "name": "炎帝フェニクス",
    "family": "鳥",
    "element": "焔",
@@ -3660,6 +3736,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "077",
+   "dexNo": 117,
    "name": "深海龍リヴァル",
    "family": "竜",
    "element": "水",
@@ -3712,6 +3789,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "078",
+   "dexNo": 118,
    "name": "森羅獣ユグドラ",
    "family": "精霊",
    "element": "地",
@@ -3765,6 +3843,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "079",
+   "dexNo": 119,
    "name": "雷帝獣ゼノライガ",
    "family": "獣",
    "element": "霆",
@@ -3817,6 +3896,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "080",
+   "dexNo": 120,
    "name": "暗黒魔獣バルガス",
    "family": "魔獣",
    "element": "闇",
@@ -3869,6 +3949,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "081",
+   "dexNo": 121,
    "name": "聖獣セラフィム",
    "family": "獣",
    "element": "聖",
@@ -3922,6 +4003,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "082",
+   "dexNo": 122,
    "name": "天空竜アストラ",
    "family": "竜",
    "element": "嵐",
@@ -3974,6 +4056,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "083",
+   "dexNo": 123,
    "name": "地帝巨獣グラン",
    "family": "魔獣",
    "element": "晶",
@@ -4026,6 +4109,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "084",
+   "dexNo": 124,
    "name": "雷光竜ゼノス",
    "family": "竜",
    "element": "雷",
@@ -4079,6 +4163,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "085",
+   "dexNo": 125,
    "name": "黒翼竜ノクス",
    "family": "竜",
    "element": "闇",
@@ -4132,6 +4217,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "086",
+   "dexNo": 126,
    "name": "炎天竜イグナード",
    "family": "竜",
    "element": "焔",
@@ -4184,6 +4270,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "087",
+   "dexNo": 127,
    "name": "海皇龍ネプティア",
    "family": "竜",
    "element": "水",
@@ -4235,6 +4322,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "088",
+   "dexNo": 128,
    "name": "世界樹竜ユグドラシル",
    "family": "竜",
    "element": "光",
@@ -4287,6 +4375,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "089",
+   "dexNo": 129,
    "name": "雷獄竜ヴァルゼオン",
    "family": "竜",
    "element": "雷",
@@ -4339,6 +4428,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "090",
+   "dexNo": 130,
    "name": "終魔獣アビス",
    "family": "魔獣",
    "element": "冥",
@@ -4390,6 +4480,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "091",
+   "dexNo": 131,
    "name": "炎神竜アグニア",
    "family": "竜",
    "element": "焔",
@@ -4441,6 +4532,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "092",
+   "dexNo": 132,
    "name": "海神竜ポセイディア",
    "family": "竜",
    "element": "水",
@@ -4492,6 +4584,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "093",
+   "dexNo": 133,
    "name": "雷神竜ゼウレウス",
    "family": "竜",
    "element": "霆",
@@ -4543,6 +4636,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "094",
+   "dexNo": 134,
    "name": "闇神竜ネメシス",
    "family": "竜",
    "element": "冥",
@@ -4594,6 +4688,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "095",
+   "dexNo": 135,
    "name": "天界獣セレスティア",
    "family": "精霊",
    "element": "聖",
@@ -4645,6 +4740,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "096",
+   "dexNo": 136,
    "name": "深淵王アビスロード",
    "family": "魔獣",
    "element": "冥",
@@ -4696,6 +4792,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "097",
+   "dexNo": 137,
    "name": "天空神龍オルフェウス",
    "family": "竜",
    "element": "光",
@@ -4748,6 +4845,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "098",
+   "dexNo": 138,
    "name": "混沌竜カオス",
    "family": "竜",
    "element": "闇",
@@ -4800,6 +4898,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "099",
+   "dexNo": 139,
    "name": "神獣エターナル",
    "family": "精霊",
    "element": "聖",
@@ -4851,6 +4950,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "100",
+   "dexNo": 140,
    "name": "創世竜アーク",
    "family": "竜",
    "element": "無",
@@ -4902,6 +5002,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "101",
+   "dexNo": 2,
    "name": "カエンコロ",
    "family": "獣",
    "element": "炎",
@@ -4946,6 +5047,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "102",
+   "dexNo": 6,
    "name": "ナミリス",
    "family": "獣",
    "element": "水",
@@ -4990,6 +5092,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "103",
+   "dexNo": 20,
    "name": "ライキバ",
    "family": "獣",
    "element": "雷",
@@ -5034,6 +5137,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "104",
+   "dexNo": 24,
    "name": "カゼハネ",
    "family": "鳥",
    "element": "風",
@@ -5078,6 +5182,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "105",
+   "dexNo": 28,
    "name": "ヒエンツバメ",
    "family": "鳥",
    "element": "炎",
@@ -5122,6 +5227,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "106",
+   "dexNo": 32,
    "name": "ナミカモ",
    "family": "鳥",
    "element": "水",
@@ -5166,6 +5272,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "107",
+   "dexNo": 36,
    "name": "イワネバナ",
    "family": "植物",
    "element": "地",
@@ -5210,6 +5317,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "108",
+   "dexNo": 48,
    "name": "コケガメ",
    "family": "水棲",
    "element": "地",
@@ -5255,6 +5363,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "109",
+   "dexNo": 56,
    "name": "カゼカブト",
    "family": "虫",
    "element": "風",
@@ -5299,6 +5408,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "110",
+   "dexNo": 60,
    "name": "ヒノコバチ",
    "family": "虫",
    "element": "炎",
@@ -5343,6 +5453,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "111",
+   "dexNo": 52,
    "name": "ビリザメ",
    "family": "水棲",
    "element": "雷",
@@ -5388,6 +5499,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "112",
+   "dexNo": 73,
    "name": "ツチダマ",
    "family": "精霊",
    "element": "地",
@@ -5432,6 +5544,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "113",
+   "dexNo": 10,
    "name": "ハヤテネコ",
    "family": "獣",
    "element": "風",
@@ -5482,6 +5595,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "114",
+   "dexNo": 12,
    "name": "ツムジネコ",
    "family": "獣",
    "element": "風",
@@ -5533,6 +5647,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "115",
+   "dexNo": 15,
    "name": "ヨロイモグラ",
    "family": "獣",
    "element": "地",
@@ -5585,6 +5700,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "116",
+   "dexNo": 17,
    "name": "ドリルモグラ",
    "family": "獣",
    "element": "地",
@@ -5637,6 +5753,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "117",
+   "dexNo": 40,
    "name": "ホシヨミソウ",
    "family": "植物",
    "element": "光",
@@ -5686,6 +5803,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "118",
+   "dexNo": 42,
    "name": "イノリソウ",
    "family": "植物",
    "element": "光",
@@ -5735,6 +5853,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "119",
+   "dexNo": 4,
    "name": "煉獄狼ヴォルグ",
    "family": "獣",
    "element": "焔",
@@ -5779,6 +5898,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "120",
+   "dexNo": 26,
    "name": "嵐翼鷹シュトルム",
    "family": "鳥",
    "element": "嵐",
@@ -5823,6 +5943,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "121",
+   "dexNo": 38,
    "name": "森母樹シルヴァ",
    "family": "植物",
    "element": "地",
@@ -5867,6 +5988,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "122",
+   "dexNo": 141,
    "name": "ユキウサ",
    "family": "獣",
    "element": "氷",
@@ -5917,6 +6039,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "123",
+   "dexNo": 142,
    "name": "フブキギツネ",
    "family": "獣",
    "element": "氷",
@@ -5961,6 +6084,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "124",
+   "dexNo": 143,
    "name": "ツララムシ",
    "family": "虫",
    "element": "氷",
@@ -6005,6 +6129,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "125",
+   "dexNo": 144,
    "name": "アイスビートル",
    "family": "虫",
    "element": "氷",
@@ -6049,6 +6174,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "126",
+   "dexNo": 145,
    "name": "ユキダマ",
    "family": "精霊",
    "element": "氷",
@@ -6093,6 +6219,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "127",
+   "dexNo": 146,
    "name": "ヒョウガスピリット",
    "family": "精霊",
    "element": "氷",
@@ -6137,6 +6264,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "128",
+   "dexNo": 147,
    "name": "モフリン",
    "family": "獣",
    "element": "無",
@@ -6187,6 +6315,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "129",
+   "dexNo": 148,
    "name": "ギンモフ",
    "family": "獣",
    "element": "無",
@@ -6238,6 +6367,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "130",
+   "dexNo": 150,
    "name": "シモドリ",
    "family": "鳥",
    "element": "氷",
@@ -6282,6 +6412,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "131",
+   "dexNo": 151,
    "name": "マルハト",
    "family": "鳥",
    "element": "無",
@@ -6326,6 +6457,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "132",
+   "dexNo": 154,
    "name": "大地鳥ガイアホーク",
    "family": "鳥",
    "element": "地",
@@ -6378,6 +6510,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "133",
+   "dexNo": 155,
    "name": "水蓮精ミナモ",
    "family": "植物",
    "element": "水",
@@ -6429,6 +6562,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "134",
+   "dexNo": 156,
    "name": "炎魔ヘルハウンド",
    "family": "魔獣",
    "element": "炎",
@@ -6481,6 +6615,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "135",
+   "dexNo": 157,
    "name": "光甲虫ルミナビートル",
    "family": "虫",
    "element": "光",
@@ -6532,6 +6667,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "136",
+   "dexNo": 158,
    "name": "闇牙獣ヤトガ",
    "family": "獣",
    "element": "闇",
@@ -6583,6 +6719,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "137",
+   "dexNo": 159,
    "name": "氷竜グラシア",
    "family": "竜",
    "element": "氷",
@@ -6635,6 +6772,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "138",
+   "dexNo": 160,
    "name": "氷晶竜ニヴル",
    "family": "竜",
    "element": "氷",
@@ -6686,6 +6824,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "139",
+   "dexNo": 161,
    "name": "始原獣オリジン",
    "family": "獣",
    "element": "無",
@@ -6737,6 +6876,7 @@ window.Game.RawMonsterData = {
   },
   {
    "id": "140",
+   "dexNo": 162,
    "name": "星海鯨アステル",
    "family": "水棲",
    "element": "光",
@@ -6786,6 +6926,2879 @@ window.Game.RawMonsterData = {
     "display": "世界樹の妖精 + 深海龍リヴァル → 星海鯨アステル"
    },
    "description": "夜空の海を泳ぐという伝説の鯨。背の星々は、迷う者を導く灯りとなる。"
+  },
+  {
+   "id": "141",
+   "dexNo": 45,
+   "name": "シズクダマ",
+   "family": "水棲",
+   "element": "水",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 84,
+    "攻撃": 32,
+    "防御": 48,
+    "素早さ": 25,
+    "特殊攻撃": 43,
+    "特殊防御": 86
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
+   "baseStats": {
+    "HP": 37,
+    "攻撃": 5,
+    "防御": 15,
+    "素早さ": 5,
+    "特殊攻撃": 13,
+    "特殊防御": 39,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "ミズタマリが成長した姿。体の中に、きらめく水のしずくを抱えている。"
+  },
+  {
+   "id": "142",
+   "dexNo": 46,
+   "name": "ミナモノヌシ",
+   "family": "水棲",
+   "element": "水",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 43,
+    "防御": 62,
+    "素早さ": 35,
+    "特殊攻撃": 58,
+    "特殊防御": 113
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 11,
+    "防御": 24,
+    "素早さ": 6,
+    "特殊攻撃": 22,
+    "特殊防御": 56,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "湖の水面にすむ主。静かな湖を荒らす者には、容赦しない。"
+  },
+  {
+   "id": "143",
+   "dexNo": 66,
+   "name": "ヨイコウモリ",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 63,
+    "攻撃": 32,
+    "防御": 41,
+    "素早さ": 55,
+    "特殊攻撃": 86,
+    "特殊防御": 41
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
+   "baseStats": {
+    "HP": 25,
+    "攻撃": 5,
+    "防御": 11,
+    "素早さ": 19,
+    "特殊攻撃": 39,
+    "特殊防御": 11,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "noroigoe",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "ヤミコウモリが成長した姿。宵の空をすべるように飛び、闇の波動を放つ。"
+  },
+  {
+   "id": "144",
+   "dexNo": 67,
+   "name": "ヨミコウモリ",
+   "family": "魔獣",
+   "element": "闇",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 85,
+    "攻撃": 42,
+    "防御": 55,
+    "素早さ": 70,
+    "特殊攻撃": 113,
+    "特殊防御": 55
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 38,
+    "攻撃": 11,
+    "防御": 19,
+    "素早さ": 29,
+    "特殊攻撃": 56,
+    "特殊防御": 19,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "noroigoe",
+    "呪い霧",
+    "暗黒波"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "黄泉の入口にすむと言われる大コウモリ。その羽音を聞くと、背すじが凍る。"
+  },
+  {
+   "id": "145",
+   "dexNo": 152,
+   "name": "シラハト",
+   "family": "鳥",
+   "element": "無",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "風切り高原",
+   "role": "万能",
+   "archetype": "万能",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 68,
+    "攻撃": 50,
+    "防御": 44,
+    "素早さ": 57,
+    "特殊攻撃": 48,
+    "特殊防御": 51
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 27,
+    "攻撃": 17,
+    "防御": 13,
+    "素早さ": 21,
+    "特殊攻撃": 15,
+    "特殊防御": 17,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "突進",
+    "気合いため",
+    "渾身撃"
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "マルハトが成長した姿。真っ白な羽をもち、遠くの仲間まで手紙を運ぶ。"
+  },
+  {
+   "id": "146",
+   "dexNo": 153,
+   "name": "ハクホウ",
+   "family": "鳥",
+   "element": "無",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "風切り高原",
+   "role": "万能",
+   "archetype": "万能",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 87,
+    "攻撃": 67,
+    "防御": 60,
+    "素早さ": 76,
+    "特殊攻撃": 64,
+    "特殊防御": 66
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 40,
+    "攻撃": 27,
+    "防御": 22,
+    "素早さ": 33,
+    "特殊攻撃": 24,
+    "特殊防御": 27,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "突進",
+    "気合いため",
+    "渾身撃"
+   ],
+   "innateTrait": "無限の可能性",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "白く大きな翼をもつ鳥。どんな空でも、まっすぐに飛んでいく。"
+  },
+  {
+   "id": "147",
+   "dexNo": 8,
+   "name": "海嘯狼マーレ",
+   "family": "獣",
+   "element": "水",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 134,
+    "攻撃": 54,
+    "防御": 76,
+    "素早さ": 53,
+    "特殊攻撃": 62,
+    "特殊防御": 141
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 69,
+    "攻撃": 18,
+    "防御": 34,
+    "素早さ": 18,
+    "特殊攻撃": 24,
+    "特殊防御": 73,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "長く共に戦ったアクアウルフの姿。遠吠えひとつで、大波を呼ぶ。"
+  },
+  {
+   "id": "148",
+   "dexNo": 22,
+   "name": "迅雷獣ボルテクス",
+   "family": "獣",
+   "element": "雷",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 96,
+    "攻撃": 113,
+    "防御": 57,
+    "素早さ": 140,
+    "特殊攻撃": 46,
+    "特殊防御": 68
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 44,
+    "攻撃": 56,
+    "防御": 21,
+    "素早さ": 73,
+    "特殊攻撃": 14,
+    "特殊防御": 28,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "稲妻よりも速く駆ける獣。通ったあとには、焦げた足跡だけが残る。"
+  },
+  {
+   "id": "149",
+   "dexNo": 30,
+   "name": "紅炎鷹カーディナル",
+   "family": "鳥",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 83,
+    "攻撃": 156,
+    "防御": 35,
+    "素早さ": 116,
+    "特殊攻撃": 73,
+    "特殊防御": 57
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 37,
+    "攻撃": 83,
+    "防御": 8,
+    "素早さ": 57,
+    "特殊攻撃": 31,
+    "特殊防御": 21,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "火山の熱で鍛えられたブレイズホーク。紅の炎をまとい、一撃で獲物をしとめる。"
+  },
+  {
+   "id": "150",
+   "dexNo": 34,
+   "name": "蒼羽鳥セイレーン",
+   "family": "鳥",
+   "element": "水",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "特殊防御",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 103,
+    "攻撃": 57,
+    "防御": 58,
+    "素早さ": 121,
+    "特殊攻撃": 77,
+    "特殊防御": 104
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 50,
+    "攻撃": 21,
+    "防御": 21,
+    "素早さ": 60,
+    "特殊攻撃": 34,
+    "特殊防御": 50,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "美しい歌声をもつ水鳥。その歌は、仲間の傷をやさしく癒やす。"
+  },
+  {
+   "id": "151",
+   "dexNo": 54,
+   "name": "雷牙鮫ボルガ",
+   "family": "水棲",
+   "element": "雷",
+   "element2": "水",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 140,
+    "防御": 73,
+    "素早さ": 72,
+    "特殊攻撃": 53,
+    "特殊防御": 73
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 73,
+    "防御": 31,
+    "素早さ": 31,
+    "特殊攻撃": 18,
+    "特殊防御": 31,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "気合いため",
+    "轟雷爪"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "雷の牙をもつ大鮫。海の底から、稲光とともに襲いかかる。"
+  },
+  {
+   "id": "152",
+   "dexNo": 50,
+   "name": "岩城亀ガルド",
+   "family": "水棲",
+   "element": "地",
+   "element2": "水",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 136,
+    "攻撃": 63,
+    "防御": 135,
+    "素早さ": 36,
+    "特殊攻撃": 56,
+    "特殊防御": 94
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 69,
+    "攻撃": 24,
+    "防御": 69,
+    "素早さ": 8,
+    "特殊攻撃": 21,
+    "特殊防御": 44,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "甲羅が城のように大きくなった亀。その上で暮らす小さな幻獣もいる。"
+  },
+  {
+   "id": "153",
+   "dexNo": 58,
+   "name": "天甲虫アトラス",
+   "family": "虫",
+   "element": "風",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 96,
+    "攻撃": 115,
+    "防御": 56,
+    "素早さ": 140,
+    "特殊攻撃": 56,
+    "特殊防御": 57
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 44,
+    "攻撃": 57,
+    "防御": 21,
+    "素早さ": 73,
+    "特殊攻撃": 21,
+    "特殊防御": 21,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "idaten",
+    "烈風脚"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "空を支えるように大きな角をもつ甲虫。風を切って、どこまでも飛ぶ。"
+  },
+  {
+   "id": "154",
+   "dexNo": 62,
+   "name": "業火蜂イフリータ",
+   "family": "虫",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 141,
+    "防御": 62,
+    "素早さ": 83,
+    "特殊攻撃": 52,
+    "特殊防御": 73
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 73,
+    "防御": 31,
+    "素早さ": 37,
+    "特殊攻撃": 18,
+    "特殊防御": 24,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "homuraba",
+    "気合いため",
+    "炎獄爪"
+   ],
+   "innateTrait": "連撃の才",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "業火をまとう女王蜂。群れを率い、炎の針で敵を追いはらう。"
+  },
+  {
+   "id": "155",
+   "dexNo": 75,
+   "name": "大地精ノーム",
+   "family": "精霊",
+   "element": "地",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 124,
+    "攻撃": 52,
+    "防御": 88,
+    "素早さ": 52,
+    "特殊攻撃": 74,
+    "特殊防御": 130
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 63,
+    "攻撃": 18,
+    "防御": 40,
+    "素早さ": 18,
+    "特殊攻撃": 31,
+    "特殊防御": 66,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "砂塵",
+    "硬化",
+    "地脈波"
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "大地の奥深くに宿る精霊。山ひとつ分の岩を、指先ひとつで動かすという。"
+  },
+  {
+   "id": "156",
+   "dexNo": 149,
+   "name": "白銀獣シロガネ",
+   "family": "獣",
+   "element": "無",
+   "rank": "C",
+   "obtain": "進化",
+   "region": null,
+   "role": "万能",
+   "archetype": "万能",
+   "signature": "HP",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 120,
+    "攻撃": 83,
+    "防御": 83,
+    "素早さ": 84,
+    "特殊攻撃": 67,
+    "特殊防御": 83
+   },
+   "evYield": {
+    "HP": 2
+   },
+   "baseStats": {
+    "HP": 60,
+    "攻撃": 37,
+    "防御": 37,
+    "素早さ": 37,
+    "特殊攻撃": 28,
+    "特殊防御": 37,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "突進",
+    "気合いため",
+    "渾身撃"
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "雪原で長く生きたギンモフの姿。白銀の毛並みは、吹雪の中でもかがやく。"
+  },
+  {
+   "id": "157",
+   "dexNo": 11,
+   "name": "シップウリンクス",
+   "family": "獣",
+   "element": "風",
+   "rank": "D",
+   "obtain": "進化",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 76,
+    "攻撃": 91,
+    "防御": 46,
+    "素早さ": 113,
+    "特殊攻撃": 39,
+    "特殊防御": 55
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 33,
+    "攻撃": 43,
+    "防御": 14,
+    "素早さ": 56,
+    "特殊攻撃": 9,
+    "特殊防御": 19,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "idaten",
+    "烈風脚"
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ハヤテネコが極めた姿。疾風のような速さで、影さえ置き去りにする。"
+  },
+  {
+   "id": "158",
+   "dexNo": 13,
+   "name": "センプウタイガ",
+   "family": "獣",
+   "element": "風",
+   "rank": "D",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 113,
+    "防御": 60,
+    "素早さ": 67,
+    "特殊攻撃": 33,
+    "特殊防御": 59
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 40,
+    "攻撃": 56,
+    "防御": 22,
+    "素早さ": 27,
+    "特殊攻撃": 6,
+    "特殊防御": 22,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "気合いため",
+    "烈風脚"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ツムジネコが極めた姿。旋風をまとった爪で、大木もなぎ倒す。"
+  },
+  {
+   "id": "159",
+   "dexNo": 16,
+   "name": "テッペキモグラ",
+   "family": "獣",
+   "element": "地",
+   "rank": "D",
+   "obtain": "進化",
+   "region": null,
+   "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 49,
+    "防御": 109,
+    "素早さ": 38,
+    "特殊攻撃": 39,
+    "特殊防御": 76
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 16,
+    "防御": 53,
+    "素早さ": 9,
+    "特殊攻撃": 9,
+    "特殊防御": 33,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "硬化",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "ヨロイモグラが極めた姿。鉄壁のうろこは、どんな攻撃もはね返す。"
+  },
+  {
+   "id": "160",
+   "dexNo": 18,
+   "name": "ハサイモグラ",
+   "family": "獣",
+   "element": "地",
+   "rank": "D",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 112,
+    "攻撃": 109,
+    "防御": 80,
+    "素早さ": 22,
+    "特殊攻撃": 39,
+    "特殊防御": 58
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 53,
+    "防御": 35,
+    "素早さ": 5,
+    "特殊攻撃": 9,
+    "特殊防御": 22,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "気合いため",
+    "大地震"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ドリルモグラが極めた姿。巨大な爪で、岩盤ごと敵を打ち砕く。"
+  },
+  {
+   "id": "161",
+   "dexNo": 41,
+   "name": "ホシフリソウ",
+   "family": "植物",
+   "element": "光",
+   "rank": "D",
+   "obtain": "進化",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 84,
+    "攻撃": 42,
+    "防御": 54,
+    "素早さ": 64,
+    "特殊攻撃": 113,
+    "特殊防御": 63
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 38,
+    "攻撃": 11,
+    "防御": 19,
+    "素早さ": 24,
+    "特殊攻撃": 56,
+    "特殊防御": 24,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "seinaruya",
+    "極光"
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "ホシヨミソウが極めた姿。夜空の星を呼びよせ、光の雨を降らせる。"
+  },
+  {
+   "id": "162",
+   "dexNo": 43,
+   "name": "ミコソウ",
+   "family": "植物",
+   "element": "光",
+   "rank": "D",
+   "obtain": "進化",
+   "region": null,
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 38,
+    "防御": 71,
+    "素早さ": 38,
+    "特殊攻撃": 63,
+    "特殊防御": 101
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 9,
+    "防御": 29,
+    "素早さ": 9,
+    "特殊攻撃": 24,
+    "特殊防御": 48,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "極光"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "イノリソウが極めた姿。祈りをこめた花びらが、仲間を光で包む。"
+  },
+  {
+   "id": "163",
+   "dexNo": 163,
+   "name": "焔獣カグツチ",
+   "family": "獣",
+   "element": "焔",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 113,
+    "攻撃": 146,
+    "防御": 76,
+    "素早さ": 85,
+    "特殊攻撃": 43,
+    "特殊防御": 78
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 76,
+    "防御": 33,
+    "素早さ": 39,
+    "特殊攻撃": 12,
+    "特殊防御": 33,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "焔刃",
+    "気合いため",
+    "焔獄撃"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "040",
+     "041"
+    ],
+    "resultId": "163",
+    "display": "フェニクス + フレイムウルフ → 焔獣カグツチ"
+   },
+   "description": "焔そのものが獣の形をとった幻獣。足をつけた地面が、赤く焼けこげる。"
+  },
+  {
+   "id": "164",
+   "dexNo": 164,
+   "name": "焔竜ホムラ",
+   "family": "竜",
+   "element": "焔",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 166,
+    "攻撃": 159,
+    "防御": 115,
+    "素早さ": 30,
+    "特殊攻撃": 55,
+    "特殊防御": 85
+   },
+   "evYield": {
+    "攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 88,
+    "攻撃": 84,
+    "防御": 58,
+    "素早さ": 5,
+    "特殊攻撃": 19,
+    "特殊防御": 38,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "焔刃",
+    "気合いため",
+    "焔獄撃"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "064",
+     "134"
+    ],
+    "resultId": "164",
+    "display": "炎翼鳥イグニス + 炎魔ヘルハウンド → 焔竜ホムラ"
+   },
+   "description": "焔の息を吐く竜。その鱗は、溶岩の中でも溶けることがない。"
+  },
+  {
+   "id": "165",
+   "dexNo": 165,
+   "name": "嵐牙狼ハヤテ",
+   "family": "獣",
+   "element": "嵐",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 97,
+    "攻撃": 120,
+    "防御": 58,
+    "素早さ": 146,
+    "特殊攻撃": 49,
+    "特殊防御": 71
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 59,
+    "防御": 23,
+    "素早さ": 76,
+    "特殊攻撃": 16,
+    "特殊防御": 29,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "嵐爪",
+    "idaten",
+    "暴嵐脚"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "043",
+     "044"
+    ],
+    "resultId": "165",
+    "display": "ライガーハウンド + ストームホーク → 嵐牙狼ハヤテ"
+   },
+   "description": "嵐をまとって駆ける狼。その牙が通ったあとには、つむじ風が残る。"
+  },
+  {
+   "id": "166",
+   "dexNo": 166,
+   "name": "嵐竜ゲイル",
+   "family": "竜",
+   "element": "嵐",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 134,
+    "防御": 56,
+    "素早さ": 165,
+    "特殊攻撃": 67,
+    "特殊防御": 79
+   },
+   "evYield": {
+    "素早さ": 2,
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 54,
+    "攻撃": 69,
+    "防御": 19,
+    "素早さ": 88,
+    "特殊攻撃": 27,
+    "特殊防御": 34,
+    "命中": 95,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "嵐爪",
+    "idaten",
+    "暴嵐脚"
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "063",
+     "120"
+    ],
+    "resultId": "166",
+    "display": "天空鳥ガルーダ + 嵐翼鷹シュトルム → 嵐竜ゲイル"
+   },
+   "description": "嵐の雲の中を泳ぐ竜。羽ばたくたびに、空がうなる。"
+  },
+  {
+   "id": "167",
+   "dexNo": 167,
+   "name": "霆獣ナルカミ",
+   "family": "獣",
+   "element": "霆",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 108,
+    "攻撃": 55,
+    "防御": 71,
+    "素早さ": 91,
+    "特殊攻撃": 146,
+    "特殊防御": 70
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 19,
+    "防御": 29,
+    "素早さ": 43,
+    "特殊攻撃": 76,
+    "特殊防御": 29,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "霆光",
+    "迅霆",
+    "天霆"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "049",
+     "060"
+    ],
+    "resultId": "167",
+    "display": "サンダーリーフ + サンダースピリット → 霆獣ナルカミ"
+   },
+   "description": "霆を呼ぶ神獣。ひと声吠えれば、雲ひとつない空に雷が落ちる。"
+  },
+  {
+   "id": "168",
+   "dexNo": 168,
+   "name": "霆竜イカヅチ",
+   "family": "竜",
+   "element": "霆",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 122,
+    "攻撃": 62,
+    "防御": 78,
+    "素早さ": 91,
+    "特殊攻撃": 165,
+    "特殊防御": 92
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 61,
+    "攻撃": 23,
+    "防御": 34,
+    "素早さ": 43,
+    "特殊攻撃": 88,
+    "特殊防御": 42,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "霆光",
+    "迅霆",
+    "天霆"
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "062",
+     "069"
+    ],
+    "resultId": "168",
+    "display": "雷獣ライガ + 天空甲虫 → 霆竜イカヅチ"
+   },
+   "description": "天をつらぬく霆の竜。その咆哮は、遠い山の向こうまで響く。"
+  },
+  {
+   "id": "169",
+   "dexNo": 169,
+   "name": "晶亀クリスタ",
+   "family": "水棲",
+   "element": "晶",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 140,
+    "攻撃": 66,
+    "防御": 141,
+    "素早さ": 38,
+    "特殊攻撃": 60,
+    "特殊防御": 96
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 73,
+    "攻撃": 26,
+    "防御": 73,
+    "素早さ": 9,
+    "特殊攻撃": 22,
+    "特殊防御": 46,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "晶槍",
+    "晶壁",
+    "晶岩崩し"
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "052",
+     "047"
+    ],
+    "resultId": "169",
+    "display": "ロックタートル + ドライアド → 晶亀クリスタ"
+   },
+   "description": "結晶の甲羅をもつ亀。光を受けると、甲羅が七色にかがやく。"
+  },
+  {
+   "id": "170",
+   "dexNo": 170,
+   "name": "晶竜アメジア",
+   "family": "竜",
+   "element": "晶",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 165,
+    "攻撃": 146,
+    "防御": 128,
+    "素早さ": 32,
+    "特殊攻撃": 54,
+    "特殊防御": 85
+   },
+   "evYield": {
+    "防御": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 88,
+    "攻撃": 76,
+    "防御": 65,
+    "素早さ": 5,
+    "特殊攻撃": 19,
+    "特殊防御": 38,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "晶槍",
+    "気合いため",
+    "晶岩崩し"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "068",
+     "132"
+    ],
+    "resultId": "170",
+    "display": "大地亀王 + 大地鳥ガイアホーク → 晶竜アメジア"
+   },
+   "description": "紫水晶の体をもつ竜。その体は、どんな刃も通さない。"
+  },
+  {
+   "id": "171",
+   "dexNo": 171,
+   "name": "聖花ルミエラ",
+   "family": "植物",
+   "element": "聖",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 140,
+    "攻撃": 49,
+    "防御": 92,
+    "素早さ": 49,
+    "特殊攻撃": 81,
+    "特殊防御": 130
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 73,
+    "攻撃": 16,
+    "防御": 43,
+    "素早さ": 16,
+    "特殊攻撃": 36,
+    "特殊防御": 66,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "聖光弾",
+    "聖なる癒し",
+    "聖天光"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "037",
+     "048"
+    ],
+    "resultId": "171",
+    "display": "セイクリッドフラワー + フローラルフェアリー → 聖花ルミエラ"
+   },
+   "description": "聖なる光を放つ花の幻獣。その香りは、けがれを祓うという。"
+  },
+  {
+   "id": "172",
+   "dexNo": 172,
+   "name": "聖竜セレナ",
+   "family": "竜",
+   "element": "聖",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 121,
+    "攻撃": 62,
+    "防御": 80,
+    "素早さ": 91,
+    "特殊攻撃": 165,
+    "特殊防御": 91
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 61,
+    "攻撃": 23,
+    "防御": 34,
+    "素早さ": 43,
+    "特殊攻撃": 88,
+    "特殊防御": 42,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "聖光弾",
+    "聖燐",
+    "聖天光"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "065",
+     "072"
+    ],
+    "resultId": "172",
+    "display": "世界樹の妖精 + 光狼セレス → 聖竜セレナ"
+   },
+   "description": "白く輝く聖なる竜。夜明けの光とともに、天から舞いおりる。"
+  },
+  {
+   "id": "173",
+   "dexNo": 173,
+   "name": "冥蝶ネクロス",
+   "family": "虫",
+   "element": "冥",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 108,
+    "攻撃": 55,
+    "防御": 60,
+    "素早さ": 91,
+    "特殊攻撃": 146,
+    "特殊防御": 81
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 19,
+    "防御": 29,
+    "素早さ": 43,
+    "特殊攻撃": 76,
+    "特殊防御": 29,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "冥弾",
+    "冥霧",
+    "冥獄波"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "050",
+     "055"
+    ],
+    "resultId": "173",
+    "display": "アビスフィッシュ + ダークホーネット → 冥蝶ネクロス"
+   },
+   "description": "冥府の闇を羽にまとう蝶。その鱗粉にふれると、深い眠りに落ちる。"
+  },
+  {
+   "id": "174",
+   "dexNo": 174,
+   "name": "冥竜タナトス",
+   "family": "竜",
+   "element": "冥",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 164,
+    "攻撃": 159,
+    "防御": 116,
+    "素早さ": 30,
+    "特殊攻撃": 56,
+    "特殊防御": 85
+   },
+   "evYield": {
+    "攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 88,
+    "攻撃": 84,
+    "防御": 58,
+    "素早さ": 5,
+    "特殊攻撃": 19,
+    "特殊防御": 38,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "冥爪",
+    "気合いため",
+    "冥府斬"
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "070",
+     "136"
+    ],
+    "resultId": "174",
+    "display": "炎獄蜂 + 闇牙獣ヤトガ → 冥竜タナトス"
+   },
+   "description": "冥府の門を守る竜。黒い炎の瞳は、命の終わりを見通すという。"
+  },
+  {
+   "id": "175",
+   "dexNo": 175,
+   "name": "ハスッコ",
+   "family": "植物",
+   "element": "水",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 72,
+    "攻撃": 25,
+    "防御": 46,
+    "素早さ": 25,
+    "特殊攻撃": 41,
+    "特殊防御": 66
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
+   "baseStats": {
+    "HP": 29,
+    "攻撃": 5,
+    "防御": 14,
+    "素早さ": 5,
+    "特殊攻撃": 11,
+    "特殊防御": 26,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "池に浮かぶ小さな蓮の幻獣。葉っぱの上で、ぷかぷかとお昼寝するのが好き。"
+  },
+  {
+   "id": "176",
+   "dexNo": 176,
+   "name": "スイレンコ",
+   "family": "植物",
+   "element": "水",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 83,
+    "攻撃": 27,
+    "防御": 55,
+    "素早さ": 29,
+    "特殊攻撃": 48,
+    "特殊防御": 76
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
+   "baseStats": {
+    "HP": 37,
+    "攻撃": 5,
+    "防御": 19,
+    "素早さ": 5,
+    "特殊攻撃": 15,
+    "特殊防御": 33,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "ハスッコが成長した姿。水面に咲く花のように、静かにたたずむ。"
+  },
+  {
+   "id": "177",
+   "dexNo": 177,
+   "name": "スイレンヒメ",
+   "family": "植物",
+   "element": "水",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 110,
+    "攻撃": 39,
+    "防御": 70,
+    "素早さ": 37,
+    "特殊攻撃": 63,
+    "特殊防御": 101
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 9,
+    "防御": 29,
+    "素早さ": 9,
+    "特殊攻撃": 24,
+    "特殊防御": 48,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "湖に咲く睡蓮の姫。その花が開くとき、湖の水は澄みわたる。"
+  },
+  {
+   "id": "178",
+   "dexNo": 178,
+   "name": "コイシオニ",
+   "family": "魔獣",
+   "element": "地",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 73,
+    "攻撃": 66,
+    "防御": 58,
+    "素早さ": 19,
+    "特殊攻撃": 25,
+    "特殊防御": 34
+   },
+   "evYield": {
+    "防御": 1
+   },
+   "baseStats": {
+    "HP": 31,
+    "攻撃": 26,
+    "防御": 21,
+    "素早さ": 5,
+    "特殊攻撃": 5,
+    "特殊防御": 6,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "気合いため",
+    "大地震"
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "小石のような体をした小鬼。洞窟の石を投げて遊ぶ、いたずら好き。"
+  },
+  {
+   "id": "179",
+   "dexNo": 179,
+   "name": "イワオニ",
+   "family": "魔獣",
+   "element": "地",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 87,
+    "攻撃": 76,
+    "防御": 67,
+    "素早さ": 23,
+    "特殊攻撃": 28,
+    "特殊防御": 37
+   },
+   "evYield": {
+    "防御": 1
+   },
+   "baseStats": {
+    "HP": 39,
+    "攻撃": 33,
+    "防御": 27,
+    "素早さ": 5,
+    "特殊攻撃": 5,
+    "特殊防御": 9,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "気合いため",
+    "大地震"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "コイシオニが成長した姿。岩の角をもち、力くらべでは負け知らず。"
+  },
+  {
+   "id": "180",
+   "dexNo": 180,
+   "name": "ガンセキオニ",
+   "family": "魔獣",
+   "element": "地",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "火山の麓",
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 114,
+    "攻撃": 101,
+    "防御": 88,
+    "素早さ": 29,
+    "特殊攻撃": 38,
+    "特殊防御": 50
+   },
+   "evYield": {
+    "防御": 2
+   },
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 48,
+    "防御": 40,
+    "素早さ": 5,
+    "特殊攻撃": 9,
+    "特殊防御": 16,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "気合いため",
+    "大地震"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "巨大な岩の体をもつ鬼。その拳は、山をも崩すと恐れられている。"
+  },
+  {
+   "id": "181",
+   "dexNo": 181,
+   "name": "ビリスズメ",
+   "family": "鳥",
+   "element": "雷",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "始まりの草原",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 51,
+    "攻撃": 62,
+    "防御": 23,
+    "素早さ": 74,
+    "特殊攻撃": 29,
+    "特殊防御": 36
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 16,
+    "攻撃": 23,
+    "防御": 5,
+    "素早さ": 31,
+    "特殊攻撃": 5,
+    "特殊防御": 8,
+    "命中": 90,
+    "回避": 13
+   },
+   "initialMoveCandidates": [
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "羽に静電気をためたスズメ。さわると、ぴりっとしびれる。"
+  },
+  {
+   "id": "182",
+   "dexNo": 182,
+   "name": "ライチョウ",
+   "family": "鳥",
+   "element": "雷",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "雷鳴平原",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 59,
+    "攻撃": 69,
+    "防御": 29,
+    "素早さ": 86,
+    "特殊攻撃": 34,
+    "特殊防御": 41
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 21,
+    "攻撃": 29,
+    "防御": 5,
+    "素早さ": 39,
+    "特殊攻撃": 7,
+    "特殊防御": 11,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ビリスズメが成長した姿。雷雲の中を、ジグザグに飛びまわる。"
+  },
+  {
+   "id": "183",
+   "dexNo": 183,
+   "name": "イカヅチワシ",
+   "family": "鳥",
+   "element": "雷",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "雷鳴平原",
+   "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 68,
+    "攻撃": 126,
+    "防御": 29,
+    "素早さ": 93,
+    "特殊攻撃": 59,
+    "特殊防御": 45
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 27,
+    "攻撃": 64,
+    "防御": 5,
+    "素早さ": 43,
+    "特殊攻撃": 22,
+    "特殊防御": 14,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "jinraiga",
+    "気合いため",
+    "轟雷爪"
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "雷をまとって急降下する大鷲。その一撃は、落雷のように鋭い。"
+  },
+  {
+   "id": "184",
+   "dexNo": 184,
+   "name": "ホタルン",
+   "family": "虫",
+   "element": "光",
+   "rank": "F",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 57,
+    "攻撃": 27,
+    "防御": 36,
+    "素早さ": 46,
+    "特殊攻撃": 74,
+    "特殊防御": 35
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
+   "baseStats": {
+    "HP": 19,
+    "攻撃": 5,
+    "防御": 8,
+    "素早さ": 14,
+    "特殊攻撃": 31,
+    "特殊防御": 8,
+    "命中": 90,
+    "回避": 8
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "seinaruya",
+    "極光"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "おしりがぽわっと光る小さな虫。夜の森を、明るく照らしてくれる。"
+  },
+  {
+   "id": "185",
+   "dexNo": 185,
+   "name": "ヒカリボタル",
+   "family": "虫",
+   "element": "光",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "若葉の森",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "下位",
+   "speciesStats": {
+    "HP": 64,
+    "攻撃": 32,
+    "防御": 41,
+    "素早さ": 55,
+    "特殊攻撃": 86,
+    "特殊防御": 40
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
+   "baseStats": {
+    "HP": 25,
+    "攻撃": 5,
+    "防御": 11,
+    "素早さ": 19,
+    "特殊攻撃": 39,
+    "特殊防御": 11,
+    "命中": 92,
+    "回避": 12
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "seinaruya",
+    "極光"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "ホタルンが成長した姿。群れで光ると、森が星空のように見える。"
+  },
+  {
+   "id": "186",
+   "dexNo": 186,
+   "name": "ヒカリアゲハ",
+   "family": "虫",
+   "element": "光",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 83,
+    "攻撃": 42,
+    "防御": 56,
+    "素早さ": 70,
+    "特殊攻撃": 113,
+    "特殊防御": 56
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 38,
+    "攻撃": 11,
+    "防御": 19,
+    "素早さ": 29,
+    "特殊攻撃": 56,
+    "特殊防御": 19,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "seinaruya",
+    "極光"
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "光の鱗粉をまく大きなアゲハ。その羽ばたきは、夜をひととき昼に変える。"
+  },
+  {
+   "id": "187",
+   "dexNo": 187,
+   "name": "溶岩魚マグマリン",
+   "family": "水棲",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 108,
+    "攻撃": 54,
+    "防御": 71,
+    "素早さ": 81,
+    "特殊攻撃": 146,
+    "特殊防御": 81
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 19,
+    "防御": 29,
+    "素早さ": 36,
+    "特殊攻撃": 76,
+    "特殊防御": 36,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "035",
+     "038"
+    ],
+    "resultId": "187",
+    "display": "ヌマガメ + カエンビー → 溶岩魚マグマリン"
+   },
+   "description": "溶岩の中を泳ぐふしぎな魚。水にふれると、湯気をあげて怒りだす。"
+  },
+  {
+   "id": "188",
+   "dexNo": 188,
+   "name": "風魔カマイタチ",
+   "family": "魔獣",
+   "element": "風",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 97,
+    "攻撃": 117,
+    "防御": 60,
+    "素早さ": 146,
+    "特殊攻撃": 62,
+    "特殊防御": 59
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 59,
+    "防御": 23,
+    "素早さ": 76,
+    "特殊攻撃": 23,
+    "特殊防御": 22,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "風切り",
+    "idaten",
+    "烈風脚"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "056"
+    ],
+    "resultId": "188",
+    "display": "ストームホーク + デビルキャット → 風魔カマイタチ"
+   },
+   "description": "つむじ風にまぎれて現れる魔獣。気づいたときには、もう切られている。"
+  },
+  {
+   "id": "189",
+   "dexNo": 189,
+   "name": "水魔ケルピー",
+   "family": "魔獣",
+   "element": "水",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 114,
+    "攻撃": 146,
+    "防御": 75,
+    "素早さ": 86,
+    "特殊攻撃": 55,
+    "特殊防御": 65
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 56,
+    "攻撃": 76,
+    "防御": 33,
+    "素早さ": 39,
+    "特殊攻撃": 19,
+    "特殊防御": 26,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "気合いため",
+    "怒涛撃"
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "042",
+     "056"
+    ],
+    "resultId": "189",
+    "display": "アクアウルフ + デビルキャット → 水魔ケルピー"
+   },
+   "description": "湖にひそむ水の魔獣。美しい馬の姿で、旅人を水の底へさそう。"
+  },
+  {
+   "id": "190",
+   "dexNo": 190,
+   "name": "水精ウンディーネ",
+   "family": "精霊",
+   "element": "水",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 129,
+    "攻撃": 49,
+    "防御": 92,
+    "素早さ": 60,
+    "特殊攻撃": 81,
+    "特殊防御": 130
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 66,
+    "攻撃": 16,
+    "防御": 43,
+    "素早さ": 22,
+    "特殊攻撃": 36,
+    "特殊防御": 66,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "mizutsubute",
+    "癒しの雫",
+    "潮流撃"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "046",
+     "048"
+    ],
+    "resultId": "190",
+    "display": "アクアフェザー + フローラルフェアリー → 水精ウンディーネ"
+   },
+   "description": "清らかな泉に宿る水の精霊。その水を飲んだ者は、病が治るという。"
+  },
+  {
+   "id": "191",
+   "dexNo": 191,
+   "name": "火精サラマンダー",
+   "family": "精霊",
+   "element": "炎",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 97,
+    "攻撃": 54,
+    "防御": 71,
+    "素早さ": 92,
+    "特殊攻撃": 146,
+    "特殊防御": 81
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 19,
+    "防御": 29,
+    "素早さ": 43,
+    "特殊攻撃": 76,
+    "特殊防御": 36,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "火花",
+    "烈火弾",
+    "灼熱波"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "041",
+     "058"
+    ],
+    "resultId": "191",
+    "display": "フレイムウルフ + ウィンドスピリット → 火精サラマンダー"
+   },
+   "description": "炎の中にすむ精霊。消えかけた火に、ふたたび命を吹きこむ。"
+  },
+  {
+   "id": "192",
+   "dexNo": 192,
+   "name": "地竜グランディス",
+   "family": "竜",
+   "element": "地",
+   "rank": "B",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 165,
+    "攻撃": 146,
+    "防御": 128,
+    "素早さ": 31,
+    "特殊攻撃": 56,
+    "特殊防御": 84
+   },
+   "evYield": {
+    "防御": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 88,
+    "攻撃": 76,
+    "防御": 65,
+    "素早さ": 5,
+    "特殊攻撃": 19,
+    "特殊防御": 38,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "気合いため",
+    "大地震"
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "066",
+     "068"
+    ],
+    "resultId": "192",
+    "display": "雷樹獣 + 大地亀王 → 地竜グランディス"
+   },
+   "description": "大地をゆるがす巨竜。そのひと歩きで、地震が起きるという。"
+  },
+  {
+   "id": "193",
+   "dexNo": 193,
+   "name": "夜鴉ヨガラス",
+   "family": "鳥",
+   "element": "闇",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 97,
+    "攻撃": 130,
+    "防御": 49,
+    "素早さ": 135,
+    "特殊攻撃": 60,
+    "特殊防御": 70
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 46,
+    "攻撃": 66,
+    "防御": 16,
+    "素早さ": 69,
+    "特殊攻撃": 23,
+    "特殊防御": 29,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "idaten",
+    "奈落斬"
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "055"
+    ],
+    "resultId": "193",
+    "display": "ストームホーク + ダークホーネット → 夜鴉ヨガラス"
+   },
+   "description": "夜の闇にとけこむ大鴉。闇夜に光るのは、その金色の目だけ。"
+  },
+  {
+   "id": "194",
+   "dexNo": 194,
+   "name": "光鳥ヤタ",
+   "family": "鳥",
+   "element": "光",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "特殊防御",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 108,
+    "攻撃": 59,
+    "防御": 60,
+    "素早さ": 125,
+    "特殊攻撃": 81,
+    "特殊防御": 108
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 23,
+    "防御": 23,
+    "素早さ": 63,
+    "特殊攻撃": 36,
+    "特殊防御": 53,
+    "命中": 94,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "小回復",
+    "極光"
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "046",
+     "057"
+    ],
+    "resultId": "194",
+    "display": "アクアフェザー + ライトウルフ → 光鳥ヤタ"
+   },
+   "description": "三本の足をもつ光の鳥。迷った旅人を、正しい道へ導くという。"
+  },
+  {
+   "id": "195",
+   "dexNo": 195,
+   "name": "氷魔ユキオニ",
+   "family": "魔獣",
+   "element": "氷",
+   "rank": "C",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 53,
+    "防御": 72,
+    "素早さ": 91,
+    "特殊攻撃": 146,
+    "特殊防御": 70
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
+   "baseStats": {
+    "HP": 53,
+    "攻撃": 19,
+    "防御": 29,
+    "素早さ": 43,
+    "特殊攻撃": 76,
+    "特殊防御": 29,
+    "命中": 94,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "氷礫",
+    "冷気",
+    "雪嵐"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "056",
+     "123"
+    ],
+    "resultId": "195",
+    "display": "デビルキャット + フブキギツネ → 氷魔ユキオニ"
+   },
+   "description": "吹雪の夜に現れる氷の魔獣。その息は、すべてを凍りつかせる。"
+  },
+  {
+   "id": "196",
+   "dexNo": 196,
+   "name": "スイスイムシ",
+   "family": "虫",
+   "element": "水",
+   "rank": "E",
+   "obtain": "野生",
+   "region": "湖畔の森",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 59,
+    "攻撃": 75,
+    "防御": 37,
+    "素早さ": 90,
+    "特殊攻撃": 37,
+    "特殊防御": 37
+   },
+   "evYield": {
+    "素早さ": 1
+   },
+   "baseStats": {
+    "HP": 23,
+    "攻撃": 31,
+    "防御": 8,
+    "素早さ": 41,
+    "特殊攻撃": 8,
+    "特殊防御": 8,
+    "命中": 92,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "idaten",
+    "怒涛撃"
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "水面をすいすいと走る虫。長い脚で、波紋ひとつ立てずに進む。"
+  },
+  {
+   "id": "197",
+   "dexNo": 197,
+   "name": "ミズカマキリ",
+   "family": "虫",
+   "element": "水",
+   "rank": "D",
+   "obtain": "進化",
+   "region": null,
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 114,
+    "防御": 60,
+    "素早さ": 67,
+    "特殊攻撃": 42,
+    "特殊防御": 49
+   },
+   "evYield": {
+    "攻撃": 2
+   },
+   "baseStats": {
+    "HP": 40,
+    "攻撃": 56,
+    "防御": 22,
+    "素早さ": 27,
+    "特殊攻撃": 11,
+    "特殊防御": 16,
+    "命中": 93,
+    "回避": 17
+   },
+   "initialMoveCandidates": [
+    "水刃",
+    "気合いため",
+    "怒涛撃"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "スイスイムシが成長した姿。水中に身をひそめ、鎌のような腕で獲物をとらえる。"
+  },
+  {
+   "id": "198",
+   "dexNo": 198,
+   "name": "フウリンソウ",
+   "family": "植物",
+   "element": "風",
+   "rank": "D",
+   "obtain": "野生",
+   "region": "風切り高原",
+   "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 84,
+    "攻撃": 47,
+    "防御": 46,
+    "素早さ": 105,
+    "特殊攻撃": 62,
+    "特殊防御": 76
+   },
+   "evYield": {
+    "素早さ": 2
+   },
+   "baseStats": {
+    "HP": 38,
+    "攻撃": 14,
+    "防御": 14,
+    "素早さ": 51,
+    "特殊攻撃": 24,
+    "特殊防御": 33,
+    "命中": 93,
+    "回避": 22
+   },
+   "initialMoveCandidates": [
+    "fujin",
+    "小回復",
+    "旋風刃"
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "風鈴のような花を咲かせる草。風が吹くたび、すずしい音色を奏でる。"
+  },
+  {
+   "id": "199",
+   "dexNo": 199,
+   "name": "月精ルナリア",
+   "family": "精霊",
+   "element": "光",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 126,
+    "攻撃": 70,
+    "防御": 91,
+    "素早さ": 119,
+    "特殊攻撃": 189,
+    "特殊防御": 105
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 64,
+    "攻撃": 29,
+    "防御": 42,
+    "素早さ": 59,
+    "特殊攻撃": 103,
+    "特殊防御": 51,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "光弾",
+    "seinaruya",
+    "極光"
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "072",
+     "171"
+    ],
+    "resultId": "199",
+    "display": "光狼セレス + 聖花ルミエラ → 月精ルナリア"
+   },
+   "description": "月の光から生まれた精霊。満月の夜にだけ、その姿を見せるという。"
+  },
+  {
+   "id": "200",
+   "dexNo": 200,
+   "name": "海嵐竜テンペスタ",
+   "family": "竜",
+   "element": "水",
+   "element2": "風",
+   "rank": "A",
+   "obtain": "配合限定",
+   "region": null,
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 140,
+    "攻撃": 70,
+    "防御": 91,
+    "素早さ": 105,
+    "特殊攻撃": 189,
+    "特殊防御": 105
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 73,
+    "攻撃": 29,
+    "防御": 42,
+    "素早さ": 51,
+    "特殊攻撃": 103,
+    "特殊防御": 51,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "fujin",
+    "uzushio",
+    "潮流撃"
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "073",
+     "077"
+    ],
+    "resultId": "200",
+    "display": "風神スピリオン + 深海龍リヴァル → 海嵐竜テンペスタ"
+   },
+   "description": "海の上に嵐を呼ぶ竜。その背には、いつも雷雲が渦巻いている。"
   }
  ]
 };

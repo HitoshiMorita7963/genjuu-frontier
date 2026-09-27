@@ -53,7 +53,7 @@
       head() {
         const sp = G.Species[m.speciesId];
         return `<div class="info-head">${portrait(m)}<div>` +
-          `<div class="detail-name"><small>No.${sp.id}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
+          `<div class="detail-name"><small>${G.dexNoLabel(sp.id)}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
           `${P().speciesHead(sp)}<div class="small" title="${esc((G.StatRules.ARCHETYPES[sp.archetype] || {}).desc || '')}">型：${esc(sp.archetype)}　看板：${I().NAMES[sp.signature] || '―'}　成長：${G.Monster.GROWTH_NAMES[sp.growth]}</div>` +
           `<div class="titles">${titleBadges(m)}</div></div></div>`;
       },
