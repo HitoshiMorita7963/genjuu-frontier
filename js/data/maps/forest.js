@@ -69,7 +69,7 @@
     ],
     items: [
       { x: 13, y: 3, item: 'hipotion', count: 1, flag: 'item_forest_hipotion' },
-      { x: 4, y: 17, item: 'bondstone2', count: 1, flag: 'item_forest_bond2' },
+      { x: 4, y: 17, item: 'expS', count: 3, flag: 'item_forest_bond2' },
       { x: 31, y: 16, item: 'money', count: 300, flag: 'item_forest_money' },
       { x: 22, y: 24, item: 'cure', count: 2, flag: 'item_forest_cure' },
       { x: 32, y: 12, item: 'powerseed', count: 1, flag: 'item_forest_seed' },

@@ -41,7 +41,7 @@
     ],
     items: [
       { x: 2, y: 4, item: 'steelclaw', count: 1, flag: 'item_cave_claw' },
-      { x: 25, y: 9, item: 'bondstone2', count: 2, flag: 'item_cave_bond2' },
+      { x: 25, y: 9, item: 'expM', count: 1, flag: 'item_cave_bond2' },
       { x: 8, y: 16, item: 'cure', count: 1, flag: 'item_cave_cure' },
       { x: 22, y: 18, item: 'money', count: 500, flag: 'item_cave_money' },
     ],
@@ -121,7 +121,7 @@
     },
     items: [
       { x: 4, y: 13, item: 'hipotion', count: 2, flag: 'item_cave2_hipotion' },
-      { x: 27, y: 11, item: 'bondstone3', count: 1, flag: 'item_cave2_bond3' },
+      { x: 27, y: 11, item: 'expM', count: 2, flag: 'item_cave2_bond3' },
       { x: 8, y: 4, item: 'powerseed', count: 1, flag: 'item_cave2_seed' },
       { x: 22, y: 3, item: 'money', count: 800, flag: 'item_cave2_money' },
     ],
