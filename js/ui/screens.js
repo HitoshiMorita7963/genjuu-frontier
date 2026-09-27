@@ -162,7 +162,7 @@
     },
     // 種族の基本情報
     speciesHead(sp) {
-      return `<div class="badges">${P.el(sp.el)}${P.line(sp.line)}${P.rank(sp.rank)}</div>`;
+      return `<div class="badges">${G.elementsOf(sp).map(P.el).join('')}${P.line(sp.line)}${P.rank(sp.rank)}</div>`;
     },
     // 個体の詳細
     detail(m) {

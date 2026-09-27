@@ -47,7 +47,7 @@ for (const rank of RANKS) {
     const st = m.speciesStats || {};
     const total = K.reduce((a, k) => a + (st[k] || 0), 0);
     const ev = Object.entries(m.evYield || {}).map(([k, v]) => `${k}+${v}`).join(' ');
-    lines.push(`| ${m.id} | ${m.name} | ${m.family} | ${m.element} | ${m.obtain} | ${m.archetype} | ${m.signature} | ${m.weakness} | ${m.tier} | ` +
+    lines.push(`| ${m.id} | ${m.name} | ${m.family} | ${m.element}${m.element2 ? '・' + m.element2 : ''} | ${m.obtain} | ${m.archetype} | ${m.signature} | ${m.weakness} | ${m.tier} | ` +
       K.map((k) => st[k]).join(' | ') + ` | ${total} | ${ev} | ${(m.initialMoveCandidates || []).map(moveName).join('・')} |`);
   }
   lines.push('');

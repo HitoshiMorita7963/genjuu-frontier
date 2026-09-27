@@ -6,9 +6,9 @@
     potion:      { name: 'キズぐすり',   type: 'heal',    price: 100, desc: '幻獣のHPを30回復する。' },
     hipotion:    { name: 'いやし草の雫', type: 'heal',    price: 300, desc: '幻獣のHPを80回復する。' },
     cure:        { name: 'なおし草',     type: 'status',  price: 120, desc: '毒・麻痺・睡眠などの状態異常を治す。' },
-    bondstone:   { name: '絆石',         type: 'capture', price: 200, rate: 1, color: '#7ad0a0', desc: '野生の幻獣と絆を結ぶための石。弱らせてから使おう。' },
-    bondstone2:  { name: '上絆石',       type: 'capture', price: 600, rate: 1.6, color: '#6aa0f0', desc: '絆石よりも絆を結びやすい、澄んだ石。' },
-    bondstone3:  { name: '極絆石',       type: 'capture', price: 1500, rate: 2.5, color: '#f0c040', desc: '強い光を宿した希少な絆石。' },
+    bondstone:   { name: '絆石',         type: 'capture', price: 60, rate: 1, color: '#7ad0a0', desc: '野生の幻獣と絆を結ぶための石。弱らせてから使おう。' },
+    bondstone2:  { name: '上絆石',       type: 'capture', price: 200, rate: 1.6, color: '#6aa0f0', desc: '絆石よりも絆を結びやすい、澄んだ石。' },
+    bondstone3:  { name: '極絆石',       type: 'capture', price: 500, rate: 2.5, color: '#f0c040', desc: '強い光を宿した希少な絆石。' },
     steelclaw:   { name: '鋼の爪',       type: 'evolve',  price: 2000, desc: 'ツノムシに使うと、鋭い針をもつ姿に進化するという。' },
     moondrop:    { name: '月の雫',       type: 'evolve',  price: 3000, desc: '月の光を閉じこめた雫。夜や闇、光に縁のある幻獣を進化させる。' },
     // 特訓アイテム（努力値を上げる。上限：1能力252・合計510）

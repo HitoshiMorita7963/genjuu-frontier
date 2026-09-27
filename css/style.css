@@ -458,6 +458,11 @@ table.moves td { padding: 2px 4px 2px 0; }
 .bar.ev i { background: #d070f0; }
 .muted { color: var(--muted); }
 .bt-info .charged { color: var(--accent); font-weight: normal; }
+.eff { font-weight: normal; font-size: 12px; }
+.eff.up { color: #ff9a5a; }
+.eff.down { color: #8a9ac0; }
+.eff.stab { color: #8ad0ff; }
+.bt-cmd.move .eff { margin-right: 4px; }
 
 /* ---------- 配合表 ---------- */
 .rc-body { display: flex; flex-direction: column; gap: 6px; }

@@ -19,24 +19,33 @@
   // 公式データの表記 → 内部キー
   G.ElementByName = { 炎: 'fire', 水: 'water', 風: 'wind', 地: 'earth', 雷: 'thunder', 光: 'light', 闇: 'dark', 氷: 'ice', 無: 'none', 草: 'grass' };
 
-  // 相性表：攻撃側 → 防御側 の倍率（記載なしは等倍）
-  //   2 = 効果抜群 / 0.5 = いまひとつ / 0 = 無効
-  G.TypeChart = {
-    fire:    { grass: 2, wind: 2, ice: 2, water: 0.5, earth: 0.5, fire: 0.5 },
-    water:   { fire: 2, earth: 2, grass: 0.5, water: 0.5 },
-    grass:   { water: 2, earth: 2, fire: 0.5, wind: 0.5, grass: 0.5 },
-    thunder: { water: 2, wind: 2, earth: 0, grass: 0.5, thunder: 0.5 },
-    earth:   { fire: 2, thunder: 2, wind: 0, grass: 0.5 },
-    wind:    { grass: 2, earth: 2, thunder: 0.5, fire: 0.5 },
-    light:   { dark: 2, light: 0.5, fire: 0.5 },
-    dark:    { light: 2, wind: 2, dark: 0.5 },
-    ice:     { wind: 2, earth: 2, water: 0.5, fire: 0.5, ice: 0.5 },
+  // 相性：ジャンケンのような「めぐり」
+  //   水 → 炎 → 氷 → 地 → 雷 → 風 → 水 …（矢印の先に強い＝2倍、逆向きは弱い＝0.5倍）
+  //   （水は炎を消し、炎は氷をとかし、氷は大地を凍らせ、大地は雷を吸い、雷は風を裂き、風は水を吹き散らす）
+  //   光 ⇄ 闇（おたがいに2倍）。無属性は、どの属性とも等倍
+  //   どの属性も「得意な相手1つ・苦手な相手1つ」になる。無効（0倍）はない
+  G.ElementCycle = ['water', 'fire', 'ice', 'earth', 'thunder', 'wind'];
+  G.TypeChart = {};
+  G.ElementCycle.forEach((el, i) => {
+    const next = G.ElementCycle[(i + 1) % G.ElementCycle.length];
+    const prev = G.ElementCycle[(i - 1 + G.ElementCycle.length) % G.ElementCycle.length];
+    G.TypeChart[el] = { [next]: 2, [prev]: 0.5 };
+  });
+  G.TypeChart.light = { dark: 2 };
+  G.TypeChart.dark = { light: 2 };
+
+  // 攻撃の属性 → 防御側の属性（1つ、または複合タイプの2つ）の倍率。複合タイプは掛け算
+  G.typeMultiplier = (atkEl, defEls) => {
+    const row = G.TypeChart[atkEl] || {};
+    const list = Array.isArray(defEls) ? defEls : [defEls];
+    return list.reduce((mul, el) => mul * (row[el] === undefined ? 1 : row[el]), 1);
   };
-  G.typeMultiplier = (atkEl, defEl) => {
-    const row = G.TypeChart[atkEl];
-    if (!row || row[defEl] === undefined) return 1;
-    return row[defEl];
-  };
+  // その種族の属性（複合タイプなら2つ）
+  G.elementsOf = (sp) => sp.els || [sp.el];
+  // タイプ一致（技の属性が、使い手の属性のどれかと同じ。無属性は一致しない）
+  G.isStab = (moveEl, sp) => moveEl !== 'none' && G.elementsOf(sp).includes(moveEl);
+  // 表示用の属性名（例：「水・風」）
+  G.elementLabel = (sp) => G.elementsOf(sp).map((el) => G.Elements[el].name).join('・');
 
   // 系統（公式データの8系統。machine は旧データ用に残している）
   G.Lineages = {

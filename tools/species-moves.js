@@ -40,7 +40,9 @@ function movesFor(m) {
   const S = SETS[m.element];
   const st = m.speciesStats;
   const physical = PHYS_TYPES.includes(m.archetype) || (m.archetype !== '特殊アタッカー' && st['攻撃'] > st['特殊攻撃']);
-  const W = physical ? S.pW : S.sW;
+  // 複合タイプは、弱い技を2つめの属性にする（どちらもタイプ一致になり、相性の選択肢が増える）
+  const S2 = m.element2 ? SETS[m.element2] : S;
+  const W = physical ? S2.pW : S2.sW;
   const Str = physical ? S.pS : S.sS;
   let mid;
   switch (m.archetype) {

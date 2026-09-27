@@ -71,7 +71,7 @@
           const sp = G.Species[cur.c];
           if (cur.found) {
             detail = `<b>${esc(G.Species[cur.a].name)} ＋ ${esc(G.Species[cur.b].name)} → ${esc(sp.name)}</b>` +
-              `<span class="small">　${esc(sp.element)}・${esc(sp.family)}・${sp.rank}ランク${canFuse(cur.a, cur.b) ? '　手持ちの2体で配合できる' : ''}</span>`;
+              `<span class="small">　${esc(G.elementLabel(sp))}属性・${esc(sp.family)}系・${sp.rank}ランク${canFuse(cur.a, cur.b) ? '　手持ちの2体で配合できる' : ''}</span>`;
           } else {
             detail = `<span class="small muted">まだ見つけていない組み合わせ（${sp.rank}ランクの幻獣が生まれる）</span><br>${esc(cur.hint || '').replace(/\n/g, '<br>')}`;
           }

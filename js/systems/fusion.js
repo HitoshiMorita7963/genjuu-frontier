@@ -38,15 +38,22 @@
         line = R.familyTable[`${x}+${y}`] || pa.line;
       }
       const up = Math.max(G.rankIndex(pa.rank), G.rankIndex(pb.rank)) >= G.rankIndex(R.upgradeFrom);
-      const rank = up ? R.highRank : R.lowRank;
-      const wild = G.SpeciesOrder.map((id) => G.Species[id]).filter((sp) => sp.obtain === 'wild' && sp.rank === rank);
-      let cands = wild.filter((sp) => sp.line === line);
-      if (!cands.length) cands = wild.filter((sp) => sp.el === pa.el || sp.el === pb.el);
-      if (!cands.length) cands = wild;
+      const ranks = up ? R.highRanks : R.lowRanks;
+      // 子の候補：野生で出会える種族のうち、進化で姿を変えた種族（進化先）ではないもの
+      const evolved = F.evolvedForms();
+      const pool = (rank) => G.SpeciesOrder.map((id) => G.Species[id]).filter((sp) => sp.obtain === 'wild' && sp.rank === rank && !evolved.has(sp.id));
+      const shares = (sp) => G.elementsOf(sp).some((el) => G.elementsOf(pa).includes(el) || G.elementsOf(pb).includes(el));
+      // 同じ系統 → 親と同じ属性 → だれでも、の順に、ランクの高い方から探す
+      let cands = [];
+      for (const test of [(sp) => sp.line === line, shares, () => true]) {
+        for (const rank of ranks) { cands = pool(rank).filter(test); if (cands.length) break; }
+        if (cands.length) break;
+      }
       if (!cands.length) return null;
+      const elRank = (sp) => (G.elementsOf(sp).includes(pa.el) ? 0 : G.elementsOf(sp).includes(pb.el) ? 1 : 2);
       const score = (sp) => [
         sp.id === pa.id || sp.id === pb.id ? 1 : 0,          // 親と同じ種族はなるべく避ける
-        sp.el === pa.el ? 0 : sp.el === pb.el ? 1 : 2,      // 主の親の属性を優先
+        elRank(sp),                                          // 主の親の属性を優先
         Number(sp.id),
       ];
       cands.sort((s, t) => {
@@ -55,6 +62,12 @@
         return 0;
       });
       return cands[0].id;
+    },
+
+    // 進化先になる種族（配合では生まれない）
+    evolvedForms() {
+      if (!F._evolved) F._evolved = new Set(G.SpeciesOrder.flatMap((id) => G.evolutionTargets(id)));
+      return F._evolved;
     },
 
     // 配合できるか（できない理由の文、できるなら null）

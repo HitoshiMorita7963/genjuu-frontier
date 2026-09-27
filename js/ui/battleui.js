@@ -147,14 +147,22 @@
         } else if (this.view === 'moves') {
           const list = this.moveList();
           const cur = G.Moves[list[this.sel]];
+          // 相手への相性（◎ 効果ばつぐん／△ いまひとつ）とタイプ一致（★）
+          const foe = b.sides.enemy.mon;
+          const fsp = foe && G.Species[foe.speciesId];
+          const mySp = G.Species[this.me().speciesId];
+          const mulOf = (mv) => (mv.cat === 'stat' || !fsp ? 1 : G.typeMultiplier(mv.el, G.elementsOf(fsp)));
+          const mark = (mv) => { const x = mulOf(mv); return x > 1 ? '<b class="eff up">◎</b>' : x < 1 ? '<b class="eff down">△</b>' : ''; };
+          const effText = (mv) => { const x = mulOf(mv); return x > 1 ? `<b class="eff up">効果ばつぐん（×${x}）</b>` : x < 1 ? `<b class="eff down">いまひとつ（×${x}）</b>` : ''; };
           body = `<div class="bt-grid">${list.map((id, i) => {
             const mv = G.Moves[id];
             const lack = mv.mp > this.me().mp;
             return `<div class="bt-cmd move${i === this.sel ? ' sel' : ''}${lack ? ' disabled' : ''}">` +
               `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${P().el(mv.el)}<span class="mv-name">${esc(mv.name)}</span>` +
-              `<small>MP${mv.mp}</small></div>`;
+              `${mark(mv)}<small>MP${mv.mp}</small></div>`;
           }).join('')}</div>` +
             `<div class="bt-info">${cur.basic ? '物理か特殊（高い方）' : CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　` +
+            `${cur.cat !== 'stat' && G.isStab(cur.el, mySp) ? '<b class="eff stab">タイプ一致×1.5</b>　' : ''}${effText(cur)}　` +
             `<span class="mp-now">残りMP ${this.me().mp}</span><br><small>${esc(cur.desc || '')}</small></div>`;
         } else if (this.view === 'party') {
           body = `<div class="bt-title">入れかえる幻獣は？</div>${partyRows(b, this.sel)}`;
