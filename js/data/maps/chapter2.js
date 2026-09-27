@@ -221,7 +221,7 @@
     npcs: [
       {
         id: 'hhiker', name: '山男', x: 20, y: 18, dir: 'left', look: TOWNFOLK.hiker,
-        talk: ['この高原は、風と雷の幻獣の住みかだ。\n風の精霊は、高原で育つと姿を変えるものもいるらしい。'],
+        talk: ['この高原は、風と雷の幻獣の住みかだ。\n森の精霊モリノタマは、この高原で育つと風の精霊に姿を変えるらしい。'],
       },
       { id: 'vel', name: 'ヴェル', x: 18, y: 3, dir: 'down', spawnOnly: true, look: G.Looks.vel, talk: ['……。'] },
       {
@@ -267,7 +267,7 @@
       },
       {
         id: 'vhiker', name: '温泉めぐりの旅人', x: 4, y: 10, dir: 'right', look: TOWNFOLK.hiker,
-        talk: ['火山の幻獣は、炎の技がとにかく強烈だ。\n水や地の技をもっていくといい。', '……それにしても、祠のほうから高笑いが聞こえるんだが。'],
+        talk: ['火山の幻獣は、炎の技がとにかく強烈だ。\n水の技をもっていくといい。炎は水に弱いからな。', '……それにしても、祠のほうから高笑いが聞こえるんだが。'],
       },
     ],
     triggers: [{ x: 22, y: 6, w: 1, h: 2, flag: 'ch2BlastMet', when: (s) => !s.flags.keyFire, run: (E) => volcanoEvent(E) }],
@@ -365,7 +365,7 @@
     await E.narrate('天空竜アストラは、蒼い空へと飛び去っていった……。');
     G.autoSave();
     await E.screen(G.UIScreens.chapterEnd({ chapter: '第2章', title: '空を渡る竜', next: 'To be continued……' }));
-    await E.narrate('――物語は、まだ続く。\n（天空竜アストラ（No.082）は、配合で生みだせるらしい……）');
+    await E.narrate(`――物語は、まだ続く。\n（天空竜アストラ（${G.dexNoLabel('082')}）は、配合で生みだせるらしい……）`);
     E.hideNpc('snowguard');
     await E.narrate('高原の東、『北の氷原』への道が開かれた。\n（氷と雪の幻獣たちが住んでいるという）');
   }

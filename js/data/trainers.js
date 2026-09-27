@@ -14,14 +14,15 @@
   };
 
   // ライバルの相棒。2戦目では、配合で生まれた姿（公式レシピの子）で出てくる
-  const RIVAL_FUSED = { '001': '021', '003': '023', '004': '022' };
+  //   （'004' は旧セーブ用。いまはライバルが ミズリス（002）・ヒノコロ（001）・カゼネコ（003）のどれかを選ぶ）
+  const RIVAL_FUSED = { '001': '021', '002': '022', '003': '023', '004': '022' };
   function rivalMon(level) {
     const id = G.getFlag('rivalStarter') || '004';
     return [level >= 16 && RIVAL_FUSED[id] ? RIVAL_FUSED[id] : id, level];
   }
 
   // 第2章：ライバルの相棒は、野生の D ランク（進化・配合でも得られる姿）になっている
-  const RIVAL_FINAL = { '001': '041', '003': '043', '004': '042' };
+  const RIVAL_FINAL = { '001': '041', '002': '042', '003': '043', '004': '042' };
   G.Looks.blast = { hair: '#d8482a', style: 'spiky', coat: '#1e1a28', shirt: '#8a2a1a', pants: '#1a1620' };
   G.Looks.vel = { hood: '#0e0c18', coat: '#1a1628', shirt: '#4a1a5a', pants: '#12101c', eyes: '#f0d040' };
 
