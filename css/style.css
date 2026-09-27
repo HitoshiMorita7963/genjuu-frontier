@@ -614,3 +614,24 @@ table.moves td { padding: 2px 4px 2px 0; }
 .dex-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .two-col.dex-cols, .scr-body.two-col:has(.dex-list) { grid-template-columns: minmax(200px, 42%) 1fr; }
 @media (max-width: 640px) { .scr-body.two-col:has(.dex-list) { grid-template-columns: 1fr; } }
+/* =====================================================================
+   バトルのコマンド枠（元のレイアウト：自分の幻獣の情報は右下）
+   ・枠は自分の情報の下に、横長で固定（上 70% 〜 下端、幅 60%）。自分の幻獣の絵（左下）とは重ならない
+   ・コマンドは 4列×2行、技は 2列（最大4行）、幻獣の入れかえは 2列にして、行数を減らす
+   ・キー操作の説明は画面下の操作説明にあるので、枠の中には出さない
+   ===================================================================== */
+.ui-layer.battle { top: 70%; bottom: 8px; height: auto; width: 60%; max-height: none; padding: 6px 12px; }
+.ui-layer.battle > .bt-hint { display: none; }
+.bt-grid.main { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.bt-grid:not(.main) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 8px; }
+.bt-cmd.move { padding: 0 2px; line-height: 1.35; }
+.bt-list2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 8px; }
+.bt-list2 .mon-row { padding: 1px 4px; gap: 4px; }
+.bt-list2 .bar { width: 50px; }
+.bt-info { height: 3.3em; }
+.ui-layer.battle .menu-row { padding: 0; }
+.mon-row-title { display: flex; align-items: baseline; gap: 4px; }
+.mon-row-title > * { flex: none; }
+.mon-row-title > .mon-row-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* バトル：説明欄は、枠の残りの高さを使う（枠の大きさは変わらない） */
+.ui-layer.battle > .bt-info { flex: 1 1 auto; height: auto; min-height: 2.4em; }

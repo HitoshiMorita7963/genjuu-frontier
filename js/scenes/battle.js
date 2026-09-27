@@ -261,8 +261,7 @@
       drawStone(ctx, b);
       drawFx(ctx, b);
       infoBox(ctx, b, 'enemy', 14, 16, 210, false);
-      // 自分の情報は左側（相手の情報の下）。右下のコマンド枠（高さ固定）と重ならないように
-      infoBox(ctx, b, 'player', 14, 100, 212, true);
+      infoBox(ctx, b, 'player', 256, 172, 212, true); // コマンド枠はこの下（CSS の .ui-layer.battle）
       drawPartyDots(ctx, b);
       if (b.screenFlash > 0) {
         ctx.fillStyle = `rgba(255,255,255,${Math.min(0.6, b.screenFlash)})`;

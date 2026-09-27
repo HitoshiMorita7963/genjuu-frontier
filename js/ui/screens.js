@@ -159,7 +159,8 @@
       const aura = G.Individual.aura(m);
       return `<div class="mon-row${selected ? ' sel' : ''}">` +
         `${P.img(m.speciesId, 'icon')}` +
-        `<div class="mon-row-main"><div>${esc(m.name)} <small>Lv${m.level}</small>${aura ? ` <span class="aura-mark aura-${aura}">✦</span>` : ''}${extra}</div>` +
+        // 名前だけを「…」で切り、Lv・しるし（戦闘中など）は必ず見せる
+        `<div class="mon-row-main"><div class="mon-row-title"><span class="mon-row-name">${esc(m.name)}</span><small>Lv${m.level}</small>${aura ? ` <span class="aura-mark aura-${aura}">✦</span>` : ''}${extra}</div>` +
         `<div class="mon-row-sub">${P.bar(m.hp, st.hp)}<small>${m.hp}/${st.hp}</small></div></div></div>`;
     },
     // 種族の基本情報

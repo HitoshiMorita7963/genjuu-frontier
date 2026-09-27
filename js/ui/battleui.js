@@ -27,7 +27,7 @@
         : m.hp <= 0 ? ' <span class="tag dead">ひんし</span>'
           : m.status ? ` <span class="tag">${G.Battle.STATUS[m.status].short}</span>` : '';
       return P().row(m, i === sel, tag);
-    }).join('') + (note ? `<div class="bt-note">${note}</div>` : '');
+    }).join('').replace(/^/, '<div class="bt-list2">') + '</div>' + (note ? `<div class="bt-note">${note}</div>` : '');
   }
 
   G.UIScreens.battleCommand = function (b) {
@@ -50,7 +50,7 @@
         };
 
         if (this.view === 'main') {
-          move(CMDS.length, 3); // メインは3列
+          move(CMDS.length, 4); // メインは4列×2行
           if (In.consume('confirm')) {
             const c = CMDS[this.sel];
             if (c.id === 'catch') {
@@ -82,7 +82,7 @@
 
         if (this.view === 'moves') {
           const list = this.moveList();
-          move(list.length, 2);
+          move(list.length, 2); // 技は2列（最大4行）
           if (In.consume('cancel')) return this.go('main');
           if (In.consume('confirm')) {
             const id = list[this.sel];
@@ -93,7 +93,7 @@
         }
 
         if (this.view === 'party') {
-          move(G.state.party.length, 1);
+          move(G.state.party.length, 2); // 幻獣は2列
           if (In.consume('cancel')) return this.go('main');
           if (In.consume('confirm')) {
             const m = G.state.party[this.sel];
@@ -122,7 +122,7 @@
         }
 
         if (this.view === 'itemTarget') {
-          move(G.state.party.length, 1);
+          move(G.state.party.length, 2);
           if (In.consume('cancel')) return this.go('items');
           if (In.consume('confirm')) {
             const m = G.state.party[this.sel];
@@ -179,7 +179,7 @@
           body = '<div class="bt-title">どの絆石を 投げる？</div>' + (ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
               `<span class="stone-icon" style="--c:${G.Items[id].color}"></span>${G.Items[id].name}<span class="catch-rate">捕獲率 <b>${pct(id)}%</b></span><span class="count">×${G.Items[id].infinite ? '∞' : G.state.items[id]}</span></div>`).join('') +
-              `<div class="bt-info"><small>幻獣使いLv${G.Tamer.level()}（${G.Species[foe.speciesId].rank}ランクは Lv${G.Tamer.needLevel(G.Species[foe.speciesId])}から・捕獲率 ×${G.Tamer.catchBonus(G.Species[foe.speciesId]).toFixed(2)}）<br>あと <b>${G.CatchRules.maxFails - b.catchFails}</b>回 失敗すると 怒ってしまう。　${esc(foe.name)}は ${hint}${foe.status ? '（状態異常なので成功しやすい）' : '　HPを減らす・状態異常にすると成功しやすい'}</small></div>`
+              `<div class="bt-info"><small>${esc(foe.name)}は ${hint}${foe.status ? '（状態異常で 成功しやすい）' : ''}　あと <b>${G.CatchRules.maxFails - b.catchFails}</b>回 失敗で 怒る<br>幻獣使いLv${G.Tamer.level()}（${G.Species[foe.speciesId].rank}ランクは Lv${G.Tamer.needLevel(G.Species[foe.speciesId])}〜・捕獲率 ×${G.Tamer.catchBonus(G.Species[foe.speciesId]).toFixed(2)}）</small></div>`
             : '<div class="menu-empty">絆石を 持っていない。</div>');
         } else if (this.view === 'items') {
           const ids = G.ItemUse.battleItems();
@@ -204,8 +204,12 @@
       note: '',
       update(In) {
         const n = G.state.party.length;
-        if (In.consume('up')) { this.sel = (this.sel - 1 + n) % n; this.note = ''; G.Screens.render(); }
-        if (In.consume('down')) { this.sel = (this.sel + 1) % n; this.note = ''; G.Screens.render(); }
+        // 2列：↑↓は2つ、←→は1つずつ動く
+        const mv = (d) => { this.sel = (this.sel + d + n) % n; this.note = ''; G.Screens.render(); };
+        if (In.consume('up')) mv(-2);
+        if (In.consume('down')) mv(2);
+        if (In.consume('left')) mv(-1);
+        if (In.consume('right')) mv(1);
         if (!forced && In.consume('cancel')) return G.Screens.close(null);
         if (In.consume('confirm')) {
           const m = G.state.party[this.sel];
