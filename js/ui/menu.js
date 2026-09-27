@@ -10,6 +10,7 @@
     { id: 'items', label: 'もちもの' },
     { id: 'status', label: '主人公' },
     { id: 'dex', label: '図鑑' },
+    { id: 'recipes', label: '配合表' },
     { id: 'save', label: 'セーブ' },
     { id: 'settings', label: 'せってい' },
     { id: 'close', label: 'とじる' },
@@ -37,6 +38,7 @@
             if (e.id === 'items') G.Screens.open(G.UIScreens.items());
             if (e.id === 'status') G.Screens.open(G.UIScreens.status());
             if (e.id === 'dex') G.Screens.open(G.UIScreens.dex());
+            if (e.id === 'recipes') G.Screens.open(G.UIScreens.recipeBook());
             if (e.id === 'save') G.Screens.open(G.UIScreens.save());
             if (e.id === 'settings') G.Screens.open(G.UIScreens.settings());
           }

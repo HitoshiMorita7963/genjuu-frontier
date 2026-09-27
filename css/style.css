@@ -448,6 +448,20 @@ table.moves td { padding: 2px 4px 2px 0; }
 .bar.ev i { background: #d070f0; }
 .muted { color: var(--muted); }
 .bt-info .charged { color: var(--accent); font-weight: normal; }
+
+/* ---------- 配合表 ---------- */
+.rc-body { display: flex; flex-direction: column; gap: 6px; }
+.rc-list { flex: 1; overflow-y: auto; min-height: 0; }
+.rc-row { display: flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 4px; font-size: 13px; white-space: nowrap; }
+.rc-row.sel { background: rgba(255, 211, 90, 0.12); outline: 1px solid var(--accent); }
+.rc-row.unknown { color: var(--muted); }
+.rc-row .mon-img.icon, .rc-row .dex-unknown { width: 28px; height: 28px; flex: none; }
+.rc-name { min-width: 7em; overflow: hidden; text-overflow: ellipsis; }
+.rc-name.result { min-width: 8em; font-weight: bold; }
+.rc-op { color: var(--muted); padding: 0 2px; }
+.rc-row .badge.rank { margin-left: 2px; }
+.rc-detail { border-top: 1px solid #353c63; padding-top: 4px; min-height: 3.2em; font-size: 13px; line-height: 1.5; }
+@media (max-width: 640px) { .rc-name { min-width: 0; } .rc-name.result { min-width: 0; } }
 .nowrap { white-space: nowrap; }
 .info-body { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
 .info-head { display: flex; gap: 10px; align-items: center; }
