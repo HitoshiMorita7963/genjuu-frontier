@@ -1,10 +1,10 @@
 // 自動生成ファイル（直接編集しないこと）
-//   元データ: data/monster_frontier_100.json
+//   元データ: data/monster_frontier.json
 //   再生成:   node tools/build-data.js
 window.Game = window.Game || {};
 window.Game.RawMonsterData = {
  "title": "モンスターフロンティア",
- "version": "1.1",
+ "version": "2.0",
  "rules": {
   "partyLimit": 6,
   "maxEquippedMoves": 4,
@@ -20,6 +20,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 58,
+    "攻撃": 74,
+    "防御": 39,
+    "素早さ": 43,
+    "特殊攻撃": 22,
+    "特殊防御": 39
+   },
+   "evYield": {
+    "攻撃": 1
+   },
    "baseStats": {
     "HP": 24,
     "攻撃": 15,
@@ -49,6 +64,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 72,
+    "攻撃": 28,
+    "防御": 40,
+    "素早さ": 27,
+    "特殊攻撃": 34,
+    "特殊防御": 74
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 8,
@@ -78,6 +108,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 49,
+    "攻撃": 60,
+    "防御": 32,
+    "素早さ": 74,
+    "特殊攻撃": 24,
+    "特殊防御": 36
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 22,
     "攻撃": 10,
@@ -107,6 +152,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 71,
+    "攻撃": 34,
+    "防御": 71,
+    "素早さ": 24,
+    "特殊攻撃": 25,
+    "特殊防御": 50
+   },
+   "evYield": {
+    "防御": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 8,
@@ -136,6 +196,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 51,
+    "攻撃": 59,
+    "防御": 30,
+    "素早さ": 74,
+    "特殊攻撃": 25,
+    "特殊防御": 36
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 22,
     "攻撃": 10,
@@ -165,6 +240,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 50,
+    "攻撃": 60,
+    "防御": 25,
+    "素早さ": 74,
+    "特殊攻撃": 30,
+    "特殊防御": 36
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 22,
     "攻撃": 10,
@@ -194,6 +284,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 44,
+    "攻撃": 77,
+    "防御": 19,
+    "素早さ": 66,
+    "特殊攻撃": 39,
+    "特殊防御": 30
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 24,
     "攻撃": 15,
@@ -223,6 +328,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "始まりの草原",
    "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "特殊防御",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 55,
+    "攻撃": 32,
+    "防御": 30,
+    "素早さ": 62,
+    "特殊攻撃": 41,
+    "特殊防御": 55
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 26,
     "攻撃": 7,
@@ -252,6 +372,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "若葉の森",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 72,
+    "攻撃": 27,
+    "防御": 47,
+    "素早さ": 22,
+    "特殊攻撃": 37,
+    "特殊防御": 70
+   },
+   "evYield": {
+    "防御": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 8,
@@ -281,6 +416,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "若葉の森",
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 72,
+    "攻撃": 24,
+    "防御": 47,
+    "素早さ": 25,
+    "特殊攻撃": 41,
+    "特殊防御": 66
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 26,
     "攻撃": 7,
@@ -310,6 +460,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "清流の岸辺",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 72,
+    "攻撃": 28,
+    "防御": 41,
+    "素早さ": 23,
+    "特殊攻撃": 37,
+    "特殊防御": 74
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 8,
@@ -339,6 +504,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "清流の岸辺",
    "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 72,
+    "攻撃": 33,
+    "防御": 72,
+    "素早さ": 19,
+    "特殊攻撃": 30,
+    "特殊防御": 49
+   },
+   "evYield": {
+    "防御": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 8,
@@ -368,6 +548,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "清流の岸辺",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 55,
+    "攻撃": 27,
+    "防御": 36,
+    "素早さ": 41,
+    "特殊攻撃": 74,
+    "特殊防御": 42
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
    "baseStats": {
     "HP": 22,
     "攻撃": 8,
@@ -397,6 +592,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "若葉の森",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 50,
+    "攻撃": 61,
+    "防御": 31,
+    "素早さ": 74,
+    "特殊攻撃": 29,
+    "特殊防御": 30
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 22,
     "攻撃": 10,
@@ -426,6 +636,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "若葉の森",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 59,
+    "攻撃": 74,
+    "防御": 38,
+    "素早さ": 44,
+    "特殊攻撃": 27,
+    "特殊防御": 33
+   },
+   "evYield": {
+    "攻撃": 1
+   },
    "baseStats": {
     "HP": 24,
     "攻撃": 15,
@@ -455,6 +680,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "若葉の森",
    "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 73,
+    "攻撃": 31,
+    "防御": 71,
+    "素早さ": 25,
+    "特殊攻撃": 32,
+    "特殊防御": 43
+   },
+   "evYield": {
+    "防御": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 8,
@@ -484,6 +724,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "夕闇の洞穴",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 54,
+    "攻撃": 26,
+    "防御": 37,
+    "素早さ": 48,
+    "特殊攻撃": 74,
+    "特殊防御": 36
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
    "baseStats": {
     "HP": 22,
     "攻撃": 8,
@@ -513,6 +768,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "夕闇の洞穴",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 50,
+    "攻撃": 62,
+    "防御": 30,
+    "素早さ": 74,
+    "特殊攻撃": 30,
+    "特殊防御": 29
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 22,
     "攻撃": 10,
@@ -542,6 +812,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "古木の祠",
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 66,
+    "攻撃": 24,
+    "防御": 48,
+    "素早さ": 32,
+    "特殊攻撃": 39,
+    "特殊防御": 66
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 26,
     "攻撃": 7,
@@ -571,6 +856,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "砂礫の丘",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 65,
+    "攻撃": 28,
+    "防御": 47,
+    "素早さ": 27,
+    "特殊攻撃": 39,
+    "特殊防御": 69
+   },
+   "evYield": {
+    "防御": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 8,
@@ -597,9 +897,24 @@ window.Game.RawMonsterData = {
    "family": "獣",
    "element": "炎",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "火山の麓",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 71,
+    "攻撃": 84,
+    "防御": 45,
+    "素早さ": 60,
+    "特殊攻撃": 28,
+    "特殊防御": 47
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 34,
     "攻撃": 22,
@@ -633,9 +948,24 @@ window.Game.RawMonsterData = {
    "family": "獣",
    "element": "水",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "清流の洞窟",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 34,
+    "防御": 50,
+    "素早さ": 34,
+    "特殊攻撃": 39,
+    "特殊防御": 90
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 42,
     "攻撃": 15,
@@ -669,9 +999,24 @@ window.Game.RawMonsterData = {
    "family": "獣",
    "element": "雷",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "雷鳴平原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 60,
+    "攻撃": 80,
+    "防御": 37,
+    "素早さ": 85,
+    "特殊攻撃": 29,
+    "特殊防御": 44
+   },
+   "evYield": {
+    "攻撃": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 17,
@@ -705,9 +1050,24 @@ window.Game.RawMonsterData = {
    "family": "鳥",
    "element": "炎",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "火山の麓",
    "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 54,
+    "攻撃": 100,
+    "防御": 23,
+    "素早さ": 74,
+    "特殊攻撃": 47,
+    "特殊防御": 37
+   },
+   "evYield": {
+    "攻撃": 1
+   },
    "baseStats": {
     "HP": 34,
     "攻撃": 22,
@@ -741,9 +1101,24 @@ window.Game.RawMonsterData = {
    "family": "鳥",
    "element": "水",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "風切り高原",
    "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "特殊防御",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 67,
+    "攻撃": 37,
+    "防御": 36,
+    "素早さ": 77,
+    "特殊攻撃": 51,
+    "特殊防御": 67
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 36,
     "攻撃": 14,
@@ -777,9 +1152,24 @@ window.Game.RawMonsterData = {
    "family": "植物",
    "element": "光",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "古木の祠",
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 87,
+    "攻撃": 29,
+    "防御": 58,
+    "素早さ": 30,
+    "特殊攻撃": 50,
+    "特殊防御": 81
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 36,
     "攻撃": 14,
@@ -813,9 +1203,24 @@ window.Game.RawMonsterData = {
    "family": "植物",
    "element": "炎",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "火山の麓",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 68,
+    "攻撃": 34,
+    "防御": 44,
+    "素早さ": 49,
+    "特殊攻撃": 90,
+    "特殊防御": 50
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 15,
@@ -849,9 +1254,24 @@ window.Game.RawMonsterData = {
    "family": "水棲",
    "element": "雷",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "雷鳴の海",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 68,
+    "攻撃": 34,
+    "防御": 43,
+    "素早さ": 50,
+    "特殊攻撃": 90,
+    "特殊防御": 50
+   },
+   "evYield": {
+    "特殊攻撃": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 15,
@@ -885,9 +1305,24 @@ window.Game.RawMonsterData = {
    "family": "水棲",
    "element": "地",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
    "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 40,
+    "防御": 87,
+    "素早さ": 24,
+    "特殊攻撃": 37,
+    "特殊防御": 59
+   },
+   "evYield": {
+    "防御": 1
+   },
    "baseStats": {
     "HP": 42,
     "攻撃": 15,
@@ -921,9 +1356,24 @@ window.Game.RawMonsterData = {
    "family": "虫",
    "element": "風",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "若葉の森",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 61,
+    "攻撃": 74,
+    "防御": 37,
+    "素早さ": 90,
+    "特殊攻撃": 36,
+    "特殊防御": 37
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 17,
@@ -957,9 +1407,24 @@ window.Game.RawMonsterData = {
    "family": "虫",
    "element": "炎",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "火山の麓",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 70,
+    "攻撃": 90,
+    "防御": 47,
+    "素早さ": 52,
+    "特殊攻撃": 35,
+    "特殊防御": 41
+   },
+   "evYield": {
+    "攻撃": 1
+   },
    "baseStats": {
     "HP": 34,
     "攻撃": 22,
@@ -993,9 +1458,24 @@ window.Game.RawMonsterData = {
    "family": "魔獣",
    "element": "闇",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "夕闇の洞穴",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 67,
+    "攻撃": 32,
+    "防御": 44,
+    "素早さ": 64,
+    "特殊攻撃": 85,
+    "特殊防御": 43
+   },
+   "evYield": {
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 32,
     "攻撃": 15,
@@ -1029,9 +1509,24 @@ window.Game.RawMonsterData = {
    "family": "精霊",
    "element": "光",
    "rank": "E",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "古木の祠",
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 81,
+    "攻撃": 29,
+    "防御": 57,
+    "素早さ": 37,
+    "特殊攻撃": 51,
+    "特殊防御": 80
+   },
+   "evYield": {
+    "特殊防御": 1
+   },
    "baseStats": {
     "HP": 36,
     "攻撃": 14,
@@ -1068,6 +1563,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 70,
+    "攻撃": 131,
+    "防御": 30,
+    "素早さ": 96,
+    "特殊攻撃": 62,
+    "特殊防御": 48
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 48,
     "攻撃": 30,
@@ -1104,6 +1614,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 115,
+    "攻撃": 44,
+    "防御": 64,
+    "素早さ": 35,
+    "特殊攻撃": 61,
+    "特殊防御": 118
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
    "baseStats": {
     "HP": 56,
     "攻撃": 23,
@@ -1140,6 +1665,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 78,
+    "攻撃": 96,
+    "防御": 49,
+    "素早さ": 118,
+    "特殊攻撃": 49,
+    "特殊防御": 47
+   },
+   "evYield": {
+    "素早さ": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 25,
@@ -1176,6 +1716,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 114,
+    "攻撃": 38,
+    "防御": 74,
+    "素早さ": 40,
+    "特殊攻撃": 66,
+    "特殊防御": 105
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
    "baseStats": {
     "HP": 50,
     "攻撃": 22,
@@ -1212,6 +1767,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 91,
+    "攻撃": 118,
+    "防御": 62,
+    "素早さ": 69,
+    "特殊攻撃": 45,
+    "特殊防御": 52
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 48,
     "攻撃": 30,
@@ -1248,6 +1818,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 86,
+    "攻撃": 45,
+    "防御": 57,
+    "素早さ": 74,
+    "特殊攻撃": 118,
+    "特殊防御": 57
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 23,
@@ -1284,6 +1869,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "特殊攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 49,
+    "防御": 47,
+    "素早さ": 101,
+    "特殊攻撃": 74,
+    "特殊防御": 78
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
    "baseStats": {
     "HP": 50,
     "攻撃": 22,
@@ -1320,6 +1920,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "火山の麓",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 113,
+    "防御": 60,
+    "素早さ": 66,
+    "特殊攻撃": 34,
+    "特殊防御": 59
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 48,
     "攻撃": 30,
@@ -1356,6 +1971,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "清流の洞窟",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 51,
+    "防御": 63,
+    "素早さ": 41,
+    "特殊攻撃": 50,
+    "特殊防御": 106
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 56,
     "攻撃": 23,
@@ -1392,6 +2022,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "雷鳴平原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 76,
+    "攻撃": 101,
+    "防御": 45,
+    "素早さ": 106,
+    "特殊攻撃": 38,
+    "特殊防御": 54
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 25,
@@ -1428,6 +2073,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "風切り高原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 76,
+    "攻撃": 92,
+    "防御": 38,
+    "素早さ": 113,
+    "特殊攻撃": 46,
+    "特殊防御": 55
+   },
+   "evYield": {
+    "素早さ": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 25,
@@ -1464,6 +2124,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "火山の麓",
    "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 66,
+    "攻撃": 126,
+    "防御": 29,
+    "素早さ": 93,
+    "特殊攻撃": 60,
+    "特殊防御": 46
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 48,
     "攻撃": 30,
@@ -1500,6 +2175,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "湖畔の森",
    "role": "支援",
+   "archetype": "高速サポート",
+   "signature": "特殊防御",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 84,
+    "攻撃": 46,
+    "防御": 46,
+    "素早さ": 98,
+    "特殊攻撃": 62,
+    "特殊防御": 84
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
    "baseStats": {
     "HP": 50,
     "攻撃": 22,
@@ -1536,6 +2226,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "古樹の森",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 107,
+    "攻撃": 42,
+    "防御": 71,
+    "素早さ": 34,
+    "特殊攻撃": 61,
+    "特殊防御": 105
+   },
+   "evYield": {
+    "防御": 2
+   },
    "baseStats": {
     "HP": 56,
     "攻撃": 23,
@@ -1572,6 +2277,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "花冠の庭",
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 101,
+    "攻撃": 38,
+    "防御": 69,
+    "素早さ": 48,
+    "特殊攻撃": 63,
+    "特殊防御": 101
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
    "baseStats": {
     "HP": 50,
     "攻撃": 22,
@@ -1608,6 +2328,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "雷鳴平原",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 85,
+    "攻撃": 42,
+    "防御": 55,
+    "素早さ": 62,
+    "特殊攻撃": 113,
+    "特殊防御": 63
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 23,
@@ -1644,6 +2379,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "深水洞",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 84,
+    "攻撃": 41,
+    "防御": 56,
+    "素早さ": 64,
+    "特殊攻撃": 113,
+    "特殊防御": 62
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 23,
@@ -1680,6 +2430,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "雷鳴の海",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 105,
+    "防御": 59,
+    "素早さ": 75,
+    "特殊攻撃": 34,
+    "特殊防御": 59
+   },
+   "evYield": {
+    "素早さ": 2
+   },
    "baseStats": {
     "HP": 48,
     "攻撃": 30,
@@ -1716,6 +2481,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "岩礁海岸",
    "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 108,
+    "攻撃": 50,
+    "防御": 109,
+    "素早さ": 31,
+    "特殊攻撃": 46,
+    "特殊防御": 76
+   },
+   "evYield": {
+    "防御": 2
+   },
    "baseStats": {
     "HP": 56,
     "攻撃": 23,
@@ -1752,6 +2532,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "風切り高原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 77,
+    "攻撃": 93,
+    "防御": 45,
+    "素早さ": 113,
+    "特殊攻撃": 45,
+    "特殊防御": 47
+   },
+   "evYield": {
+    "素早さ": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 25,
@@ -1788,6 +2583,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "火山の麓",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 88,
+    "攻撃": 114,
+    "防御": 60,
+    "素早さ": 66,
+    "特殊攻撃": 42,
+    "特殊防御": 50
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 48,
     "攻撃": 30,
@@ -1824,6 +2634,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "夕闇の洞穴",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 85,
+    "攻撃": 43,
+    "防御": 54,
+    "素早さ": 70,
+    "特殊攻撃": 113,
+    "特殊防御": 55
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 23,
@@ -1860,6 +2685,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "夕闇の洞穴",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 89,
+    "攻撃": 105,
+    "防御": 58,
+    "素早さ": 76,
+    "特殊攻撃": 42,
+    "特殊防御": 50
+   },
+   "evYield": {
+    "素早さ": 2
+   },
    "baseStats": {
     "HP": 48,
     "攻撃": 30,
@@ -1896,6 +2736,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "花冠の庭",
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 46,
+    "防御": 73,
+    "素早さ": 45,
+    "特殊攻撃": 63,
+    "特殊防御": 84
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 50,
     "攻撃": 22,
@@ -1932,6 +2787,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "風の祭壇",
    "role": "速度",
+   "archetype": "高速サポート",
+   "signature": "素早さ",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 78,
+    "攻撃": 46,
+    "防御": 54,
+    "素早さ": 105,
+    "特殊攻撃": 63,
+    "特殊防御": 74
+   },
+   "evYield": {
+    "素早さ": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 25,
@@ -1968,6 +2838,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "大地の祠",
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 101,
+    "攻撃": 41,
+    "防御": 71,
+    "素早さ": 41,
+    "特殊攻撃": 59,
+    "特殊防御": 107
+   },
+   "evYield": {
+    "防御": 2
+   },
    "baseStats": {
     "HP": 56,
     "攻撃": 23,
@@ -2004,6 +2889,21 @@ window.Game.RawMonsterData = {
    "obtain": "野生",
    "region": "雷の祭壇",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 76,
+    "攻撃": 42,
+    "防御": 56,
+    "素早さ": 70,
+    "特殊攻撃": 113,
+    "特殊防御": 63
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
    "baseStats": {
     "HP": 46,
     "攻撃": 23,
@@ -2037,9 +2937,24 @@ window.Game.RawMonsterData = {
    "family": "獣",
    "element": "氷",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "北の氷原",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 130,
+    "防御": 83,
+    "素早さ": 84,
+    "特殊攻撃": 43,
+    "特殊防御": 71
+   },
+   "evYield": {
+    "防御": 2
+   },
    "baseStats": {
     "HP": 66,
     "攻撃": 41,
@@ -2073,9 +2988,24 @@ window.Game.RawMonsterData = {
    "family": "獣",
    "element": "雷",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "雷鳴平原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 94,
+    "攻撃": 125,
+    "防御": 56,
+    "素早さ": 130,
+    "特殊攻撃": 47,
+    "特殊防御": 68
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 64,
     "攻撃": 36,
@@ -2109,9 +3039,24 @@ window.Game.RawMonsterData = {
    "family": "鳥",
    "element": "風",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "風の祭壇",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 96,
+    "攻撃": 111,
+    "防御": 47,
+    "素早さ": 140,
+    "特殊攻撃": 57,
+    "特殊防御": 69
+   },
+   "evYield": {
+    "素早さ": 2
+   },
    "baseStats": {
     "HP": 64,
     "攻撃": 36,
@@ -2145,9 +3090,24 @@ window.Game.RawMonsterData = {
    "family": "鳥",
    "element": "炎",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "大地の祠",
    "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 85,
+    "攻撃": 156,
+    "防御": 35,
+    "素早さ": 115,
+    "特殊攻撃": 71,
+    "特殊防御": 58
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 66,
     "攻撃": 41,
@@ -2181,9 +3141,24 @@ window.Game.RawMonsterData = {
    "family": "精霊",
    "element": "光",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "花冠の庭",
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 126,
+    "攻撃": 47,
+    "防御": 89,
+    "素早さ": 56,
+    "特殊攻撃": 77,
+    "特殊防御": 125
+   },
+   "evYield": {
+    "特殊防御": 2
+   },
    "baseStats": {
     "HP": 68,
     "攻撃": 33,
@@ -2217,9 +3192,24 @@ window.Game.RawMonsterData = {
    "family": "魔獣",
    "element": "雷",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "雷の祭壇",
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 103,
+    "攻撃": 53,
+    "防御": 69,
+    "素早さ": 88,
+    "特殊攻撃": 140,
+    "特殊防御": 67
+   },
+   "evYield": {
+    "特殊攻撃": 2
+   },
    "baseStats": {
     "HP": 64,
     "攻撃": 34,
@@ -2253,9 +3243,24 @@ window.Game.RawMonsterData = {
    "family": "水棲",
    "element": "闇",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "深水洞",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 140,
+    "防御": 73,
+    "素早さ": 73,
+    "特殊攻撃": 52,
+    "特殊防御": 73
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 66,
     "攻撃": 41,
@@ -2289,9 +3294,24 @@ window.Game.RawMonsterData = {
    "family": "水棲",
    "element": "地",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "岩礁海岸",
    "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 134,
+    "攻撃": 66,
+    "防御": 135,
+    "素早さ": 35,
+    "特殊攻撃": 56,
+    "特殊防御": 94
+   },
+   "evYield": {
+    "防御": 2
+   },
    "baseStats": {
     "HP": 74,
     "攻撃": 34,
@@ -2325,9 +3345,24 @@ window.Game.RawMonsterData = {
    "family": "虫",
    "element": "雷",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "風切り高原",
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 95,
+    "攻撃": 114,
+    "防御": 68,
+    "素早さ": 129,
+    "特殊攻撃": 57,
+    "特殊防御": 57
+   },
+   "evYield": {
+    "防御": 2
+   },
    "baseStats": {
     "HP": 64,
     "攻撃": 36,
@@ -2361,9 +3396,24 @@ window.Game.RawMonsterData = {
    "family": "虫",
    "element": "炎",
    "rank": "C",
-   "obtain": "配合限定",
-   "region": null,
+   "obtain": "野生",
+   "region": "火山の麓",
    "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 141,
+    "防御": 73,
+    "素早さ": 83,
+    "特殊攻撃": 52,
+    "特殊防御": 62
+   },
+   "evYield": {
+    "攻撃": 2
+   },
    "baseStats": {
     "HP": 66,
     "攻撃": 41,
@@ -2400,6 +3450,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 165,
+    "攻撃": 158,
+    "防御": 117,
+    "素早さ": 43,
+    "特殊攻撃": 55,
+    "特殊防御": 72
+   },
+   "evYield": {
+    "攻撃": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 88,
     "攻撃": 54,
@@ -2436,6 +3502,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 160,
+    "攻撃": 67,
+    "防御": 105,
+    "素早さ": 67,
+    "特殊攻撃": 90,
+    "特殊防御": 121
+   },
+   "evYield": {
+    "攻撃": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 90,
     "攻撃": 46,
@@ -2472,6 +3554,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "速度",
+   "archetype": "高速サポート",
+   "signature": "素早さ",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 110,
+    "攻撃": 69,
+    "防御": 80,
+    "素早さ": 153,
+    "特殊攻撃": 90,
+    "特殊防御": 108
+   },
+   "evYield": {
+    "素早さ": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 86,
     "攻撃": 49,
@@ -2508,6 +3606,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 147,
+    "攻撃": 62,
+    "防御": 104,
+    "素早さ": 58,
+    "特殊攻撃": 85,
+    "特殊防御": 154
+   },
+   "evYield": {
+    "防御": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 96,
     "攻撃": 47,
@@ -2544,6 +3658,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 109,
+    "攻撃": 62,
+    "防御": 79,
+    "素早さ": 104,
+    "特殊攻撃": 165,
+    "特殊防御": 91
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 86,
     "攻撃": 47,
@@ -2580,6 +3710,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "一点特化",
+   "signature": "攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 112,
+    "攻撃": 210,
+    "防御": 49,
+    "素早さ": 155,
+    "特殊攻撃": 98,
+    "特殊防御": 76
+   },
+   "evYield": {
+    "攻撃": 2,
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 115,
     "攻撃": 70,
@@ -2616,6 +3762,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 182,
+    "攻撃": 69,
+    "防御": 104,
+    "素早さ": 58,
+    "特殊攻撃": 98,
+    "特殊防御": 189
+   },
+   "evYield": {
+    "特殊防御": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 123,
     "攻撃": 63,
@@ -2652,6 +3814,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 168,
+    "攻撃": 62,
+    "防御": 133,
+    "素早さ": 77,
+    "特殊攻撃": 107,
+    "特殊防御": 153
+   },
+   "evYield": {
+    "防御": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 117,
     "攻撃": 62,
@@ -2688,6 +3866,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 126,
+    "攻撃": 168,
+    "防御": 77,
+    "素早さ": 175,
+    "特殊攻撃": 63,
+    "特殊防御": 91
+   },
+   "evYield": {
+    "攻撃": 2,
+    "素早さ": 1
+   },
    "baseStats": {
     "HP": 113,
     "攻撃": 65,
@@ -2724,6 +3918,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 190,
+    "攻撃": 182,
+    "防御": 133,
+    "素早さ": 48,
+    "特殊攻撃": 63,
+    "特殊防御": 84
+   },
+   "evYield": {
+    "攻撃": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 115,
     "攻撃": 70,
@@ -2760,6 +3970,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "特殊攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 182,
+    "攻撃": 63,
+    "防御": 119,
+    "素早さ": 76,
+    "特殊攻撃": 92,
+    "特殊防御": 168
+   },
+   "evYield": {
+    "特殊防御": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 117,
     "攻撃": 62,
@@ -2796,6 +4022,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 125,
+    "攻撃": 154,
+    "防御": 62,
+    "素早さ": 189,
+    "特殊攻撃": 78,
+    "特殊防御": 92
+   },
+   "evYield": {
+    "素早さ": 2,
+    "攻撃": 1
+   },
    "baseStats": {
     "HP": 113,
     "攻撃": 65,
@@ -2832,6 +4074,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "耐久",
+   "archetype": "物理の壁",
+   "signature": "防御",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 183,
+    "攻撃": 83,
+    "防御": 182,
+    "素早さ": 63,
+    "特殊攻撃": 78,
+    "特殊防御": 111
+   },
+   "evYield": {
+    "防御": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 123,
     "攻撃": 63,
@@ -2868,6 +4126,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 139,
+    "攻撃": 70,
+    "防御": 92,
+    "素早さ": 105,
+    "特殊攻撃": 189,
+    "特殊防御": 105
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 113,
     "攻撃": 63,
@@ -2904,6 +4178,22 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 142,
+    "攻撃": 70,
+    "防御": 90,
+    "素早さ": 104,
+    "特殊攻撃": 189,
+    "特殊防御": 105
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
    "baseStats": {
     "HP": 113,
     "攻撃": 63,
@@ -2940,6 +4230,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 212,
+    "攻撃": 203,
+    "防御": 149,
+    "素早さ": 38,
+    "特殊攻撃": 69,
+    "特殊防御": 109
+   },
+   "evYield": {
+    "攻撃": 3
+   },
    "baseStats": {
     "HP": 145,
     "攻撃": 87,
@@ -2976,6 +4281,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 203,
+    "攻撃": 77,
+    "防御": 116,
+    "素早さ": 62,
+    "特殊攻撃": 111,
+    "特殊防御": 211
+   },
+   "evYield": {
+    "特殊防御": 3
+   },
    "baseStats": {
     "HP": 153,
     "攻撃": 80,
@@ -3012,6 +4332,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 202,
+    "攻撃": 71,
+    "防御": 133,
+    "素早さ": 70,
+    "特殊攻撃": 117,
+    "特殊防御": 187
+   },
+   "evYield": {
+    "特殊防御": 3
+   },
    "baseStats": {
     "HP": 147,
     "攻撃": 79,
@@ -3048,6 +4383,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 137,
+    "攻撃": 173,
+    "防御": 71,
+    "素早さ": 211,
+    "特殊攻撃": 87,
+    "特殊防御": 101
+   },
+   "evYield": {
+    "素早さ": 3
+   },
    "baseStats": {
     "HP": 143,
     "攻撃": 82,
@@ -3084,6 +4434,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 156,
+    "攻撃": 79,
+    "防御": 101,
+    "素早さ": 132,
+    "特殊攻撃": 211,
+    "特殊防御": 101
+   },
+   "evYield": {
+    "特殊攻撃": 3
+   },
    "baseStats": {
     "HP": 143,
     "攻撃": 80,
@@ -3120,6 +4485,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 230,
+    "攻撃": 221,
+    "防御": 162,
+    "素早さ": 42,
+    "特殊攻撃": 76,
+    "特殊防御": 119
+   },
+   "evYield": {
+    "攻撃": 3
+   },
    "baseStats": {
     "HP": 175,
     "攻撃": 105,
@@ -3156,6 +4536,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "耐久",
+   "archetype": "特殊の壁",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 221,
+    "攻撃": 85,
+    "防御": 129,
+    "素早さ": 67,
+    "特殊攻撃": 119,
+    "特殊防御": 229
+   },
+   "evYield": {
+    "特殊防御": 3
+   },
    "baseStats": {
     "HP": 183,
     "攻撃": 98,
@@ -3192,6 +4587,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 170,
+    "攻撃": 84,
+    "防御": 111,
+    "素早さ": 129,
+    "特殊攻撃": 229,
+    "特殊防御": 127
+   },
+   "evYield": {
+    "特殊攻撃": 3
+   },
    "baseStats": {
     "HP": 173,
     "攻撃": 98,
@@ -3228,6 +4638,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 170,
+    "攻撃": 84,
+    "防御": 111,
+    "素早さ": 146,
+    "特殊攻撃": 229,
+    "特殊防御": 110
+   },
+   "evYield": {
+    "特殊攻撃": 3
+   },
    "baseStats": {
     "HP": 173,
     "攻撃": 98,
@@ -3264,6 +4689,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 205,
+    "攻撃": 77,
+    "防御": 144,
+    "素早さ": 95,
+    "特殊攻撃": 125,
+    "特殊防御": 204
+   },
+   "evYield": {
+    "特殊防御": 3
+   },
    "baseStats": {
     "HP": 177,
     "攻撃": 97,
@@ -3300,6 +4740,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "耐久",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 230,
+    "攻撃": 221,
+    "防御": 162,
+    "素早さ": 60,
+    "特殊攻撃": 75,
+    "特殊防御": 102
+   },
+   "evYield": {
+    "攻撃": 3
+   },
    "baseStats": {
     "HP": 183,
     "攻撃": 98,
@@ -3336,6 +4791,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 182,
+    "攻撃": 90,
+    "防御": 118,
+    "素早さ": 137,
+    "特殊攻撃": 228,
+    "特殊防御": 155
+   },
+   "evYield": {
+    "特殊防御": 3
+   },
    "baseStats": {
     "HP": 203,
     "攻撃": 116,
@@ -3372,6 +4842,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 247,
+    "攻撃": 237,
+    "防御": 173,
+    "素早さ": 44,
+    "特殊攻撃": 83,
+    "特殊防御": 126
+   },
+   "evYield": {
+    "攻撃": 3
+   },
    "baseStats": {
     "HP": 205,
     "攻撃": 123,
@@ -3408,6 +4893,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "HP",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 218,
+    "攻撃": 82,
+    "防御": 155,
+    "素早さ": 100,
+    "特殊攻撃": 137,
+    "特殊防御": 218
+   },
+   "evYield": {
+    "特殊防御": 3
+   },
    "baseStats": {
     "HP": 207,
     "攻撃": 115,
@@ -3444,6 +4944,21 @@ window.Game.RawMonsterData = {
    "obtain": "配合限定",
    "region": null,
    "role": "万能",
+   "archetype": "万能",
+   "signature": "HP",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 225,
+    "攻撃": 158,
+    "防御": 156,
+    "素早さ": 136,
+    "特殊攻撃": 147,
+    "特殊防御": 158
+   },
+   "evYield": {
+    "HP": 3
+   },
    "baseStats": {
     "HP": 240,
     "攻撃": 130,

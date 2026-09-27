@@ -52,7 +52,7 @@
         const sp = G.Species[m.speciesId];
         return `<div class="info-head">${portrait(m)}<div>` +
           `<div class="detail-name"><small>No.${sp.id}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
-          `${P().speciesHead(sp)}<div class="small">役割：${esc(sp.role)}型　成長：${G.Monster.GROWTH_NAMES[sp.growth]}</div>` +
+          `${P().speciesHead(sp)}<div class="small" title="${esc((G.StatRules.ARCHETYPES[sp.archetype] || {}).desc || '')}">型：${esc(sp.archetype)}　看板：${I().NAMES[sp.signature] || '―'}　成長：${G.Monster.GROWTH_NAMES[sp.growth]}</div>` +
           `<div class="titles">${titleBadges(m)}</div></div></div>`;
       },
       // 1ページ目：能力値の内訳
