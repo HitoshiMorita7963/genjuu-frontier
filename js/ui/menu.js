@@ -74,7 +74,7 @@
           if (In.consume('cancel')) return G.Screens.close();
           if (In.consume('confirm') && ids.length) {
             const it = G.Items[ids[this.sel]];
-            if (['heal', 'status', 'evolve', 'boost', 'ev', 'evreset'].includes(it.type)) {
+            if (['heal', 'status', 'evolve', 'boost', 'ev', 'evreset', 'exp'].includes(it.type)) {
               if (!G.state.party.length) this.note = '幻獣を 連れていない。';
               else { this.target = ids[this.sel]; this.tsel = 0; }
             } else {
@@ -91,6 +91,27 @@
             G.addItem(id, -1);
             G.Screens.closeAll();
             G.Events.run((E) => G.Growth.evolve(m, to, E));
+            return;
+          }
+          if (it.type === 'exp') {
+            // 経験値アイテム：レベルアップ・技の習得・進化の演出があるので、メニューを閉じてイベントとして進める
+            if (m.level >= G.Monster.MAX_LEVEL) { this.note = `${m.name}は もう これ以上 レベルが 上がらない。`; G.Screens.render(); return; }
+            const amount = G.Growth.expItemAmount(m, id);
+            const back = { sel: this.sel, tsel: this.tsel, id };
+            G.addItem(id, -1);
+            G.Screens.closeAll();
+            G.Events.run(async (E) => {
+              G.Audio.se('heal');
+              await E.narrate(`${m.name}は ${it.name}を 食べた！`);
+              const ui = { msg: (t) => E.narrate(t) };
+              if (await G.Growth.gainExp(m, amount, ui)) await G.Field.checkEvolutions([m], E);
+              G.UI.refresh();
+              // もちもの画面にもどる（続けて使えるように）
+              G.Screens.open(G.UIScreens.menu());
+              const scr = G.UIScreens.items();
+              if (G.state.items[back.id]) Object.assign(scr, { sel: back.sel, target: back.id, tsel: back.tsel });
+              G.Screens.open(scr);
+            });
             return;
           }
           if (it.type === 'ev') {

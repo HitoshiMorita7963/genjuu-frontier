@@ -199,10 +199,13 @@
         if (res.recipe) G.Dex.recordRecipe(res.recipe);
         else (s.ruleFound || (s.ruleFound = {}))[G.FusionRecipes.pairKey(a.speciesId, b.speciesId)] = res.speciesId;
         s.fusionCount = (s.fusionCount || 0) + 1;
+        // 配合の記念に、経験値アイテム（生まれた子のランクで決まる）。生まれたばかりの子を育てやすくする
+        const gift = G.ItemDrops.fusion[G.Species[child.speciesId].rank];
+        if (gift) G.addItem(gift[0], gift[1]);
 
         const ri = G.rankIndex(G.Species[child.speciesId].rank);
         const tier = res.kind === 'rule' ? 'rule' : ri >= 7 ? 'super' : ri >= 5 ? 'rare' : 'recipe';
-        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, parentMoves: allowed, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
+        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, parentMoves: allowed, gift, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
       } catch (e) {
         // --- 失敗：親だけ消えた状態にならないよう、すべて元に戻す ---
         s.party.splice(0, s.party.length, ...backup.party);

@@ -209,7 +209,8 @@
             `<div class="small">技：${moves}</div><div class="small">特性：${traits}</div>` +
             `<div class="small">才能：${ivLine(c, r.ivSource)}</div>` +
             `<div class="small">世代${c.generation}／親：${esc(this.a.name)} ＋ ${esc(this.b.name)}</div>` +
-            `<div class="small">${r.dest === 'party' ? 'パーティに加わった。' : 'パーティがいっぱいなので、預かり所へ送られた。'}</div>`;
+            `<div class="small">${r.dest === 'party' ? 'パーティに加わった。' : 'パーティがいっぱいなので、預かり所へ送られた。'}</div>` +
+            (r.gift ? `<div class="small">配合の記念に 『${esc(G.Items[r.gift[0]].name)}』を ${r.gift[1]}こ もらった！（もちものから 食べさせよう）</div>` : '');
           hint = 'Z：とじる';
         }
         return '<div class="scr-title">配合の館</div>' +

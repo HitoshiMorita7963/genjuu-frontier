@@ -327,6 +327,20 @@
   }
 
   // 落ちているアイテム（小袋＋きらめき）
+  // 落とし物：地面できらきら光る小さな実（color は道具の色）
+  function drawDrop(ctx, x, y, t, color = '#f0f0f0') {
+    const bob = Math.round(Math.sin(t * 3) * 1.5);
+    ctx.fillStyle = 'rgba(0,0,0,0.22)'; ctx.fillRect(x + 11, y + 24, 10, 3);
+    ctx.fillStyle = '#4a3a2a'; ctx.fillRect(x + 15, y + 11 + bob, 2, 3);
+    ctx.fillStyle = '#5aa04a'; ctx.fillRect(x + 17, y + 11 + bob, 4, 2);
+    ctx.fillStyle = color; ctx.fillRect(x + 12, y + 14 + bob, 8, 8); ctx.fillRect(x + 11, y + 15 + bob, 10, 6);
+    ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fillRect(x + 13, y + 15 + bob, 2, 2);
+    const a = (Math.sin(t * 4) + 1) / 2;
+    ctx.fillStyle = `rgba(255,250,200,${0.25 + a * 0.75})`;
+    const sx = x + 24, sy = y + 10 - Math.round(a * 2);
+    ctx.fillRect(sx - 1, sy - 3, 2, 6); ctx.fillRect(sx - 3, sy - 1, 6, 2);
+  }
+
   function drawItem(ctx, x, y, t) {
     ctx.fillStyle = 'rgba(0,0,0,0.2)'; ctx.fillRect(x + 9, y + 25, 14, 3);
     ctx.fillStyle = '#6a4222'; ctx.fillRect(x + 9, y + 14, 14, 12);
@@ -345,6 +359,7 @@
     drawFountain,
     drawSign,
     drawItem,
+    drawDrop,
     drawShrine,
     drawAltar,
     building(b) {
