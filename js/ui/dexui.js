@@ -5,7 +5,7 @@
 
   const esc = (s) => G.escapeHtml(s);
   const P = () => G.UIParts;
-  const OBTAIN = { wild: '野生', fusion: '配合限定' };
+  const OBTAIN = { wild: '野生', fusion: '配合限定', evolve: '進化でのみ' };
   // 配合レシピの表示：見つけていれば「A + B → C」、まだなら伏せる
   function recipeLine(sp) {
     const rc = G.fusionRecipes.find((r) => r.resultId === sp.id);
