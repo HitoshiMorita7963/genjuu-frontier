@@ -280,25 +280,30 @@
       }
       if (a.type === 'guard') return this.guard(a.side);
       if (a.type === 'charge') return this.charge(a.side);
+      if (a.type === 'meditate') return this.meditate(a.side);
       if (a.type === 'run') return this.tryRun();
       if (a.type === 'catch') return this.throwStone(a.item);
       return undefined;
     }
 
-    // ぼうぎょ：そのターンに受けるダメージを半分にし、MPを最大の1割（最低1）回復する。先に動ける
+    // ぼうぎょ：そのターンに受けるダメージを半分にする。先に動ける
     async guard(side) {
       const s = this.sides[side];
-      const m = s.mon;
       s.guard = true;
-      await this.msg(`${m.name}は 身を守っている！`, 0.6);
+      await this.msg(`${s.mon.name}は 身を守っている！`, 0.6);
+    }
+
+    // めいそう：心を静めて、MPを最大の MEDITATE_MP_RATE（最低2）回復する。守りは固くならない
+    async meditate(side) {
+      const m = this.sides[side].mon;
       const max = G.Monster.stats(m).mp;
-      const gain = Math.min(max - m.mp, Math.max(1, Math.floor(max * G.GrowthConfig.GUARD_MP_RATE)));
-      if (gain > 0) {
-        m.mp += gain;
-        this.addFx('heal', side, '#8ab8f0', 0.5);
-        await this.waitBars();
-        await this.msg(`${m.name}の MPが ${gain} 回復した！`, 0.6);
-      }
+      await this.msg(`${m.name}は 目を閉じて 心を静めている……`, 0.6);
+      const gain = Math.min(max - m.mp, Math.max(2, Math.round(max * G.GrowthConfig.MEDITATE_MP_RATE)));
+      if (gain <= 0) { await this.msg('しかし MPは 満タンだ！', 0.6); return; }
+      m.mp += gain;
+      this.addFx('heal', side, '#8ab8f0', 0.5);
+      await this.waitBars();
+      await this.msg(`${m.name}の MPが ${gain} 回復した！`, 0.6);
     }
 
     // ためる：次の攻撃のダメージを CHARGE_MUL 倍にする（重ねがけはできない。入れかえると消える）
