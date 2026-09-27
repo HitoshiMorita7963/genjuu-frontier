@@ -102,7 +102,13 @@ body {
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 17px;
+  max-height: calc(100% - 24px); /* 道具やお店の品が多いときは、一覧（.menu-list）だけがスクロールする */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
+.menu > * { flex: none; }
+.menu > .menu-list { flex: 0 1 auto; min-height: 3em; overflow-y: auto; padding-right: 8px; }
 .menu.wide { min-width: 320px; max-width: 60%; }
 .menu-title { color: var(--accent); font-size: 14px; margin-bottom: 4px; }
 .menu-row { display: flex; align-items: center; padding: 2px 0; }
@@ -238,7 +244,11 @@ kbd {
   font-size: 15px;
   overflow: hidden;
 }
-.scr-title { color: var(--accent); font-size: 17px; display: flex; gap: 14px; align-items: baseline; }
+/* 狭い画面では、全画面メニューを情報バー〜タッチボタンの上まで広げる（位置は js/ui/screens.js の fitLayer） */
+.ui-layer.full.expanded { position: fixed; left: 8px; right: 8px; z-index: 20; background: #14172e; }
+.ui-layer.battle.docked { position: fixed; width: auto; bottom: auto; z-index: 20; font-size: 15px; background: #14172e; padding: 6px 10px; }
+.ui-layer.battle.docked .bt-hint { display: none; } /* タッチ操作ではキーの説明はいらない */
+.scr-title { color: var(--accent); font-size: 17px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; row-gap: 4px; }
 .scr-title .tab { font-size: 13px; color: var(--muted); padding: 1px 8px; border: 1px solid #3a4068; border-radius: 4px; }
 .scr-title .tab.on { color: var(--text); border-color: var(--accent); }
 .scr-body { flex: 1; min-height: 0; }
@@ -515,6 +525,14 @@ table.moves td { padding: 2px 4px 2px 0; }
   .info-table .bar, .ev-row .bar { display: none; }
   .info-head .portrait img.big { width: 48px; height: 48px; }
   .scr-title .tab { white-space: nowrap; }
+  /* 中央に出る小窓（お店・せってい・セーブ）とメニューは、画面の幅に収める */
+  .ui-layer.menu.center { min-width: 0; width: calc(100% - 24px); }
+  .menu.wide { min-width: 0; max-width: none; left: 12px; }
+  /* 一覧＋詳細の2列は、縦に並べる（上：一覧、下：詳細） */
+  .two-col { grid-template-columns: 1fr; grid-template-rows: minmax(0, 2fr) minmax(0, 3fr); gap: 8px; }
+  .mon-detail { border-top: 1px solid #3a4068; padding-top: 6px; }
+  .ui-layer.full { padding: 8px 10px; font-size: 14px; }
+  .scr-hint { font-size: 11px; }
 }
 
 .hidden { display: none !important; }
@@ -522,6 +540,6 @@ table.moves td { padding: 2px 4px 2px 0; }
 @media (max-width: 640px) {
   body { padding: 8px 16px; }
   #hud { font-size: 14px; gap: 4px 12px; }
-  #message { font-size: 15px; min-height: 96px; }
+  #message { font-size: 15px; min-height: 120px; } /* バトルのコマンドもここに出るので、少し高めに */
   .hud-loc { margin-left: 0; }
 }

@@ -43,10 +43,6 @@
         if (In.consume('cancel')) G.Screens.close();
         In.consume('confirm');
       },
-      afterRender(el) {
-        const s = el.querySelector('.dex-row.sel');
-        if (s) s.scrollIntoView({ block: 'nearest' });
-      },
       html() {
         const d = G.state.dex;
         const all = G.SpeciesOrder;
