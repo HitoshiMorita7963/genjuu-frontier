@@ -14,7 +14,8 @@
 //                     個体値（0〜31・生まれつきの才能。js/systems/individual.js）
 //   evHp, evAttack, evDefense, evSpeed, evSpecialAttack, evSpecialDefense
 //                     努力値（育成の結果。1能力252・合計510まで）
-//   fusionBonus       配合ボーナス（配合を重ねるほど能力が底上げされる、％）
+//   fusionBonus       配合値（血統の力）。配合を重ねるほど高まり、子の個体値を高くなりやすくする。能力値には直接効かない
+//   power             （トレーナーの幻獣のみ）ボスなどの能力の底上げ（％）
 //   origin            入手方法と場所
 //   title, aura       （任意）イベントで授かった個体限定の称号・オーラ
 (function (G) {
@@ -77,6 +78,7 @@
         status: null,
         origin: { how: opts.how || 'wild', where: opts.where || '' },
       };
+      if (opts.power) m.power = opts.power;
       // 個体値：opts.ivs（数値 or 能力ごと）を指定しなければランダム。努力値は 0 から
       G.Individual.setIvs(m, G.Individual.rollIvs(opts.ivs));
       G.Individual.resetEvs(m);
@@ -87,14 +89,15 @@
     },
 
     // 能力値 ＝ 種族値 × Lv/50 × 個体値の成長補正 × 努力値の成長補正 ＋ 努力値の固定分 ＋ 5（HPは ＋Lv＋10）
-    //   → 配合値（％）・永続強化（boost）・G.StatModifiers（装備など）の順に補正
+    //   → トレーナーの底上げ（power％）・永続強化（boost）・G.StatModifiers（装備など）の順に補正
     //   個体値・努力値は「伸び方」に効くため、種族値が高い能力ほどよく伸びる。設定は js/data/growthConfig.js
     //   MP は個体値・努力値の対象外（種族のMP基礎値から計算）
+    //   配合値（fusionBonus）は能力値に効かない（配合で子の個体値に効く：G.Individual.inheritIvs）
     stats(m) {
       const sp = Mon.species(m);
       const I = G.Individual;
       const L = m.level;
-      const fb = 1 + (m.fusionBonus || 0) / 100;
+      const fb = 1 + (m.power || 0) / 100;
       const out = {};
       for (const k of STAT_KEYS) {
         let v;

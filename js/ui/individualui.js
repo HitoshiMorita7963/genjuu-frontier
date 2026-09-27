@@ -57,7 +57,7 @@
           `<td>${I().appraised() ? `<small>${I().ivTotal(m)}／${6 * C().IV_MAX}</small>` : ''}</td>` +
           `<td><small>${I().evTotal(m)}／${C().EV_MAX_TOTAL}</small></td></tr></table>` +
           `<div class="info-note">成長傾向：${esc(I().growthText(m))}</div>` +
-          `<div class="info-note small">MP ${st.mp}　命中 ${st.acc}　回避 ${st.eva}　配合値 +${m.fusionBonus || 0}%</div>`;
+          `<div class="info-note small">MP ${st.mp}　命中 ${st.acc}　回避 ${st.eva}</div>`;
       },
       // 2ページ目：才能（個体値）と育成（努力値）
       pageTalent() {
@@ -93,7 +93,7 @@
         return `<div class="info-cols"><table class="status info-lineage">` +
           `<tr><th>世代</th><td>${m.generation || 0}</td></tr>` +
           `<tr><th>配合回数</th><td>${I().fusionCount(m)} 回<small>（この個体と祖先が、配合で生まれた回数）</small></td></tr>` +
-          `<tr><th>配合値</th><td>+${m.fusionBonus || 0}%</td></tr>` +
+          `<tr><th>配合値</th><td>${m.fusionBonus || 0}<small>${esc(I().bloodlineText(m))}</small></td></tr>` +
           `<tr><th>入手</th><td>${how}${m.origin && m.origin.where ? `（${esc(m.origin.where)}）` : ''}</td></tr>` +
           `<tr><th>継承した技</th><td>${inhMoves}</td></tr>` +
           `<tr><th>継承した特性</th><td>${inhTrait}</td></tr></table>` +

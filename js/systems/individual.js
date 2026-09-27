@@ -118,9 +118,12 @@
     // ---------------- 配合：個体値の継承 ----------------
     //   親Aから2能力・親Bから2能力（個体値が高い能力ほど選ばれやすい）、残りはランダム。
     //   継承した値も一定確率でぶれる。ランダムの能力も両親の平均に少し寄る。
+    //   配合値（血統の力）が高い親ほど、ランダムの能力が高く出やすく、継承した値も上にぶれやすい。
     inheritIvs(a, b, rnd = Math.random) {
       const F = C.FUSION_IV;
       const ia = I.ivs(a), ib = I.ivs(b);
+      const bl = I.bloodline(a, b);
+      const roll = () => { let v = 0; for (let n = 0; n < bl.rolls; n++) v = Math.max(v, Math.floor(rnd() * (C.IV_MAX + 1))); return v; };
       const left = KEYS.slice();
       const out = {};
       const source = {};
@@ -135,19 +138,48 @@
           const k = pickFrom(from);
           let v = from[k];
           if (other[k] > v && rnd() < F.bestOfBoth) v = other[k];
-          if (rnd() < F.mutateChance) v += Math.round((rnd() * 2 - 1) * F.mutateRange);
+          if (rnd() < F.mutateChance) v += (rnd() < bl.upChance ? 1 : -1) * (1 + Math.floor(rnd() * F.mutateRange));
           out[k] = clamp(v, 0, C.IV_MAX);
           source[k] = tag;
         }
       };
       // どちらの親から先に選ぶかも公平に
       if (rnd() < 0.5) { inherit(ia, ib, 'a'); inherit(ib, ia, 'b'); } else { inherit(ib, ia, 'b'); inherit(ia, ib, 'a'); }
+      const pullRate = F.randomPull * (1 - C.BLOODLINE.pullFade * Math.min(1, bl.value / 100));
       for (const k of left) {
         const pull = (ia[k] + ib[k]) / 2;
-        out[k] = clamp(Math.round(randIv() * (1 - F.randomPull) + pull * F.randomPull), 0, C.IV_MAX);
+        out[k] = clamp(Math.round(roll() * (1 - pullRate) + pull * pullRate), 0, C.IV_MAX);
         source[k] = 'random';
       }
-      return { ivs: out, source };
+      // 血統の加護：配合値が高いほど、どの能力も少し上乗せされやすい
+      const blessed = [];
+      for (const k of KEYS) {
+        if (rnd() < bl.blessChance) {
+          out[k] = clamp(out[k] + 1 + Math.floor(rnd() * C.BLOODLINE.blessRange), 0, C.IV_MAX);
+          blessed.push(k);
+        }
+      }
+      return { ivs: out, source, bloodline: bl, blessed };
+    },
+    // 配合値（血統の力）の効果：{ value: 親の平均, rolls: ランダム能力の振り直し回数, upChance: 上にぶれる確率 }
+    bloodline(a, b) {
+      const B = C.BLOODLINE;
+      const value = Math.floor(((a.fusionBonus || 0) + (b.fusionBonus || 0)) / 2);
+      return {
+        value,
+        rolls: Math.min(B.maxRolls, 1 + Math.floor(value / B.rollStep)),
+        upChance: Math.min(B.upBiasMax, 0.5 + value / B.upBiasPer),
+        blessChance: Math.min(B.blessMax, value / B.blessPer),
+      };
+    },
+    // 配合値の説明（UI用）
+    bloodlineText(m) {
+      const v = m.fusionBonus || 0;
+      if (v >= 60) return '血統の力が非常に強い。子は優れた才能をもちやすい';
+      if (v >= 30) return '血統の力が強い。子は才能に恵まれやすい';
+      if (v >= 10) return '血統の力が育ってきた。子の才能が少し高くなりやすい';
+      if (v > 0) return '血統の力がわずかに宿っている';
+      return 'まだ血統の力は宿っていない（配合で生まれた子に宿る）';
     },
 
     // ---------------- 文章での説明 ----------------

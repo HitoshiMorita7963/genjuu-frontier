@@ -1,6 +1,6 @@
 // トレーナー・ボスのデータ
 //   party: [[種族ID, レベル], ...]（関数にすると進行状況に応じて変えられる）
-//   fusionBonus: 手持ち幻獣の配合値（ボスは能力が底上げされる）
+//   power: 手持ち幻獣の能力の底上げ（％。ボスを強くする。プレイヤーの幻獣には無い）
 //   boss: ボス演出 / canLose: 負けても全滅扱いにしない（ライバル戦・試練）
 //   intro: 戦闘開始時のセリフ / defeat: 負けたときのセリフ
 (function (G) {
@@ -27,7 +27,7 @@
 
   G.Trainers = {
     guardBorg: {
-      name: '森の番人ボルグ', look: G.Looks.guard, boss: true, canLose: true, reward: 600, fusionBonus: 10,
+      name: '森の番人ボルグ', look: G.Looks.guard, boss: true, canLose: true, reward: 600, power: 10,
       party: [['009', 7], ['016', 8]],
       intro: ['森の番人の試練、受けてもらうぞ！', 'わしの幻獣を倒せぬ者に、森は越えられん！'],
       defeat: ['……見事！', 'その力なら、森の奥でも立ち向かえよう。'],
@@ -39,19 +39,19 @@
       defeat: ['……チッ。'],
     },
     noir: {
-      name: '黒環団幹部ノワール', look: G.Looks.noir, boss: true, reward: 1500, fusionBonus: 15,
+      name: '黒環団幹部ノワール', look: G.Looks.noir, boss: true, reward: 1500, power: 15,
       party: [['017', 13], ['018', 14], ['032', 15]],
       intro: ['わたしの『環』の力、見せてあげる。'],
       defeat: ['……っ！', 'この子……ただの子どもじゃない……。'],
     },
     guardian: {
-      name: '封印の守護者', look: null, boss: true, reward: 0, fusionBonus: 8,
+      name: '封印の守護者', look: null, boss: true, reward: 0, power: 8,
       party: [['012', 14], ['029', 15], ['059', 17]],
       introText: '目覚めた守護者たちが、怒りのままに襲いかかってきた！',
       defeat: [],
     },
     rival2: {
-      name: 'ライバルのジン', look: RIVAL_LOOK, canLose: true, reward: 1200, fusionBonus: 5,
+      name: 'ライバルのジン', look: RIVAL_LOOK, canLose: true, reward: 1200, power: 5,
       party: () => [['044', 16], ['056', 16], rivalMon(18)],
       intro: ['……洞窟でのこと、礼は言わねえ。', 'だが、確かめたいことがある。\n全力でこい、{name}！'],
       defeat: ['……ああ、負けだ。完敗だよ。'],
@@ -59,19 +59,19 @@
 
     // ================= 第2章 =================
     blast: {
-      name: '黒環団幹部ブラスト', look: G.Looks.blast, boss: true, reward: 3000, fusionBonus: 8,
+      name: '黒環団幹部ブラスト', look: G.Looks.blast, boss: true, reward: 3000, power: 8,
       party: [['041', 23], ['045', 23], ['064', 25]],
       intro: ['ハッハァ！　祠の鍵石は、この黒環団のブラスト様がいただいた！', '取り返したけりゃ、オレの炎を越えてみな！'],
       defeat: ['ぐっ……！　この炎が、押し返されるだと……！？'],
     },
     rival3: {
-      name: 'ライバルのジン', look: RIVAL_LOOK, canLose: true, reward: 2500, fusionBonus: 8,
+      name: 'ライバルのジン', look: RIVAL_LOOK, canLose: true, reward: 2500, power: 8,
       party: () => [['044', 24], ['056', 24], [RIVAL_FINAL[G.getFlag('rivalStarter')] || '042', 26]],
       intro: ['……来たか、{name}。', '鍵石を渡す前に、確かめさせてくれ。\n今のオレと、今のお前。どっちが上かをな！'],
       defeat: ['……ハハッ。やっぱり、お前は強えな。'],
     },
     vel: {
-      name: '黒環団首領ヴェル', look: G.Looks.vel, boss: true, reward: 8000, fusionBonus: 0,
+      name: '黒環団首領ヴェル', look: G.Looks.vel, boss: true, reward: 8000, power: 0,
       party: [['063', 23], ['071', 23], ['073', 24]],
       intro: ['……よく来た、絆の紋章を持つ者よ。', '我が名はヴェル。黒環団を束ねる者。\n空を渡る竜の力は、我らの環がいただく。', '人と幻獣の盟約など、鎖にすぎぬ。\n――その鎖、ここで断ち切ってくれよう！'],
       defeat: ['……なぜだ。なぜ、鎖に縛られた幻獣が、これほどの力を……。'],

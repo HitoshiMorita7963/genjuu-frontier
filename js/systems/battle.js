@@ -640,7 +640,7 @@
       const party = typeof def.party === 'function' ? def.party() : def.party;
       // トレーナーの幻獣は個体値を固定して、戦いの難しさが毎回同じになるようにする
       const ivs = def.ivs !== undefined ? def.ivs : def.boss ? G.GrowthConfig.BOSS_IV : G.GrowthConfig.TRAINER_IV;
-      const enemies = party.map(([id, lv]) => G.Monster.create(id, lv, { fusionBonus: def.fusionBonus || 0, ivs, how: 'trainer' }));
+      const enemies = party.map(([id, lv]) => G.Monster.create(id, lv, { power: def.power || 0, ivs, how: 'trainer' }));
       const trainer = Object.assign({}, def, {
         name: G.format(def.name),
         intro: (def.intro || []).map(G.format),

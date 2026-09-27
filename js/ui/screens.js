@@ -94,7 +94,7 @@
         `（${G.Monster.GROWTH_NAMES[sp.growth]}）</div>` +
         `</div></div>` +
         `<div class="detail-cols"><table class="stats">${statRows}</table>` +
-        `<div><div class="small">世代 <b>${m.generation}</b>　配合値 <b>+${m.fusionBonus}</b>　努力値 <b>${G.Individual.evTotal(m)}</b></div>${parents}` +
+        `<div><div class="small">世代 <b>${m.generation}</b>　配合値 <b>${m.fusionBonus || 0}</b>　努力値 <b>${G.Individual.evTotal(m)}</b></div>${parents}` +
         `<div class="small talent-hint">${esc(G.Individual.hints(m)[0])}</div>` +
         `<div class="traits">${traits}</div></div></div>` +
         `<table class="moves"><tr><th>技</th><th>分類</th><th>威力</th><th>命中</th><th>MP</th></tr>${moves}</table>` +
