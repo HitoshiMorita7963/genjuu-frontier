@@ -111,8 +111,10 @@
         }
         out[k] = Math.floor(v * fb) + ((m.boost && m.boost[k]) || 0); // boost = 旧データの種による永続強化
       }
-      out.acc = sp.acc;
-      out.eva = sp.eva;
+      // 命中・回避は種族で差をつけない（当たりやすさは技の命中で決まる）。
+      // 特性（狩人の本能・残像など）と、戦闘中の上げ下げだけがこの基準に効く
+      out.acc = 100;
+      out.eva = 0;
       for (const f of G.StatModifiers) f(m, out);
       return out;
     },

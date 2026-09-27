@@ -71,7 +71,7 @@
       const st = G.Monster.stats(m);
       const nextExp = m.level >= G.Monster.MAX_LEVEL ? null : G.Monster.expForLevel(sp, m.level + 1);
       const curExp = G.Monster.expForLevel(sp, m.level);
-      const statRows = ['atk', 'def', 'spd', 'sat', 'sdf', 'acc', 'eva']
+      const statRows = ['atk', 'def', 'spd', 'sat', 'sdf']
         .map((k) => `<tr><th>${G.Monster.STAT_NAMES[k]}</th><td>${st[k]}</td></tr>`).join('');
       const inh = m.inheritedMoves || [];
       const moves = m.moves.map((id) => {

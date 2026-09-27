@@ -322,10 +322,10 @@
       if (!selfTarget && !foe.mon) { await this.msg('しかし 相手がいない……'); return; }
       await this.animate(side, 'attack', 0.3);
 
-      // 命中判定：技の命中 × 使い手の命中（設計書の90〜99）× 回避の差（設計書の回避8〜50）
+      // 命中判定：技の命中 × 使い手の命中（基準100＋特性、戦闘中の上げ下げ）× 相手の回避（特性の回避1につき1%かわす）
       const myFx = fx(m);
       if (!selfTarget) {
-        let acc = mv.acc * (this.stat(side, 'acc') / 100) * stageMul3(-foe.stages.eva) * (1 - Math.max(0, this.stat(foeSide, 'eva') - 8) / 150);
+        let acc = mv.acc * (this.stat(side, 'acc') / 100) * stageMul3(-foe.stages.eva) * (1 - Math.min(50, this.stat(foeSide, 'eva')) / 100);
         if (mv.cat === 'stat' && myFx.hex) acc += 20; // 呪術の才
         if (Math.random() * 100 >= acc) { await this.msg('しかし 攻撃は 外れた！', 0.7); return; }
       }

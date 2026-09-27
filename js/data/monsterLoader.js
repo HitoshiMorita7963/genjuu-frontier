@@ -150,7 +150,7 @@
         region: r.region,
         habitat: r.region || (r.obtain === '進化' ? '進化でのみ出会える' : '配合でのみ誕生'),
         base: [conv(bs.HP), mpBase(bs, r.role), conv(bs['攻撃']), conv(bs['防御']), conv(bs['素早さ']), conv(bs['特殊攻撃']), conv(bs['特殊防御'])],
-        raw: bs,                   // 設計書の基礎値（MP・経験値・命中・回避の計算に使う）
+        raw: bs,                   // 設計書の基礎値（MP・経験値の計算に使う。命中・回避の欄は使わない）
         stats,                     // 種族値 { hp, atk, def, spd, sat, sdf }
         statTotal: SR.KEYS.reduce((a, k) => a + stats[k], 0),
         archetype: r.archetype,    // 型（物理アタッカー など）
@@ -158,8 +158,6 @@
         weakness: SR.BY_JP[r.weakness] || null,   // 苦手な能力
         tier: r.tier || '標準',
         evYield,                   // 倒したときの努力値
-        acc: bs['命中'],
-        eva: bs['回避'],
         innateTrait: r.innateTrait,
         traits: [r.innateTrait],
         moveCandidates: c.slice(),

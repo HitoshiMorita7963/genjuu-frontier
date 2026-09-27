@@ -68,7 +68,7 @@
           `<td>${I().appraised() ? `<small>${I().ivTotal(m)}／${6 * C().IV_MAX}</small>` : ''}</td>` +
           `<td><small>${I().evTotal(m)}／${C().EV_MAX_TOTAL}</small></td></tr></table>` +
           `<div class="info-note">成長傾向：${esc(I().growthText(m))}</div>` +
-          `<div class="info-note small">MP ${st.mp}　命中 ${st.acc}　回避 ${st.eva}</div>`;
+          `<div class="info-note small">MP ${st.mp}</div>`;
       },
       // 2ページ目：才能（個体値）と育成（努力値）
       pageTalent() {
