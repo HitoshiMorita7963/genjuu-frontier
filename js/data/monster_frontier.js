@@ -4,7 +4,7 @@
 window.Game = window.Game || {};
 window.Game.RawMonsterData = {
  "title": "モンスターフロンティア",
- "version": "2.4",
+ "version": "2.5",
  "rules": {
   "partyLimit": 6,
   "maxEquippedMoves": 4,
@@ -3454,7 +3454,7 @@ window.Game.RawMonsterData = {
    "id": "073",
    "name": "風神スピリオン",
    "family": "精霊",
-   "element": "風",
+   "element": "嵐",
    "rank": "B",
    "obtain": "配合限定",
    "region": null,
@@ -3486,9 +3486,9 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "fujin",
+    "嵐弾",
     "小回復",
-    "旋風刃"
+    "大嵐"
    ],
    "innateTrait": "残像",
    "growthType": "速度",
@@ -3506,7 +3506,7 @@ window.Game.RawMonsterData = {
    "id": "074",
    "name": "大地神ガイア",
    "family": "精霊",
-   "element": "地",
+   "element": "晶",
    "rank": "B",
    "obtain": "配合限定",
    "region": null,
@@ -3538,9 +3538,9 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "砂塵",
-    "硬化",
-    "地脈波"
+    "晶弾",
+    "晶壁",
+    "晶界"
    ],
    "innateTrait": "不屈の肉体",
    "growthType": "耐久",
@@ -3558,7 +3558,7 @@ window.Game.RawMonsterData = {
    "id": "075",
    "name": "雷神ヴォルト",
    "family": "精霊",
-   "element": "雷",
+   "element": "霆",
    "rank": "B",
    "obtain": "配合限定",
    "region": null,
@@ -3590,9 +3590,9 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "電撃",
-    "raigeki",
-    "雷鳴落とし"
+    "霆光",
+    "迅霆",
+    "天霆"
    ],
    "innateTrait": "弱点看破",
    "growthType": "特殊",
@@ -3610,7 +3610,7 @@ window.Game.RawMonsterData = {
    "id": "076",
    "name": "炎帝フェニクス",
    "family": "鳥",
-   "element": "炎",
+   "element": "焔",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -3642,9 +3642,9 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "焔刃",
     "気合いため",
-    "炎獄爪"
+    "焔獄撃"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -3767,7 +3767,7 @@ window.Game.RawMonsterData = {
    "id": "079",
    "name": "雷帝獣ゼノライガ",
    "family": "獣",
-   "element": "雷",
+   "element": "霆",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -3799,9 +3799,9 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "jinraiga",
+    "霆牙",
     "idaten",
-    "轟雷爪"
+    "霆撃爪"
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
@@ -3871,7 +3871,7 @@ window.Game.RawMonsterData = {
    "id": "081",
    "name": "聖獣セラフィム",
    "family": "獣",
-   "element": "光",
+   "element": "聖",
    "element2": "風",
    "rank": "A",
    "obtain": "配合限定",
@@ -3905,8 +3905,8 @@ window.Game.RawMonsterData = {
    },
    "initialMoveCandidates": [
     "fujin",
-    "小回復",
-    "極光"
+    "聖なる癒し",
+    "聖天光"
    ],
    "innateTrait": "癒しの波動",
    "growthType": "支援",
@@ -3924,7 +3924,7 @@ window.Game.RawMonsterData = {
    "id": "082",
    "name": "天空竜アストラ",
    "family": "竜",
-   "element": "風",
+   "element": "嵐",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -3956,9 +3956,9 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "風切り",
+    "嵐爪",
     "idaten",
-    "烈風脚"
+    "暴嵐脚"
    ],
    "innateTrait": "先制感知",
    "growthType": "速度",
@@ -3976,7 +3976,7 @@ window.Game.RawMonsterData = {
    "id": "083",
    "name": "地帝巨獣グラン",
    "family": "魔獣",
-   "element": "地",
+   "element": "晶",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -4008,9 +4008,9 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "岩つぶて",
-    "硬化",
-    "大地震"
+    "晶槍",
+    "晶壁",
+    "晶岩崩し"
    ],
    "innateTrait": "大地の根",
    "growthType": "耐久",
@@ -4134,7 +4134,7 @@ window.Game.RawMonsterData = {
    "id": "086",
    "name": "炎天竜イグナード",
    "family": "竜",
-   "element": "炎",
+   "element": "焔",
    "element2": "風",
    "rank": "S",
    "obtain": "配合限定",
@@ -4168,7 +4168,7 @@ window.Game.RawMonsterData = {
    "initialMoveCandidates": [
     "風切り",
     "気合いため",
-    "炎獄爪"
+    "焔獄撃"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -4341,7 +4341,7 @@ window.Game.RawMonsterData = {
    "id": "090",
    "name": "終魔獣アビス",
    "family": "魔獣",
-   "element": "闇",
+   "element": "冥",
    "rank": "S",
    "obtain": "配合限定",
    "region": null,
@@ -4372,9 +4372,9 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "noroigoe",
-    "呪い霧",
-    "暗黒波"
+    "冥弾",
+    "冥霧",
+    "冥獄波"
    ],
    "innateTrait": "弱点看破",
    "growthType": "特殊",
@@ -4392,7 +4392,7 @@ window.Game.RawMonsterData = {
    "id": "091",
    "name": "炎神竜アグニア",
    "family": "竜",
-   "element": "炎",
+   "element": "焔",
    "rank": "SS",
    "obtain": "配合限定",
    "region": null,
@@ -4423,9 +4423,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "焔刃",
     "気合いため",
-    "炎獄爪"
+    "焔獄撃"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -4494,7 +4494,7 @@ window.Game.RawMonsterData = {
    "id": "093",
    "name": "雷神竜ゼウレウス",
    "family": "竜",
-   "element": "雷",
+   "element": "霆",
    "rank": "SS",
    "obtain": "配合限定",
    "region": null,
@@ -4525,9 +4525,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "電撃",
-    "raigeki",
-    "雷鳴落とし"
+    "霆光",
+    "迅霆",
+    "天霆"
    ],
    "innateTrait": "呪術の才",
    "growthType": "特殊",
@@ -4545,7 +4545,7 @@ window.Game.RawMonsterData = {
    "id": "094",
    "name": "闇神竜ネメシス",
    "family": "竜",
-   "element": "闇",
+   "element": "冥",
    "rank": "SS",
    "obtain": "配合限定",
    "region": null,
@@ -4576,9 +4576,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "noroigoe",
-    "呪い霧",
-    "暗黒波"
+    "冥弾",
+    "冥霧",
+    "冥獄波"
    ],
    "innateTrait": "魔力吸収",
    "growthType": "特殊",
@@ -4596,7 +4596,7 @@ window.Game.RawMonsterData = {
    "id": "095",
    "name": "天界獣セレスティア",
    "family": "精霊",
-   "element": "光",
+   "element": "聖",
    "rank": "SS",
    "obtain": "配合限定",
    "region": null,
@@ -4627,9 +4627,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "光弾",
-    "小回復",
-    "極光"
+    "聖光弾",
+    "聖なる癒し",
+    "聖天光"
    ],
    "innateTrait": "精霊の加護",
    "growthType": "支援",
@@ -4647,7 +4647,7 @@ window.Game.RawMonsterData = {
    "id": "096",
    "name": "深淵王アビスロード",
    "family": "魔獣",
-   "element": "闇",
+   "element": "冥",
    "rank": "SS",
    "obtain": "配合限定",
    "region": null,
@@ -4678,9 +4678,9 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "冥爪",
     "気合いため",
-    "奈落斬"
+    "冥府斬"
    ],
    "innateTrait": "甲殻装甲",
    "growthType": "耐久",
@@ -4802,7 +4802,7 @@ window.Game.RawMonsterData = {
    "id": "099",
    "name": "神獣エターナル",
    "family": "精霊",
-   "element": "光",
+   "element": "聖",
    "rank": "SSS",
    "obtain": "配合限定",
    "region": null,
@@ -4833,9 +4833,9 @@ window.Game.RawMonsterData = {
     "回避": 47
    },
    "initialMoveCandidates": [
-    "光弾",
-    "小回復",
-    "極光"
+    "聖光弾",
+    "聖なる癒し",
+    "聖天光"
    ],
    "innateTrait": "状態異常耐性",
    "growthType": "支援",
@@ -5737,7 +5737,7 @@ window.Game.RawMonsterData = {
    "id": "119",
    "name": "煉獄狼ヴォルグ",
    "family": "獣",
-   "element": "炎",
+   "element": "焔",
    "rank": "C",
    "obtain": "進化",
    "region": null,
@@ -5768,9 +5768,9 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "焔刃",
     "気合いため",
-    "炎獄爪"
+    "焔獄撃"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
@@ -5781,7 +5781,7 @@ window.Game.RawMonsterData = {
    "id": "120",
    "name": "嵐翼鷹シュトルム",
    "family": "鳥",
-   "element": "風",
+   "element": "嵐",
    "rank": "C",
    "obtain": "進化",
    "region": null,
@@ -5812,9 +5812,9 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "風切り",
+    "嵐爪",
     "idaten",
-    "烈風脚"
+    "暴嵐脚"
    ],
    "innateTrait": "先制感知",
    "growthType": "速度",

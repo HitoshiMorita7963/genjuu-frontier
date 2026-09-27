@@ -222,7 +222,7 @@
         const mv = G.Moves[id];
         const eff = mv.eff || {};
         if (mv.cat !== 'stat') {
-          return mv.pow * G.typeMultiplier(mv.el, G.elementsOf(fsp)) * (G.isStab(mv.el, sp) ? 1.5 : 1) + 15;
+          return mv.pow * G.typeMultiplier(mv.el, G.elementsOf(fsp)) * G.stabMultiplier(mv.el, sp) + 15;
         }
         if (eff.heal) return me.hp < st.hp * 0.5 ? 90 : 3;
         if (eff.status) return foe.status ? 2 : 35;
@@ -458,7 +458,9 @@
       const af = fx(a), df = fx(d);
       const crit = Math.random() < (af.crit ? 1 / 6 : 1 / 16);
       let mod = mul * (crit ? 1.5 : 1) * (0.85 + Math.random() * 0.15);
-      if (G.isStab(mv.el, asp)) mod *= af.stab || 1.5;                             // タイプ一致は1.5倍（複合タイプはどちらでも。属性共鳴で1.8）
+      // タイプ一致：1.5倍（上位属性の技を上位属性の幻獣が使うと2倍）。特性「属性共鳴」はさらに +0.3
+      const stab = G.stabMultiplier(mv.el, asp);
+      if (stab > 1) mod *= stab + (af.stab ? af.stab - 1.5 : 0);
       if (af.elements && af.elements[mv.el]) mod *= af.elements[mv.el];           // ○○の加護
       if (mul > 1 && af.superBoost) mod *= af.superBoost;                          // 弱点看破
       if (af.finisher && d.hp <= G.Monster.stats(d).hp / 2) mod *= af.finisher;   // 追撃本能

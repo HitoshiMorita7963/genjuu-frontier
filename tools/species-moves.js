@@ -32,6 +32,13 @@ const SETS = {
   闇: { pW: '影縫い', pS: '奈落斬', sW: 'noroigoe', sM: null, sS: '暗黒波', heal: null, buff: '呪い霧' },
   氷: { pW: '氷牙', pS: '凍結爪', sW: '氷礫', sM: null, sS: '雪嵐', heal: null, buff: '冷気' },
   無: { pW: '突進', pS: '渾身撃', sW: '衝撃波', sM: null, sS: '真空波', heal: null, buff: null },
+  // 上位属性
+  焔: { pW: '焔刃', pS: '焔獄撃', sW: '焔弾', sM: '焔華', sS: '劫火', heal: null, buff: null },
+  嵐: { pW: '嵐爪', pS: '暴嵐脚', sW: '嵐弾', sM: '裂空波', sS: '大嵐', heal: null, buff: '嵐の加護' },
+  霆: { pW: '霆牙', pS: '霆撃爪', sW: '霆光', sM: '迅霆', sS: '天霆', heal: null, buff: '霆縛' },
+  晶: { pW: '晶槍', pS: '晶岩崩し', sW: '晶弾', sM: '晶光波', sS: '晶界', heal: null, buff: '晶壁' },
+  聖: { pW: '聖刃', pS: '聖剣', sW: '聖光弾', sM: '聖燐', sS: '聖天光', heal: '聖なる癒し', buff: '聖なる守り' },
+  冥: { pW: '冥爪', pS: '冥府斬', sW: '冥弾', sM: '冥霧', sS: '冥獄波', heal: null, buff: '冥呪' },
 };
 const PHYS_TYPES = ['物理アタッカー', '重戦車', '一点特化', '高速アタッカー'];
 const KEEP = new Set([]); // 技候補を手で決めた種族のID
