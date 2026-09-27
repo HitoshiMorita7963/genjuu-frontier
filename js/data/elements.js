@@ -69,7 +69,16 @@
   // その種族の属性（複合タイプなら2つ）
   G.elementsOf = (sp) => sp.els || [sp.el];
   // タイプ一致（技の属性が、使い手の属性のどれかと同じ。無属性は一致しない）
-  G.isStab = (moveEl, sp) => moveEl !== 'none' && G.elementsOf(sp).includes(moveEl);
+  //   倍率：上位属性の幻獣が、その上位属性の技を使う → 2倍 ／ それ以外の一致 → 1.5倍
+  //   上位属性の幻獣が下位の属性の技を使ったとき（例：焔の幻獣が炎の技）も、相性を引き継ぐので 1.5倍
+  G.stabMultiplier = (moveEl, sp) => {
+    if (moveEl === 'none') return 1;
+    const els = G.elementsOf(sp);
+    if (els.includes(moveEl)) return G.isUpperElement(moveEl) ? 2 : 1.5;
+    if (els.some((el) => G.isUpperElement(el) && G.baseElement(el) === moveEl)) return 1.5;
+    return 1;
+  };
+  G.isStab = (moveEl, sp) => G.stabMultiplier(moveEl, sp) > 1;
   // 表示用の属性名（例：「水・風」）
   G.elementLabel = (sp) => G.elementsOf(sp).map((el) => G.Elements[el].name).join('・');
 

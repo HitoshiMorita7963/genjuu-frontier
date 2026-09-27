@@ -162,7 +162,7 @@
               `${mark(mv)}<small>MP${mv.mp}</small></div>`;
           }).join('')}</div>` +
             `<div class="bt-info">${cur.basic ? '物理か特殊（高い方）' : CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　` +
-            `${cur.cat !== 'stat' && G.isStab(cur.el, mySp) ? '<b class="eff stab">タイプ一致×1.5</b>　' : ''}${effText(cur)}　` +
+            `${cur.cat !== 'stat' && G.isStab(cur.el, mySp) ? `<b class="eff stab">タイプ一致×${G.stabMultiplier(cur.el, mySp)}</b>　` : ''}${effText(cur)}　` +
             `<span class="mp-now">残りMP ${this.me().mp}</span><br><small>${esc(cur.desc || '')}</small></div>`;
         } else if (this.view === 'party') {
           body = `<div class="bt-title">入れかえる幻獣は？</div>${partyRows(b, this.sel)}`;
