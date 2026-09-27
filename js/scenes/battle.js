@@ -173,16 +173,22 @@
     ctx.fillText(m.name, x + 8, y + 6);
     ctx.textAlign = 'right'; ctx.font = `12px ${FONT}`; ctx.fillStyle = '#ffd35a';
     ctx.fillText(`Lv${m.level}`, x + w - 8, y + 8);
-    const el = G.Elements[G.Species[m.speciesId].el];
+    // 属性のしるし（複合タイプは2つ並べる）
+    const els = G.elementsOf(G.Species[m.speciesId]).map((k) => G.Elements[k]);
     ctx.textAlign = 'left';
     ctx.font = `14px ${FONT}`;
     const nw = ctx.measureText(m.name).width;
-    ctx.fillStyle = el.color; ctx.fillRect(x + 12 + nw, y + 7, 18, 14);
-    ctx.fillStyle = '#141424'; ctx.font = `11px ${FONT}`; ctx.fillText(el.name, x + 15 + nw, y + 9);
+    ctx.font = `11px ${FONT}`;
+    els.forEach((el, i) => {
+      const ex = x + 12 + nw + i * 20;
+      ctx.fillStyle = el.color; ctx.fillRect(ex, y + 7, 18, 14);
+      ctx.fillStyle = '#141424'; ctx.fillText(el.name, ex + 3, y + 9);
+    });
     if (m.status) {
       const s = G.Battle.STATUS[m.status];
-      ctx.fillStyle = '#b05ab0'; ctx.fillRect(x + 34 + nw, y + 7, 28, 14);
-      ctx.fillStyle = '#ffffff'; ctx.fillText(s.short, x + 37 + nw, y + 9);
+      const sx = x + 14 + nw + els.length * 20;
+      ctx.fillStyle = '#b05ab0'; ctx.fillRect(sx, y + 7, 28, 14);
+      ctx.fillStyle = '#ffffff'; ctx.fillText(s.short, sx + 3, y + 9);
     }
     ctx.font = `10px ${FONT}`; ctx.fillStyle = '#ffd35a';
     ctx.fillText('HP', x + 8, y + 28);

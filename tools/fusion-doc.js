@@ -61,7 +61,8 @@ L.push('');
 const R = G.FusionRules;
 L.push('## 3. 汎用ルール（レシピのない組み合わせ）');
 L.push('');
-L.push(`- 子のランク：どちらかの親が ${R.upgradeFrom} ランク以上なら **${R.highRank}**、両親とも ${R.lowRank} ランクなら **${R.lowRank}**`);
+L.push(`- 子のランク：どちらかの親が ${R.upgradeFrom} ランク以上なら **${R.highRanks.join(' → ')}**（前から順に候補を探す）、両親とも ${R.lowRanks.join('・')} ランクなら **${R.lowRanks.join('・')}**`);
+L.push('- 進化で姿を変えた種族（進化先）は、配合では生まれない');
 L.push('- 子の系統：下の表（同じ系統どうしなら同じ系統）。その系統・ランクの「野生で出会える種族」から、親の属性に近いものが選ばれる');
 L.push('- 同じ種族の組み合わせなら、選ぶ順番に関係なく必ず同じ子');
 L.push('');
@@ -103,7 +104,7 @@ L.push('| --- | --- | --- |');
 const order = (key) => {
   const [pair, rank] = key.split('|');
   const [a, b] = pair.split('+').map((l) => R.lineageOrder.indexOf(l));
-  return a * 100 + b * 10 + (rank === R.lowRank ? 0 : 1);
+  return a * 100 + b * 10 + G.rankIndex(rank);
 };
 for (const key of Object.keys(agg).sort((x, y) => order(x) - order(y))) {
   const [pair, rank] = key.split('|');

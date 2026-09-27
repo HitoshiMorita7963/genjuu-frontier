@@ -109,6 +109,8 @@
     for (const r of RAW.monsters) {
       if (S[r.id]) { err(`ID重複: ${r.id}`); continue; }
       const el = G.ElementByName[r.element];
+      const el2 = r.element2 ? G.ElementByName[r.element2] : null; // 複合タイプの2つめの属性
+      if (r.element2 && (!el2 || el2 === el)) err(`${r.id} ${r.name}: 2つめの属性「${r.element2}」が不正です`);
       const line = G.LineageByName[r.family];
       const ri = G.rankIndex(r.rank);
       if (!el) err(`${r.id} ${r.name}: 未対応の属性「${r.element}」`);
@@ -138,8 +140,10 @@
         no: Number(r.id),
         name: r.name,
         family: r.family,          // 設計書の表記（表示用）
-        element: r.element,
-        el: el || 'none',
+        element: r.element2 ? `${r.element}・${r.element2}` : r.element, // 表示用
+        el: el || 'none',          // 1つめの属性（見た目・配合のヒントなどに使う）
+        el2: el2 || null,          // 2つめの属性（複合タイプのみ）
+        els: el2 ? [el || 'none', el2] : [el || 'none'],
         line: line || 'beast',
         rank: r.rank,
         role: r.role,
@@ -167,7 +171,7 @@
         desc: r.description,
         recipeDisplay: r.recipe ? r.recipe.display : null,
         // 見た目：系統・属性・名前から自動で決め、JSON の look があれば上書き（分岐進化の姿を描き分けるときなど）
-        look: Object.assign(lookFor(r, el || 'none', Math.max(0, ri)), r.look || {}),
+        look: Object.assign(lookFor(r, el || 'none', Math.max(0, ri)), el2 ? { c3: PAL[el2][0] } : {}, r.look || {}), // 複合タイプはアクセントの色が2つめの属性
       };
       order.push(r.id);
     }

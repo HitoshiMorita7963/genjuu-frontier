@@ -4,7 +4,7 @@
 window.Game = window.Game || {};
 window.Game.RawMonsterData = {
  "title": "モンスターフロンティア",
- "version": "2.2",
+ "version": "2.4",
  "rules": {
   "partyLimit": 6,
   "maxEquippedMoves": 4,
@@ -896,6 +896,7 @@ window.Game.RawMonsterData = {
    "name": "ホムラネコ",
    "family": "獣",
    "element": "炎",
+   "element2": "風",
    "rank": "E",
    "obtain": "野生",
    "region": "火山の麓",
@@ -926,7 +927,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "風切り",
     "気合いため",
     "炎獄爪"
    ],
@@ -947,6 +948,7 @@ window.Game.RawMonsterData = {
    "name": "ヌマモグラ",
    "family": "獣",
    "element": "水",
+   "element2": "地",
    "rank": "E",
    "obtain": "野生",
    "region": "清流の洞窟",
@@ -977,7 +979,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "mizutsubute",
+    "砂塵",
     "癒しの雫",
     "潮流撃"
    ],
@@ -998,6 +1000,7 @@ window.Game.RawMonsterData = {
    "name": "ライガネコ",
    "family": "獣",
    "element": "雷",
+   "element2": "風",
    "rank": "E",
    "obtain": "野生",
    "region": "雷鳴平原",
@@ -1028,7 +1031,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "jinraiga",
+    "風切り",
     "idaten",
     "轟雷爪"
    ],
@@ -1049,6 +1052,7 @@ window.Game.RawMonsterData = {
    "name": "ヒバネドリ",
    "family": "鳥",
    "element": "炎",
+   "element2": "風",
    "rank": "E",
    "obtain": "野生",
    "region": "火山の麓",
@@ -1079,7 +1083,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "風切り",
     "気合いため",
     "炎獄爪"
    ],
@@ -1100,6 +1104,7 @@ window.Game.RawMonsterData = {
    "name": "アオツバサ",
    "family": "鳥",
    "element": "水",
+   "element2": "風",
    "rank": "E",
    "obtain": "野生",
    "region": "風切り高原",
@@ -1130,7 +1135,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "mizutsubute",
+    "fujin",
     "癒しの雫",
     "潮流撃"
    ],
@@ -1253,6 +1258,7 @@ window.Game.RawMonsterData = {
    "name": "デンキクラゲ",
    "family": "水棲",
    "element": "雷",
+   "element2": "水",
    "rank": "E",
    "obtain": "野生",
    "region": "雷鳴の海",
@@ -1283,7 +1289,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "電撃",
+    "mizutsubute",
     "raigeki",
     "雷鳴落とし"
    ],
@@ -1304,6 +1310,7 @@ window.Game.RawMonsterData = {
    "name": "イシガメ",
    "family": "水棲",
    "element": "地",
+   "element2": "水",
    "rank": "E",
    "obtain": "野生",
    "region": "夕闇の洞穴",
@@ -1334,7 +1341,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "水刃",
     "硬化",
     "大地震"
    ],
@@ -1406,6 +1413,7 @@ window.Game.RawMonsterData = {
    "name": "ホノオガ",
    "family": "虫",
    "element": "炎",
+   "element2": "風",
    "rank": "E",
    "obtain": "野生",
    "region": "火山の麓",
@@ -1436,7 +1444,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "風切り",
     "気合いため",
     "炎獄爪"
    ],
@@ -1610,6 +1618,7 @@ window.Game.RawMonsterData = {
    "name": "ヌマガメ",
    "family": "水棲",
    "element": "水",
+   "element2": "地",
    "rank": "D",
    "obtain": "配合限定",
    "region": null,
@@ -1640,7 +1649,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "mizutsubute",
+    "砂塵",
     "癒しの雫",
     "潮流撃"
    ],
@@ -1814,6 +1823,7 @@ window.Game.RawMonsterData = {
    "name": "ヨルサソリ",
    "family": "虫",
    "element": "闇",
+   "element2": "地",
    "rank": "D",
    "obtain": "配合限定",
    "region": null,
@@ -1844,7 +1854,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "noroigoe",
+    "砂塵",
     "呪い霧",
     "暗黒波"
    ],
@@ -1865,6 +1875,7 @@ window.Game.RawMonsterData = {
    "name": "フェニクス",
    "family": "鳥",
    "element": "炎",
+   "element2": "光",
    "rank": "D",
    "obtain": "配合限定",
    "region": null,
@@ -1895,7 +1906,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "火花",
+    "光弾",
     "小回復",
     "灼熱波"
    ],
@@ -1952,14 +1963,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "021",
-     "031"
-    ],
-    "resultId": "041",
-    "display": "ホムラネコ + ホノオガ → フレイムウルフ"
-   },
+   "recipe": null,
    "description": "鋭い感覚と身体能力を持つ。 属性は炎。"
   },
   {
@@ -2003,14 +2007,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "水鏡の守り",
    "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "022",
-     "025"
-    ],
-    "resultId": "042",
-    "display": "ヌマモグラ + アオツバサ → アクアウルフ"
-   },
+   "recipe": null,
    "description": "鋭い感覚と身体能力を持つ。 属性は水。"
   },
   {
@@ -2054,14 +2051,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "残像",
    "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "023",
-     "036"
-    ],
-    "resultId": "043",
-    "display": "ライガネコ + ライジンネコ → ライガーハウンド"
-   },
+   "recipe": null,
    "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
   },
   {
@@ -2105,14 +2095,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "追撃本能",
    "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "025",
-     "030"
-    ],
-    "resultId": "044",
-    "display": "アオツバサ + ツノバチ → ストームホーク"
-   },
+   "recipe": null,
    "description": "空中戦と素早い行動を得意とする。 属性は風。"
   },
   {
@@ -2156,14 +2139,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "急所狙い",
    "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "024",
-     "031"
-    ],
-    "resultId": "045",
-    "display": "ヒバネドリ + ホノオガ → ブレイズホーク"
-   },
+   "recipe": null,
    "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
@@ -2207,14 +2183,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "癒しの波動",
    "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "025",
-     "035"
-    ],
-    "resultId": "046",
-    "display": "アオツバサ + ヌマガメ → アクアフェザー"
-   },
+   "recipe": null,
    "description": "空中戦と素早い行動を得意とする。 属性は水。"
   },
   {
@@ -2258,14 +2227,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "水鏡の守り",
    "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "027",
-     "033"
-    ],
-    "resultId": "047",
-    "display": "ホノオツタ + モリノタマ → ドライアド"
-   },
+   "recipe": null,
    "description": "自然の力を蓄え、持久戦に強い。 属性は地。"
   },
   {
@@ -2309,14 +2271,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "守護の祈り",
    "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "019",
-     "026"
-    ],
-    "resultId": "048",
-    "display": "コダマ + ヒカリバナ → フローラルフェアリー"
-   },
+   "recipe": null,
    "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
   },
   {
@@ -2375,6 +2330,7 @@ window.Game.RawMonsterData = {
    "name": "アビスフィッシュ",
    "family": "水棲",
    "element": "闇",
+   "element2": "水",
    "rank": "D",
    "obtain": "野生",
    "region": "深水洞",
@@ -2405,7 +2361,7 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "noroigoe",
+    "mizutsubute",
     "呪い霧",
     "暗黒波"
    ],
@@ -2426,6 +2382,7 @@ window.Game.RawMonsterData = {
    "name": "サンダーシャーク",
    "family": "水棲",
    "element": "雷",
+   "element2": "水",
    "rank": "D",
    "obtain": "野生",
    "region": "雷鳴の海",
@@ -2456,20 +2413,13 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "jinraiga",
+    "水刃",
     "気合いため",
     "轟雷爪"
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "028",
-     "036"
-    ],
-    "resultId": "051",
-    "display": "デンキクラゲ + ライジンネコ → サンダーシャーク"
-   },
+   "recipe": null,
    "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。"
   },
   {
@@ -2477,6 +2427,7 @@ window.Game.RawMonsterData = {
    "name": "ロックタートル",
    "family": "水棲",
    "element": "地",
+   "element2": "水",
    "rank": "D",
    "obtain": "野生",
    "region": "岩礁海岸",
@@ -2507,20 +2458,13 @@ window.Game.RawMonsterData = {
     "回避": 17
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "水刃",
     "硬化",
     "大地震"
    ],
    "innateTrait": "水鏡の守り",
    "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "029",
-     "035"
-    ],
-    "resultId": "052",
-    "display": "イシガメ + ヌマガメ → ロックタートル"
-   },
+   "recipe": null,
    "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
   },
   {
@@ -2564,14 +2508,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "残像",
    "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "014",
-     "025"
-    ],
-    "resultId": "053",
-    "display": "ハネムシ + アオツバサ → スカイビートル"
-   },
+   "recipe": null,
    "description": "小柄ながら特化した能力を持つ。 属性は風。"
   },
   {
@@ -2615,14 +2552,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "破壊衝動",
    "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "038",
-     "031"
-    ],
-    "resultId": "054",
-    "display": "カエンビー + ホノオガ → インフェルノビー"
-   },
+   "recipe": null,
    "description": "小柄ながら特化した能力を持つ。 属性は炎。"
   },
   {
@@ -2666,14 +2596,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "弱点看破",
    "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "039",
-     "030"
-    ],
-    "resultId": "055",
-    "display": "ヨルサソリ + ツノバチ → ダークホーネット"
-   },
+   "recipe": null,
    "description": "小柄ながら特化した能力を持つ。 属性は闇。"
   },
   {
@@ -2717,14 +2640,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "猛火の闘志",
    "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "032",
-     "036"
-    ],
-    "resultId": "056",
-    "display": "ヤミネコウモリ + ライジンネコ → デビルキャット"
-   },
+   "recipe": null,
    "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
@@ -2819,14 +2735,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "残像",
    "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "025",
-     "033"
-    ],
-    "resultId": "058",
-    "display": "アオツバサ + モリノタマ → ウィンドスピリット"
-   },
+   "recipe": null,
    "description": "属性の力を操り、支援や特殊技を得意とする。 属性は風。"
   },
   {
@@ -2870,14 +2779,7 @@ window.Game.RawMonsterData = {
    ],
    "innateTrait": "不屈の肉体",
    "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "029",
-     "033"
-    ],
-    "resultId": "059",
-    "display": "イシガメ + モリノタマ → アーススピリット"
-   },
+   "recipe": null,
    "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
   },
   {
@@ -3242,6 +3144,7 @@ window.Game.RawMonsterData = {
    "name": "深淵鮫",
    "family": "水棲",
    "element": "闇",
+   "element2": "水",
    "rank": "C",
    "obtain": "野生",
    "region": "深水洞",
@@ -3272,7 +3175,7 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "水刃",
     "気合いため",
     "奈落斬"
    ],
@@ -3344,6 +3247,7 @@ window.Game.RawMonsterData = {
    "name": "天空甲虫",
    "family": "虫",
    "element": "雷",
+   "element2": "風",
    "rank": "C",
    "obtain": "野生",
    "region": "風切り高原",
@@ -3374,7 +3278,7 @@ window.Game.RawMonsterData = {
     "回避": 27
    },
    "initialMoveCandidates": [
-    "jinraiga",
+    "風切り",
     "idaten",
     "轟雷爪"
    ],
@@ -3395,6 +3299,7 @@ window.Game.RawMonsterData = {
    "name": "炎獄蜂",
    "family": "虫",
    "element": "炎",
+   "element2": "闇",
    "rank": "C",
    "obtain": "野生",
    "region": "火山の麓",
@@ -3425,7 +3330,7 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "影縫い",
     "気合いため",
     "炎獄爪"
    ],
@@ -3810,6 +3715,7 @@ window.Game.RawMonsterData = {
    "name": "森羅獣ユグドラ",
    "family": "精霊",
    "element": "地",
+   "element2": "光",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -3841,7 +3747,7 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "砂塵",
+    "光弾",
     "小回復",
     "地脈波"
    ],
@@ -3966,6 +3872,7 @@ window.Game.RawMonsterData = {
    "name": "聖獣セラフィム",
    "family": "獣",
    "element": "光",
+   "element2": "風",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -3997,7 +3904,7 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "光弾",
+    "fujin",
     "小回復",
     "極光"
    ],
@@ -4122,6 +4029,7 @@ window.Game.RawMonsterData = {
    "name": "雷光竜ゼノス",
    "family": "竜",
    "element": "雷",
+   "element2": "光",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -4153,7 +4061,7 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "電撃",
+    "光弾",
     "raigeki",
     "雷鳴落とし"
    ],
@@ -4174,6 +4082,7 @@ window.Game.RawMonsterData = {
    "name": "黒翼竜ノクス",
    "family": "竜",
    "element": "闇",
+   "element2": "風",
    "rank": "A",
    "obtain": "配合限定",
    "region": null,
@@ -4205,7 +4114,7 @@ window.Game.RawMonsterData = {
     "回避": 32
    },
    "initialMoveCandidates": [
-    "noroigoe",
+    "fujin",
     "呪い霧",
     "暗黒波"
    ],
@@ -4226,6 +4135,7 @@ window.Game.RawMonsterData = {
    "name": "炎天竜イグナード",
    "family": "竜",
    "element": "炎",
+   "element2": "風",
    "rank": "S",
    "obtain": "配合限定",
    "region": null,
@@ -4256,7 +4166,7 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "風切り",
     "気合いため",
     "炎獄爪"
    ],
@@ -4328,6 +4238,7 @@ window.Game.RawMonsterData = {
    "name": "世界樹竜ユグドラシル",
    "family": "竜",
    "element": "光",
+   "element2": "地",
    "rank": "S",
    "obtain": "配合限定",
    "region": null,
@@ -4358,7 +4269,7 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "光弾",
+    "砂塵",
     "小回復",
     "極光"
    ],
@@ -4379,6 +4290,7 @@ window.Game.RawMonsterData = {
    "name": "雷獄竜ヴァルゼオン",
    "family": "竜",
    "element": "雷",
+   "element2": "闇",
    "rank": "S",
    "obtain": "配合限定",
    "region": null,
@@ -4409,7 +4321,7 @@ window.Game.RawMonsterData = {
     "回避": 42
    },
    "initialMoveCandidates": [
-    "jinraiga",
+    "影縫い",
     "idaten",
     "轟雷爪"
    ],
@@ -4787,6 +4699,7 @@ window.Game.RawMonsterData = {
    "name": "天空神龍オルフェウス",
    "family": "竜",
    "element": "光",
+   "element2": "風",
    "rank": "SSS",
    "obtain": "配合限定",
    "region": null,
@@ -4817,7 +4730,7 @@ window.Game.RawMonsterData = {
     "回避": 47
    },
    "initialMoveCandidates": [
-    "光弾",
+    "fujin",
     "seinaruya",
     "極光"
    ],
@@ -4838,6 +4751,7 @@ window.Game.RawMonsterData = {
    "name": "混沌竜カオス",
    "family": "竜",
    "element": "闇",
+   "element2": "光",
    "rank": "SSS",
    "obtain": "配合限定",
    "region": null,
@@ -4868,7 +4782,7 @@ window.Game.RawMonsterData = {
     "回避": 47
    },
    "initialMoveCandidates": [
-    "影縫い",
+    "光刃",
     "気合いため",
     "奈落斬"
    ],
@@ -5299,6 +5213,7 @@ window.Game.RawMonsterData = {
    "name": "コケガメ",
    "family": "水棲",
    "element": "地",
+   "element2": "水",
    "rank": "E",
    "obtain": "野生",
    "region": "夕闇の洞穴",
@@ -5329,7 +5244,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "砂塵",
+    "mizutsubute",
     "硬化",
     "地脈波"
    ],
@@ -5431,6 +5346,7 @@ window.Game.RawMonsterData = {
    "name": "ビリザメ",
    "family": "水棲",
    "element": "雷",
+   "element2": "水",
    "rank": "E",
    "obtain": "野生",
    "region": "雷鳴の海",
@@ -5461,7 +5377,7 @@ window.Game.RawMonsterData = {
     "回避": 12
    },
    "initialMoveCandidates": [
-    "jinraiga",
+    "水刃",
     "気合いため",
     "轟雷爪"
    ],
@@ -6413,6 +6329,7 @@ window.Game.RawMonsterData = {
    "name": "大地鳥ガイアホーク",
    "family": "鳥",
    "element": "地",
+   "element2": "風",
    "rank": "C",
    "obtain": "配合限定",
    "region": null,
@@ -6443,7 +6360,7 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "岩つぶて",
+    "風切り",
     "気合いため",
     "大地震"
    ],
@@ -6515,6 +6432,7 @@ window.Game.RawMonsterData = {
    "name": "炎魔ヘルハウンド",
    "family": "魔獣",
    "element": "炎",
+   "element2": "闇",
    "rank": "C",
    "obtain": "配合限定",
    "region": null,
@@ -6545,7 +6463,7 @@ window.Game.RawMonsterData = {
     "回避": 22
    },
    "initialMoveCandidates": [
-    "homuraba",
+    "影縫い",
     "気合いため",
     "炎獄爪"
    ],
@@ -6822,6 +6740,7 @@ window.Game.RawMonsterData = {
    "name": "星海鯨アステル",
    "family": "水棲",
    "element": "光",
+   "element2": "水",
    "rank": "S",
    "obtain": "配合限定",
    "region": null,
@@ -6852,7 +6771,7 @@ window.Game.RawMonsterData = {
     "回避": 37
    },
    "initialMoveCandidates": [
-    "光弾",
+    "mizutsubute",
     "小回復",
     "極光"
    ],
