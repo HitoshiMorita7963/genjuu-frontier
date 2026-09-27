@@ -604,3 +604,13 @@ table.moves td { padding: 2px 4px 2px 0; }
   .menu-desc { height: 3.2em; font-size: 13px; margin-top: 4px; padding-top: 4px; }
   .menu-hint { display: none; }
 }
+/* 図鑑の番号（No.001）：名前より少しだけ小さく、読みやすい色で */
+.dex-no { font-size: 0.9em; color: #c8cce8; margin-right: 2px; font-variant-numeric: tabular-nums; }
+/* 一覧の行は縮めない（はみ出しは一覧のスクロールで見る） */
+.mon-list > *, .rc-list > *, .menu-list > * { flex: none; }
+/* 図鑑の一覧：名前だけを「…」で切り、番号と印は必ず見せる。一覧の列を少し広く */
+.dex-row { overflow: visible; text-overflow: clip; }
+.dex-row > .dex-no, .dex-row > .tag, .dex-row > img, .dex-row > .dex-unknown { flex: none; }
+.dex-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.two-col.dex-cols, .scr-body.two-col:has(.dex-list) { grid-template-columns: minmax(200px, 42%) 1fr; }
+@media (max-width: 640px) { .scr-body.two-col:has(.dex-list) { grid-template-columns: 1fr; } }

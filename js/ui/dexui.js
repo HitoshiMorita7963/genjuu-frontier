@@ -57,7 +57,7 @@
             ? `<img class="mon-img icon" src="${e.owned ? G.MonsterGfx.dataURL(id) : G.MonsterGfx.silhouetteURL(id)}" alt="">`
             : '<span class="dex-unknown">?</span>';
           const mark = e && e.owned ? (e.fused ? '<span class="tag fz">配</span>' : '<span class="tag own">●</span>') : '';
-          return `<div class="dex-row${i === this.sel ? ' sel' : ''}${e ? '' : ' unknown'}">${icon}<small>No.${no}</small> ${esc(name)} ${mark}</div>`;
+          return `<div class="dex-row${i === this.sel ? ' sel' : ''}${e ? '' : ' unknown'}">${icon}<span class="dex-no">No.${no}</span><span class="dex-name">${esc(name)}</span>${mark}</div>`;
         }).join('') : '<div class="menu-empty">該当する幻獣はいない。</div>';
 
         const id = list[this.sel];
