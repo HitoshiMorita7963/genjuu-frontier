@@ -45,14 +45,28 @@
       return Math.floor(GROWTH_K[sp.growth] * rankK * lv * lv * lv);
     },
 
-    // レベル lv までに覚える技のうち、新しい順に最大4つ
-    movesAtLevel(sp, lv) {
+    // レベル lv までに覚える技（覚える順）
+    learnedUpTo(sp, lv) {
       const learned = [];
-      for (const [l, id] of sp.learn) {
-        if (l > lv || learned.includes(id)) continue;
-        learned.push(id);
-      }
-      return learned.slice(-Mon.MAX_MOVES);
+      for (const [l, id] of sp.learn) if (l <= lv && !learned.includes(id)) learned.push(id);
+      return learned;
+    },
+    // 野生・トレーナー・図鑑用：レベル lv までに覚える技から最大4つ（覚える順に並べる）
+    //   使うのは技候補の3つと、タイプ一致の技・補助の技だけ。相性の穴を埋める技やタイプ不一致の無属性技は、
+    //   配合で子の技を選ぶときに使う（敵が弱点を突いてきて、ボス戦が急に難しくならないように）
+    //   4つを超えるときは ①いちばん強いタイプ一致の攻撃技 ②型の技（技候補の2つめ） ③残りは新しく覚えた順
+    movesAtLevel(sp, lv) {
+      const mv = (id) => G.Moves[id];
+      const kit = Mon.learnedUpTo(sp, lv).filter((id) => sp.moveCandidates.includes(id) || mv(id).cat === 'stat' || G.stabMultiplier(mv(id).el, sp) > 1);
+      if (kit.length <= Mon.MAX_MOVES) return kit;
+      const val = (id) => (mv(id).pow || 0) * G.stabMultiplier(mv(id).el, sp);
+      const attacks = kit.filter((id) => mv(id).cat !== 'stat').sort((a, b) => val(b) - val(a));
+      const pick = [];
+      const add = (id) => { if (id && kit.includes(id) && !pick.includes(id) && pick.length < Mon.MAX_MOVES) pick.push(id); };
+      add(attacks[0]);
+      add(sp.moveCandidates[1]);
+      for (const id of kit.slice().reverse()) add(id);
+      return kit.filter((id) => pick.includes(id));
     },
 
     create(speciesId, level, opts = {}) {

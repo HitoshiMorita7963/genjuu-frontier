@@ -132,6 +132,7 @@
       if (!OBTAIN[r.obtain]) err(`${r.id} ${r.name}: 未対応の入手区分「${r.obtain}」`);
       const bs = r.baseStats;
       for (const m of r.initialMoveCandidates) if (!G.Moves[m]) err(`${r.id} ${r.name}: 技「${m}」が未定義`);
+      for (const [, m] of r.learnset || []) if (!G.Moves[m]) err(`${r.id} ${r.name}: 覚える技「${m}」が未定義`);
       if (!G.Traits[r.innateTrait]) err(`${r.id} ${r.name}: 特性「${r.innateTrait}」が未定義`);
       const c = r.initialMoveCandidates;
       // 種族値（正本は JSON の speciesStats。作り方のルールは js/data/statRules.js）
@@ -178,8 +179,8 @@
         innateTrait: r.innateTrait,
         traits: [r.innateTrait],
         moveCandidates: c.slice(),
-        // 初期技候補：1つめ・2つめはLv1から、3つめ（強力な技）はLv10で覚える
-        learn: [[1, c[0]], [1, c[1]], [10, c[2]]].filter((x) => x[1]),
+        // レベルアップで覚える技 [[レベル, 技], ...]（tools/species-moves.js で作る）。ない場合は技候補を Lv1・Lv1・Lv10 で覚える
+        learn: r.learnset ? r.learnset.map((x) => x.slice()) : [[1, c[0]], [1, c[1]], [10, c[2]]].filter((x) => x[1]),
         catch: CATCH[r.rank] || 50,
         desc: r.description,
         recipeDisplay: r.recipe ? r.recipe.display : null,

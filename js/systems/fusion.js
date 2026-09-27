@@ -118,6 +118,22 @@
       for (const id of a.moves.concat(b.moves)) if (!out.includes(id) && G.Moves[id] && G.Moves[id].inherit === false) out.push(id);
       return out;
     },
+    // 誕生後に子の技を選びなおす（配合の館の「技を選ぶ」）
+    //   選べるのは、親から受け継げる技（最大 INHERIT_MAX）と、子が今のレベルまでに覚える技。合わせて1〜4つ
+    //   親の技でも、子が自分で覚える技なら「子の技」として数える（受け継ぎの枠を使わない）
+    childOwnMoves(child) { return G.Monster.learnedUpTo(G.Species[child.speciesId], child.level); },
+    setChildMoves(child, picks, parentMoves) {
+      const own = F.childOwnMoves(child);
+      const moves = [];
+      for (const id of picks) if (!moves.includes(id) && (own.includes(id) || parentMoves.includes(id))) moves.push(id);
+      const inherited = moves.filter((id) => !own.includes(id));
+      if (!moves.length || moves.length > G.Monster.MAX_MOVES || inherited.length > INHERIT_MAX) return false;
+      child.moves = moves;
+      child.inheritedMoves = inherited;
+      G.Lineage.record(child);
+      return true;
+    },
+
     // 子の装備技：継承技（最大2）→ 子の初期技 の順で最大4つ
     childMoves(speciesId, level, inherited) {
       const own = G.Monster.movesAtLevel(G.Species[speciesId], level);
@@ -186,7 +202,7 @@
 
         const ri = G.rankIndex(G.Species[child.speciesId].rank);
         const tier = res.kind === 'rule' ? 'rule' : ri >= 7 ? 'super' : ri >= 5 ? 'rare' : 'recipe';
-        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
+        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, parentMoves: allowed, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
       } catch (e) {
         // --- 失敗：親だけ消えた状態にならないよう、すべて元に戻す ---
         s.party.splice(0, s.party.length, ...backup.party);
