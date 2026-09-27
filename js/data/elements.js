@@ -1,5 +1,5 @@
 // 属性・系統・ランクの定義
-//   公式データ（data/monster_frontier_100.json）の日本語表記との対応も、ここで管理する。
+//   公式データ（data/monster_frontier.json）の日本語表記との対応も、ここで管理する。
 (function (G) {
   'use strict';
 

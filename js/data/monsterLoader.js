@@ -1,5 +1,5 @@
 // =====================================================================
-//  公式モンスターデータの読み込み（正本: data/monster_frontier_100.json）
+//  公式モンスターデータの読み込み（正本: data/monster_frontier.json）
 // =====================================================================
 //  ・G.monsterSpecies（= G.Species）… 種族データ。IDは設計書の "001"〜"100"
 //  ・G.fusionRecipes（= G.FusionRecipes.recipes）… 配合レシピ。種族データとは独立
@@ -104,7 +104,7 @@
   const S = {};
   const order = [];
   if (!RAW || !Array.isArray(RAW.monsters)) {
-    err('公式データ（G.RawMonsterData）が読み込まれていません。js/data/monster_frontier_100.js を確認してください。');
+    err('公式データ（G.RawMonsterData）が読み込まれていません。js/data/monster_frontier.js を確認してください。');
   } else {
     for (const r of RAW.monsters) {
       if (S[r.id]) { err(`ID重複: ${r.id}`); continue; }
@@ -119,6 +119,20 @@
       for (const m of r.initialMoveCandidates) if (!G.Moves[m]) err(`${r.id} ${r.name}: 技「${m}」が未定義`);
       if (!G.Traits[r.innateTrait]) err(`${r.id} ${r.name}: 特性「${r.innateTrait}」が未定義`);
       const c = r.initialMoveCandidates;
+      // 種族値（正本は JSON の speciesStats。作り方のルールは js/data/statRules.js）
+      const SR = G.StatRules;
+      const stats = {};
+      for (const k of SR.KEYS) {
+        const v = r.speciesStats && r.speciesStats[SR.JP[k]];
+        if (!(v > 0)) err(`${r.id} ${r.name}: 種族値「${SR.JP[k]}」が未設定です（node tools/species-stats.js）`);
+        stats[k] = v > 0 ? v : 1;
+      }
+      if (!SR.ARCHETYPES[r.archetype]) err(`${r.id} ${r.name}: 型「${r.archetype}」が未定義`);
+      const evYield = {};
+      for (const [name, v] of Object.entries(r.evYield || {})) {
+        if (!SR.BY_JP[name]) err(`${r.id} ${r.name}: 努力値報酬の能力「${name}」が不正`);
+        else evYield[SR.BY_JP[name]] = v;
+      }
       S[r.id] = {
         id: r.id,
         no: Number(r.id),
@@ -136,7 +150,14 @@
         region: r.region,
         habitat: r.region || '配合でのみ誕生',
         base: [conv(bs.HP), mpBase(bs, r.role), conv(bs['攻撃']), conv(bs['防御']), conv(bs['素早さ']), conv(bs['特殊攻撃']), conv(bs['特殊防御'])],
-        raw: bs,                   // 設計書の基礎値（図鑑などで表示）
+        raw: bs,                   // 設計書の基礎値（MP・経験値・命中・回避の計算に使う）
+        stats,                     // 種族値 { hp, atk, def, spd, sat, sdf }
+        statTotal: SR.KEYS.reduce((a, k) => a + stats[k], 0),
+        archetype: r.archetype,    // 型（物理アタッカー など）
+        signature: SR.BY_JP[r.signature] || null, // 看板能力
+        weakness: SR.BY_JP[r.weakness] || null,   // 苦手な能力
+        tier: r.tier || '標準',
+        evYield,                   // 倒したときの努力値
         acc: bs['命中'],
         eva: bs['回避'],
         innateTrait: r.innateTrait,
