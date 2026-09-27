@@ -59,11 +59,15 @@
       return {
         layout: 'menu wide',
         sel: 0,
-        mode: 'list', // list | warp
+        mode: 'list', // list | warp | radar
         wsel: 0,
         note: '',
         update(In) {
           const r = () => G.Screens.render();
+          if (this.mode === 'radar') {
+            if (In.consume('cancel') || In.consume('confirm')) { this.mode = 'list'; r(); }
+            return;
+          }
           if (this.mode === 'warp') {
             const spots = G.Tamer.warpSpots();
             if (spots.length && In.consume('up')) { this.wsel = cycle(this.wsel, spots.length, -1); r(); }
@@ -84,11 +88,59 @@
           if (In.consume('confirm')) {
             const s = list[this.sel];
             if (!G.Tamer.hasSkill(s.id)) this.note = `幻獣使いLv${s.level}で 覚える スキルだ。`;
-            else if (s.id === 'warp') { this.mode = 'warp'; this.wsel = 0; }
+            else this.use(s);
             r();
           }
         },
+        // スキルを使う（ワープ・レーダーは、次の画面へ）
+        use(s) {
+          const T = G.Tamer, F = G.Field;
+          const outdoor = G.MapData[G.state.player.map] && G.MapData[G.state.player.map].encounter;
+          if (s.id === 'warp') { this.mode = 'warp'; this.wsel = 0; return; }
+          if (s.id === 'radar') {
+            if (!outdoor) { this.note = 'ここには 野生の幻獣が いないようだ。'; return; }
+            this.mode = 'radar'; this.wsel = 0; return;
+          }
+          if (s.id === 'escape') {
+            const w = T.escapeSpot(G.state.player.map);
+            if (!w) { this.note = 'ここでは 使えない。'; return; }
+            G.Screens.closeAll();
+            G.UI.toast(`${w.name}の 入口へ もどった！`);
+            F.warp(w.map, w.x, w.y, w.dir);
+            return;
+          }
+          if (s.id === 'repel' || s.id === 'lure') {
+            T.startStepSkill(s.id);
+            this.note = `${s.name}を 使った！（${G.TamerConfig.SKILL.STEPS}歩のあいだ 効く）`;
+            return;
+          }
+          if (s.id === 'eye') { this.note = '鑑定眼は 覚えていれば いつも効く。絆石を 選ぶ画面で 相手の才能が 見える。'; return; }
+          if (s.id === 'heal') {
+            const wait = T.healWait();
+            if (wait > 0) { this.note = `まだ 使えない。（あと ${Math.floor(wait / 60)}分${wait % 60}秒）`; return; }
+            G.Party.healAll();
+            (G.state.skillCd || (G.state.skillCd = {})).heal = G.state.playTime + G.TamerConfig.SKILL.HEAL_COOLDOWN;
+            G.Audio.se('heal');
+            G.UI.refresh();
+            this.note = 'あたたかい光が パーティを 包んだ……\n幻獣たちは すっかり 元気になった！';
+          }
+        },
         html() {
+          if (this.mode === 'radar') {
+            // 幻獣レーダー：この地域に出る幻獣（見たことがなければ ？？？？）。仲間にしていない種族に印
+            const enc = G.Encounters[G.MapData[G.state.player.map].encounter];
+            const ids = [...new Set(enc.table.map((r) => r[0]))].sort((a, b) => G.Species[a].no - G.Species[b].no);
+            const d = G.state.dex;
+            const rows = ids.map((id) => {
+              const e = d[id], sp = G.Species[id];
+              const mark = e && e.owned ? '<span class="tag own">済</span>' : '<span class="tag fz">未</span>';
+              return `<div class="menu-row"><span class="cursor"></span><span class="dex-no">${G.dexNoLabel(id)}</span>&nbsp;${e ? esc(sp.name) : '？？？？'}` +
+                `<span class="count">${sp.rank}ランク　${mark}</span></div>`;
+            }).join('');
+            const left = ids.filter((id) => !(d[id] && d[id].owned)).length;
+            return `<div class="menu-title">幻獣レーダー：${esc(enc.where)}</div><div class="menu-list">${rows}</div>` +
+              `<div class="menu-desc">この地域の幻獣 ${ids.length}種のうち、まだ 仲間にしていないのは ${left}種。</div><div class="menu-hint">X：もどる</div>`;
+          }
           if (this.mode === 'warp') {
             const spots = G.Tamer.warpSpots();
             return '<div class="menu-title">ワープ：どこへ 行く？</div>' +
@@ -149,7 +201,7 @@
           if (In.consume('cancel')) return G.Screens.close();
           if (In.consume('confirm') && ids.length) {
             const it = G.Items[ids[this.sel]];
-            if (['heal', 'status', 'evolve', 'boost', 'ev', 'evreset', 'exp'].includes(it.type)) {
+            if (['heal', 'status', 'revive', 'evolve', 'boost', 'ev', 'evreset', 'exp'].includes(it.type)) {
               if (!G.state.party.length) this.note = '幻獣を 連れていない。';
               else { this.target = ids[this.sel]; this.tsel = 0; }
             } else {
