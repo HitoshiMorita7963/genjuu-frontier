@@ -185,8 +185,13 @@
     // パーティに空きがあればパーティへ、なければ預かり所へ。どちらも満杯なら null
     add(m) {
       if (G.state.party.length < Mon.PARTY_MAX) { G.state.party.push(m); return 'party'; }
-      if (G.state.storage.length < Mon.STORAGE_MAX) { G.state.storage.push(m); return 'storage'; }
+      if (G.state.storage.length < Mon.STORAGE_MAX) { G.Party.toStorage(m); return 'storage'; }
       return null;
+    },
+    // 預かり所へ送る。送った時点で HP・MP を満タンにし、状態異常も治す
+    toStorage(m) {
+      Mon.healFull(m);
+      G.state.storage.push(m);
     },
     remove(m) {
       for (const list of [G.state.party, G.state.storage]) {
