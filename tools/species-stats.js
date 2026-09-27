@@ -125,7 +125,7 @@ for (const m of data.monsters) {
 
 // 項目の並びをそろえる（読みやすさのため）
 const ORDER = ['id', 'dexNo', 'name', 'family', 'element', 'element2', 'rank', 'obtain', 'region', 'role', 'archetype', 'signature', 'weakness', 'tier',
-  'speciesStats', 'evYield', 'baseStats', 'initialMoveCandidates', 'innateTrait', 'growthType', 'recipe', 'description'];
+  'speciesStats', 'evYield', 'baseStats', 'initialMoveCandidates', 'learnset', 'innateTrait', 'growthType', 'recipe', 'description'];
 data.monsters = data.monsters.map((m) => {
   const o = {};
   for (const k of ORDER) if (k in m) o[k] = m[k];

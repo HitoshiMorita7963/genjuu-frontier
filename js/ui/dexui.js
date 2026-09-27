@@ -83,7 +83,8 @@
               recipeLine(sp) +
               `<div class="small">記録した場所：${esc(e.where || '---')}</div>` +
               `<div class="small">特性：${sp.traits.map((t) => G.Traits[t].name).join('／')}</div></div></div>` +
-              `<div class="desc">${esc(sp.desc)}</div>`;
+              `<div class="desc">${esc(sp.desc)}</div>` +
+              `<div class="small">覚える技：${sp.learn.map(([lv, mid]) => `<span class="nowrap">Lv${lv} ${esc(G.Moves[mid].name)}</span>`).join('／')}</div>`;
           }
         }
         const f = { all: 'すべて', owned: '仲間にした', fused: '配合で発見' }[this.filter];

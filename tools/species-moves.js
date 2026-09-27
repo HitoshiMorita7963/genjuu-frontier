@@ -4,7 +4,8 @@
 //  node tools/species-moves.js          … 全種族の技候補（initialMoveCandidates）を型から決め直す
 //  node tools/species-moves.js --check  … 型と技が合っているかの確認だけ
 //
-//  ・技候補は3つ。1つめ・2つめは Lv1、3つめ（強い技）は Lv10 で覚える（js/data/monsterLoader.js）
+//  ・技候補は3つ。1つめ・2つめは Lv1、3つめ（強い技）は Lv10 で覚える
+//  ・そのあとレベルアップで覚える技（learnset）も、ここで型・属性・ランクから決める（下の extrasFor）
 //  ・物理の型は物理技、特殊の型は特殊技。壁・サポート・万能は、攻撃と特殊攻撃の高い方にそろえる
 //  ・固有技（引き継げない技）を持つ種族は変えない
 //  ・手で書きかえた技候補も、このツールを実行すると上書きされる（個別に変えたい種族は KEEP に入れる）
@@ -67,6 +68,52 @@ function movesFor(m) {
   return [W, mid, Str];
 }
 
+// ---------------- レベルアップで覚える技（learnset） ----------------
+//  ・最初の3つは技候補そのまま（Lv1・Lv1・Lv10）。そのあとに「追加の技」を覚える
+//  ・追加の技の数はランクで決まる（ランクが高いほど多い）。レベルは Lv14 から、最高レベル50までに収まる間隔で
+//  ・追加の技の順番：もう1つの属性の強い技（複合）／元の属性の強い技（上位属性）／相性の穴を埋める技 → 2つめの補助 →
+//    中くらいのタイプ一致技 → 無属性の強い技 → 相性の穴を埋める強い技 → 状態の技 → 反対の分類の強い技 → 予備
+const EXTRA_COUNT = { F: 2, E: 3, D: 4, C: 5, B: 6, A: 7, S: 8, SS: 9, SSS: 9, EX: 9 };
+const EXTRA_START = 14, LAST_LEVEL = 46;
+// 相性の穴を埋める属性：自分の弱点（自分に2倍の属性）に2倍を取れる属性。水→炎→風→地→雷→水 のめぐりで2つ前
+const COVER = { 炎: '雷', 水: '地', 風: '水', 地: '炎', 雷: '風', 氷: '地' };
+const STATUS = { 地: 'sunakake', 雷: 'shibiredenpa', 光: 'mekuramashi', 闇: 'akumu', 無: 'niramu', 水: 'iyashiame' };
+const MID_PHYS = { 地: 'daichiken' }; // 物理の中くらいの技（威力75）。ほかの属性は弱い技しかないので覚えさせない
+const baseOf = (el) => UPPER_BASE[el] || (el === '氷' ? '水' : el);
+function extrasFor(m, first) {
+  const S = setOf(m.element);
+  const st = m.speciesStats;
+  const physical = PHYS_TYPES.includes(m.archetype) || (m.archetype !== '特殊アタッカー' && st['攻撃'] > st['特殊攻撃']);
+  const W = (set) => set && (physical ? set.pW : set.sW);
+  const Str = (set) => set && (physical ? set.pS : set.sS);
+  const upper = !!UPPER_BASE[m.element];
+  const S2 = m.element2 ? setOf(m.element2) : null;
+  const SB = upper ? setOf(UPPER_BASE[m.element]) : null;
+  const cov = COVER[baseOf(m.element)] ? setOf(COVER[baseOf(m.element)]) : null;
+  const supportGeneric = { 物理の壁: 'katakunaru', 特殊の壁: '小回復', 耐久サポート: '小回復', 高速サポート: 'idaten', 高速アタッカー: 'idaten' }[m.archetype] || '気合いため';
+  const cands = [
+    S2 ? Str(S2) : SB ? Str(SB) : W(cov),
+    [S.heal, S.buff].find((id) => id && !first.includes(id)) || supportGeneric,
+    physical ? MID_PHYS[m.element] : S.sM,
+    physical ? '渾身撃' : '真空波',
+    Str(cov) || (S2 ? W(S2) : null),
+    STATUS[baseOf(m.element)],
+    physical ? S.sS : S.pS,
+    SB ? (physical ? SB.sS : SB.pS) : physical ? 'sutemi' : null,
+    '気合いため', 'idaten', 'katakunaru', '小回復', 'sutemi', 'niramu', '衝撃波', '突進',
+  ];
+  const out = [];
+  for (const id of cands) if (id && MOVES[id] && MOVES[id].inherit !== false && !first.includes(id) && !out.includes(id)) out.push(id);
+  return out.slice(0, EXTRA_COUNT[m.rank] || 2);
+}
+function learnsetFor(m) {
+  const first = m.initialMoveCandidates.slice();
+  const extras = extrasFor(m, first);
+  const step = extras.length > 1 ? Math.min(8, Math.floor((LAST_LEVEL - EXTRA_START) / (extras.length - 1))) : 0;
+  return [[1, first[0]], [1, first[1]], [10, first[2]]].filter((x) => x[1])
+    .concat(extras.map((id, i) => [EXTRA_START + step * i, id]));
+}
+
 const data = JSON.parse(fs.readFileSync(SRC, 'utf8'));
 const CHECK_ONLY = process.argv.includes('--check');
 let changed = 0;
@@ -74,10 +121,13 @@ const problems = [];
 for (const m of data.monsters) {
   const cur = m.initialMoveCandidates || [];
   const signature = cur.some((id) => MOVES[id] && MOVES[id].inherit === false);
-  if (signature || KEEP.has(m.id)) continue;
-  const next = movesFor(m);
-  for (const id of next) if (!MOVES[id]) problems.push(`${m.id} ${m.name}: 技「${id}」が未定義`);
-  if (!CHECK_ONLY && next.join() !== cur.join()) { m.initialMoveCandidates = next; changed++; }
+  if (!(signature || KEEP.has(m.id))) {
+    const next = movesFor(m);
+    for (const id of next) if (!MOVES[id]) problems.push(`${m.id} ${m.name}: 技「${id}」が未定義`);
+    if (!CHECK_ONLY && next.join() !== cur.join()) { m.initialMoveCandidates = next; changed++; }
+  }
+  const ls = learnsetFor(m);
+  if (!CHECK_ONLY && JSON.stringify(ls) !== JSON.stringify(m.learnset)) { m.learnset = ls; changed++; }
 }
 // 確認：物理の型なのに攻撃技がすべて特殊、などのずれ
 for (const m of data.monsters) {
@@ -88,6 +138,9 @@ for (const m of data.monsters) {
 }
 const combos = new Set(data.monsters.map((m) => m.initialMoveCandidates.join('/')));
 console.log(`技候補の組み合わせ ${combos.size} 通り / ${data.monsters.length}種`);
+const byRank = {};
+for (const m of data.monsters) (byRank[m.rank] = byRank[m.rank] || []).push((m.learnset || []).length);
+console.log('覚える技の数：' + Object.entries(byRank).map(([r, l]) => `${r} ${Math.min(...l)}〜${Math.max(...l)}`).join('　'));
 if (problems.length) { console.log('問題：\n- ' + problems.join('\n- ')); process.exitCode = 1; }
 if (!CHECK_ONLY && changed) {
   fs.writeFileSync(SRC, JSON.stringify(data, null, 2) + '\n', 'utf8');
