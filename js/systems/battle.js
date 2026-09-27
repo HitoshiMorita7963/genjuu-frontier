@@ -647,6 +647,17 @@
           G.UI.refresh();
           await this.msg(`${gold}G を 手に入れた！${lucky ? '（幸運！）' : ''}`, 1.2);
         }
+        // 野生の幻獣は、たまに経験値アイテムを落としていく（ランクが高いほど落としやすい）
+        if (!tr) {
+          const cfg = G.ItemDrops.wild;
+          for (const m of this.enemyParty) {
+            if (Math.random() >= cfg.rate + G.rankIndex(G.Species[m.speciesId].rank) * cfg.rankBonus) continue;
+            const [id] = G.ItemDrops.roll(cfg.table);
+            G.addItem(id, 1);
+            G.Audio.se('item');
+            await this.msg(`${m.name}は 『${G.Items[id].name}』を 落としていった！`, 1.2);
+          }
+        }
       } else if (this.result === 'lose') {
         if (tr && tr.canLose) {
           await G.Dialog.open([`${G.state.player.name}は ${tr.name}に 負けてしまった……`]);

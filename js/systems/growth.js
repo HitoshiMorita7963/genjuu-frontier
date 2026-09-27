@@ -19,6 +19,14 @@
         .map((k) => `${Mon().STAT_NAMES[k]}+${after[k] - before[k]}`).join('　');
     },
 
+    // 経験値アイテムで得られる経験値（成長の雫は、指定のレベル数ぶん上がるだけの量）
+    expItemAmount(m, id) {
+      const it = G.Items[id];
+      if (!it.levels) return it.exp;
+      const to = Math.min(Mon().MAX_LEVEL, m.level + it.levels);
+      return Math.max(1, Mon().expForLevel(G.Species[m.speciesId], to) - m.exp);
+    },
+
     // 経験値を得る。レベルが上がったら true
     async gainExp(m, amount, ui, quiet = false) {
       const sp = G.Species[m.speciesId];
