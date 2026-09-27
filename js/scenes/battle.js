@@ -15,6 +15,7 @@
     cave:   { sky: ['#1a1628', '#3a3048'], far: '#2a2438', ground: ['#4a4458', '#383346'], plat: '#2a2536' },
     volcano: { sky: ['#3a1410', '#a8401a'], far: '#4a2418', ground: ['#6a5a4e', '#56483e'], plat: '#3a2e28' },
     altar:  { sky: ['#1a2a5a', '#8ad0f0'], far: '#5a7ab0', ground: ['#9aa8c0', '#7a88a0'], plat: '#5a6680' },
+    snow:   { sky: ['#8aa8c8', '#e8f2fa'], far: '#c8d8e8', ground: ['#eef4fa', '#d0dcea'], plat: '#a8bcd4' },
   };
 
   function drawBg(ctx, b) {
