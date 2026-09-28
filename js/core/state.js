@@ -18,7 +18,6 @@
         lineage: {},      // 親子系譜 { 個体ID: { speciesId, name, level, generation, parentInstanceIds } }
         playTime: 0,
         tamer: { exp: 0 }, // 幻獣使いレベルの経験値（js/systems/tamer.js）
-        visited: {},       // 行ったことのあるマップ { マップID: true }（スキル『ワープ』）
       };
     },
   };

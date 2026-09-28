@@ -456,7 +456,7 @@
       if (phys && a.status === 'burn') A *= 0.5;
       const lv = a.level;
       let dmg = Math.floor(Math.floor((2 * lv) / 5 + 2) * mv.pow * A / D / 50) + 2;
-      const mul = G.typeMultiplier(mv.el, G.elementsOf(dsp)); // 複合タイプは2つの属性の倍率の掛け算（例：水・土に雷 → 2 × 0.5 = 等倍）
+      const mul = G.typeMultiplier(mv.el, dsp.el);
       const af = fx(a), df = fx(d);
       const crit = Math.random() < (af.crit ? 1 / 6 : 1 / 16);
       let mod = mul * (crit ? 1.5 : 1) * (0.85 + Math.random() * 0.15);

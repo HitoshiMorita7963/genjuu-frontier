@@ -78,7 +78,6 @@
     F.particles = [];
     F.lastBump = null;
     Object.assign(G.state.player, { map: id, x, y, dir });
-    G.Tamer.visit(id); // スキル『ワープ』の行き先に使う
     F.pendingEnter = true;
     F.dropsRefill = true; // 落とし物の補充（F.updateDrops）
     G.UI.refresh();
