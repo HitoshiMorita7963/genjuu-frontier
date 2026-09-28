@@ -171,7 +171,7 @@
         // 並べる道具（デモプレイ用の無限モードでは、持っていない経験値アイテムも並べる）
         ids() {
           const ids = Object.keys(G.state.items);
-          if (G.Settings.demoExp) for (const id in G.Items) if (G.demoInfinite(id) && !ids.includes(id)) ids.push(id);
+          if (G.Settings.demoExp || G.Settings.demoGrow) for (const id in G.Items) if (G.demoInfinite(id) && !ids.includes(id)) ids.push(id);
           return ids;
         },
         have(id) { return G.demoInfinite(id) ? 999 : G.state.items[id] || 0; },
@@ -237,7 +237,7 @@
           if (it.type === 'evolve') {
             const to = G.Growth.evolutionTarget(m, { item: id });
             if (!to) { this.note = '使っても 効果が ないようだ。'; G.Screens.render(); return; }
-            G.addItem(id, -1);
+            if (!G.demoInfinite(id)) G.addItem(id, -1);
             G.Screens.closeAll();
             G.Events.run((E) => G.Growth.evolve(m, to, E));
             return;
@@ -274,19 +274,19 @@
             }
             m.hp += G.Monster.stats(m).hp - before; // 最大HPが増えた分だけ、今のHPも増やす
             if (!got) { this.note = `${m.name}の ${I.NAMES[it.stat]}は これ以上 鍛えられない。`; G.Screens.render(); return; }
-            G.addItem(id, -used);
+            if (!G.demoInfinite(id)) G.addItem(id, -used);
             this.note = `${m.name}の ${I.NAMES[it.stat]}の努力値が ${got} 上がった！（${I.ev(m, it.stat)}／${G.GrowthConfig.EV_MAX_STAT}）`;
           } else if (it.type === 'evreset') {
             if (!G.Individual.evTotal(m)) { this.note = `${m.name}は まだ 育成されていない。`; G.Screens.render(); return; }
             G.Individual.resetEvs(m);
             const max = G.Monster.stats(m);
             m.hp = Math.min(m.hp, max.hp); m.mp = Math.min(m.mp, max.mp);
-            G.addItem(id, -1);
+            if (!G.demoInfinite(id)) G.addItem(id, -1);
             this.note = `${m.name}の 努力値が すべて 0 に もどった。`;
           } else {
             this.note = G.ItemUse.use(id, m) || '使っても 効果が ないようだ。';
           }
-          if (!G.state.items[id]) { this.target = null; this.sel = 0; }
+          if (!this.have(id)) { this.target = null; this.sel = 0; }
           G.UI.refresh();
           G.Screens.render();
         },
@@ -401,6 +401,7 @@
         { key: 'touch', label: 'タッチボタン', show: () => ({ auto: '自動', on: '表示', off: '非表示' })[S.touch || 'auto'],
           step: (d) => { const o = ['auto', 'on', 'off']; S.touch = o[(o.indexOf(S.touch || 'auto') + (d || 1) + 3) % 3]; } },
         { key: 'demoExp', label: '経験値アイテム無限（デモ）', show: () => (S.demoExp ? 'ON' : 'OFF'), step: () => { S.demoExp = !S.demoExp; } },
+        { key: 'demoGrow', label: '努力値・進化アイテム無限（デモ）', show: () => (S.demoGrow ? 'ON' : 'OFF'), step: () => { S.demoGrow = !S.demoGrow; } },
         { key: 'demoCatch', label: '絶対に捕まえられる（デモ）', show: () => (S.demoCatch ? 'ON' : 'OFF'), step: () => { S.demoCatch = !S.demoCatch; } },
       ];
       function vol(v) { return `<span class="vol">${'■'.repeat(v)}${'□'.repeat(10 - v)}</span> ${v}`; }
@@ -418,7 +419,7 @@
           return '<div class="menu-title">せってい</div>' + ROWS.map((r, i) =>
             `<div class="menu-row setting-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
             `${r.label}<span class="count">◀ ${r.show()} ▶</span></div>`).join('') +
-            '<div class="menu-desc">オートセーブ：村に着いたとき・回復したとき・大事な戦いのあとに、自動で記録します。<br>Mキーで いつでもサウンドのON/OFFを切りかえられます。<br>経験値アイテム無限：デモプレイ用。経験値アイテムを 持っていなくても もちものに並び、使っても なくなりません。<br>絶対に捕まえられる：デモプレイ用。野生の幻獣なら、HPや幻獣使いLvに関係なく 絆石で かならず 絆を結べます。</div>' +
+            '<div class="menu-desc">オートセーブ：村に着いたとき・回復したとき・大事な戦いのあとに、自動で記録します。<br>Mキーで いつでもサウンドのON/OFFを切りかえられます。<br>経験値アイテム無限：デモプレイ用。経験値アイテムを 持っていなくても もちものに並び、使っても なくなりません。<br>努力値・進化アイテム無限：デモプレイ用。特訓の書・ちからの種・忘れ草の香・鋼の爪・月の雫が、同じように 無限に 使えます。<br>絶対に捕まえられる：デモプレイ用。野生の幻獣なら、HPや幻獣使いLvに関係なく 絆石で かならず 絆を結べます。</div>' +
             '<div class="menu-hint">↑↓：えらぶ　←→：変更　X：もどる</div>';
         },
       };
