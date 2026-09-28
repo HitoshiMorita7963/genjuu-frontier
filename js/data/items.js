@@ -15,7 +15,8 @@
     steelclaw:   { name: '鋼の爪',       type: 'evolve',  price: 2000, desc: 'ツノムシに使うと、鋭い針をもつ姿に進化するという。' },
     moondrop:    { name: '月の雫',       type: 'evolve',  price: 3000, desc: '月の光を閉じこめた雫。夜や闇、光に縁のある幻獣を進化させる。' },
     // 特訓アイテム（努力値を上げる。上限：1能力252・合計510）
-    powerseed:   { name: 'ちからの種',   type: 'ev', stat: 'atk', gain: 4, price: 300, desc: '攻撃の努力値が 4 上がる。小さな特訓の第一歩。' },
+    // ちからの種：廃止（効果が小さすぎたため）。以前のセーブで持っていた分は、読み込むときにお金（売値）に替える
+    powerseed:   { name: 'ちからの種',   type: 'ev', stat: 'atk', gain: 4, price: 300, obsolete: true, desc: '攻撃の努力値が 4 上がる。' },
     hpBook:      { name: '体力の書',     type: 'ev', stat: 'hp',  price: 1000, desc: 'HPの努力値が 10 上がる特訓の書。' },
     atkBook:     { name: '剛力の書',     type: 'ev', stat: 'atk', price: 1000, desc: '攻撃の努力値が 10 上がる特訓の書。' },
     defBook:     { name: '堅守の書',     type: 'ev', stat: 'def', price: 1000, desc: '防御の努力値が 10 上がる特訓の書。' },

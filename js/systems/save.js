@@ -60,6 +60,11 @@
     // 幻獣使いレベルがなかったころのセーブ：図鑑・レシピ・物語の進み具合から経験値を見積もる
     if (!st.tamer) out.tamer = { exp: G.Tamer.estimate(out) };
     if (!st.visited) out.visited = G.Tamer.estimateVisited(out);
+    // 廃止した道具（ちからの種など）は、売値のお金に替える
+    for (const id of Object.keys(out.items)) {
+      const it = G.Items[id];
+      if (it && it.obsolete) { out.money += Math.floor(it.price / 2) * out.items[id]; delete out.items[id]; }
+    }
     // 絆石はなくならない道具になった：持っていた数に関係なく1つ（博士からもらった後なら、使い切っていても）
     if (out.items.bondstone || out.flags.gotStarter) out.items.bondstone = 1;
     for (const k of ['party', 'storage']) out[k] = (st[k] || []).filter((m) => m && G.Species[m.speciesId]);

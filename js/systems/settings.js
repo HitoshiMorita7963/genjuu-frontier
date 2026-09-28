@@ -25,11 +25,11 @@
 
   // デモプレイ用：道具を無限に使えるモード（持っていなくても もちものに並び、使ってもなくならない）
   //   demoExp  … 経験値アイテム
-  //   demoGrow … 努力値アイテム（特訓の書・ちからの種・忘れ草の香）と進化アイテム（鋼の爪・月の雫）
+  //   demoGrow … 努力値アイテム（特訓の書・忘れ草の香）と進化アイテム（鋼の爪・月の雫）
   const GROW_TYPES = ['ev', 'evreset', 'evolve'];
   G.demoInfinite = (id) => {
     const it = G.Items[id];
-    if (!it) return false;
+    if (!it || it.obsolete) return false; // 廃止した道具は出さない
     if (it.type === 'exp') return !!G.Settings.demoExp;
     if (GROW_TYPES.includes(it.type)) return !!G.Settings.demoGrow;
     return false;
