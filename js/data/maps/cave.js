@@ -122,7 +122,7 @@
     items: [
       { x: 4, y: 13, item: 'hipotion', count: 2, flag: 'item_cave2_hipotion' },
       { x: 27, y: 11, item: 'expM', count: 2, flag: 'item_cave2_bond3' },
-      { x: 8, y: 4, item: 'powerseed', count: 1, flag: 'item_cave2_seed' },
+      { x: 8, y: 4, item: 'expM', count: 1, flag: 'item_cave2_seed' },
       { x: 22, y: 3, item: 'money', count: 800, flag: 'item_cave2_money' },
     ],
     npcs: [

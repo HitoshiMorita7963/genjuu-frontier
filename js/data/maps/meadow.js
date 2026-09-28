@@ -56,7 +56,7 @@
     items: [
       { x: 31, y: 18, item: 'potion', count: 1, flag: 'item_meadow_potion' },
       { x: 3, y: 19, item: 'expS', count: 3, flag: 'item_meadow_bondstone' },
-      { x: 12, y: 8, item: 'powerseed', count: 1, flag: 'item_meadow_seed' },
+      { x: 12, y: 8, item: 'expS', count: 2, flag: 'item_meadow_seed' },
       { x: 31, y: 12, item: 'blackemblem', count: 1, flag: 'item_meadow_emblem' },
     ],
     npcs: [
