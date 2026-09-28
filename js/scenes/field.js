@@ -79,6 +79,7 @@
     F.lastBump = null;
     Object.assign(G.state.player, { map: id, x, y, dir });
     F.pendingEnter = true;
+    F.dropsRefill = true; // 落とし物の補充（F.updateDrops）
     G.UI.refresh();
     G.Audio.bgm(F.bgmName());
     if (m.autosave) G.autoSave();
@@ -282,23 +283,32 @@
 
   // ---------------- 落とし物 ----------------
   //   野生の幻獣が出るマップに、一定時間（プレイ時間）ごとに道具が現れる。取っても、時間がたてばまた現れる
-  //   マップにいないあいだの時間も数え、入ったときに上限までまとめて現れる
+  //   マップに入るたびに 3〜5個 になるまで補充し、いるあいだも一定時間ごとに増える（上限 5個）
   F.updateDrops = function () {
     if (!F.map.encounter || !G.state) return;
     const cfg = G.ItemDrops.field;
     const now = G.state.playTime;
     const all = G.state.fieldDrops || (G.state.fieldDrops = {});
-    const d = all[F.map.id] || (all[F.map.id] = { next: now + cfg.first, items: [] });
     const gap = () => cfg.interval[0] + Math.random() * (cfg.interval[1] - cfg.interval[0]);
+    const d = all[F.map.id] || (all[F.map.id] = { next: now + gap(), items: [] });
+    // マップに入った直後：3〜5個になるまで補充する
+    if (F.dropsRefill) {
+      F.dropsRefill = false;
+      const want = cfg.onEnter[0] + Math.floor(Math.random() * (cfg.onEnter[1] - cfg.onEnter[0] + 1));
+      for (let guard = 0; d.items.length < want && guard < 10; guard++) F.addDrop(d);
+      d.next = now + gap();
+    }
     for (let guard = 0; now >= d.next && guard < 10; guard++) {
       if (d.items.length >= cfg.max) { d.next = now + gap(); break; }
-      const spot = F.dropSpot();
-      if (spot) {
-        const [item, , count] = G.ItemDrops.roll(cfg.table);
-        d.items.push({ x: spot.x, y: spot.y, item, count });
-      }
+      F.addDrop(d);
       d.next += gap();
     }
+  };
+  F.addDrop = function (d) {
+    const spot = F.dropSpot();
+    if (!spot) return;
+    const [item, , count] = G.ItemDrops.roll(G.ItemDrops.field.table);
+    d.items.push({ x: spot.x, y: spot.y, item, count });
   };
   // 落とし物を置ける場所：主人公から歩いて行ける、何もない床（出入口・イベントの場所・人のいる場所とその近くは避ける）
   F.dropSpot = function () {
@@ -462,7 +472,7 @@
   F.update = function (dt) {
     F.t += dt;
     G.state.playTime += dt;
-    if (!F.trans && !F.p.moving) F.updateDrops();
+    if (!F.p.moving && !(F.trans && F.trans.phase === 'out')) F.updateDrops(); // 画面が明るくなる前に補充しておく
 
     for (const pt of F.particles) { pt.life -= dt; pt.x += pt.vx * dt; pt.y += pt.vy * dt; pt.vy += 160 * dt; }
     F.particles = F.particles.filter((pt) => pt.life > 0);
