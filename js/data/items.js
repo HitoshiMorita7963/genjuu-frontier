@@ -6,7 +6,7 @@
     potion:      { name: 'キズぐすり',   type: 'heal',    price: 100, desc: '幻獣のHPを30回復する。' },
     hipotion:    { name: 'いやし草の雫', type: 'heal',    price: 300, desc: '幻獣のHPを80回復する。' },
     cure:        { name: 'なおし草',     type: 'status',  price: 120, desc: '毒・麻痺・睡眠などの状態異常を治す。' },
-    bondstone:   { name: '絆石',         type: 'capture', price: 60, rate: 1, color: '#7ad0a0', desc: '野生の幻獣と絆を結ぶための石。弱らせてから使おう。' },
+    bondstone:   { name: '絆石',         type: 'capture', price: 0, infinite: true, rate: 1, color: '#7ad0a0', desc: '野生の幻獣と絆を結ぶための石。何度投げても なくならない。弱らせてから使おう。' },
     bondstone2:  { name: '上絆石',       type: 'capture', price: 200, rate: 1.6, color: '#6aa0f0', desc: '絆石よりも絆を結びやすい、澄んだ石。' },
     bondstone3:  { name: '極絆石',       type: 'capture', price: 500, rate: 2.5, color: '#f0c040', desc: '強い光を宿した希少な絆石。' },
     steelclaw:   { name: '鋼の爪',       type: 'evolve',  price: 2000, desc: 'ツノムシに使うと、鋭い針をもつ姿に進化するという。' },
@@ -42,7 +42,7 @@
       max: 3,                 // 1つのマップに同時に落ちている数の上限
       table: [                // [道具, 重み, 個数]
         ['expS', 45, 1], ['expS', 10, 2], ['expM', 12, 1], ['expL', 2, 1], ['levelDrop', 3, 1],
-        ['potion', 12, 1], ['bondstone', 10, 2], ['cure', 4, 1], ['hipotion', 2, 1],
+        ['potion', 14, 1], ['bondstone2', 6, 1], ['cure', 5, 1], ['hipotion', 3, 1], ['bondstone3', 1, 1],
       ],
     },
     // 野生の幻獣を倒したとき：たまに経験値アイテムを落としていく（ランクが高いほど良いものを落としやすい）
@@ -50,6 +50,10 @@
     // 配合したとき：生まれた子のランクに応じて、記念にもらえる
     fusion: { F: ['expS', 2], E: ['expS', 5], D: ['expM', 1], C: ['expM', 3], B: ['expM', 5], A: ['expM', 8], S: ['expL', 1], SS: ['expL', 1], SSS: ['expL', 1], EX: ['expL', 1] },
   };
+  // 捕獲のルール：絆石（なくならない）で何度でも挑めるが、失敗が続くと幻獣が怒る
+  //   maxFails 回失敗すると怒り、fleeRate の確率で逃げてしまう。逃げなければ、その戦闘ではもう捕まえられない
+  G.CatchRules = { maxFails: 3, fleeRate: 0.5 };
+
   // 重み付きの抽選 table: [[値, 重み, ...], ...] → その行
   G.ItemDrops.roll = (table) => {
     let r = Math.random() * table.reduce((s, x) => s + x[1], 0);

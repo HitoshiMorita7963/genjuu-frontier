@@ -56,6 +56,7 @@
             if (c.id === 'catch') {
               if (b.type !== 'wild') { this.note = '人の幻獣を 捕まえることは できない！'; G.Screens.render(); return; }
               if (!G.Party.hasRoom()) { this.note = 'パーティも預かり所も いっぱいだ！'; G.Screens.render(); return; }
+              if (b.catchLocked) { this.note = `${b.sides.enemy.mon.name}は 怒っていて、もう 絆を 結べない！`; G.Screens.render(); return; }
               return this.go('catch');
             }
             if (c.id === 'run') return G.Screens.close({ type: 'run' });
@@ -175,14 +176,14 @@
           const hint = foe.hp <= st.hp * 0.25 ? 'かなり弱っている！' : foe.hp <= st.hp * 0.5 ? '弱ってきている。' : 'まだまだ元気だ……';
           body = '<div class="bt-title">どの絆石を 投げる？</div>' + (ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
-              `<span class="stone-icon" style="--c:${G.Items[id].color}"></span>${G.Items[id].name}<span class="catch-rate">捕獲率 <b>${pct(id)}%</b></span><span class="count">×${G.state.items[id]}</span></div>`).join('') +
-              `<div class="bt-info"><small>${esc(foe.name)}は ${hint}${foe.status ? '（状態異常なので成功しやすい）' : '　HPを減らす・状態異常にすると成功しやすい'}</small></div>`
+              `<span class="stone-icon" style="--c:${G.Items[id].color}"></span>${G.Items[id].name}<span class="catch-rate">捕獲率 <b>${pct(id)}%</b></span><span class="count">×${G.Items[id].infinite ? '∞' : G.state.items[id]}</span></div>`).join('') +
+              `<div class="bt-info"><small>あと <b>${G.CatchRules.maxFails - b.catchFails}</b>回 失敗すると 怒ってしまう。　${esc(foe.name)}は ${hint}${foe.status ? '（状態異常なので成功しやすい）' : '　HPを減らす・状態異常にすると成功しやすい'}</small></div>`
             : '<div class="menu-empty">絆石を 持っていない。</div>');
         } else if (this.view === 'items') {
           const ids = G.ItemUse.battleItems();
           body = '<div class="bt-title">どの道具を使う？</div>' + (ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
-              `${G.Items[id].name}<span class="count">×${G.state.items[id]}</span></div>`).join('') +
+              `${G.Items[id].name}<span class="count">×${G.Items[id].infinite ? '∞' : G.state.items[id]}</span></div>`).join('') +
               `<div class="bt-info"><small>${G.Items[ids[this.sel]].desc}</small></div>`
             : '<div class="menu-empty">戦闘で使える道具を 持っていない。</div>');
         } else if (this.view === 'itemTarget') {
