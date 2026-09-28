@@ -70,6 +70,7 @@
       m.hp = Math.min(m.hp, max.hp);
       m.mp = Math.min(m.mp, max.mp);
     }
+    for (const m of out.storage) G.Monster.healFull(m); // 預かり所の幻獣は、いつも HP・MP 満タン
     // 個体IDの通し番号が既存の個体と重ならないようにする
     out.uidSeq = Math.max(out.uidSeq || 0, ...out.party.concat(out.storage).map((m) => m.instanceId || 0),
       ...Object.keys(out.lineage).map(Number));

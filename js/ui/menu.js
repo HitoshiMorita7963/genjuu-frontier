@@ -389,7 +389,7 @@
           if (a === '並べかえ') { this.mode = 'swap'; this.swapFrom = this.sel; this.note = 'どの幻獣と 入れかえる？'; }
           else if (a === '預ける') {
             if (G.state.party.filter((x) => x !== m && x.hp > 0).length === 0) this.note = '戦える幻獣が いなくなってしまう！';
-            else { G.Party.remove(m); G.state.storage.push(m); this.note = `${m.name}を 預かり所へ 預けた。`; this.sel = Math.max(0, this.sel - 1); }
+            else { G.Party.remove(m); G.Party.toStorage(m); this.note = `${m.name}を 預かり所へ 預けた。（HP・MPは 満タンに なった）`; this.sel = Math.max(0, this.sel - 1); }
           } else if (a === 'パーティに加える') {
             if (G.state.party.length >= G.Monster.PARTY_MAX) this.note = 'パーティが いっぱいだ！';
             else { G.Party.remove(m); G.state.party.push(m); this.note = `${m.name}が パーティに 加わった。`; this.sel = Math.max(0, this.sel - 1); }
