@@ -6,6 +6,9 @@
     potion:      { name: 'キズぐすり',   type: 'heal',    price: 100, desc: '幻獣のHPを30回復する。' },
     hipotion:    { name: 'いやし草の雫', type: 'heal',    price: 300, desc: '幻獣のHPを80回復する。' },
     cure:        { name: 'なおし草',     type: 'status',  price: 120, desc: '毒・麻痺・睡眠などの状態異常を治す。' },
+    // 生き返らせる道具（ひんしの幻獣に使う。戦闘中も使える）
+    revive:      { name: '目覚めの葉',   type: 'revive',  price: 500, revive: 0.5, desc: 'ひんしの幻獣を 生き返らせ、HPを 半分 回復する。' },
+    revive2:     { name: '蘇生の実',     type: 'revive',  price: 1500, revive: 1, desc: 'ひんしの幻獣を 生き返らせ、HPを すべて 回復する。' },
     bondstone:   { name: '絆石',         type: 'capture', price: 0, infinite: true, rate: 1, color: '#7ad0a0', desc: '野生の幻獣と絆を結ぶための石。何度投げても なくならない。弱らせてから使おう。' },
     bondstone2:  { name: '上絆石',       type: 'capture', price: 200, rate: 1.6, color: '#6aa0f0', desc: '絆石よりも絆を結びやすい、澄んだ石。（今はもう手に入らない）' },
     bondstone3:  { name: '極絆石',       type: 'capture', price: 500, rate: 2.5, color: '#f0c040', desc: '強い光を宿した希少な絆石。（今はもう手に入らない）' },
@@ -42,7 +45,7 @@
       max: 5,                 // 1つのマップに同時に落ちている数の上限
       table: [                // [道具, 重み, 個数]
         ['expS', 45, 1], ['expS', 10, 2], ['expM', 12, 1], ['expL', 2, 1], ['levelDrop', 3, 1],
-        ['potion', 14, 1], ['cure', 5, 1], ['hipotion', 4, 1],
+        ['potion', 14, 1], ['cure', 5, 1], ['hipotion', 4, 1], ['revive', 3, 1],
       ],
     },
     // 野生の幻獣を倒したとき：たまに経験値アイテムを落としていく（ランクが高いほど良いものを落としやすい）
