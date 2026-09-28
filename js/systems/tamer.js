@@ -54,9 +54,11 @@
       const after = T.level();
       if (after > before) {
         const ranks = Object.keys(C.RANK_LEVEL).filter((r) => C.RANK_LEVEL[r] > before && C.RANK_LEVEL[r] <= after && r !== 'SS' && r !== 'SSS' && r !== 'EX');
+        const skills = (G.TamerSkills || []).filter((s) => s.level > before && s.level <= after);
         try {
           G.Audio.se('levelup');
-          G.UI.toast(`幻獣使いLvが ${after}に 上がった！` + (ranks.length ? `（${ranks.join('・')}ランクと 絆を結べる）` : ''));
+          G.UI.toast(`幻獣使いLvが ${after}に 上がった！` + (ranks.length ? `（${ranks.join('・')}ランクと 絆を結べる）` : '') +
+            skills.map((s) => `　スキル『${s.name}』を 覚えた！`).join(''));
         } catch (e) { /* 画面のない環境（テスト）では通知しない */ }
       }
       try { G.UI.refresh(); } catch (e) { /* 同上 */ }
@@ -74,6 +76,48 @@
       const events = Object.keys(C.EVENTS).filter((k) => st.flags && st.flags[k]).reduce((s, k) => s + C.EVENTS[k], 0);
       return owned * C.EXP.wild + recipes * C.EXP.recipe + events;
     },
+  };
+
+  // ---------------- 幻獣使いのスキル（幻獣使いレベルで覚える、フィールドで使う便利な技） ----------------
+  //   メニュー →「スキル」から使う
+  // ワープ先：その地域に入る出入口の前に着く（from のマップから to へ入るワープの到着位置）
+  const WARP_SPOTS = [
+    { map: 'sorano', from: 'healer', name: 'ソラノ村（癒しの泉の前）' },
+    { map: 'meadow', from: 'sorano', name: 'そよかぜ草原' },
+    { map: 'forest', from: 'meadow', name: 'ささやきの森' },
+    { map: 'cave1', from: 'forest', name: '灯石の洞窟（入口）' },
+    { map: 'lumiere', from: 'lumiere_heal', name: '港町リュミエール（癒しの泉の前）' },
+    { map: 'highland', from: 'lumiere', name: '風鳴りの高原' },
+    { map: 'volcano', from: 'lumiere', name: '火山の麓' },
+    { map: 'lakeside', from: 'highland', name: '湖畔の森' },
+    { map: 'snowfield', from: 'highland', name: '北の氷原' },
+  ];
+  G.TamerSkills = [
+    { id: 'warp', name: 'ワープ', level: 5, desc: '一度 行ったことのある 村や洞窟などへ、一瞬で 移動する。' },
+  ];
+  T.skills = () => G.TamerSkills.filter((s) => T.level() >= s.level);
+  T.hasSkill = (id) => T.skills().some((s) => s.id === id);
+  // ワープできる場所（一度行ったことがある場所だけ）。着く位置はマップの出入口から決める
+  T.warpSpots = () => WARP_SPOTS.filter((w) => G.state.visited && G.state.visited[w.map] && G.MapData[w.map]).map((w) => {
+    const src = G.MapData[w.from];
+    const wp = src && src.warps.find((x) => x.to === w.map);
+    return wp ? Object.assign({}, w, { x: wp.tx, y: wp.ty, dir: wp.dir || 'down' }) : null;
+  }).filter(Boolean);
+  // 行ったことのある場所の記録（マップに入ったとき）。以前のセーブは物語の進み具合から見積もる
+  T.visit = (mapId) => { const v = G.state.visited || (G.state.visited = {}); v[mapId] = true; };
+  T.estimateVisited = (st) => {
+    const f = (k) => st.flags && st.flags[k];
+    const v = { sorano: true };
+    if (f('metProfessor')) v.meadow = true;
+    if (f('rivalForestMet') || f('forestOpen')) v.forest = true;
+    if (f('gotLantern') || f('noirDefeated')) v.cave1 = true;
+    if (f('ch2Arrived')) v.lumiere = true;
+    if (f('ch2Briefed') || f('keyFire') || f('keyWater')) v.highland = true;
+    if (f('keyFire')) v.volcano = true;
+    if (f('keyWater')) v.lakeside = true;
+    if (f('snowArrived')) v.snowfield = true;
+    if (st.player && st.player.map) v[st.player.map] = true;
+    return v;
   };
 
   // ---- 経験値が入るところ（図鑑の記録・レシピの発見・物語のフラグ）にフックする ----

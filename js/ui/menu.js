@@ -9,6 +9,7 @@
     { id: 'monsters', label: '幻獣' },
     { id: 'items', label: 'もちもの' },
     { id: 'status', label: '主人公' },
+    { id: 'skills', label: 'スキル' },
     { id: 'dex', label: '図鑑' },
     { id: 'recipes', label: '配合表' },
     { id: 'save', label: 'セーブ' },
@@ -37,6 +38,7 @@
             if (e.id === 'monsters') G.Screens.open(G.UIScreens.party());
             if (e.id === 'items') G.Screens.open(G.UIScreens.items());
             if (e.id === 'status') G.Screens.open(G.UIScreens.status());
+            if (e.id === 'skills') G.Screens.open(G.UIScreens.skills());
             if (e.id === 'dex') G.Screens.open(G.UIScreens.dex());
             if (e.id === 'recipes') G.Screens.open(G.UIScreens.recipeBook());
             if (e.id === 'save') G.Screens.open(G.UIScreens.save());
@@ -48,6 +50,60 @@
             `<div class="menu-row${i === this.sel ? ' sel' : ''}${e.disabled ? ' disabled' : ''}">` +
             `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${e.label}` +
             `${e.disabled ? '<span class="soon">準備中</span>' : ''}</div>`).join('');
+        },
+      };
+    },
+
+    // 幻獣使いのスキル（幻獣使いレベルで覚える）。ワープは、行き先を選ぶ
+    skills() {
+      return {
+        layout: 'menu wide',
+        sel: 0,
+        mode: 'list', // list | warp
+        wsel: 0,
+        note: '',
+        update(In) {
+          const r = () => G.Screens.render();
+          if (this.mode === 'warp') {
+            const spots = G.Tamer.warpSpots();
+            if (spots.length && In.consume('up')) { this.wsel = cycle(this.wsel, spots.length, -1); r(); }
+            if (spots.length && In.consume('down')) { this.wsel = cycle(this.wsel, spots.length, 1); r(); }
+            if (In.consume('cancel')) { this.mode = 'list'; r(); return; }
+            if (In.consume('confirm') && spots.length) {
+              const w = spots[this.wsel];
+              G.Screens.closeAll();
+              G.UI.toast(`${w.name}へ ワープ！`);
+              G.Field.warp(w.map, w.x, w.y, w.dir);
+            }
+            return;
+          }
+          const list = G.TamerSkills;
+          if (In.consume('up')) { this.sel = cycle(this.sel, list.length, -1); this.note = ''; r(); }
+          if (In.consume('down')) { this.sel = cycle(this.sel, list.length, 1); this.note = ''; r(); }
+          if (In.consume('cancel')) return G.Screens.close();
+          if (In.consume('confirm')) {
+            const s = list[this.sel];
+            if (!G.Tamer.hasSkill(s.id)) this.note = `幻獣使いLv${s.level}で 覚える スキルだ。`;
+            else if (s.id === 'warp') { this.mode = 'warp'; this.wsel = 0; }
+            r();
+          }
+        },
+        html() {
+          if (this.mode === 'warp') {
+            const spots = G.Tamer.warpSpots();
+            return '<div class="menu-title">ワープ：どこへ 行く？</div>' +
+              `<div class="menu-list">${spots.length ? spots.map((w, i) => `<div class="menu-row${i === this.wsel ? ' sel' : ''}"><span class="cursor">${i === this.wsel ? '▶' : ''}</span>${esc(w.name)}` +
+                `${w.map === G.state.player.map ? '<span class="count">いまいる場所</span>' : ''}</div>`).join('') : '<div class="menu-empty">まだ 行ける場所が ない。</div>'}</div>` +
+              '<div class="menu-desc">一度 行ったことのある場所へ、一瞬で 移動する。</div><div class="menu-hint">Z：ワープする　X：もどる</div>';
+          }
+          const rows = G.TamerSkills.map((s, i) => {
+            const ok = G.Tamer.hasSkill(s.id);
+            return `<div class="menu-row${i === this.sel ? ' sel' : ''}${ok ? '' : ' disabled'}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>${esc(s.name)}` +
+              `<span class="count">${ok ? '' : `幻獣使いLv${s.level}で 覚える`}</span></div>`;
+          }).join('');
+          const cur = G.TamerSkills[this.sel];
+          return `<div class="menu-title">スキル（幻獣使いLv${G.Tamer.level()}）</div><div class="menu-list">${rows}</div>` +
+            `<div class="menu-desc">${esc(this.note || (cur ? cur.desc : ''))}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
         },
       };
     },
