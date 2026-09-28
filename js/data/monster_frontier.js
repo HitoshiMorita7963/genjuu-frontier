@@ -4,7 +4,7 @@
 window.Game = window.Game || {};
 window.Game.RawMonsterData = {
  "title": "モンスターフロンティア",
- "version": "3.0",
+ "version": "3.1",
  "rules": {
   "partyLimit": 6,
   "maxEquippedMoves": 4,
@@ -51,10 +51,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -76,7 +72,11 @@ window.Game.RawMonsterData = {
      22,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は炎。"
   },
   {
    "id": "002",
@@ -118,10 +118,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は水。",
    "learnset": [
     [
      1,
@@ -143,7 +139,11 @@ window.Game.RawMonsterData = {
      22,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は水。"
   },
   {
    "id": "003",
@@ -185,10 +185,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は風。",
    "learnset": [
     [
      1,
@@ -210,7 +206,11 @@ window.Game.RawMonsterData = {
      22,
      "追い風"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は風。"
   },
   {
    "id": "004",
@@ -252,10 +252,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は地。",
    "learnset": [
     [
      1,
@@ -277,7 +273,11 @@ window.Game.RawMonsterData = {
      22,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は地。"
   },
   {
    "id": "005",
@@ -319,10 +319,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "雷走り",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -344,7 +340,11 @@ window.Game.RawMonsterData = {
      22,
      "麻痺針"
     ]
-   ]
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
   },
   {
    "id": "006",
@@ -386,10 +386,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "空中戦と素早い行動を得意とする。 属性は風。",
    "learnset": [
     [
      1,
@@ -411,7 +407,11 @@ window.Game.RawMonsterData = {
      22,
      "追い風"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は風。"
   },
   {
    "id": "007",
@@ -453,10 +453,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "狩人の本能",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "空中戦と素早い行動を得意とする。 属性は炎。",
    "learnset": [
     [
      1,
@@ -478,7 +474,11 @@ window.Game.RawMonsterData = {
      22,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
    "id": "008",
@@ -520,10 +520,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "空中戦と素早い行動を得意とする。 属性は水。",
    "learnset": [
     [
      1,
@@ -545,7 +541,11 @@ window.Game.RawMonsterData = {
      22,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は水。"
   },
   {
    "id": "009",
@@ -587,10 +587,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "自然の力を蓄え、持久戦に強い。 属性は地。",
    "learnset": [
     [
      1,
@@ -612,7 +608,11 @@ window.Game.RawMonsterData = {
      22,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "自然の力を蓄え、持久戦に強い。 属性は地。"
   },
   {
    "id": "010",
@@ -654,10 +654,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "自然の力を蓄え、持久戦に強い。 属性は光。",
    "learnset": [
     [
      1,
@@ -679,7 +675,11 @@ window.Game.RawMonsterData = {
      22,
      "seinaruya"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "自然の力を蓄え、持久戦に強い。 属性は光。"
   },
   {
    "id": "011",
@@ -721,10 +721,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は水。",
    "learnset": [
     [
      1,
@@ -746,7 +742,11 @@ window.Game.RawMonsterData = {
      22,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は水。"
   },
   {
    "id": "012",
@@ -788,10 +788,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。",
    "learnset": [
     [
      1,
@@ -813,7 +809,11 @@ window.Game.RawMonsterData = {
      22,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
   },
   {
    "id": "013",
@@ -855,10 +855,6 @@ window.Game.RawMonsterData = {
     "raigeki",
     "雷鳴落とし"
    ],
-   "innateTrait": "呪術の才",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。",
    "learnset": [
     [
      1,
@@ -880,7 +876,11 @@ window.Game.RawMonsterData = {
      22,
      "麻痺針"
     ]
-   ]
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。"
   },
   {
    "id": "014",
@@ -922,10 +922,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "小柄ながら特化した能力を持つ。 属性は風。",
    "learnset": [
     [
      1,
@@ -947,7 +943,11 @@ window.Game.RawMonsterData = {
      22,
      "追い風"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は風。"
   },
   {
    "id": "015",
@@ -989,10 +989,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "小柄ながら特化した能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -1014,7 +1010,11 @@ window.Game.RawMonsterData = {
      22,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
   },
   {
    "id": "016",
@@ -1056,10 +1056,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "小柄ながら特化した能力を持つ。 属性は地。",
    "learnset": [
     [
      1,
@@ -1081,7 +1077,11 @@ window.Game.RawMonsterData = {
      22,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は地。"
   },
   {
    "id": "017",
@@ -1123,10 +1123,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -1148,7 +1144,11 @@ window.Game.RawMonsterData = {
      22,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "018",
@@ -1190,10 +1190,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "奈落斬"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -1215,7 +1211,11 @@ window.Game.RawMonsterData = {
      22,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "019",
@@ -1257,10 +1257,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "状態異常耐性",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。",
    "learnset": [
     [
      1,
@@ -1282,7 +1278,11 @@ window.Game.RawMonsterData = {
      22,
      "seinaruya"
     ]
-   ]
+   ],
+   "innateTrait": "状態異常耐性",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
   },
   {
    "id": "020",
@@ -1324,10 +1324,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "再生皮膚",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。",
    "learnset": [
     [
      1,
@@ -1349,7 +1345,11 @@ window.Game.RawMonsterData = {
      22,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
   },
   {
    "id": "021",
@@ -1392,17 +1392,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "001",
-     "003"
-    ],
-    "resultId": "021",
-    "display": "ヒノコロ + カゼネコ → ホムラネコ"
-   },
-   "description": "鋭い感覚と身体能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -1428,7 +1417,18 @@ window.Game.RawMonsterData = {
      30,
      "轟雷爪"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "001",
+     "003"
+    ],
+    "resultId": "021",
+    "display": "ヒノコロ + カゼネコ → ホムラネコ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は炎。"
   },
   {
    "id": "022",
@@ -1471,17 +1471,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "002",
-     "004"
-    ],
-    "resultId": "022",
-    "display": "ミズリス + ツチモグラ → ヌマモグラ"
-   },
-   "description": "鋭い感覚と身体能力を持つ。 属性は水。",
    "learnset": [
     [
      1,
@@ -1507,7 +1496,18 @@ window.Game.RawMonsterData = {
      30,
      "uzushio"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "002",
+     "004"
+    ],
+    "resultId": "022",
+    "display": "ミズリス + ツチモグラ → ヌマモグラ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は水。"
   },
   {
    "id": "023",
@@ -1550,17 +1550,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "005",
-     "003"
-    ],
-    "resultId": "023",
-    "display": "ライポン + カゼネコ → ライガネコ"
-   },
-   "description": "鋭い感覚と身体能力を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -1586,7 +1575,18 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "005",
+     "003"
+    ],
+    "resultId": "023",
+    "display": "ライポン + カゼネコ → ライガネコ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
   },
   {
    "id": "024",
@@ -1629,17 +1629,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "006",
-     "007"
-    ],
-    "resultId": "024",
-    "display": "ハネピヨ + アカツバメ → ヒバネドリ"
-   },
-   "description": "空中戦と素早い行動を得意とする。 属性は炎。",
    "learnset": [
     [
      1,
@@ -1665,7 +1654,18 @@ window.Game.RawMonsterData = {
      30,
      "轟雷爪"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "006",
+     "007"
+    ],
+    "resultId": "024",
+    "display": "ハネピヨ + アカツバメ → ヒバネドリ"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
    "id": "025",
@@ -1708,17 +1708,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "006",
-     "008"
-    ],
-    "resultId": "025",
-    "display": "ハネピヨ + ミズカモ → アオツバサ"
-   },
-   "description": "空中戦と素早い行動を得意とする。 属性は水。",
    "learnset": [
     [
      1,
@@ -1744,7 +1733,18 @@ window.Game.RawMonsterData = {
      30,
      "uzushio"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "006",
+     "008"
+    ],
+    "resultId": "025",
+    "display": "ハネピヨ + ミズカモ → アオツバサ"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は水。"
   },
   {
    "id": "026",
@@ -1786,17 +1786,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "009",
-     "010"
-    ],
-    "resultId": "026",
-    "display": "コモリバナ + ヒカリソウ → ヒカリバナ"
-   },
-   "description": "自然の力を蓄え、持久戦に強い。 属性は光。",
    "learnset": [
     [
      1,
@@ -1822,7 +1811,18 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "009",
+     "010"
+    ],
+    "resultId": "026",
+    "display": "コモリバナ + ヒカリソウ → ヒカリバナ"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は光。"
   },
   {
    "id": "027",
@@ -1864,17 +1864,6 @@ window.Game.RawMonsterData = {
     "烈火弾",
     "灼熱波"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "009",
-     "015"
-    ],
-    "resultId": "027",
-    "display": "コモリバナ + ヒノムシ → ホノオツタ"
-   },
-   "description": "自然の力を蓄え、持久戦に強い。 属性は炎。",
    "learnset": [
     [
      1,
@@ -1900,7 +1889,18 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "009",
+     "015"
+    ],
+    "resultId": "027",
+    "display": "コモリバナ + ヒノムシ → ホノオツタ"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は炎。"
   },
   {
    "id": "028",
@@ -1943,17 +1943,6 @@ window.Game.RawMonsterData = {
     "raigeki",
     "雷鳴落とし"
    ],
-   "innateTrait": "呪術の才",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "011",
-     "013"
-    ],
-    "resultId": "028",
-    "display": "ミズタマリ + ビリクラゲ → デンキクラゲ"
-   },
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。",
    "learnset": [
     [
      1,
@@ -1979,7 +1968,18 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "011",
+     "013"
+    ],
+    "resultId": "028",
+    "display": "ミズタマリ + ビリクラゲ → デンキクラゲ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。"
   },
   {
    "id": "029",
@@ -2022,17 +2022,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "012",
-     "011"
-    ],
-    "resultId": "029",
-    "display": "イワガメ + ミズタマリ → イシガメ"
-   },
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。",
    "learnset": [
     [
      1,
@@ -2058,7 +2047,18 @@ window.Game.RawMonsterData = {
      30,
      "daichiken"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "012",
+     "011"
+    ],
+    "resultId": "029",
+    "display": "イワガメ + ミズタマリ → イシガメ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
   },
   {
    "id": "030",
@@ -2100,17 +2100,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "雷走り",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "014",
-     "016"
-    ],
-    "resultId": "030",
-    "display": "ハネムシ + ツノムシ → ツノバチ"
-   },
-   "description": "小柄ながら特化した能力を持つ。 属性は風。",
    "learnset": [
     [
      1,
@@ -2136,7 +2125,18 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "014",
+     "016"
+    ],
+    "resultId": "030",
+    "display": "ハネムシ + ツノムシ → ツノバチ"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は風。"
   },
   {
    "id": "031",
@@ -2179,17 +2179,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "015",
-     "014"
-    ],
-    "resultId": "031",
-    "display": "ヒノムシ + ハネムシ → ホノオガ"
-   },
-   "description": "小柄ながら特化した能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -2215,7 +2204,18 @@ window.Game.RawMonsterData = {
      30,
      "轟雷爪"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "015",
+     "014"
+    ],
+    "resultId": "031",
+    "display": "ヒノムシ + ハネムシ → ホノオガ"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
   },
   {
    "id": "032",
@@ -2257,17 +2257,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "017",
-     "018"
-    ],
-    "resultId": "032",
-    "display": "ヤミコウモリ + ヨルネコ → ヤミネコウモリ"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -2293,7 +2282,18 @@ window.Game.RawMonsterData = {
      30,
      "akumu"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "017",
+     "018"
+    ],
+    "resultId": "032",
+    "display": "ヤミコウモリ + ヨルネコ → ヤミネコウモリ"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "033",
@@ -2335,17 +2335,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "019",
-     "020"
-    ],
-    "resultId": "033",
-    "display": "コダマ + スナタマ → モリノタマ"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。",
    "learnset": [
     [
      1,
@@ -2371,7 +2360,18 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "019",
+     "020"
+    ],
+    "resultId": "033",
+    "display": "コダマ + スナタマ → モリノタマ"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
   },
   {
    "id": "034",
@@ -2413,17 +2413,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "021",
-     "024"
-    ],
-    "resultId": "034",
-    "display": "ホムラネコ + ヒバネドリ → フレアフェザー"
-   },
-   "description": "空中戦と素早い行動を得意とする。 属性は炎。",
    "learnset": [
     [
      1,
@@ -2453,7 +2442,18 @@ window.Game.RawMonsterData = {
      38,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "021",
+     "024"
+    ],
+    "resultId": "034",
+    "display": "ホムラネコ + ヒバネドリ → フレアフェザー"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
    "id": "035",
@@ -2496,17 +2496,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "再生皮膚",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "022",
-     "029"
-    ],
-    "resultId": "035",
-    "display": "ヌマモグラ + イシガメ → ヌマガメ"
-   },
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は水。",
    "learnset": [
     [
      1,
@@ -2536,7 +2525,18 @@ window.Game.RawMonsterData = {
      38,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "022",
+     "029"
+    ],
+    "resultId": "035",
+    "display": "ヌマモグラ + イシガメ → ヌマガメ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は水。"
   },
   {
    "id": "036",
@@ -2578,17 +2578,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "023",
-     "028"
-    ],
-    "resultId": "036",
-    "display": "ライガネコ + デンキクラゲ → ライジンネコ"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は雷。",
    "learnset": [
     [
      1,
@@ -2618,7 +2607,18 @@ window.Game.RawMonsterData = {
      38,
      "烈風脚"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "023",
+     "028"
+    ],
+    "resultId": "036",
+    "display": "ライガネコ + デンキクラゲ → ライジンネコ"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は雷。"
   },
   {
    "id": "037",
@@ -2660,17 +2660,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "慈愛の光",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "026",
-     "033"
-    ],
-    "resultId": "037",
-    "display": "ヒカリバナ + モリノタマ → セイクリッドフラワー"
-   },
-   "description": "自然の力を蓄え、持久戦に強い。 属性は光。",
    "learnset": [
     [
      1,
@@ -2700,7 +2689,18 @@ window.Game.RawMonsterData = {
      38,
      "mekuramashi"
     ]
-   ]
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "026",
+     "033"
+    ],
+    "resultId": "037",
+    "display": "ヒカリバナ + モリノタマ → セイクリッドフラワー"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は光。"
   },
   {
    "id": "038",
@@ -2742,17 +2742,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "連撃の才",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "030",
-     "031"
-    ],
-    "resultId": "038",
-    "display": "ツノバチ + ホノオガ → カエンビー"
-   },
-   "description": "小柄ながら特化した能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -2782,7 +2771,18 @@ window.Game.RawMonsterData = {
      38,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "連撃の才",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "030",
+     "031"
+    ],
+    "resultId": "038",
+    "display": "ツノバチ + ホノオガ → カエンビー"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
   },
   {
    "id": "039",
@@ -2825,17 +2825,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "魔力吸収",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "032",
-     "020"
-    ],
-    "resultId": "039",
-    "display": "ヤミネコウモリ + スナタマ → ヨルサソリ"
-   },
-   "description": "小柄ながら特化した能力を持つ。 属性は闇。",
    "learnset": [
     [
      1,
@@ -2865,7 +2854,18 @@ window.Game.RawMonsterData = {
      38,
      "akumu"
     ]
-   ]
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "032",
+     "020"
+    ],
+    "resultId": "039",
+    "display": "ヤミネコウモリ + スナタマ → ヨルサソリ"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は闇。"
   },
   {
    "id": "040",
@@ -2908,17 +2908,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "灼熱波"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "034",
-     "037"
-    ],
-    "resultId": "040",
-    "display": "フレアフェザー + セイクリッドフラワー → フェニクス"
-   },
-   "description": "空中戦と素早い行動を得意とする。 属性は炎。",
    "learnset": [
     [
      1,
@@ -2948,7 +2937,18 @@ window.Game.RawMonsterData = {
      38,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "034",
+     "037"
+    ],
+    "resultId": "040",
+    "display": "フレアフェザー + セイクリッドフラワー → フェニクス"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
    "id": "041",
@@ -2990,10 +2990,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -3023,7 +3019,11 @@ window.Game.RawMonsterData = {
      38,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は炎。"
   },
   {
    "id": "042",
@@ -3065,10 +3065,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "怒涛撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は水。",
    "learnset": [
     [
      1,
@@ -3098,7 +3094,11 @@ window.Game.RawMonsterData = {
      38,
      "大地震"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は水。"
   },
   {
    "id": "043",
@@ -3140,10 +3140,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "鋭い感覚と身体能力を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -3173,7 +3169,11 @@ window.Game.RawMonsterData = {
      38,
      "烈風脚"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
   },
   {
    "id": "044",
@@ -3215,10 +3215,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "空中戦と素早い行動を得意とする。 属性は風。",
    "learnset": [
     [
      1,
@@ -3248,7 +3244,11 @@ window.Game.RawMonsterData = {
      38,
      "怒涛撃"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は風。"
   },
   {
    "id": "045",
@@ -3290,10 +3290,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "空中戦と素早い行動を得意とする。 属性は炎。",
    "learnset": [
     [
      1,
@@ -3323,7 +3319,11 @@ window.Game.RawMonsterData = {
      38,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
    "id": "046",
@@ -3365,10 +3365,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "空中戦と素早い行動を得意とする。 属性は水。",
    "learnset": [
     [
      1,
@@ -3398,7 +3394,11 @@ window.Game.RawMonsterData = {
      38,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "空中戦と素早い行動を得意とする。 属性は水。"
   },
   {
    "id": "047",
@@ -3440,10 +3440,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "自然の力を蓄え、持久戦に強い。 属性は地。",
    "learnset": [
     [
      1,
@@ -3473,7 +3469,11 @@ window.Game.RawMonsterData = {
      38,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "自然の力を蓄え、持久戦に強い。 属性は地。"
   },
   {
    "id": "048",
@@ -3515,10 +3515,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。",
    "learnset": [
     [
      1,
@@ -3548,7 +3544,11 @@ window.Game.RawMonsterData = {
      38,
      "mekuramashi"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
   },
   {
    "id": "049",
@@ -3590,17 +3590,6 @@ window.Game.RawMonsterData = {
     "raigeki",
     "雷鳴落とし"
    ],
-   "innateTrait": "魔力吸収",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "028",
-     "037"
-    ],
-    "resultId": "049",
-    "display": "デンキクラゲ + セイクリッドフラワー → サンダーリーフ"
-   },
-   "description": "自然の力を蓄え、持久戦に強い。 属性は雷。",
    "learnset": [
     [
      1,
@@ -3630,7 +3619,18 @@ window.Game.RawMonsterData = {
      38,
      "旋風刃"
     ]
-   ]
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "028",
+     "037"
+    ],
+    "resultId": "049",
+    "display": "デンキクラゲ + セイクリッドフラワー → サンダーリーフ"
+   },
+   "description": "自然の力を蓄え、持久戦に強い。 属性は雷。"
   },
   {
    "id": "050",
@@ -3673,17 +3673,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "弱点看破",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "032",
-     "035"
-    ],
-    "resultId": "050",
-    "display": "ヤミネコウモリ + ヌマガメ → アビスフィッシュ"
-   },
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は闇。",
    "learnset": [
     [
      1,
@@ -3713,7 +3702,18 @@ window.Game.RawMonsterData = {
      38,
      "akumu"
     ]
-   ]
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "032",
+     "035"
+    ],
+    "resultId": "050",
+    "display": "ヤミネコウモリ + ヌマガメ → アビスフィッシュ"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は闇。"
   },
   {
    "id": "051",
@@ -3756,10 +3756,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "轟雷爪"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。",
    "learnset": [
     [
      1,
@@ -3789,7 +3785,11 @@ window.Game.RawMonsterData = {
      38,
      "烈風脚"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は雷。"
   },
   {
    "id": "052",
@@ -3832,10 +3832,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。",
    "learnset": [
     [
      1,
@@ -3865,7 +3861,11 @@ window.Game.RawMonsterData = {
      38,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
   },
   {
    "id": "053",
@@ -3907,10 +3907,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "小柄ながら特化した能力を持つ。 属性は風。",
    "learnset": [
     [
      1,
@@ -3940,7 +3936,11 @@ window.Game.RawMonsterData = {
      38,
      "怒涛撃"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は風。"
   },
   {
    "id": "054",
@@ -3982,10 +3982,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "小柄ながら特化した能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -4015,7 +4011,11 @@ window.Game.RawMonsterData = {
      38,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
   },
   {
    "id": "055",
@@ -4057,10 +4057,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "弱点看破",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "小柄ながら特化した能力を持つ。 属性は闇。",
    "learnset": [
     [
      1,
@@ -4090,7 +4086,11 @@ window.Game.RawMonsterData = {
      38,
      "奈落斬"
     ]
-   ]
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "小柄ながら特化した能力を持つ。 属性は闇。"
   },
   {
    "id": "056",
@@ -4132,10 +4132,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "奈落斬"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -4165,7 +4161,11 @@ window.Game.RawMonsterData = {
      38,
      "暗黒波"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "057",
@@ -4207,17 +4207,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "慈愛の光",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "037",
-     "033"
-    ],
-    "resultId": "057",
-    "display": "セイクリッドフラワー + モリノタマ → ライトウルフ"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は光。",
    "learnset": [
     [
      1,
@@ -4247,7 +4236,18 @@ window.Game.RawMonsterData = {
      38,
      "mekuramashi"
     ]
-   ]
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "037",
+     "033"
+    ],
+    "resultId": "057",
+    "display": "セイクリッドフラワー + モリノタマ → ライトウルフ"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は光。"
   },
   {
    "id": "058",
@@ -4289,10 +4289,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "旋風刃"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は風。",
    "learnset": [
     [
      1,
@@ -4322,7 +4318,11 @@ window.Game.RawMonsterData = {
      38,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は風。"
   },
   {
    "id": "059",
@@ -4364,10 +4364,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。",
    "learnset": [
     [
      1,
@@ -4397,7 +4393,11 @@ window.Game.RawMonsterData = {
      38,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
   },
   {
    "id": "060",
@@ -4439,17 +4439,6 @@ window.Game.RawMonsterData = {
     "raigeki",
     "雷鳴落とし"
    ],
-   "innateTrait": "弱点看破",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "028",
-     "033"
-    ],
-    "resultId": "060",
-    "display": "デンキクラゲ + モリノタマ → サンダースピリット"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は雷。",
    "learnset": [
     [
      1,
@@ -4479,7 +4468,18 @@ window.Game.RawMonsterData = {
      38,
      "旋風刃"
     ]
-   ]
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "028",
+     "033"
+    ],
+    "resultId": "060",
+    "display": "デンキクラゲ + モリノタマ → サンダースピリット"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は雷。"
   },
   {
    "id": "061",
@@ -4521,17 +4521,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "凍結爪"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "041",
-     "042"
-    ],
-    "resultId": "061",
-    "display": "フレイムウルフ + アクアウルフ → フェンリル"
-   },
-   "description": "鋭い感覚と身体能力を持つ。 属性は氷。",
    "learnset": [
     [
      1,
@@ -4565,7 +4554,18 @@ window.Game.RawMonsterData = {
      46,
      "iyashiame"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "041",
+     "042"
+    ],
+    "resultId": "061",
+    "display": "フレイムウルフ + アクアウルフ → フェンリル"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は氷。"
   },
   {
    "id": "062",
@@ -4607,17 +4607,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "先制感知",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "043",
-     "060"
-    ],
-    "resultId": "062",
-    "display": "ライガーハウンド + サンダースピリット → 雷獣ライガ"
-   },
-   "description": "鋭い感覚と身体能力を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -4651,7 +4640,18 @@ window.Game.RawMonsterData = {
      46,
      "shibiredenpa"
     ]
-   ]
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "043",
+     "060"
+    ],
+    "resultId": "062",
+    "display": "ライガーハウンド + サンダースピリット → 雷獣ライガ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
   },
   {
    "id": "063",
@@ -4693,17 +4693,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "044",
-     "058"
-    ],
-    "resultId": "063",
-    "display": "ストームホーク + ウィンドスピリット → 天空鳥ガルーダ"
-   },
-   "description": "空中戦と素早い行動を得意とする。 属性は風。",
    "learnset": [
     [
      1,
@@ -4737,7 +4726,18 @@ window.Game.RawMonsterData = {
      46,
      "旋風刃"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "058"
+    ],
+    "resultId": "063",
+    "display": "ストームホーク + ウィンドスピリット → 天空鳥ガルーダ"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は風。"
   },
   {
    "id": "064",
@@ -4779,17 +4779,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "045",
-     "040"
-    ],
-    "resultId": "064",
-    "display": "ブレイズホーク + フェニクス → 炎翼鳥イグニス"
-   },
-   "description": "空中戦と素早い行動を得意とする。 属性は炎。",
    "learnset": [
     [
      1,
@@ -4823,7 +4812,18 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "045",
+     "040"
+    ],
+    "resultId": "064",
+    "display": "ブレイズホーク + フェニクス → 炎翼鳥イグニス"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
    "id": "065",
@@ -4865,17 +4865,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "047",
-     "048"
-    ],
-    "resultId": "065",
-    "display": "ドライアド + フローラルフェアリー → 世界樹の妖精"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。",
    "learnset": [
     [
      1,
@@ -4909,7 +4898,18 @@ window.Game.RawMonsterData = {
      46,
      "聖光斬"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "047",
+     "048"
+    ],
+    "resultId": "065",
+    "display": "ドライアド + フローラルフェアリー → 世界樹の妖精"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
   },
   {
    "id": "066",
@@ -4951,17 +4951,6 @@ window.Game.RawMonsterData = {
     "raigeki",
     "雷鳴落とし"
    ],
-   "innateTrait": "魔力増幅",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "049",
-     "062"
-    ],
-    "resultId": "066",
-    "display": "サンダーリーフ + 雷獣ライガ → 雷樹獣"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は雷。",
    "learnset": [
     [
      1,
@@ -4995,7 +4984,18 @@ window.Game.RawMonsterData = {
      46,
      "shibiredenpa"
     ]
-   ]
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "049",
+     "062"
+    ],
+    "resultId": "066",
+    "display": "サンダーリーフ + 雷獣ライガ → 雷樹獣"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は雷。"
   },
   {
    "id": "067",
@@ -5038,17 +5038,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "奈落斬"
    ],
-   "innateTrait": "狩人の本能",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "050",
-     "051"
-    ],
-    "resultId": "067",
-    "display": "アビスフィッシュ + サンダーシャーク → 深淵鮫"
-   },
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は闇。",
    "learnset": [
     [
      1,
@@ -5082,7 +5071,18 @@ window.Game.RawMonsterData = {
      46,
      "暗黒波"
     ]
-   ]
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "050",
+     "051"
+    ],
+    "resultId": "067",
+    "display": "アビスフィッシュ + サンダーシャーク → 深淵鮫"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は闇。"
   },
   {
    "id": "068",
@@ -5124,17 +5124,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "大地の根",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "052",
-     "059"
-    ],
-    "resultId": "068",
-    "display": "ロックタートル + アーススピリット → 大地亀王"
-   },
-   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。",
    "learnset": [
     [
      1,
@@ -5168,7 +5157,18 @@ window.Game.RawMonsterData = {
      46,
      "炎獄爪"
     ]
-   ]
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "052",
+     "059"
+    ],
+    "resultId": "068",
+    "display": "ロックタートル + アーススピリット → 大地亀王"
+   },
+   "description": "水場で力を発揮し、耐久力に優れる。 属性は地。"
   },
   {
    "id": "069",
@@ -5211,17 +5211,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "053",
-     "060"
-    ],
-    "resultId": "069",
-    "display": "スカイビートル + サンダースピリット → 天空甲虫"
-   },
-   "description": "小柄ながら特化した能力を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -5255,7 +5244,18 @@ window.Game.RawMonsterData = {
      46,
      "雷鳴落とし"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "053",
+     "060"
+    ],
+    "resultId": "069",
+    "display": "スカイビートル + サンダースピリット → 天空甲虫"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は雷。"
   },
   {
    "id": "070",
@@ -5298,17 +5298,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "054",
-     "055"
-    ],
-    "resultId": "070",
-    "display": "インフェルノビー + ダークホーネット → 炎獄蜂"
-   },
-   "description": "小柄ながら特化した能力を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -5342,7 +5331,18 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "054",
+     "055"
+    ],
+    "resultId": "070",
+    "display": "インフェルノビー + ダークホーネット → 炎獄蜂"
+   },
+   "description": "小柄ながら特化した能力を持つ。 属性は炎。"
   },
   {
    "id": "071",
@@ -5385,17 +5385,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "奈落斬"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "056",
-     "061"
-    ],
-    "resultId": "071",
-    "display": "デビルキャット + フェンリル → 魔獣王ケルベロス"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -5433,7 +5422,18 @@ window.Game.RawMonsterData = {
      44,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "056",
+     "061"
+    ],
+    "resultId": "071",
+    "display": "デビルキャット + フェンリル → 魔獣王ケルベロス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "072",
@@ -5476,17 +5476,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "慈愛の光",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "057",
-     "065"
-    ],
-    "resultId": "072",
-    "display": "ライトウルフ + 世界樹の妖精 → 光狼セレス"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は光。",
    "learnset": [
     [
      1,
@@ -5524,7 +5513,18 @@ window.Game.RawMonsterData = {
      44,
      "気合いため"
     ]
-   ]
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "057",
+     "065"
+    ],
+    "resultId": "072",
+    "display": "ライトウルフ + 世界樹の妖精 → 光狼セレス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は光。"
   },
   {
    "id": "073",
@@ -5567,17 +5567,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "大嵐"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "058",
-     "063"
-    ],
-    "resultId": "073",
-    "display": "ウィンドスピリット + 天空鳥ガルーダ → 風神スピリオン"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は風。",
    "learnset": [
     [
      1,
@@ -5615,7 +5604,18 @@ window.Game.RawMonsterData = {
      44,
      "暴嵐脚"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "058",
+     "063"
+    ],
+    "resultId": "073",
+    "display": "ウィンドスピリット + 天空鳥ガルーダ → 風神スピリオン"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は風。"
   },
   {
    "id": "074",
@@ -5658,17 +5658,6 @@ window.Game.RawMonsterData = {
     "晶壁",
     "晶界"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "059",
-     "068"
-    ],
-    "resultId": "074",
-    "display": "アーススピリット + 大地亀王 → 大地神ガイア"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。",
    "learnset": [
     [
      1,
@@ -5706,7 +5695,18 @@ window.Game.RawMonsterData = {
      44,
      "sunakake"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "059",
+     "068"
+    ],
+    "resultId": "074",
+    "display": "アーススピリット + 大地亀王 → 大地神ガイア"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
   },
   {
    "id": "075",
@@ -5749,17 +5749,6 @@ window.Game.RawMonsterData = {
     "迅霆",
     "天霆"
    ],
-   "innateTrait": "弱点看破",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "060",
-     "062"
-    ],
-    "resultId": "075",
-    "display": "サンダースピリット + 雷獣ライガ → 雷神ヴォルト"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は雷。",
    "learnset": [
     [
      1,
@@ -5797,7 +5786,18 @@ window.Game.RawMonsterData = {
      44,
      "霆撃爪"
     ]
-   ]
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "060",
+     "062"
+    ],
+    "resultId": "075",
+    "display": "サンダースピリット + 雷獣ライガ → 雷神ヴォルト"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は雷。"
   },
   {
    "id": "076",
@@ -5840,17 +5840,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "焔獄撃"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "040",
-     "064"
-    ],
-    "resultId": "076",
-    "display": "フェニクス + 炎翼鳥イグニス → 炎帝フェニクス"
-   },
-   "description": "空中戦と素早い行動を得意とする。 属性は炎。",
    "learnset": [
     [
      1,
@@ -5892,7 +5881,18 @@ window.Game.RawMonsterData = {
      44,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "040",
+     "064"
+    ],
+    "resultId": "076",
+    "display": "フェニクス + 炎翼鳥イグニス → 炎帝フェニクス"
+   },
+   "description": "空中戦と素早い行動を得意とする。 属性は炎。"
   },
   {
    "id": "077",
@@ -5935,17 +5935,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "067",
-     "068"
-    ],
-    "resultId": "077",
-    "display": "深淵鮫 + 大地亀王 → 深海龍リヴァル"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。",
    "learnset": [
     [
      1,
@@ -5987,7 +5976,18 @@ window.Game.RawMonsterData = {
      44,
      "怒涛撃"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "067",
+     "068"
+    ],
+    "resultId": "077",
+    "display": "深淵鮫 + 大地亀王 → 深海龍リヴァル"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。"
   },
   {
    "id": "078",
@@ -6031,17 +6031,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "地脈波"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "065",
-     "074"
-    ],
-    "resultId": "078",
-    "display": "世界樹の妖精 + 大地神ガイア → 森羅獣ユグドラ"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。",
    "learnset": [
     [
      1,
@@ -6083,7 +6072,18 @@ window.Game.RawMonsterData = {
      44,
      "気合いため"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "065",
+     "074"
+    ],
+    "resultId": "078",
+    "display": "世界樹の妖精 + 大地神ガイア → 森羅獣ユグドラ"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は地。"
   },
   {
    "id": "079",
@@ -6126,17 +6126,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "霆撃爪"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "066",
-     "075"
-    ],
-    "resultId": "079",
-    "display": "雷樹獣 + 雷神ヴォルト → 雷帝獣ゼノライガ"
-   },
-   "description": "鋭い感覚と身体能力を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -6178,7 +6167,18 @@ window.Game.RawMonsterData = {
      44,
      "雷鳴落とし"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "066",
+     "075"
+    ],
+    "resultId": "079",
+    "display": "雷樹獣 + 雷神ヴォルト → 雷帝獣ゼノライガ"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は雷。"
   },
   {
    "id": "080",
@@ -6221,17 +6221,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "奈落斬"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "071",
-     "067"
-    ],
-    "resultId": "080",
-    "display": "魔獣王ケルベロス + 深淵鮫 → 暗黒魔獣バルガス"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -6273,7 +6262,18 @@ window.Game.RawMonsterData = {
      44,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "071",
+     "067"
+    ],
+    "resultId": "080",
+    "display": "魔獣王ケルベロス + 深淵鮫 → 暗黒魔獣バルガス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "081",
@@ -6317,17 +6317,6 @@ window.Game.RawMonsterData = {
     "聖なる癒し",
     "聖天光"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "072",
-     "073"
-    ],
-    "resultId": "081",
-    "display": "光狼セレス + 風神スピリオン → 聖獣セラフィム"
-   },
-   "description": "鋭い感覚と身体能力を持つ。 属性は光。",
    "learnset": [
     [
      1,
@@ -6369,7 +6358,18 @@ window.Game.RawMonsterData = {
      44,
      "聖光斬"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "072",
+     "073"
+    ],
+    "resultId": "081",
+    "display": "光狼セレス + 風神スピリオン → 聖獣セラフィム"
+   },
+   "description": "鋭い感覚と身体能力を持つ。 属性は光。"
   },
   {
    "id": "082",
@@ -6412,17 +6412,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "暴嵐脚"
    ],
-   "innateTrait": "先制感知",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "063",
-     "073"
-    ],
-    "resultId": "082",
-    "display": "天空鳥ガルーダ + 風神スピリオン → 天空竜アストラ"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は風。",
    "learnset": [
     [
      1,
@@ -6464,7 +6453,18 @@ window.Game.RawMonsterData = {
      44,
      "気合いため"
     ]
-   ]
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "063",
+     "073"
+    ],
+    "resultId": "082",
+    "display": "天空鳥ガルーダ + 風神スピリオン → 天空竜アストラ"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は風。"
   },
   {
    "id": "083",
@@ -6507,17 +6507,6 @@ window.Game.RawMonsterData = {
     "晶壁",
     "晶岩崩し"
    ],
-   "innateTrait": "大地の根",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "074",
-     "071"
-    ],
-    "resultId": "083",
-    "display": "大地神ガイア + 魔獣王ケルベロス → 地帝巨獣グラン"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は地。",
    "learnset": [
     [
      1,
@@ -6559,7 +6548,18 @@ window.Game.RawMonsterData = {
      44,
      "地脈波"
     ]
-   ]
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "074",
+     "071"
+    ],
+    "resultId": "083",
+    "display": "大地神ガイア + 魔獣王ケルベロス → 地帝巨獣グラン"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は地。"
   },
   {
    "id": "084",
@@ -6603,17 +6603,6 @@ window.Game.RawMonsterData = {
     "raigeki",
     "雷鳴落とし"
    ],
-   "innateTrait": "魔力吸収",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "075",
-     "081"
-    ],
-    "resultId": "084",
-    "display": "雷神ヴォルト + 聖獣セラフィム → 雷光竜ゼノス"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -6655,7 +6644,18 @@ window.Game.RawMonsterData = {
      44,
      "気合いため"
     ]
-   ]
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "075",
+     "081"
+    ],
+    "resultId": "084",
+    "display": "雷神ヴォルト + 聖獣セラフィム → 雷光竜ゼノス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。"
   },
   {
    "id": "085",
@@ -6699,17 +6699,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "弱点看破",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "080",
-     "082"
-    ],
-    "resultId": "085",
-    "display": "暗黒魔獣バルガス + 天空竜アストラ → 黒翼竜ノクス"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。",
    "learnset": [
     [
      1,
@@ -6751,7 +6740,18 @@ window.Game.RawMonsterData = {
      44,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "080",
+     "082"
+    ],
+    "resultId": "085",
+    "display": "暗黒魔獣バルガス + 天空竜アストラ → 黒翼竜ノクス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。"
   },
   {
    "id": "086",
@@ -6794,17 +6794,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "焔獄撃"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "076",
-     "084"
-    ],
-    "resultId": "086",
-    "display": "炎帝フェニクス + 雷光竜ゼノス → 炎天竜イグナード"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -6850,7 +6839,18 @@ window.Game.RawMonsterData = {
      42,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "076",
+     "084"
+    ],
+    "resultId": "086",
+    "display": "炎帝フェニクス + 雷光竜ゼノス → 炎天竜イグナード"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は炎。"
   },
   {
    "id": "087",
@@ -6892,17 +6892,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "077",
-     "081"
-    ],
-    "resultId": "087",
-    "display": "深海龍リヴァル + 聖獣セラフィム → 海皇龍ネプティア"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。",
    "learnset": [
     [
      1,
@@ -6948,7 +6937,18 @@ window.Game.RawMonsterData = {
      42,
      "気合いため"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "077",
+     "081"
+    ],
+    "resultId": "087",
+    "display": "深海龍リヴァル + 聖獣セラフィム → 海皇龍ネプティア"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。"
   },
   {
    "id": "088",
@@ -6991,17 +6991,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "078",
-     "082"
-    ],
-    "resultId": "088",
-    "display": "森羅獣ユグドラ + 天空竜アストラ → 世界樹竜ユグドラシル"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は光。",
    "learnset": [
     [
      1,
@@ -7047,7 +7036,18 @@ window.Game.RawMonsterData = {
      42,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "078",
+     "082"
+    ],
+    "resultId": "088",
+    "display": "森羅獣ユグドラ + 天空竜アストラ → 世界樹竜ユグドラシル"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は光。"
   },
   {
    "id": "089",
@@ -7090,17 +7090,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "079",
-     "085"
-    ],
-    "resultId": "089",
-    "display": "雷帝獣ゼノライガ + 黒翼竜ノクス → 雷獄竜ヴァルゼオン"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -7146,7 +7135,18 @@ window.Game.RawMonsterData = {
      42,
      "気合いため"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "079",
+     "085"
+    ],
+    "resultId": "089",
+    "display": "雷帝獣ゼノライガ + 黒翼竜ノクス → 雷獄竜ヴァルゼオン"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。"
   },
   {
    "id": "090",
@@ -7188,17 +7188,6 @@ window.Game.RawMonsterData = {
     "冥霧",
     "冥獄波"
    ],
-   "innateTrait": "弱点看破",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "080",
-     "083"
-    ],
-    "resultId": "090",
-    "display": "暗黒魔獣バルガス + 地帝巨獣グラン → 終魔獣アビス"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -7244,7 +7233,18 @@ window.Game.RawMonsterData = {
      42,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "弱点看破",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "080",
+     "083"
+    ],
+    "resultId": "090",
+    "display": "暗黒魔獣バルガス + 地帝巨獣グラン → 終魔獣アビス"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "091",
@@ -7286,17 +7286,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "焔獄撃"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "086",
-     "088"
-    ],
-    "resultId": "091",
-    "display": "炎天竜イグナード + 世界樹竜ユグドラシル → 炎神竜アグニア"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は炎。",
    "learnset": [
     [
      1,
@@ -7346,7 +7335,18 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "086",
+     "088"
+    ],
+    "resultId": "091",
+    "display": "炎天竜イグナード + 世界樹竜ユグドラシル → 炎神竜アグニア"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は炎。"
   },
   {
    "id": "092",
@@ -7388,17 +7388,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "087",
-     "088"
-    ],
-    "resultId": "092",
-    "display": "海皇龍ネプティア + 世界樹竜ユグドラシル → 海神竜ポセイディア"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。",
    "learnset": [
     [
      1,
@@ -7448,7 +7437,18 @@ window.Game.RawMonsterData = {
      46,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "087",
+     "088"
+    ],
+    "resultId": "092",
+    "display": "海皇龍ネプティア + 世界樹竜ユグドラシル → 海神竜ポセイディア"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は水。"
   },
   {
    "id": "093",
@@ -7490,17 +7490,6 @@ window.Game.RawMonsterData = {
     "迅霆",
     "天霆"
    ],
-   "innateTrait": "呪術の才",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "086",
-     "089"
-    ],
-    "resultId": "093",
-    "display": "炎天竜イグナード + 雷獄竜ヴァルゼオン → 雷神竜ゼウレウス"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。",
    "learnset": [
     [
      1,
@@ -7550,7 +7539,18 @@ window.Game.RawMonsterData = {
      46,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "086",
+     "089"
+    ],
+    "resultId": "093",
+    "display": "炎天竜イグナード + 雷獄竜ヴァルゼオン → 雷神竜ゼウレウス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は雷。"
   },
   {
    "id": "094",
@@ -7592,17 +7592,6 @@ window.Game.RawMonsterData = {
     "冥霧",
     "冥獄波"
    ],
-   "innateTrait": "魔力吸収",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "089",
-     "090"
-    ],
-    "resultId": "094",
-    "display": "雷獄竜ヴァルゼオン + 終魔獣アビス → 闇神竜ネメシス"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。",
    "learnset": [
     [
      1,
@@ -7652,7 +7641,18 @@ window.Game.RawMonsterData = {
      46,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "089",
+     "090"
+    ],
+    "resultId": "094",
+    "display": "雷獄竜ヴァルゼオン + 終魔獣アビス → 闇神竜ネメシス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。"
   },
   {
    "id": "095",
@@ -7694,17 +7694,6 @@ window.Game.RawMonsterData = {
     "聖なる癒し",
     "聖天光"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "081",
-     "091"
-    ],
-    "resultId": "095",
-    "display": "聖獣セラフィム + 炎神竜アグニア → 天界獣セレスティア"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。",
    "learnset": [
     [
      1,
@@ -7754,7 +7743,18 @@ window.Game.RawMonsterData = {
      46,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "081",
+     "091"
+    ],
+    "resultId": "095",
+    "display": "聖獣セラフィム + 炎神竜アグニア → 天界獣セレスティア"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
   },
   {
    "id": "096",
@@ -7796,17 +7796,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "冥府斬"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "090",
-     "094"
-    ],
-    "resultId": "096",
-    "display": "終魔獣アビス + 闇神竜ネメシス → 深淵王アビスロード"
-   },
-   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。",
    "learnset": [
     [
      1,
@@ -7856,7 +7845,18 @@ window.Game.RawMonsterData = {
      46,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "090",
+     "094"
+    ],
+    "resultId": "096",
+    "display": "終魔獣アビス + 闇神竜ネメシス → 深淵王アビスロード"
+   },
+   "description": "攻撃や状態異常に長けた異形の生物。 属性は闇。"
   },
   {
    "id": "097",
@@ -7899,17 +7899,6 @@ window.Game.RawMonsterData = {
     "seinaruya",
     "極光"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "092",
-     "093"
-    ],
-    "resultId": "097",
-    "display": "海神竜ポセイディア + 雷神竜ゼウレウス → 天空神龍オルフェウス"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は光。",
    "learnset": [
     [
      1,
@@ -7959,7 +7948,18 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "092",
+     "093"
+    ],
+    "resultId": "097",
+    "display": "海神竜ポセイディア + 雷神竜ゼウレウス → 天空神龍オルフェウス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は光。"
   },
   {
    "id": "098",
@@ -8002,17 +8002,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "奈落斬"
    ],
-   "innateTrait": "連撃の才",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "094",
-     "097"
-    ],
-    "resultId": "098",
-    "display": "闇神竜ネメシス + 天空神龍オルフェウス → 混沌竜カオス"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。",
    "learnset": [
     [
      1,
@@ -8062,7 +8051,18 @@ window.Game.RawMonsterData = {
      46,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "連撃の才",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "094",
+     "097"
+    ],
+    "resultId": "098",
+    "display": "闇神竜ネメシス + 天空神龍オルフェウス → 混沌竜カオス"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は闇。"
   },
   {
    "id": "099",
@@ -8104,17 +8104,6 @@ window.Game.RawMonsterData = {
     "聖なる癒し",
     "聖天光"
    ],
-   "innateTrait": "状態異常耐性",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "095",
-     "096"
-    ],
-    "resultId": "099",
-    "display": "天界獣セレスティア + 深淵王アビスロード → 神獣エターナル"
-   },
-   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。",
    "learnset": [
     [
      1,
@@ -8164,7 +8153,18 @@ window.Game.RawMonsterData = {
      46,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "状態異常耐性",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "095",
+     "096"
+    ],
+    "resultId": "099",
+    "display": "天界獣セレスティア + 深淵王アビスロード → 神獣エターナル"
+   },
+   "description": "属性の力を操り、支援や特殊技を得意とする。 属性は光。"
   },
   {
    "id": "100",
@@ -8206,17 +8206,6 @@ window.Game.RawMonsterData = {
     "全能の波動",
     "創世の息吹"
    ],
-   "innateTrait": "無限の可能性",
-   "growthType": "万能",
-   "recipe": {
-    "parentIds": [
-     "098",
-     "099"
-    ],
-    "resultId": "100",
-    "display": "混沌竜カオス + 神獣エターナル → 創世竜アーク"
-   },
-   "description": "高い基礎能力と強力な属性技を持つ。 属性は無。",
    "learnset": [
     [
      1,
@@ -8266,7 +8255,18 @@ window.Game.RawMonsterData = {
      46,
      "衝撃波"
     ]
-   ]
+   ],
+   "innateTrait": "無限の可能性",
+   "growthType": "万能",
+   "recipe": {
+    "parentIds": [
+     "098",
+     "099"
+    ],
+    "resultId": "100",
+    "display": "混沌竜カオス + 神獣エターナル → 創世竜アーク"
+   },
+   "description": "高い基礎能力と強力な属性技を持つ。 属性は無。"
   },
   {
    "id": "101",
@@ -8308,10 +8308,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "ヒノコロが成長した姿。しっぽの炎が大きくなり、走るたびに火の粉を散らす。",
    "learnset": [
     [
      1,
@@ -8337,7 +8333,11 @@ window.Game.RawMonsterData = {
      30,
      "轟雷爪"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ヒノコロが成長した姿。しっぽの炎が大きくなり、走るたびに火の粉を散らす。"
   },
   {
    "id": "102",
@@ -8379,10 +8379,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "ミズリスが成長した姿。体をおおう水の膜が厚くなり、攻撃を受け流す。",
    "learnset": [
     [
      1,
@@ -8408,7 +8404,11 @@ window.Game.RawMonsterData = {
      30,
      "uzushio"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "ミズリスが成長した姿。体をおおう水の膜が厚くなり、攻撃を受け流す。"
   },
   {
    "id": "103",
@@ -8450,10 +8450,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "雷走り",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "ライポンが成長した姿。電気をためた牙で、すれちがいざまにかみつく。",
    "learnset": [
     [
      1,
@@ -8479,7 +8475,11 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ライポンが成長した姿。電気をためた牙で、すれちがいざまにかみつく。"
   },
   {
    "id": "104",
@@ -8521,10 +8521,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "ハネピヨが成長した姿。風をつかんで、ひと息に高く舞いあがる。",
    "learnset": [
     [
      1,
@@ -8550,7 +8546,11 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ハネピヨが成長した姿。風をつかんで、ひと息に高く舞いあがる。"
   },
   {
    "id": "105",
@@ -8592,10 +8592,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "狩人の本能",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "アカツバメが成長した姿。炎の軌跡を残しながら、稲妻のように飛ぶ。",
    "learnset": [
     [
      1,
@@ -8621,7 +8617,11 @@ window.Game.RawMonsterData = {
      30,
      "轟雷爪"
     ]
-   ]
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "アカツバメが成長した姿。炎の軌跡を残しながら、稲妻のように飛ぶ。"
   },
   {
    "id": "106",
@@ -8663,10 +8663,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "ミズカモが成長した姿。水面をすべるように泳ぎ、仲間の傷を癒す。",
    "learnset": [
     [
      1,
@@ -8692,7 +8688,11 @@ window.Game.RawMonsterData = {
      30,
      "uzushio"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "ミズカモが成長した姿。水面をすべるように泳ぎ、仲間の傷を癒す。"
   },
   {
    "id": "107",
@@ -8734,10 +8734,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "大地の根",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "コモリバナが成長した姿。岩のすきまに根を張り、どんな嵐にも倒れない。",
    "learnset": [
     [
      1,
@@ -8763,7 +8759,11 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "コモリバナが成長した姿。岩のすきまに根を張り、どんな嵐にも倒れない。"
   },
   {
    "id": "108",
@@ -8806,10 +8806,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "イワガメが成長した姿。甲羅に苔が生え、洞窟の湿り気を好む。",
    "learnset": [
     [
      1,
@@ -8835,7 +8831,11 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "イワガメが成長した姿。甲羅に苔が生え、洞窟の湿り気を好む。"
   },
   {
    "id": "109",
@@ -8877,10 +8877,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "ハネムシが成長した姿。硬い角と羽で、風に乗って突進する。",
    "learnset": [
     [
      1,
@@ -8906,7 +8902,11 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ハネムシが成長した姿。硬い角と羽で、風に乗って突進する。"
   },
   {
    "id": "110",
@@ -8948,10 +8948,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "ヒノムシが成長した姿。熱をおびた針をもち、群れで巣を守る。",
    "learnset": [
     [
      1,
@@ -8977,7 +8973,11 @@ window.Game.RawMonsterData = {
      30,
      "轟雷爪"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ヒノムシが成長した姿。熱をおびた針をもち、群れで巣を守る。"
   },
   {
    "id": "111",
@@ -9020,10 +9020,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "轟雷爪"
    ],
-   "innateTrait": "雷走り",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "ビリクラゲが姿を変えた、小さなサメ。電気をまとった体当たりが得意。",
    "learnset": [
     [
      1,
@@ -9049,7 +9045,11 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ビリクラゲが姿を変えた、小さなサメ。電気をまとった体当たりが得意。"
   },
   {
    "id": "112",
@@ -9091,10 +9091,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "再生皮膚",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "スナタマが成長した姿。砂を固めた殻をまとい、少しずつ体を直す。",
    "learnset": [
     [
      1,
@@ -9120,7 +9116,11 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "スナタマが成長した姿。砂を固めた殻をまとい、少しずつ体を直す。"
   },
   {
    "id": "113",
@@ -9162,16 +9162,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "素早さを鍛えたカゼネコの進化形。目にもとまらぬ速さで駆けぬける。",
-   "look": {
-    "c1": "#9ae8c8",
-    "c3": "#f0f8ff",
-    "tail": "thin",
-    "scale": 0.8
-   },
    "learnset": [
     [
      1,
@@ -9197,7 +9187,17 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "素早さを鍛えたカゼネコの進化形。目にもとまらぬ速さで駆けぬける。",
+   "look": {
+    "c1": "#9ae8c8",
+    "c3": "#f0f8ff",
+    "tail": "thin",
+    "scale": 0.8
+   }
   },
   {
    "id": "114",
@@ -9239,17 +9239,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "烈風脚"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "攻撃を鍛えたカゼネコの進化形。つむじ風をまとった爪でなぎはらう。",
-   "look": {
-    "c1": "#3a9a7a",
-    "c3": "#e8f070",
-    "mane": "#e8f070",
-    "horn": "#f0f0f0",
-    "scale": 0.86
-   },
    "learnset": [
     [
      1,
@@ -9275,7 +9264,18 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "攻撃を鍛えたカゼネコの進化形。つむじ風をまとった爪でなぎはらう。",
+   "look": {
+    "c1": "#3a9a7a",
+    "c3": "#e8f070",
+    "mane": "#e8f070",
+    "horn": "#f0f0f0",
+    "scale": 0.86
+   }
   },
   {
    "id": "115",
@@ -9317,18 +9317,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "防御を鍛えたツチモグラの進化形。岩のようなうろこで全身を守る。",
-   "look": {
-    "c1": "#8a8a7a",
-    "c3": "#5a5a4a",
-    "ears": "none",
-    "mane": "#6a6a5a",
-    "tail": "flat",
-    "scale": 0.88
-   },
    "learnset": [
     [
      1,
@@ -9354,7 +9342,19 @@ window.Game.RawMonsterData = {
      30,
      "daichiken"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "防御を鍛えたツチモグラの進化形。岩のようなうろこで全身を守る。",
+   "look": {
+    "c1": "#8a8a7a",
+    "c3": "#5a5a4a",
+    "ears": "none",
+    "mane": "#6a6a5a",
+    "tail": "flat",
+    "scale": 0.88
+   }
   },
   {
    "id": "116",
@@ -9396,18 +9396,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "大地震"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "攻撃を鍛えたツチモグラの進化形。回転する爪で岩盤をもうち砕く。",
-   "look": {
-    "c1": "#8a5a2a",
-    "c3": "#d8d8e0",
-    "ears": "none",
-    "horn": "#d8d8e0",
-    "tail": "thin",
-    "scale": 0.86
-   },
    "learnset": [
     [
      1,
@@ -9433,7 +9421,19 @@ window.Game.RawMonsterData = {
      30,
      "daichiken"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "攻撃を鍛えたツチモグラの進化形。回転する爪で岩盤をもうち砕く。",
+   "look": {
+    "c1": "#8a5a2a",
+    "c3": "#d8d8e0",
+    "ears": "none",
+    "horn": "#d8d8e0",
+    "tail": "thin",
+    "scale": 0.86
+   }
   },
   {
    "id": "117",
@@ -9475,15 +9475,6 @@ window.Game.RawMonsterData = {
     "seinaruya",
     "極光"
    ],
-   "innateTrait": "魔力増幅",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "特殊攻撃を鍛えたヒカリソウの進化形。星の光を集めて放つ。",
-   "look": {
-    "c1": "#a898f0",
-    "deco": "flower",
-    "accent": "#ffe070"
-   },
    "learnset": [
     [
      1,
@@ -9509,7 +9500,16 @@ window.Game.RawMonsterData = {
      30,
      "mekuramashi"
     ]
-   ]
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "特殊攻撃を鍛えたヒカリソウの進化形。星の光を集めて放つ。",
+   "look": {
+    "c1": "#a898f0",
+    "deco": "flower",
+    "accent": "#ffe070"
+   }
   },
   {
    "id": "118",
@@ -9551,15 +9551,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "特殊防御を鍛えたヒカリソウの進化形。祈るように花を閉じ、仲間を守る。",
-   "look": {
-    "c1": "#f0ecc0",
-    "deco": "bud",
-    "accent": "#ffb0d0"
-   },
    "learnset": [
     [
      1,
@@ -9585,7 +9576,16 @@ window.Game.RawMonsterData = {
      30,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "特殊防御を鍛えたヒカリソウの進化形。祈るように花を閉じ、仲間を守る。",
+   "look": {
+    "c1": "#f0ecc0",
+    "deco": "bud",
+    "accent": "#ffb0d0"
+   }
   },
   {
    "id": "119",
@@ -9627,10 +9627,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "焔獄撃"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "長く共に戦ったフレイムウルフが至る姿。燃えさかる鬣は、主の闘志に応えて輝く。",
    "learnset": [
     [
      1,
@@ -9664,7 +9660,11 @@ window.Game.RawMonsterData = {
      46,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "長く共に戦ったフレイムウルフが至る姿。燃えさかる鬣は、主の闘志に応えて輝く。"
   },
   {
    "id": "120",
@@ -9706,10 +9706,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "暴嵐脚"
    ],
-   "innateTrait": "先制感知",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "高原の風を受けて進化したストームホーク。羽ばたきひとつで嵐を呼ぶ。",
    "learnset": [
     [
      1,
@@ -9743,7 +9739,11 @@ window.Game.RawMonsterData = {
      46,
      "大嵐"
     ]
-   ]
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "高原の風を受けて進化したストームホーク。羽ばたきひとつで嵐を呼ぶ。"
   },
   {
    "id": "121",
@@ -9785,10 +9785,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "地脈波"
    ],
-   "innateTrait": "慈愛の光",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "月の雫を受けたドライアドの姿。森の命を育む、大樹の精。",
    "learnset": [
     [
      1,
@@ -9822,7 +9818,11 @@ window.Game.RawMonsterData = {
      46,
      "sunakake"
     ]
-   ]
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "月の雫を受けたドライアドの姿。森の命を育む、大樹の精。"
   },
   {
    "id": "122",
@@ -9864,16 +9864,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "凍結爪"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "雪原を跳ねまわる白いウサギ。耳で冷たい風の向きを読む。",
-   "look": {
-    "c1": "#ffffff",
-    "c3": "#9ad8f0",
-    "ears": "round",
-    "tail": "bushy"
-   },
    "learnset": [
     [
      1,
@@ -9895,7 +9885,17 @@ window.Game.RawMonsterData = {
      22,
      "冷気"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "雪原を跳ねまわる白いウサギ。耳で冷たい風の向きを読む。",
+   "look": {
+    "c1": "#ffffff",
+    "c3": "#9ad8f0",
+    "ears": "round",
+    "tail": "bushy"
+   }
   },
   {
    "id": "123",
@@ -9937,10 +9937,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "凍結爪"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "吹雪にまぎれて獲物に近づく、銀色のキツネ。",
    "learnset": [
     [
      1,
@@ -9970,7 +9966,11 @@ window.Game.RawMonsterData = {
      38,
      "大地震"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "吹雪にまぎれて獲物に近づく、銀色のキツネ。"
   },
   {
    "id": "124",
@@ -10012,10 +10012,6 @@ window.Game.RawMonsterData = {
     "冷気",
     "雪嵐"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "つららのような殻をもつ虫。寒いほど殻が硬くなる。",
    "learnset": [
     [
      1,
@@ -10037,7 +10033,11 @@ window.Game.RawMonsterData = {
      22,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "つららのような殻をもつ虫。寒いほど殻が硬くなる。"
   },
   {
    "id": "125",
@@ -10079,10 +10079,6 @@ window.Game.RawMonsterData = {
     "冷気",
     "凍結爪"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "氷の鎧をまとった甲虫。体当たりで氷壁をも砕く。",
    "learnset": [
     [
      1,
@@ -10112,7 +10108,11 @@ window.Game.RawMonsterData = {
      38,
      "大地震"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "氷の鎧をまとった甲虫。体当たりで氷壁をも砕く。"
   },
   {
    "id": "126",
@@ -10154,10 +10154,6 @@ window.Game.RawMonsterData = {
     "冷気",
     "雪嵐"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "雪の結晶が集まって生まれた精霊。ふれると、ひんやり冷たい。",
    "learnset": [
     [
      1,
@@ -10179,7 +10175,11 @@ window.Game.RawMonsterData = {
      22,
      "気合いため"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "雪の結晶が集まって生まれた精霊。ふれると、ひんやり冷たい。"
   },
   {
    "id": "127",
@@ -10221,10 +10221,6 @@ window.Game.RawMonsterData = {
     "冷気",
     "雪嵐"
    ],
-   "innateTrait": "呪術の才",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "氷河の奥に宿る精霊。凍てつく息で、あたりを白く染める。",
    "learnset": [
     [
      1,
@@ -10254,7 +10250,11 @@ window.Game.RawMonsterData = {
      38,
      "地脈波"
     ]
-   ]
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "氷河の奥に宿る精霊。凍てつく息で、あたりを白く染める。"
   },
   {
    "id": "128",
@@ -10296,16 +10296,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "渾身撃"
    ],
-   "innateTrait": "再生皮膚",
-   "growthType": "万能",
-   "recipe": null,
-   "description": "分厚い毛に包まれた、まるい獣。どんな土地にもすぐなじむ。",
-   "look": {
-    "c1": "#f4efe4",
-    "c3": "#e0c8a0",
-    "ears": "round",
-    "tail": "bushy"
-   },
    "learnset": [
     [
      1,
@@ -10327,7 +10317,17 @@ window.Game.RawMonsterData = {
      22,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "分厚い毛に包まれた、まるい獣。どんな土地にもすぐなじむ。",
+   "look": {
+    "c1": "#f4efe4",
+    "c3": "#e0c8a0",
+    "ears": "round",
+    "tail": "bushy"
+   }
   },
   {
    "id": "129",
@@ -10369,17 +10369,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "渾身撃"
    ],
-   "innateTrait": "再生皮膚",
-   "growthType": "万能",
-   "recipe": null,
-   "description": "銀色の毛並みをもつモフリンの進化形。苦手なことが、ほとんどない。",
-   "look": {
-    "c1": "#c8ccd8",
-    "c3": "#a0a8c0",
-    "ears": "round",
-    "tail": "bushy",
-    "mane": "#e8ecf4"
-   },
    "learnset": [
     [
      1,
@@ -10409,7 +10398,18 @@ window.Game.RawMonsterData = {
      38,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "銀色の毛並みをもつモフリンの進化形。苦手なことが、ほとんどない。",
+   "look": {
+    "c1": "#c8ccd8",
+    "c3": "#a0a8c0",
+    "ears": "round",
+    "tail": "bushy",
+    "mane": "#e8ecf4"
+   }
   },
   {
    "id": "130",
@@ -10451,10 +10451,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "雪嵐"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "霜の羽をもつ小鳥。群れで鳴きかわし、仲間に危険を知らせる。",
    "learnset": [
     [
      1,
@@ -10476,7 +10472,11 @@ window.Game.RawMonsterData = {
      22,
      "冷気"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "霜の羽をもつ小鳥。群れで鳴きかわし、仲間に危険を知らせる。"
   },
   {
    "id": "131",
@@ -10518,10 +10518,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "渾身撃"
    ],
-   "innateTrait": "先制感知",
-   "growthType": "万能",
-   "recipe": null,
-   "description": "まんまるな体の鳩。人なつこく、村の広場でもよく見かける。",
    "learnset": [
     [
      1,
@@ -10543,7 +10539,11 @@ window.Game.RawMonsterData = {
      22,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "まんまるな体の鳩。人なつこく、村の広場でもよく見かける。"
   },
   {
    "id": "132",
@@ -10586,17 +10586,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "大地震"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "044",
-     "052"
-    ],
-    "resultId": "132",
-    "display": "ストームホーク + ロックタートル → 大地鳥ガイアホーク"
-   },
-   "description": "岩の翼をもつ巨鳥。飛ぶことより、大地を踏みしめて戦うことを選んだ。",
    "learnset": [
     [
      1,
@@ -10630,7 +10619,18 @@ window.Game.RawMonsterData = {
      46,
      "炎獄爪"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "052"
+    ],
+    "resultId": "132",
+    "display": "ストームホーク + ロックタートル → 大地鳥ガイアホーク"
+   },
+   "description": "岩の翼をもつ巨鳥。飛ぶことより、大地を踏みしめて戦うことを選んだ。"
   },
   {
    "id": "133",
@@ -10672,17 +10672,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "046",
-     "047"
-    ],
-    "resultId": "133",
-    "display": "アクアフェザー + ドライアド → 水蓮精ミナモ"
-   },
-   "description": "湖面に咲く蓮の精。その花びらは、傷ついた者の痛みを洗い流す。",
    "learnset": [
     [
      1,
@@ -10716,7 +10705,18 @@ window.Game.RawMonsterData = {
      46,
      "地脈波"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "046",
+     "047"
+    ],
+    "resultId": "133",
+    "display": "アクアフェザー + ドライアド → 水蓮精ミナモ"
+   },
+   "description": "湖面に咲く蓮の精。その花びらは、傷ついた者の痛みを洗い流す。"
   },
   {
    "id": "134",
@@ -10759,17 +10759,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "041",
-     "056"
-    ],
-    "resultId": "134",
-    "display": "フレイムウルフ + デビルキャット → 炎魔ヘルハウンド"
-   },
-   "description": "地の底の炎をまとう魔犬。吠え声は、岩をも溶かす熱を帯びる。",
    "learnset": [
     [
      1,
@@ -10803,7 +10792,18 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "041",
+     "056"
+    ],
+    "resultId": "134",
+    "display": "フレイムウルフ + デビルキャット → 炎魔ヘルハウンド"
+   },
+   "description": "地の底の炎をまとう魔犬。吠え声は、岩をも溶かす熱を帯びる。"
   },
   {
    "id": "135",
@@ -10845,17 +10845,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "053",
-     "057"
-    ],
-    "resultId": "135",
-    "display": "スカイビートル + ライトウルフ → 光甲虫ルミナビートル"
-   },
-   "description": "光を宿す甲羅をもつ甲虫。闇の力をはね返す。",
    "learnset": [
     [
      1,
@@ -10889,7 +10878,18 @@ window.Game.RawMonsterData = {
      46,
      "聖光斬"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "053",
+     "057"
+    ],
+    "resultId": "135",
+    "display": "スカイビートル + ライトウルフ → 光甲虫ルミナビートル"
+   },
+   "description": "光を宿す甲羅をもつ甲虫。闇の力をはね返す。"
   },
   {
    "id": "136",
@@ -10931,17 +10931,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "奈落斬"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "043",
-     "056"
-    ],
-    "resultId": "136",
-    "display": "ライガーハウンド + デビルキャット → 闇牙獣ヤトガ"
-   },
-   "description": "夜の闇にとけこむ黒い獣。気づいたときには、牙がそこにある。",
    "learnset": [
     [
      1,
@@ -10975,7 +10964,18 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "043",
+     "056"
+    ],
+    "resultId": "136",
+    "display": "ライガーハウンド + デビルキャット → 闇牙獣ヤトガ"
+   },
+   "description": "夜の闇にとけこむ黒い獣。気づいたときには、牙がそこにある。"
   },
   {
    "id": "137",
@@ -11018,17 +11018,6 @@ window.Game.RawMonsterData = {
     "冷気",
     "雪嵐"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "061",
-     "127"
-    ],
-    "resultId": "137",
-    "display": "フェンリル + ヒョウガスピリット → 氷竜グラシア"
-   },
-   "description": "北の果てに棲む氷の竜。そのため息は、湖を一瞬で凍らせる。",
    "learnset": [
     [
      1,
@@ -11066,7 +11055,18 @@ window.Game.RawMonsterData = {
      44,
      "凍結爪"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "061",
+     "127"
+    ],
+    "resultId": "137",
+    "display": "フェンリル + ヒョウガスピリット → 氷竜グラシア"
+   },
+   "description": "北の果てに棲む氷の竜。そのため息は、湖を一瞬で凍らせる。"
   },
   {
    "id": "138",
@@ -11108,17 +11108,6 @@ window.Game.RawMonsterData = {
     "冷気",
     "雪嵐"
    ],
-   "innateTrait": "魔力吸収",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "087",
-     "137"
-    ],
-    "resultId": "138",
-    "display": "海皇龍ネプティア + 氷竜グラシア → 氷晶竜ニヴル"
-   },
-   "description": "永久凍土の底で眠る伝説の竜。その身は、溶けることのない氷晶でできている。",
    "learnset": [
     [
      1,
@@ -11168,7 +11157,18 @@ window.Game.RawMonsterData = {
      46,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "087",
+     "137"
+    ],
+    "resultId": "138",
+    "display": "海皇龍ネプティア + 氷竜グラシア → 氷晶竜ニヴル"
+   },
+   "description": "永久凍土の底で眠る伝説の竜。その身は、溶けることのない氷晶でできている。"
   },
   {
    "id": "139",
@@ -11210,17 +11210,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "渾身撃"
    ],
-   "innateTrait": "無限の可能性",
-   "growthType": "万能",
-   "recipe": {
-    "parentIds": [
-     "081",
-     "129"
-    ],
-    "resultId": "139",
-    "display": "聖獣セラフィム + ギンモフ → 始原獣オリジン"
-   },
-   "description": "すべての獣の祖とされる伝説の幻獣。あらゆる姿に変わる力を秘めている。",
    "learnset": [
     [
      1,
@@ -11262,7 +11251,18 @@ window.Game.RawMonsterData = {
      44,
      "衝撃波"
     ]
-   ]
+   ],
+   "innateTrait": "無限の可能性",
+   "growthType": "万能",
+   "recipe": {
+    "parentIds": [
+     "081",
+     "129"
+    ],
+    "resultId": "139",
+    "display": "聖獣セラフィム + ギンモフ → 始原獣オリジン"
+   },
+   "description": "すべての獣の祖とされる伝説の幻獣。あらゆる姿に変わる力を秘めている。"
   },
   {
    "id": "140",
@@ -11305,17 +11305,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "慈愛の光",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "065",
-     "077"
-    ],
-    "resultId": "140",
-    "display": "世界樹の妖精 + 深海龍リヴァル → 星海鯨アステル"
-   },
-   "description": "夜空の海を泳ぐという伝説の鯨。背の星々は、迷う者を導く灯りとなる。",
    "learnset": [
     [
      1,
@@ -11361,7 +11350,18 @@ window.Game.RawMonsterData = {
      42,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "065",
+     "077"
+    ],
+    "resultId": "140",
+    "display": "世界樹の妖精 + 深海龍リヴァル → 星海鯨アステル"
+   },
+   "description": "夜空の海を泳ぐという伝説の鯨。背の星々は、迷う者を導く灯りとなる。"
   },
   {
    "id": "141",
@@ -11403,10 +11403,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "ミズタマリが成長した姿。体の中に、きらめく水のしずくを抱えている。",
    "learnset": [
     [
      1,
@@ -11432,7 +11428,11 @@ window.Game.RawMonsterData = {
      30,
      "uzushio"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "ミズタマリが成長した姿。体の中に、きらめく水のしずくを抱えている。"
   },
   {
    "id": "142",
@@ -11474,10 +11474,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "再生皮膚",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "湖の水面にすむ主。静かな湖を荒らす者には、容赦しない。",
    "learnset": [
     [
      1,
@@ -11507,7 +11503,11 @@ window.Game.RawMonsterData = {
      38,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "湖の水面にすむ主。静かな湖を荒らす者には、容赦しない。"
   },
   {
    "id": "143",
@@ -11549,10 +11549,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "ヤミコウモリが成長した姿。宵の空をすべるように飛び、闇の波動を放つ。",
    "learnset": [
     [
      1,
@@ -11578,7 +11574,11 @@ window.Game.RawMonsterData = {
      30,
      "akumu"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "ヤミコウモリが成長した姿。宵の空をすべるように飛び、闇の波動を放つ。"
   },
   {
    "id": "144",
@@ -11620,10 +11620,6 @@ window.Game.RawMonsterData = {
     "呪い霧",
     "暗黒波"
    ],
-   "innateTrait": "呪術の才",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "黄泉の入口にすむと言われる大コウモリ。その羽音を聞くと、背すじが凍る。",
    "learnset": [
     [
      1,
@@ -11653,7 +11649,11 @@ window.Game.RawMonsterData = {
      38,
      "奈落斬"
     ]
-   ]
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "黄泉の入口にすむと言われる大コウモリ。その羽音を聞くと、背すじが凍る。"
   },
   {
    "id": "145",
@@ -11695,10 +11695,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "渾身撃"
    ],
-   "innateTrait": "先制感知",
-   "growthType": "万能",
-   "recipe": null,
-   "description": "マルハトが成長した姿。真っ白な羽をもち、遠くの仲間まで手紙を運ぶ。",
    "learnset": [
     [
      1,
@@ -11724,7 +11720,11 @@ window.Game.RawMonsterData = {
      30,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "マルハトが成長した姿。真っ白な羽をもち、遠くの仲間まで手紙を運ぶ。"
   },
   {
    "id": "146",
@@ -11766,10 +11766,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "渾身撃"
    ],
-   "innateTrait": "無限の可能性",
-   "growthType": "万能",
-   "recipe": null,
-   "description": "白く大きな翼をもつ鳥。どんな空でも、まっすぐに飛んでいく。",
    "learnset": [
     [
      1,
@@ -11799,7 +11795,11 @@ window.Game.RawMonsterData = {
      38,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "無限の可能性",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "白く大きな翼をもつ鳥。どんな空でも、まっすぐに飛んでいく。"
   },
   {
    "id": "147",
@@ -11841,10 +11841,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "長く共に戦ったアクアウルフの姿。遠吠えひとつで、大波を呼ぶ。",
    "learnset": [
     [
      1,
@@ -11878,7 +11874,11 @@ window.Game.RawMonsterData = {
      46,
      "地脈波"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "長く共に戦ったアクアウルフの姿。遠吠えひとつで、大波を呼ぶ。"
   },
   {
    "id": "148",
@@ -11920,10 +11920,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "雷走り",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "稲妻よりも速く駆ける獣。通ったあとには、焦げた足跡だけが残る。",
    "learnset": [
     [
      1,
@@ -11957,7 +11953,11 @@ window.Game.RawMonsterData = {
      46,
      "shibiredenpa"
     ]
-   ]
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "稲妻よりも速く駆ける獣。通ったあとには、焦げた足跡だけが残る。"
   },
   {
    "id": "149",
@@ -11999,10 +11999,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "狩人の本能",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "火山の熱で鍛えられたブレイズホーク。紅の炎をまとい、一撃で獲物をしとめる。",
    "learnset": [
     [
      1,
@@ -12036,7 +12032,11 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "火山の熱で鍛えられたブレイズホーク。紅の炎をまとい、一撃で獲物をしとめる。"
   },
   {
    "id": "150",
@@ -12078,10 +12078,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "美しい歌声をもつ水鳥。その歌は、仲間の傷をやさしく癒やす。",
    "learnset": [
     [
      1,
@@ -12115,7 +12111,11 @@ window.Game.RawMonsterData = {
      46,
      "地脈波"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "美しい歌声をもつ水鳥。その歌は、仲間の傷をやさしく癒やす。"
   },
   {
    "id": "151",
@@ -12158,10 +12158,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "轟雷爪"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "雷の牙をもつ大鮫。海の底から、稲光とともに襲いかかる。",
    "learnset": [
     [
      1,
@@ -12195,7 +12191,11 @@ window.Game.RawMonsterData = {
      46,
      "shibiredenpa"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "雷の牙をもつ大鮫。海の底から、稲光とともに襲いかかる。"
   },
   {
    "id": "152",
@@ -12238,10 +12238,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "甲羅が城のように大きくなった亀。その上で暮らす小さな幻獣もいる。",
    "learnset": [
     [
      1,
@@ -12275,7 +12271,11 @@ window.Game.RawMonsterData = {
      46,
      "炎獄爪"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "甲羅が城のように大きくなった亀。その上で暮らす小さな幻獣もいる。"
   },
   {
    "id": "153",
@@ -12317,10 +12317,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "空を支えるように大きな角をもつ甲虫。風を切って、どこまでも飛ぶ。",
    "learnset": [
     [
      1,
@@ -12354,7 +12350,11 @@ window.Game.RawMonsterData = {
      46,
      "旋風刃"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "空を支えるように大きな角をもつ甲虫。風を切って、どこまでも飛ぶ。"
   },
   {
    "id": "154",
@@ -12396,10 +12396,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "炎獄爪"
    ],
-   "innateTrait": "連撃の才",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "業火をまとう女王蜂。群れを率い、炎の針で敵を追いはらう。",
    "learnset": [
     [
      1,
@@ -12433,7 +12429,11 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "連撃の才",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "業火をまとう女王蜂。群れを率い、炎の針で敵を追いはらう。"
   },
   {
    "id": "155",
@@ -12475,10 +12475,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "地脈波"
    ],
-   "innateTrait": "大地の根",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "大地の奥深くに宿る精霊。山ひとつ分の岩を、指先ひとつで動かすという。",
    "learnset": [
     [
      1,
@@ -12512,7 +12508,11 @@ window.Game.RawMonsterData = {
      46,
      "sunakake"
     ]
-   ]
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "大地の奥深くに宿る精霊。山ひとつ分の岩を、指先ひとつで動かすという。"
   },
   {
    "id": "156",
@@ -12554,10 +12554,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "渾身撃"
    ],
-   "innateTrait": "再生皮膚",
-   "growthType": "万能",
-   "recipe": null,
-   "description": "雪原で長く生きたギンモフの姿。白銀の毛並みは、吹雪の中でもかがやく。",
    "learnset": [
     [
      1,
@@ -12591,7 +12587,11 @@ window.Game.RawMonsterData = {
      46,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "再生皮膚",
+   "growthType": "万能",
+   "recipe": null,
+   "description": "雪原で長く生きたギンモフの姿。白銀の毛並みは、吹雪の中でもかがやく。"
   },
   {
    "id": "157",
@@ -12633,10 +12633,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "残像",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "ハヤテネコが極めた姿。疾風のような速さで、影さえ置き去りにする。",
    "learnset": [
     [
      1,
@@ -12666,7 +12662,11 @@ window.Game.RawMonsterData = {
      38,
      "怒涛撃"
     ]
-   ]
+   ],
+   "innateTrait": "残像",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ハヤテネコが極めた姿。疾風のような速さで、影さえ置き去りにする。"
   },
   {
    "id": "158",
@@ -12708,10 +12708,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "烈風脚"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "ツムジネコが極めた姿。旋風をまとった爪で、大木もなぎ倒す。",
    "learnset": [
     [
      1,
@@ -12741,7 +12737,11 @@ window.Game.RawMonsterData = {
      38,
      "怒涛撃"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ツムジネコが極めた姿。旋風をまとった爪で、大木もなぎ倒す。"
   },
   {
    "id": "159",
@@ -12783,10 +12783,6 @@ window.Game.RawMonsterData = {
     "硬化",
     "大地震"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "耐久",
-   "recipe": null,
-   "description": "ヨロイモグラが極めた姿。鉄壁のうろこは、どんな攻撃もはね返す。",
    "learnset": [
     [
      1,
@@ -12816,7 +12812,11 @@ window.Game.RawMonsterData = {
      38,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "耐久",
+   "recipe": null,
+   "description": "ヨロイモグラが極めた姿。鉄壁のうろこは、どんな攻撃もはね返す。"
   },
   {
    "id": "160",
@@ -12858,10 +12858,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "大地震"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "ドリルモグラが極めた姿。巨大な爪で、岩盤ごと敵を打ち砕く。",
    "learnset": [
     [
      1,
@@ -12891,7 +12887,11 @@ window.Game.RawMonsterData = {
      38,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "ドリルモグラが極めた姿。巨大な爪で、岩盤ごと敵を打ち砕く。"
   },
   {
    "id": "161",
@@ -12933,10 +12933,6 @@ window.Game.RawMonsterData = {
     "seinaruya",
     "極光"
    ],
-   "innateTrait": "魔力増幅",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "ホシヨミソウが極めた姿。夜空の星を呼びよせ、光の雨を降らせる。",
    "learnset": [
     [
      1,
@@ -12966,7 +12962,11 @@ window.Game.RawMonsterData = {
      38,
      "聖光斬"
     ]
-   ]
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "ホシヨミソウが極めた姿。夜空の星を呼びよせ、光の雨を降らせる。"
   },
   {
    "id": "162",
@@ -13008,10 +13008,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "慈愛の光",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "イノリソウが極めた姿。祈りをこめた花びらが、仲間を光で包む。",
    "learnset": [
     [
      1,
@@ -13041,7 +13037,11 @@ window.Game.RawMonsterData = {
      38,
      "mekuramashi"
     ]
-   ]
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "イノリソウが極めた姿。祈りをこめた花びらが、仲間を光で包む。"
   },
   {
    "id": "163",
@@ -13083,17 +13083,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "焔獄撃"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "040",
-     "041"
-    ],
-    "resultId": "163",
-    "display": "フェニクス + フレイムウルフ → 焔獣カグツチ"
-   },
-   "description": "焔そのものが獣の形をとった幻獣。足をつけた地面が、赤く焼けこげる。",
    "learnset": [
     [
      1,
@@ -13127,7 +13116,18 @@ window.Game.RawMonsterData = {
      46,
      "灼熱波"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "040",
+     "041"
+    ],
+    "resultId": "163",
+    "display": "フェニクス + フレイムウルフ → 焔獣カグツチ"
+   },
+   "description": "焔そのものが獣の形をとった幻獣。足をつけた地面が、赤く焼けこげる。"
   },
   {
    "id": "164",
@@ -13170,17 +13170,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "焔獄撃"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "064",
-     "134"
-    ],
-    "resultId": "164",
-    "display": "炎翼鳥イグニス + 炎魔ヘルハウンド → 焔竜ホムラ"
-   },
-   "description": "焔の息を吐く竜。その鱗は、溶岩の中でも溶けることがない。",
    "learnset": [
     [
      1,
@@ -13218,7 +13207,18 @@ window.Game.RawMonsterData = {
      44,
      "idaten"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "064",
+     "134"
+    ],
+    "resultId": "164",
+    "display": "炎翼鳥イグニス + 炎魔ヘルハウンド → 焔竜ホムラ"
+   },
+   "description": "焔の息を吐く竜。その鱗は、溶岩の中でも溶けることがない。"
   },
   {
    "id": "165",
@@ -13260,17 +13260,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "暴嵐脚"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "043",
-     "044"
-    ],
-    "resultId": "165",
-    "display": "ライガーハウンド + ストームホーク → 嵐牙狼ハヤテ"
-   },
-   "description": "嵐をまとって駆ける狼。その牙が通ったあとには、つむじ風が残る。",
    "learnset": [
     [
      1,
@@ -13304,7 +13293,18 @@ window.Game.RawMonsterData = {
      46,
      "大嵐"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "043",
+     "044"
+    ],
+    "resultId": "165",
+    "display": "ライガーハウンド + ストームホーク → 嵐牙狼ハヤテ"
+   },
+   "description": "嵐をまとって駆ける狼。その牙が通ったあとには、つむじ風が残る。"
   },
   {
    "id": "166",
@@ -13347,17 +13347,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "暴嵐脚"
    ],
-   "innateTrait": "先制感知",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "063",
-     "120"
-    ],
-    "resultId": "166",
-    "display": "天空鳥ガルーダ + 嵐翼鷹シュトルム → 嵐竜ゲイル"
-   },
-   "description": "嵐の雲の中を泳ぐ竜。羽ばたくたびに、空がうなる。",
    "learnset": [
     [
      1,
@@ -13395,7 +13384,18 @@ window.Game.RawMonsterData = {
      44,
      "旋風刃"
     ]
-   ]
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "063",
+     "120"
+    ],
+    "resultId": "166",
+    "display": "天空鳥ガルーダ + 嵐翼鷹シュトルム → 嵐竜ゲイル"
+   },
+   "description": "嵐の雲の中を泳ぐ竜。羽ばたくたびに、空がうなる。"
   },
   {
    "id": "167",
@@ -13437,17 +13437,6 @@ window.Game.RawMonsterData = {
     "迅霆",
     "天霆"
    ],
-   "innateTrait": "雷走り",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "049",
-     "060"
-    ],
-    "resultId": "167",
-    "display": "サンダーリーフ + サンダースピリット → 霆獣ナルカミ"
-   },
-   "description": "霆を呼ぶ神獣。ひと声吠えれば、雲ひとつない空に雷が落ちる。",
    "learnset": [
     [
      1,
@@ -13481,7 +13470,18 @@ window.Game.RawMonsterData = {
      46,
      "shibiredenpa"
     ]
-   ]
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "049",
+     "060"
+    ],
+    "resultId": "167",
+    "display": "サンダーリーフ + サンダースピリット → 霆獣ナルカミ"
+   },
+   "description": "霆を呼ぶ神獣。ひと声吠えれば、雲ひとつない空に雷が落ちる。"
   },
   {
    "id": "168",
@@ -13524,17 +13524,6 @@ window.Game.RawMonsterData = {
     "迅霆",
     "天霆"
    ],
-   "innateTrait": "魔力増幅",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "062",
-     "069"
-    ],
-    "resultId": "168",
-    "display": "雷獣ライガ + 天空甲虫 → 霆竜イカヅチ"
-   },
-   "description": "天をつらぬく霆の竜。その咆哮は、遠い山の向こうまで響く。",
    "learnset": [
     [
      1,
@@ -13572,7 +13561,18 @@ window.Game.RawMonsterData = {
      44,
      "霆撃爪"
     ]
-   ]
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "062",
+     "069"
+    ],
+    "resultId": "168",
+    "display": "雷獣ライガ + 天空甲虫 → 霆竜イカヅチ"
+   },
+   "description": "天をつらぬく霆の竜。その咆哮は、遠い山の向こうまで響く。"
   },
   {
    "id": "169",
@@ -13614,17 +13614,6 @@ window.Game.RawMonsterData = {
     "晶壁",
     "晶岩崩し"
    ],
-   "innateTrait": "甲殻装甲",
-   "growthType": "耐久",
-   "recipe": {
-    "parentIds": [
-     "052",
-     "047"
-    ],
-    "resultId": "169",
-    "display": "ロックタートル + ドライアド → 晶亀クリスタ"
-   },
-   "description": "結晶の甲羅をもつ亀。光を受けると、甲羅が七色にかがやく。",
    "learnset": [
     [
      1,
@@ -13658,7 +13647,18 @@ window.Game.RawMonsterData = {
      46,
      "sunakake"
     ]
-   ]
+   ],
+   "innateTrait": "甲殻装甲",
+   "growthType": "耐久",
+   "recipe": {
+    "parentIds": [
+     "052",
+     "047"
+    ],
+    "resultId": "169",
+    "display": "ロックタートル + ドライアド → 晶亀クリスタ"
+   },
+   "description": "結晶の甲羅をもつ亀。光を受けると、甲羅が七色にかがやく。"
   },
   {
    "id": "170",
@@ -13701,17 +13701,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "晶岩崩し"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "068",
-     "132"
-    ],
-    "resultId": "170",
-    "display": "大地亀王 + 大地鳥ガイアホーク → 晶竜アメジア"
-   },
-   "description": "紫水晶の体をもつ竜。その体は、どんな刃も通さない。",
    "learnset": [
     [
      1,
@@ -13749,7 +13738,18 @@ window.Game.RawMonsterData = {
      44,
      "晶界"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "068",
+     "132"
+    ],
+    "resultId": "170",
+    "display": "大地亀王 + 大地鳥ガイアホーク → 晶竜アメジア"
+   },
+   "description": "紫水晶の体をもつ竜。その体は、どんな刃も通さない。"
   },
   {
    "id": "171",
@@ -13791,17 +13791,6 @@ window.Game.RawMonsterData = {
     "聖なる癒し",
     "聖天光"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "037",
-     "048"
-    ],
-    "resultId": "171",
-    "display": "セイクリッドフラワー + フローラルフェアリー → 聖花ルミエラ"
-   },
-   "description": "聖なる光を放つ花の幻獣。その香りは、けがれを祓うという。",
    "learnset": [
     [
      1,
@@ -13835,7 +13824,18 @@ window.Game.RawMonsterData = {
      46,
      "mekuramashi"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "037",
+     "048"
+    ],
+    "resultId": "171",
+    "display": "セイクリッドフラワー + フローラルフェアリー → 聖花ルミエラ"
+   },
+   "description": "聖なる光を放つ花の幻獣。その香りは、けがれを祓うという。"
   },
   {
    "id": "172",
@@ -13878,17 +13878,6 @@ window.Game.RawMonsterData = {
     "聖燐",
     "聖天光"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "065",
-     "072"
-    ],
-    "resultId": "172",
-    "display": "世界樹の妖精 + 光狼セレス → 聖竜セレナ"
-   },
-   "description": "白く輝く聖なる竜。夜明けの光とともに、天から舞いおりる。",
    "learnset": [
     [
      1,
@@ -13926,7 +13915,18 @@ window.Game.RawMonsterData = {
      44,
      "聖光斬"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "065",
+     "072"
+    ],
+    "resultId": "172",
+    "display": "世界樹の妖精 + 光狼セレス → 聖竜セレナ"
+   },
+   "description": "白く輝く聖なる竜。夜明けの光とともに、天から舞いおりる。"
   },
   {
    "id": "173",
@@ -13968,17 +13968,6 @@ window.Game.RawMonsterData = {
     "冥霧",
     "冥獄波"
    ],
-   "innateTrait": "呪術の才",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "050",
-     "055"
-    ],
-    "resultId": "173",
-    "display": "アビスフィッシュ + ダークホーネット → 冥蝶ネクロス"
-   },
-   "description": "冥府の闇を羽にまとう蝶。その鱗粉にふれると、深い眠りに落ちる。",
    "learnset": [
     [
      1,
@@ -14012,7 +14001,18 @@ window.Game.RawMonsterData = {
      46,
      "冥府斬"
     ]
-   ]
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "050",
+     "055"
+    ],
+    "resultId": "173",
+    "display": "アビスフィッシュ + ダークホーネット → 冥蝶ネクロス"
+   },
+   "description": "冥府の闇を羽にまとう蝶。その鱗粉にふれると、深い眠りに落ちる。"
   },
   {
    "id": "174",
@@ -14055,17 +14055,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "冥府斬"
    ],
-   "innateTrait": "魔力吸収",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "070",
-     "136"
-    ],
-    "resultId": "174",
-    "display": "炎獄蜂 + 闇牙獣ヤトガ → 冥竜タナトス"
-   },
-   "description": "冥府の門を守る竜。黒い炎の瞳は、命の終わりを見通すという。",
    "learnset": [
     [
      1,
@@ -14103,7 +14092,18 @@ window.Game.RawMonsterData = {
      44,
      "暗黒波"
     ]
-   ]
+   ],
+   "innateTrait": "魔力吸収",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "070",
+     "136"
+    ],
+    "resultId": "174",
+    "display": "炎獄蜂 + 闇牙獣ヤトガ → 冥竜タナトス"
+   },
+   "description": "冥府の門を守る竜。黒い炎の瞳は、命の終わりを見通すという。"
   },
   {
    "id": "175",
@@ -14145,10 +14145,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "池に浮かぶ小さな蓮の幻獣。葉っぱの上で、ぷかぷかとお昼寝するのが好き。",
    "learnset": [
     [
      1,
@@ -14170,7 +14166,11 @@ window.Game.RawMonsterData = {
      22,
      "小回復"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "池に浮かぶ小さな蓮の幻獣。葉っぱの上で、ぷかぷかとお昼寝するのが好き。"
   },
   {
    "id": "176",
@@ -14212,10 +14212,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "ハスッコが成長した姿。水面に咲く花のように、静かにたたずむ。",
    "learnset": [
     [
      1,
@@ -14241,7 +14237,11 @@ window.Game.RawMonsterData = {
      30,
      "uzushio"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "ハスッコが成長した姿。水面に咲く花のように、静かにたたずむ。"
   },
   {
    "id": "177",
@@ -14283,10 +14283,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "慈愛の光",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "湖に咲く睡蓮の姫。その花が開くとき、湖の水は澄みわたる。",
    "learnset": [
     [
      1,
@@ -14316,7 +14312,11 @@ window.Game.RawMonsterData = {
      38,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "湖に咲く睡蓮の姫。その花が開くとき、湖の水は澄みわたる。"
   },
   {
    "id": "178",
@@ -14358,10 +14358,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "大地震"
    ],
-   "innateTrait": "不屈の肉体",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "小石のような体をした小鬼。洞窟の石を投げて遊ぶ、いたずら好き。",
    "learnset": [
     [
      1,
@@ -14383,7 +14379,11 @@ window.Game.RawMonsterData = {
      22,
      "硬化"
     ]
-   ]
+   ],
+   "innateTrait": "不屈の肉体",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "小石のような体をした小鬼。洞窟の石を投げて遊ぶ、いたずら好き。"
   },
   {
    "id": "179",
@@ -14425,10 +14425,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "大地震"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "コイシオニが成長した姿。岩の角をもち、力くらべでは負け知らず。",
    "learnset": [
     [
      1,
@@ -14454,7 +14450,11 @@ window.Game.RawMonsterData = {
      30,
      "daichiken"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "コイシオニが成長した姿。岩の角をもち、力くらべでは負け知らず。"
   },
   {
    "id": "180",
@@ -14496,10 +14496,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "大地震"
    ],
-   "innateTrait": "破壊衝動",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "巨大な岩の体をもつ鬼。その拳は、山をも崩すと恐れられている。",
    "learnset": [
     [
      1,
@@ -14529,7 +14525,11 @@ window.Game.RawMonsterData = {
      38,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "巨大な岩の体をもつ鬼。その拳は、山をも崩すと恐れられている。"
   },
   {
    "id": "181",
@@ -14571,10 +14571,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "雷走り",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "羽に静電気をためたスズメ。さわると、ぴりっとしびれる。",
    "learnset": [
     [
      1,
@@ -14596,7 +14592,11 @@ window.Game.RawMonsterData = {
      22,
      "麻痺針"
     ]
-   ]
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "羽に静電気をためたスズメ。さわると、ぴりっとしびれる。"
   },
   {
    "id": "182",
@@ -14638,10 +14638,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "轟雷爪"
    ],
-   "innateTrait": "疾風脚",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "ビリスズメが成長した姿。雷雲の中を、ジグザグに飛びまわる。",
    "learnset": [
     [
      1,
@@ -14667,7 +14663,11 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "疾風脚",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "ビリスズメが成長した姿。雷雲の中を、ジグザグに飛びまわる。"
   },
   {
    "id": "183",
@@ -14709,10 +14709,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "轟雷爪"
    ],
-   "innateTrait": "狩人の本能",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "雷をまとって急降下する大鷲。その一撃は、落雷のように鋭い。",
    "learnset": [
     [
      1,
@@ -14742,7 +14738,11 @@ window.Game.RawMonsterData = {
      38,
      "烈風脚"
     ]
-   ]
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "雷をまとって急降下する大鷲。その一撃は、落雷のように鋭い。"
   },
   {
    "id": "184",
@@ -14784,10 +14784,6 @@ window.Game.RawMonsterData = {
     "seinaruya",
     "極光"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "おしりがぽわっと光る小さな虫。夜の森を、明るく照らしてくれる。",
    "learnset": [
     [
      1,
@@ -14809,7 +14805,11 @@ window.Game.RawMonsterData = {
      22,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "おしりがぽわっと光る小さな虫。夜の森を、明るく照らしてくれる。"
   },
   {
    "id": "185",
@@ -14851,10 +14851,6 @@ window.Game.RawMonsterData = {
     "seinaruya",
     "極光"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "ホタルンが成長した姿。群れで光ると、森が星空のように見える。",
    "learnset": [
     [
      1,
@@ -14880,7 +14876,11 @@ window.Game.RawMonsterData = {
      30,
      "mekuramashi"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "ホタルンが成長した姿。群れで光ると、森が星空のように見える。"
   },
   {
    "id": "186",
@@ -14922,10 +14922,6 @@ window.Game.RawMonsterData = {
     "seinaruya",
     "極光"
    ],
-   "innateTrait": "魔力増幅",
-   "growthType": "特殊",
-   "recipe": null,
-   "description": "光の鱗粉をまく大きなアゲハ。その羽ばたきは、夜をひととき昼に変える。",
    "learnset": [
     [
      1,
@@ -14955,7 +14951,11 @@ window.Game.RawMonsterData = {
      38,
      "聖光斬"
     ]
-   ]
+   ],
+   "innateTrait": "魔力増幅",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "光の鱗粉をまく大きなアゲハ。その羽ばたきは、夜をひととき昼に変える。"
   },
   {
    "id": "187",
@@ -14997,17 +14997,6 @@ window.Game.RawMonsterData = {
     "烈火弾",
     "灼熱波"
    ],
-   "innateTrait": "猛火の闘志",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "035",
-     "038"
-    ],
-    "resultId": "187",
-    "display": "ヌマガメ + カエンビー → 溶岩魚マグマリン"
-   },
-   "description": "溶岩の中を泳ぐふしぎな魚。水にふれると、湯気をあげて怒りだす。",
    "learnset": [
     [
      1,
@@ -15041,7 +15030,18 @@ window.Game.RawMonsterData = {
      46,
      "炎獄爪"
     ]
-   ]
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "035",
+     "038"
+    ],
+    "resultId": "187",
+    "display": "ヌマガメ + カエンビー → 溶岩魚マグマリン"
+   },
+   "description": "溶岩の中を泳ぐふしぎな魚。水にふれると、湯気をあげて怒りだす。"
   },
   {
    "id": "188",
@@ -15083,17 +15083,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "烈風脚"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "044",
-     "056"
-    ],
-    "resultId": "188",
-    "display": "ストームホーク + デビルキャット → 風魔カマイタチ"
-   },
-   "description": "つむじ風にまぎれて現れる魔獣。気づいたときには、もう切られている。",
    "learnset": [
     [
      1,
@@ -15127,7 +15116,18 @@ window.Game.RawMonsterData = {
      46,
      "旋風刃"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "056"
+    ],
+    "resultId": "188",
+    "display": "ストームホーク + デビルキャット → 風魔カマイタチ"
+   },
+   "description": "つむじ風にまぎれて現れる魔獣。気づいたときには、もう切られている。"
   },
   {
    "id": "189",
@@ -15169,17 +15169,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "怒涛撃"
    ],
-   "innateTrait": "水鏡の守り",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "042",
-     "056"
-    ],
-    "resultId": "189",
-    "display": "アクアウルフ + デビルキャット → 水魔ケルピー"
-   },
-   "description": "湖にひそむ水の魔獣。美しい馬の姿で、旅人を水の底へさそう。",
    "learnset": [
     [
      1,
@@ -15213,7 +15202,18 @@ window.Game.RawMonsterData = {
      46,
      "iyashiame"
     ]
-   ]
+   ],
+   "innateTrait": "水鏡の守り",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "042",
+     "056"
+    ],
+    "resultId": "189",
+    "display": "アクアウルフ + デビルキャット → 水魔ケルピー"
+   },
+   "description": "湖にひそむ水の魔獣。美しい馬の姿で、旅人を水の底へさそう。"
   },
   {
    "id": "190",
@@ -15255,17 +15255,6 @@ window.Game.RawMonsterData = {
     "癒しの雫",
     "潮流撃"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "046",
-     "048"
-    ],
-    "resultId": "190",
-    "display": "アクアフェザー + フローラルフェアリー → 水精ウンディーネ"
-   },
-   "description": "清らかな泉に宿る水の精霊。その水を飲んだ者は、病が治るという。",
    "learnset": [
     [
      1,
@@ -15299,7 +15288,18 @@ window.Game.RawMonsterData = {
      46,
      "地脈波"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "046",
+     "048"
+    ],
+    "resultId": "190",
+    "display": "アクアフェザー + フローラルフェアリー → 水精ウンディーネ"
+   },
+   "description": "清らかな泉に宿る水の精霊。その水を飲んだ者は、病が治るという。"
   },
   {
    "id": "191",
@@ -15341,17 +15341,6 @@ window.Game.RawMonsterData = {
     "烈火弾",
     "灼熱波"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "041",
-     "058"
-    ],
-    "resultId": "191",
-    "display": "フレイムウルフ + ウィンドスピリット → 火精サラマンダー"
-   },
-   "description": "炎の中にすむ精霊。消えかけた火に、ふたたび命を吹きこむ。",
    "learnset": [
     [
      1,
@@ -15385,7 +15374,18 @@ window.Game.RawMonsterData = {
      46,
      "炎獄爪"
     ]
-   ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "041",
+     "058"
+    ],
+    "resultId": "191",
+    "display": "フレイムウルフ + ウィンドスピリット → 火精サラマンダー"
+   },
+   "description": "炎の中にすむ精霊。消えかけた火に、ふたたび命を吹きこむ。"
   },
   {
    "id": "192",
@@ -15428,17 +15428,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "大地震"
    ],
-   "innateTrait": "大地の根",
-   "growthType": "攻撃",
-   "recipe": {
-    "parentIds": [
-     "066",
-     "068"
-    ],
-    "resultId": "192",
-    "display": "雷樹獣 + 大地亀王 → 地竜グランディス"
-   },
-   "description": "大地をゆるがす巨竜。そのひと歩きで、地震が起きるという。",
    "learnset": [
     [
      1,
@@ -15476,7 +15465,18 @@ window.Game.RawMonsterData = {
      44,
      "sunakake"
     ]
-   ]
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "攻撃",
+   "recipe": {
+    "parentIds": [
+     "066",
+     "068"
+    ],
+    "resultId": "192",
+    "display": "雷樹獣 + 大地亀王 → 地竜グランディス"
+   },
+   "description": "大地をゆるがす巨竜。そのひと歩きで、地震が起きるという。"
   },
   {
    "id": "193",
@@ -15518,17 +15518,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "奈落斬"
    ],
-   "innateTrait": "狩人の本能",
-   "growthType": "速度",
-   "recipe": {
-    "parentIds": [
-     "044",
-     "055"
-    ],
-    "resultId": "193",
-    "display": "ストームホーク + ダークホーネット → 夜鴉ヨガラス"
-   },
-   "description": "夜の闇にとけこむ大鴉。闇夜に光るのは、その金色の目だけ。",
    "learnset": [
     [
      1,
@@ -15562,7 +15551,18 @@ window.Game.RawMonsterData = {
      46,
      "sutemi"
     ]
-   ]
+   ],
+   "innateTrait": "狩人の本能",
+   "growthType": "速度",
+   "recipe": {
+    "parentIds": [
+     "044",
+     "055"
+    ],
+    "resultId": "193",
+    "display": "ストームホーク + ダークホーネット → 夜鴉ヨガラス"
+   },
+   "description": "夜の闇にとけこむ大鴉。闇夜に光るのは、その金色の目だけ。"
   },
   {
    "id": "194",
@@ -15604,17 +15604,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "極光"
    ],
-   "innateTrait": "守護の祈り",
-   "growthType": "支援",
-   "recipe": {
-    "parentIds": [
-     "046",
-     "057"
-    ],
-    "resultId": "194",
-    "display": "アクアフェザー + ライトウルフ → 光鳥ヤタ"
-   },
-   "description": "三本の足をもつ光の鳥。迷った旅人を、正しい道へ導くという。",
    "learnset": [
     [
      1,
@@ -15648,7 +15637,18 @@ window.Game.RawMonsterData = {
      46,
      "聖光斬"
     ]
-   ]
+   ],
+   "innateTrait": "守護の祈り",
+   "growthType": "支援",
+   "recipe": {
+    "parentIds": [
+     "046",
+     "057"
+    ],
+    "resultId": "194",
+    "display": "アクアフェザー + ライトウルフ → 光鳥ヤタ"
+   },
+   "description": "三本の足をもつ光の鳥。迷った旅人を、正しい道へ導くという。"
   },
   {
    "id": "195",
@@ -15690,17 +15690,6 @@ window.Game.RawMonsterData = {
     "冷気",
     "雪嵐"
    ],
-   "innateTrait": "呪術の才",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "056",
-     "123"
-    ],
-    "resultId": "195",
-    "display": "デビルキャット + フブキギツネ → 氷魔ユキオニ"
-   },
-   "description": "吹雪の夜に現れる氷の魔獣。その息は、すべてを凍りつかせる。",
    "learnset": [
     [
      1,
@@ -15734,7 +15723,18 @@ window.Game.RawMonsterData = {
      46,
      "iyashiame"
     ]
-   ]
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "056",
+     "123"
+    ],
+    "resultId": "195",
+    "display": "デビルキャット + フブキギツネ → 氷魔ユキオニ"
+   },
+   "description": "吹雪の夜に現れる氷の魔獣。その息は、すべてを凍りつかせる。"
   },
   {
    "id": "196",
@@ -15776,10 +15776,6 @@ window.Game.RawMonsterData = {
     "idaten",
     "怒涛撃"
    ],
-   "innateTrait": "追撃本能",
-   "growthType": "速度",
-   "recipe": null,
-   "description": "水面をすいすいと走る虫。長い脚で、波紋ひとつ立てずに進む。",
    "learnset": [
     [
      1,
@@ -15805,7 +15801,11 @@ window.Game.RawMonsterData = {
      30,
      "渾身撃"
     ]
-   ]
+   ],
+   "innateTrait": "追撃本能",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "水面をすいすいと走る虫。長い脚で、波紋ひとつ立てずに進む。"
   },
   {
    "id": "197",
@@ -15847,10 +15847,6 @@ window.Game.RawMonsterData = {
     "気合いため",
     "怒涛撃"
    ],
-   "innateTrait": "急所狙い",
-   "growthType": "攻撃",
-   "recipe": null,
-   "description": "スイスイムシが成長した姿。水中に身をひそめ、鎌のような腕で獲物をとらえる。",
    "learnset": [
     [
      1,
@@ -15880,7 +15876,11 @@ window.Game.RawMonsterData = {
      38,
      "大地震"
     ]
-   ]
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "スイスイムシが成長した姿。水中に身をひそめ、鎌のような腕で獲物をとらえる。"
   },
   {
    "id": "198",
@@ -15922,10 +15922,6 @@ window.Game.RawMonsterData = {
     "小回復",
     "旋風刃"
    ],
-   "innateTrait": "癒しの波動",
-   "growthType": "支援",
-   "recipe": null,
-   "description": "風鈴のような花を咲かせる草。風が吹くたび、すずしい音色を奏でる。",
    "learnset": [
     [
      1,
@@ -15955,7 +15951,11 @@ window.Game.RawMonsterData = {
      38,
      "真空波"
     ]
-   ]
+   ],
+   "innateTrait": "癒しの波動",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "風鈴のような花を咲かせる草。風が吹くたび、すずしい音色を奏でる。"
   },
   {
    "id": "199",
@@ -15998,17 +15998,6 @@ window.Game.RawMonsterData = {
     "seinaruya",
     "極光"
    ],
-   "innateTrait": "精霊の加護",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "072",
-     "171"
-    ],
-    "resultId": "199",
-    "display": "光狼セレス + 聖花ルミエラ → 月精ルナリア"
-   },
-   "description": "月の光から生まれた精霊。満月の夜にだけ、その姿を見せるという。",
    "learnset": [
     [
      1,
@@ -16050,7 +16039,18 @@ window.Game.RawMonsterData = {
      44,
      "katakunaru"
     ]
-   ]
+   ],
+   "innateTrait": "精霊の加護",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "072",
+     "171"
+    ],
+    "resultId": "199",
+    "display": "光狼セレス + 聖花ルミエラ → 月精ルナリア"
+   },
+   "description": "月の光から生まれた精霊。満月の夜にだけ、その姿を見せるという。"
   },
   {
    "id": "200",
@@ -16094,17 +16094,6 @@ window.Game.RawMonsterData = {
     "uzushio",
     "潮流撃"
    ],
-   "innateTrait": "属性共鳴",
-   "growthType": "特殊",
-   "recipe": {
-    "parentIds": [
-     "073",
-     "077"
-    ],
-    "resultId": "200",
-    "display": "風神スピリオン + 深海龍リヴァル → 海嵐竜テンペスタ"
-   },
-   "description": "海の上に嵐を呼ぶ竜。その背には、いつも雷雲が渦巻いている。",
    "learnset": [
     [
      1,
@@ -16145,6 +16134,800 @@ window.Game.RawMonsterData = {
     [
      44,
      "気合いため"
+    ]
+   ],
+   "innateTrait": "属性共鳴",
+   "growthType": "特殊",
+   "recipe": {
+    "parentIds": [
+     "073",
+     "077"
+    ],
+    "resultId": "200",
+    "display": "風神スピリオン + 深海龍リヴァル → 海嵐竜テンペスタ"
+   },
+   "description": "海の上に嵐を呼ぶ竜。その背には、いつも雷雲が渦巻いている。"
+  },
+  {
+   "id": "201",
+   "dexNo": 201,
+   "name": "岩竜ガンドラ",
+   "family": "竜",
+   "element": "地",
+   "rank": "B",
+   "obtain": "野生",
+   "region": "竜の谷",
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "防御",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 165,
+    "攻撃": 145,
+    "防御": 128,
+    "素早さ": 31,
+    "特殊攻撃": 56,
+    "特殊防御": 85
+   },
+   "evYield": {
+    "防御": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 88,
+    "攻撃": 76,
+    "防御": 65,
+    "素早さ": 5,
+    "特殊攻撃": 19,
+    "特殊防御": 38,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "岩つぶて",
+    "気合いため",
+    "大地震"
+   ],
+   "innateTrait": "大地の根",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "谷の岩壁にすむ竜。岩と見分けがつかないほど、ごつごつした鱗をもつ。",
+   "learnset": [
+    [
+     1,
+     "岩つぶて"
+    ],
+    [
+     1,
+     "気合いため"
+    ],
+    [
+     10,
+     "大地震"
+    ],
+    [
+     14,
+     "homuraba"
+    ],
+    [
+     20,
+     "硬化"
+    ],
+    [
+     26,
+     "daichiken"
+    ],
+    [
+     32,
+     "渾身撃"
+    ],
+    [
+     38,
+     "炎獄爪"
+    ],
+    [
+     44,
+     "sunakake"
+    ]
+   ]
+  },
+  {
+   "id": "202",
+   "dexNo": 202,
+   "name": "雷鳥ライキリ",
+   "family": "鳥",
+   "element": "雷",
+   "rank": "B",
+   "obtain": "野生",
+   "region": "天空の島",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 111,
+    "攻撃": 133,
+    "防御": 55,
+    "素早さ": 165,
+    "特殊攻撃": 66,
+    "特殊防御": 80
+   },
+   "evYield": {
+    "素早さ": 2,
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 54,
+    "攻撃": 69,
+    "防御": 19,
+    "素早さ": 88,
+    "特殊攻撃": 27,
+    "特殊防御": 34,
+    "命中": 95,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "jinraiga",
+    "idaten",
+    "轟雷爪"
+   ],
+   "innateTrait": "雷走り",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "雷雲の上を飛ぶ大きな鳥。翼から落ちる羽が、稲妻になるという。",
+   "learnset": [
+    [
+     1,
+     "jinraiga"
+    ],
+    [
+     1,
+     "idaten"
+    ],
+    [
+     10,
+     "轟雷爪"
+    ],
+    [
+     14,
+     "風切り"
+    ],
+    [
+     20,
+     "麻痺針"
+    ],
+    [
+     26,
+     "渾身撃"
+    ],
+    [
+     32,
+     "烈風脚"
+    ],
+    [
+     38,
+     "shibiredenpa"
+    ],
+    [
+     44,
+     "雷鳴落とし"
+    ]
+   ]
+  },
+  {
+   "id": "203",
+   "dexNo": 203,
+   "name": "霧幻獣ミストラル",
+   "family": "獣",
+   "element": "水",
+   "element2": "風",
+   "rank": "B",
+   "obtain": "野生",
+   "region": "霧の森",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 122,
+    "攻撃": 60,
+    "防御": 67,
+    "素早さ": 104,
+    "特殊攻撃": 165,
+    "特殊防御": 92
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 61,
+    "攻撃": 23,
+    "防御": 27,
+    "素早さ": 50,
+    "特殊攻撃": 88,
+    "特殊防御": 42,
+    "命中": 95,
+    "回避": 27
+   },
+   "initialMoveCandidates": [
+    "fujin",
+    "uzushio",
+    "潮流撃"
+   ],
+   "innateTrait": "残像",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "深い霧の中にだけ現れる獣。姿を見た者は、いつのまにか道に迷っている。",
+   "learnset": [
+    [
+     1,
+     "fujin"
+    ],
+    [
+     1,
+     "uzushio"
+    ],
+    [
+     10,
+     "潮流撃"
+    ],
+    [
+     14,
+     "旋風刃"
+    ],
+    [
+     20,
+     "癒しの雫"
+    ],
+    [
+     26,
+     "真空波"
+    ],
+    [
+     32,
+     "地脈波"
+    ],
+    [
+     38,
+     "iyashiame"
+    ],
+    [
+     44,
+     "怒涛撃"
+    ]
+   ]
+  },
+  {
+   "id": "204",
+   "dexNo": 204,
+   "name": "影狐カゲロウ",
+   "family": "獣",
+   "element": "闇",
+   "rank": "B",
+   "obtain": "野生",
+   "region": "霧の森",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 110,
+    "攻撃": 133,
+    "防御": 68,
+    "素早さ": 165,
+    "特殊攻撃": 67,
+    "特殊防御": 67
+   },
+   "evYield": {
+    "素早さ": 2,
+    "攻撃": 1
+   },
+   "baseStats": {
+    "HP": 54,
+    "攻撃": 69,
+    "防御": 27,
+    "素早さ": 88,
+    "特殊攻撃": 27,
+    "特殊防御": 27,
+    "命中": 95,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "影縫い",
+    "idaten",
+    "奈落斬"
+   ],
+   "innateTrait": "急所狙い",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "影から影へ渡り歩く狐。九つの影をもち、本体がどれかはわからない。",
+   "learnset": [
+    [
+     1,
+     "影縫い"
+    ],
+    [
+     1,
+     "idaten"
+    ],
+    [
+     10,
+     "奈落斬"
+    ],
+    [
+     14,
+     "呪い霧"
+    ],
+    [
+     20,
+     "渾身撃"
+    ],
+    [
+     26,
+     "akumu"
+    ],
+    [
+     32,
+     "暗黒波"
+    ],
+    [
+     38,
+     "sutemi"
+    ],
+    [
+     44,
+     "気合いため"
+    ]
+   ]
+  },
+  {
+   "id": "205",
+   "dexNo": 205,
+   "name": "焔獅子レグルス",
+   "family": "獣",
+   "element": "焔",
+   "rank": "A",
+   "obtain": "野生",
+   "region": "竜の谷",
+   "role": "攻撃",
+   "archetype": "物理アタッカー",
+   "signature": "攻撃",
+   "weakness": "特殊防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 148,
+    "攻撃": 189,
+    "防御": 99,
+    "素早さ": 113,
+    "特殊攻撃": 68,
+    "特殊防御": 83
+   },
+   "evYield": {
+    "攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 77,
+    "攻撃": 103,
+    "防御": 46,
+    "素早さ": 55,
+    "特殊攻撃": 29,
+    "特殊防御": 38,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "焔刃",
+    "気合いため",
+    "焔獄撃"
+   ],
+   "innateTrait": "猛火の闘志",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "焔のたてがみをもつ獅子。谷の奥で、強き者との戦いを待っている。",
+   "learnset": [
+    [
+     1,
+     "焔刃"
+    ],
+    [
+     1,
+     "気合いため"
+    ],
+    [
+     10,
+     "焔獄撃"
+    ],
+    [
+     14,
+     "炎獄爪"
+    ],
+    [
+     19,
+     "渾身撃"
+    ],
+    [
+     24,
+     "轟雷爪"
+    ],
+    [
+     29,
+     "劫火"
+    ],
+    [
+     34,
+     "灼熱波"
+    ],
+    [
+     39,
+     "idaten"
+    ],
+    [
+     44,
+     "katakunaru"
+    ]
+   ]
+  },
+  {
+   "id": "206",
+   "dexNo": 206,
+   "name": "氷姫スノウリア",
+   "family": "精霊",
+   "element": "氷",
+   "rank": "A",
+   "obtain": "野生",
+   "region": "凍てつく頂",
+   "role": "特殊",
+   "archetype": "特殊アタッカー",
+   "signature": "特殊攻撃",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 139,
+    "攻撃": 71,
+    "防御": 77,
+    "素早さ": 118,
+    "特殊攻撃": 189,
+    "特殊防御": 106
+   },
+   "evYield": {
+    "特殊攻撃": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 73,
+    "攻撃": 29,
+    "防御": 33,
+    "素早さ": 59,
+    "特殊攻撃": 103,
+    "特殊防御": 51,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "氷礫",
+    "冷気",
+    "雪嵐"
+   ],
+   "innateTrait": "呪術の才",
+   "growthType": "特殊",
+   "recipe": null,
+   "description": "雪山の頂にすむ氷の精霊。その歌声が響くと、吹雪がやむという。",
+   "learnset": [
+    [
+     1,
+     "氷礫"
+    ],
+    [
+     1,
+     "冷気"
+    ],
+    [
+     10,
+     "雪嵐"
+    ],
+    [
+     14,
+     "砂塵"
+    ],
+    [
+     19,
+     "気合いため"
+    ],
+    [
+     24,
+     "真空波"
+    ],
+    [
+     29,
+     "地脈波"
+    ],
+    [
+     34,
+     "iyashiame"
+    ],
+    [
+     39,
+     "凍結爪"
+    ],
+    [
+     44,
+     "idaten"
+    ]
+   ]
+  },
+  {
+   "id": "207",
+   "dexNo": 207,
+   "name": "聖鹿ハクロク",
+   "family": "獣",
+   "element": "聖",
+   "rank": "A",
+   "obtain": "野生",
+   "region": "霧の森",
+   "role": "支援",
+   "archetype": "耐久サポート",
+   "signature": "特殊防御",
+   "weakness": "攻撃",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 183,
+    "攻撃": 50,
+    "防御": 119,
+    "素早さ": 77,
+    "特殊攻撃": 103,
+    "特殊防御": 168
+   },
+   "evYield": {
+    "特殊防御": 2,
+    "HP": 1
+   },
+   "baseStats": {
+    "HP": 99,
+    "攻撃": 16,
+    "防御": 59,
+    "素早さ": 33,
+    "特殊攻撃": 51,
+    "特殊防御": 90,
+    "命中": 96,
+    "回避": 32
+   },
+   "initialMoveCandidates": [
+    "聖光弾",
+    "聖なる癒し",
+    "聖天光"
+   ],
+   "innateTrait": "慈愛の光",
+   "growthType": "支援",
+   "recipe": null,
+   "description": "白く輝く角をもつ鹿。けがをした幻獣のそばに、そっと寄りそうという。",
+   "learnset": [
+    [
+     1,
+     "聖光弾"
+    ],
+    [
+     1,
+     "聖なる癒し"
+    ],
+    [
+     10,
+     "聖天光"
+    ],
+    [
+     14,
+     "極光"
+    ],
+    [
+     19,
+     "聖なる守り"
+    ],
+    [
+     24,
+     "聖燐"
+    ],
+    [
+     29,
+     "真空波"
+    ],
+    [
+     34,
+     "mekuramashi"
+    ],
+    [
+     39,
+     "聖剣"
+    ],
+    [
+     44,
+     "聖光斬"
+    ]
+   ]
+  },
+  {
+   "id": "208",
+   "dexNo": 208,
+   "name": "嵐王ジズ",
+   "family": "鳥",
+   "element": "嵐",
+   "rank": "S",
+   "obtain": "野生",
+   "region": "天空の島",
+   "role": "速度",
+   "archetype": "高速アタッカー",
+   "signature": "素早さ",
+   "weakness": "防御",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 140,
+    "攻撃": 171,
+    "防御": 70,
+    "素早さ": 211,
+    "特殊攻撃": 86,
+    "特殊防御": 102
+   },
+   "evYield": {
+    "素早さ": 3
+   },
+   "baseStats": {
+    "HP": 73,
+    "攻撃": 93,
+    "防御": 29,
+    "素早さ": 117,
+    "特殊攻撃": 39,
+    "特殊防御": 48,
+    "命中": 97,
+    "回避": 42
+   },
+   "initialMoveCandidates": [
+    "嵐爪",
+    "idaten",
+    "暴嵐脚"
+   ],
+   "innateTrait": "先制感知",
+   "growthType": "速度",
+   "recipe": null,
+   "description": "空を覆うほど大きな鳥の王。羽ばたきひとつで、嵐が生まれる。",
+   "learnset": [
+    [
+     1,
+     "嵐爪"
+    ],
+    [
+     1,
+     "idaten"
+    ],
+    [
+     10,
+     "暴嵐脚"
+    ],
+    [
+     14,
+     "烈風脚"
+    ],
+    [
+     18,
+     "嵐の加護"
+    ],
+    [
+     22,
+     "渾身撃"
+    ],
+    [
+     26,
+     "怒涛撃"
+    ],
+    [
+     30,
+     "大嵐"
+    ],
+    [
+     34,
+     "旋風刃"
+    ],
+    [
+     38,
+     "気合いため"
+    ],
+    [
+     42,
+     "katakunaru"
+    ]
+   ]
+  },
+  {
+   "id": "209",
+   "dexNo": 209,
+   "name": "冥王竜ヴリトラ",
+   "family": "竜",
+   "element": "冥",
+   "rank": "S",
+   "obtain": "野生",
+   "region": "深淵の洞",
+   "role": "攻撃",
+   "archetype": "重戦車",
+   "signature": "攻撃",
+   "weakness": "素早さ",
+   "tier": "標準",
+   "speciesStats": {
+    "HP": 212,
+    "攻撃": 203,
+    "防御": 147,
+    "素早さ": 38,
+    "特殊攻撃": 71,
+    "特殊防御": 109
+   },
+   "evYield": {
+    "攻撃": 3
+   },
+   "baseStats": {
+    "HP": 117,
+    "攻撃": 112,
+    "防御": 78,
+    "素早さ": 9,
+    "特殊攻撃": 29,
+    "特殊防御": 53,
+    "命中": 97,
+    "回避": 37
+   },
+   "initialMoveCandidates": [
+    "冥爪",
+    "気合いため",
+    "冥府斬"
+   ],
+   "innateTrait": "破壊衝動",
+   "growthType": "攻撃",
+   "recipe": null,
+   "description": "大地の底の闇にすむ竜。目覚めると、世界から光が消えるという。",
+   "learnset": [
+    [
+     1,
+     "冥爪"
+    ],
+    [
+     1,
+     "気合いため"
+    ],
+    [
+     10,
+     "冥府斬"
+    ],
+    [
+     14,
+     "奈落斬"
+    ],
+    [
+     18,
+     "冥呪"
+    ],
+    [
+     22,
+     "渾身撃"
+    ],
+    [
+     26,
+     "akumu"
+    ],
+    [
+     30,
+     "冥獄波"
+    ],
+    [
+     34,
+     "暗黒波"
+    ],
+    [
+     38,
+     "idaten"
+    ],
+    [
+     42,
+     "katakunaru"
     ]
    ]
   }

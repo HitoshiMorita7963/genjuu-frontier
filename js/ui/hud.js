@@ -27,7 +27,7 @@
         el.loc.textContent = '---';
         return;
       }
-      el.name.textContent = s.player.name;
+      el.name.textContent = `${s.player.name}　Lv${G.Tamer.level()}`;
       el.money.textContent = s.money.toLocaleString();
       el.party.textContent = String(s.party.length);
       const map = G.MapData[s.player.map];

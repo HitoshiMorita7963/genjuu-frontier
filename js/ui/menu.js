@@ -220,6 +220,8 @@
           return '<div class="menu-title">主人公</div>' +
             `<table class="status"><tr><th>なまえ</th><td>${esc(s.player.name)}</td></tr>` +
             `<tr><th>しゅべつ</th><td>${s.player.gender === 'girl' ? '少女' : '少年'}・幻獣使い見習い</td></tr>` +
+            `<tr><th>幻獣使いLv</th><td>${G.Tamer.level()}<small>${G.Tamer.toNext() ? `（次のLvまで ${G.Tamer.toNext()}）` : '（最高レベル）'}</small></td></tr>` +
+            `<tr><th>絆を結べる</th><td>${Object.entries(G.TamerConfig.RANK_LEVEL).filter(([r]) => !['SS', 'SSS', 'EX'].includes(r)).map(([r, lv]) => `<span class="nowrap${G.Tamer.level() >= lv ? '' : ' muted'}">${r}${G.Tamer.level() >= lv ? '' : `(Lv${lv})`}</span>`).join(' ')}</td></tr>` +
             `<tr><th>所持金</th><td>${s.money.toLocaleString()} G</td></tr>` +
             `<tr><th>仲間の幻獣</th><td>パーティ ${s.party.length} 体／預かり所 ${s.storage.length} 体</td></tr>` +
             `<tr><th>図鑑</th><td>${dexOwned} / ${G.SpeciesOrder.length} 種</td></tr>` +

@@ -584,7 +584,7 @@
       const st = G.Monster.stats(foe);
       const sp = G.Species[foe.speciesId];
       const statusBonus = foe.status === 'sleep' ? 2 : foe.status ? 1.5 : 1;
-      const a = ((3 * st.hp - 2 * foe.hp) * sp.catch * G.Items[itemId].rate * statusBonus) / (3 * st.hp);
+      const a = ((3 * st.hp - 2 * foe.hp) * sp.catch * G.Items[itemId].rate * statusBonus * G.Tamer.catchBonus(sp)) / (3 * st.hp);
       return Math.min(1, a / 255);
     }
 
@@ -611,6 +611,7 @@
         this.stone = null;
         this.sides.enemy.mon = null;
         foe.origin = { how: 'wild', where: this.where };
+        if (G.state.dex[foe.speciesId] && G.state.dex[foe.speciesId].owned) G.Tamer.gain(G.TamerConfig.EXP.dupWild); // 初めての種族は図鑑の記録で入る
         const dest = G.Party.add(foe);
         G.Dex.record(foe.speciesId, 'wild', this.where);
         G.UI.refresh();
@@ -654,6 +655,7 @@
           }
           await G.Dialog.open([tr.boss ? `${tr.name}を たおした！` : `${tr.name}との 勝負に 勝った！`]);
           if (tr.defeat && tr.defeat.length) await G.Dialog.open(tr.defeat, { speaker: tr.name });
+          G.Tamer.gain(G.TamerConfig.EXP.trainer);
         } else {
           await this.msg('戦いに 勝利した！', 1.0);
         }
