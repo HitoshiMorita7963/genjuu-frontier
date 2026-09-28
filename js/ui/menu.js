@@ -401,6 +401,7 @@
         { key: 'touch', label: 'タッチボタン', show: () => ({ auto: '自動', on: '表示', off: '非表示' })[S.touch || 'auto'],
           step: (d) => { const o = ['auto', 'on', 'off']; S.touch = o[(o.indexOf(S.touch || 'auto') + (d || 1) + 3) % 3]; } },
         { key: 'demoExp', label: '経験値アイテム無限（デモ）', show: () => (S.demoExp ? 'ON' : 'OFF'), step: () => { S.demoExp = !S.demoExp; } },
+        { key: 'demoCatch', label: '絶対に捕まえられる（デモ）', show: () => (S.demoCatch ? 'ON' : 'OFF'), step: () => { S.demoCatch = !S.demoCatch; } },
       ];
       function vol(v) { return `<span class="vol">${'■'.repeat(v)}${'□'.repeat(10 - v)}</span> ${v}`; }
       return {
@@ -417,7 +418,7 @@
           return '<div class="menu-title">せってい</div>' + ROWS.map((r, i) =>
             `<div class="menu-row setting-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
             `${r.label}<span class="count">◀ ${r.show()} ▶</span></div>`).join('') +
-            '<div class="menu-desc">オートセーブ：村に着いたとき・回復したとき・大事な戦いのあとに、自動で記録します。<br>Mキーで いつでもサウンドのON/OFFを切りかえられます。<br>経験値アイテム無限：デモプレイ用。経験値アイテムを 持っていなくても もちものに並び、使っても なくなりません。</div>' +
+            '<div class="menu-desc">オートセーブ：村に着いたとき・回復したとき・大事な戦いのあとに、自動で記録します。<br>Mキーで いつでもサウンドのON/OFFを切りかえられます。<br>経験値アイテム無限：デモプレイ用。経験値アイテムを 持っていなくても もちものに並び、使っても なくなりません。<br>絶対に捕まえられる：デモプレイ用。野生の幻獣なら、HPや幻獣使いLvに関係なく 絆石で かならず 絆を結べます。</div>' +
             '<div class="menu-hint">↑↓：えらぶ　←→：変更　X：もどる</div>';
         },
       };
