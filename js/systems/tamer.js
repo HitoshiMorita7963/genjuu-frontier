@@ -66,7 +66,7 @@
 
     // 捕獲：その幻獣に必要な幻獣使いレベル・投げられるか・捕獲率の倍率
     needLevel(sp) { return C.RANK_LEVEL[sp.rank] || 1; },
-    canCatch(sp) { return T.level() >= T.needLevel(sp); },
+    canCatch(sp) { return G.Settings.demoCatch || T.level() >= T.needLevel(sp); }, // デモプレイ用の捕獲モードでは、どのランクでも絆を結べる
     catchBonus(sp) { return 1 + Math.min(C.BONUS_MAX, Math.max(0, T.level() - T.needLevel(sp)) * C.BONUS_PER_LEVEL); },
 
     // 以前のセーブ：図鑑・レシピ・物語の進み具合から経験値を見積もる
