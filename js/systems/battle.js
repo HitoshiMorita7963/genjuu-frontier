@@ -215,13 +215,13 @@
     enemyAction() {
       const me = this.sides.enemy.mon;
       const foe = this.sides.player.mon;
-      const usable = me.moves.filter((id) => G.Moves[id].mp <= me.mp);
+      const usable = me.moves.filter((id) => G.MoveStage.of(me, id).mp <= me.mp);
       if (!usable.length) return { type: 'move', move: 'kougeki' }; // MPが尽きたら通常攻撃
       const sp = G.Species[me.speciesId];
       const fsp = G.Species[foe.speciesId];
       const st = G.Monster.stats(me);
       const weights = usable.map((id) => {
-        const mv = G.Moves[id];
+        const mv = G.MoveStage.of(me, id);
         const eff = mv.eff || {};
         if (mv.cat !== 'stat') {
           return mv.pow * G.typeMultiplier(mv.el, G.elementsOf(fsp)) * G.stabMultiplier(mv.el, sp) + 15;
@@ -350,10 +350,10 @@
         return;
       }
 
-      let mv = G.Moves[moveId];
-      if (m.mp < mv.mp) { moveId = 'kougeki'; mv = G.Moves.kougeki; } // MPが足りなければ通常攻撃に
+      let mv = G.MoveStage.of(m, moveId); // 技の強化（+1 など）を反映した威力・MP
+      if (m.mp < mv.mp) { moveId = 'kougeki'; mv = G.MoveStage.of(m, 'kougeki'); } // MPが足りなければ通常攻撃に
       m.mp -= mv.mp;
-      await this.msg(`${m.name}の ${mv.name}！`, 0.5);
+      await this.msg(`${m.name}の ${G.MoveStage.label(m, moveId)}！`, 0.5);
 
       // ためた力：次の攻撃技で使う（外れても消える。補助技では消えない）
       me.power = 1;

@@ -86,7 +86,7 @@
           if (In.consume('cancel')) return this.go('main');
           if (In.consume('confirm')) {
             const id = list[this.sel];
-            if (G.Moves[id].mp > this.me().mp) { this.note = 'MPが 足りない！'; G.Screens.render(); return; }
+            if (G.MoveStage.of(this.me(), id).mp > this.me().mp) { this.note = 'MPが 足りない！'; G.Screens.render(); return; }
             return G.Screens.close({ type: 'move', move: id });
           }
           return;
@@ -149,7 +149,7 @@
           if (tip || charged) body += `<div class="bt-info"><small>${charged}${tip || ''}</small></div>`;
         } else if (this.view === 'moves') {
           const list = this.moveList();
-          const cur = G.Moves[list[this.sel]];
+          const cur = G.MoveStage.of(this.me(), list[this.sel]);
           // 相手への相性（◎ 効果ばつぐん／△ いまひとつ）とタイプ一致（★）
           const foe = b.sides.enemy.mon;
           const fsp = foe && G.Species[foe.speciesId];
@@ -158,13 +158,13 @@
           const mark = (mv) => { const x = mulOf(mv); return x > 1 ? '<b class="eff up">◎</b>' : x < 1 ? '<b class="eff down">△</b>' : ''; };
           const effText = (mv) => { const x = mulOf(mv); return x > 1 ? `<b class="eff up">効果ばつぐん（×${x}）</b>` : x < 1 ? `<b class="eff down">いまひとつ（×${x}）</b>` : ''; };
           body = `<div class="bt-grid">${list.map((id, i) => {
-            const mv = G.Moves[id];
+            const mv = G.MoveStage.of(this.me(), id);
             const lack = mv.mp > this.me().mp;
             return `<div class="bt-cmd move${i === this.sel ? ' sel' : ''}${lack ? ' disabled' : ''}">` +
-              `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${P().el(mv.el)}<span class="mv-name">${esc(mv.name)}</span>` +
+              `<span class="cursor">${i === this.sel ? '▶' : ''}</span>${P().el(mv.el)}<span class="mv-name">${esc(mv.name)}${mv.stage > 1 ? `<small class="mv-plus">+${mv.stage - 1}</small>` : ''}</span>` +
               `${mark(mv)}<small>MP${mv.mp}</small></div>`;
           }).join('')}</div>` +
-            `<div class="bt-info">${cur.basic ? '物理か特殊（高い方）' : CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　` +
+            `<div class="bt-info">${cur.basic ? '物理か特殊（高い方）' : CAT[cur.cat]}　威力 ${cur.pow || '-'}　命中 ${cur.acc}　${cur.maxStage > 1 ? `強化 +${cur.stage - 1}/+${cur.maxStage - 1}　` : ''}` +
             `${cur.cat !== 'stat' && G.isStab(cur.el, mySp) ? `<b class="eff stab">タイプ一致×${G.stabMultiplier(cur.el, mySp)}</b>　` : ''}${effText(cur)}　` +
             `<span class="mp-now">残りMP ${this.me().mp}</span><br><small>${esc(cur.desc || '')}</small></div>`;
         } else if (this.view === 'party') {

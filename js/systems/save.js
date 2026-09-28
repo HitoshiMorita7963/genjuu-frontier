@@ -65,6 +65,7 @@
     // ver.2 以前の個体：個体ボーナス（0〜15）を個体値（0〜31）に換算し、努力値を 0 で追加（能力値はほぼ変わらない）
     for (const m of out.party.concat(out.storage)) {
       G.Individual.ensure(m);
+      if (!m.moveLv) G.MoveStage.pin(m); // 技の強化の記録がなかったころ：種族が覚えるレベル（なければ今のレベル）で覚えたことにする
       const max = G.Monster.stats(m);
       m.hp = Math.min(m.hp, max.hp);
       m.mp = Math.min(m.mp, max.mp);

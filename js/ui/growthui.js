@@ -6,13 +6,13 @@
   const P = () => G.UIParts;
   const CAT = { phys: '物理', spec: '特殊', stat: '補助' };
 
-  function moveRow(id, selected, extra = '') {
-    const mv = G.Moves[id];
+  function moveRow(id, selected, extra = '', m = null) {
+    const mv = G.MoveStage.of(m, id); // m があれば強化（+1 など）を反映
     return `<div class="menu-row${selected ? ' sel' : ''}"><span class="cursor">${selected ? '▶' : ''}</span>` +
-      `${P().el(mv.el)}${esc(mv.name)}${extra}<span class="count">${CAT[mv.cat]}　威力${mv.pow || '-'}　命中${mv.acc}　MP${mv.mp}</span></div>`;
+      `${P().el(mv.el)}${esc(G.MoveStage.label(m, id))}${extra}<span class="count">${CAT[mv.cat]}　威力${mv.pow || '-'}　命中${mv.acc}　MP${mv.mp}</span></div>`;
   }
 
-  // 4つ埋まっているときに忘れる技を選ぶ。戻り値：忘れる技の番号、-1 = 覚えない
+  // 技がいっぱいのときに忘れる技を選ぶ。戻り値：忘れる技の番号、-1 = 覚えない
   G.UIScreens.forgetMove = function (m, newId) {
     return {
       layout: 'menu wide center',
@@ -27,7 +27,7 @@
       html() {
         const cur = this.sel < m.moves.length ? G.Moves[m.moves[this.sel]] : G.Moves[newId];
         return `<div class="menu-title">${esc(m.name)}は どの技を 忘れる？</div>` +
-          m.moves.map((id, i) => moveRow(id, i === this.sel)).join('') +
+          m.moves.map((id, i) => moveRow(id, i === this.sel, '', m)).join('') +
           `<div class="menu-sep"></div>` +
           moveRow(newId, this.sel === m.moves.length, ' <span class="tag">新</span>') +
           `<div class="menu-desc">${this.sel === m.moves.length ? '（新しい技を あきらめる）<br>' : ''}${esc(cur.desc || '')}</div>` +
