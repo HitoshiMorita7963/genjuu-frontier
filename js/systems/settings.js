@@ -3,7 +3,7 @@
   'use strict';
 
   const KEY = 'genjuu-frontier/settings';
-  const DEFAULTS = { textSpeed: 1, bgm: 6, se: 7, autosave: true, muted: false, touch: 'auto', demoExp: false, demoCatch: false };
+  const DEFAULTS = { textSpeed: 1, bgm: 6, se: 7, autosave: true, muted: false, touch: 'auto', demoExp: false, demoGrow: false, demoCatch: false };
   const TEXT_SPEEDS = [28, 48, 90]; // 文字/秒（おそい・ふつう・はやい）
 
   G.Settings = Object.assign({}, DEFAULTS);
@@ -23,8 +23,17 @@
     if (G.Touch) G.Touch.apply();
   };
 
-  // デモプレイ用：経験値アイテムを無限に使えるモード（持っていなくても もちものに並び、使ってもなくならない）
-  G.demoInfinite = (id) => !!(G.Settings.demoExp && G.Items[id] && G.Items[id].type === 'exp');
+  // デモプレイ用：道具を無限に使えるモード（持っていなくても もちものに並び、使ってもなくならない）
+  //   demoExp  … 経験値アイテム
+  //   demoGrow … 努力値アイテム（特訓の書・ちからの種・忘れ草の香）と進化アイテム（鋼の爪・月の雫）
+  const GROW_TYPES = ['ev', 'evreset', 'evolve'];
+  G.demoInfinite = (id) => {
+    const it = G.Items[id];
+    if (!it) return false;
+    if (it.type === 'exp') return !!G.Settings.demoExp;
+    if (GROW_TYPES.includes(it.type)) return !!G.Settings.demoGrow;
+    return false;
+  };
 
   G.TEXT_SPEED_NAMES =['おそい', 'ふつう', 'はやい'];
 })(window.Game);
