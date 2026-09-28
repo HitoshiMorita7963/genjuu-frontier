@@ -581,6 +581,7 @@
 
     // ---------------- 捕獲 ----------------
     catchChance(foe, itemId) {
+      if (G.Settings.demoCatch) return 1; // デモプレイ用：絶対に捕まえられるモード
       const st = G.Monster.stats(foe);
       const sp = G.Species[foe.speciesId];
       const statusBonus = foe.status === 'sleep' ? 2 : foe.status ? 1.5 : 1;
