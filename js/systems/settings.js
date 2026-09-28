@@ -3,7 +3,7 @@
   'use strict';
 
   const KEY = 'genjuu-frontier/settings';
-  const DEFAULTS = { textSpeed: 1, bgm: 6, se: 7, autosave: true, muted: false, touch: 'auto', demoExp: false };
+  const DEFAULTS = { textSpeed: 1, bgm: 6, se: 7, autosave: true, muted: false, touch: 'auto', demoExp: false, demoCatch: false };
   const TEXT_SPEEDS = [28, 48, 90]; // 文字/秒（おそい・ふつう・はやい）
 
   G.Settings = Object.assign({}, DEFAULTS);
