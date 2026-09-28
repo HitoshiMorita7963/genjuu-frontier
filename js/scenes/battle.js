@@ -15,6 +15,7 @@
     cave:   { sky: ['#1a1628', '#3a3048'], far: '#2a2438', ground: ['#4a4458', '#383346'], plat: '#2a2536' },
     volcano: { sky: ['#3a1410', '#a8401a'], far: '#4a2418', ground: ['#6a5a4e', '#56483e'], plat: '#3a2e28' },
     altar:  { sky: ['#1a2a5a', '#8ad0f0'], far: '#5a7ab0', ground: ['#9aa8c0', '#7a88a0'], plat: '#5a6680' },
+    snow:   { sky: ['#8aa8c8', '#e8f2fa'], far: '#c8d8e8', ground: ['#eef4fa', '#d0dcea'], plat: '#a8bcd4' },
   };
 
   function drawBg(ctx, b) {
@@ -158,30 +159,57 @@
     ctx.fillRect(x, y, Math.round(w * r), h);
   }
 
+  // 同じ種族を持っているかのしるし：手持ち・預かり所にいる → 持 ／ いないが前に仲間にした（図鑑の記録）→ 済 ／ それ以外 → なし
+  function ownMark(speciesId) {
+    if (G.Party.all().some((x) => x.speciesId === speciesId)) return { text: '持', bg: '#3aa860', edge: '#a8f0b8', fg: '#ffffff' };
+    const d = G.state.dex[speciesId];
+    if (d && d.owned) return { text: '済', bg: '#4a5a80', edge: '#a8b8e0', fg: '#e8ecff' };
+    return null;
+  }
+
   function infoBox(ctx, b, side, x, y, w, detailed) {
     const m = b.sides[side].mon;
     if (!m) return;
     const st = G.Monster.stats(m);
     const d = b.disp[side];
-    const h = detailed ? 62 : 46;
+    const h = detailed ? 68 : 46;
     ctx.fillStyle = 'rgba(20,22,44,0.9)'; ctx.fillRect(x, y, w, h);
     const boss = side === 'enemy' && b.trainer && b.trainer.boss;
     ctx.strokeStyle = boss ? '#f06070' : '#e9e4d4'; ctx.lineWidth = 2; ctx.strokeRect(x + 1, y + 1, w - 2, h - 2);
-    ctx.textBaseline = 'top'; ctx.textAlign = 'left';
-    ctx.font = `14px ${FONT}`; ctx.fillStyle = '#ffffff';
-    ctx.fillText(m.name, x + 8, y + 6);
-    ctx.textAlign = 'right'; ctx.font = `12px ${FONT}`; ctx.fillStyle = '#ffd35a';
+    ctx.textBaseline = 'top'; ctx.textAlign = 'right'; ctx.font = `12px ${FONT}`; ctx.fillStyle = '#ffd35a';
     ctx.fillText(`Lv${m.level}`, x + w - 8, y + 8);
-    const el = G.Elements[G.Species[m.speciesId].el];
+    const lvW = ctx.measureText(`Lv${m.level}`).width;
+    const els = G.elementsOf(G.Species[m.speciesId]).map((k) => G.Elements[k]);
+    // 相手の幻獣：同じ種族を持っているか（持＝手持ちか預かり所にいる／済＝前に仲間にしたことがある）。Lvの左に出す
+    const own = side === 'enemy' ? ownMark(m.speciesId) : null;
+    const markX = x + w - 12 - lvW - 16;
+    if (own) {
+      ctx.fillStyle = own.bg; ctx.fillRect(markX, y + 7, 16, 14);
+      ctx.strokeStyle = own.edge; ctx.lineWidth = 1; ctx.strokeRect(markX + 0.5, y + 7.5, 15, 13);
+      ctx.textAlign = 'center'; ctx.font = `11px ${FONT}`; ctx.fillStyle = own.fg; ctx.fillText(own.text, markX + 8, y + 9);
+    }
+    // 名前：Lv・しるしと重なるときは、小さい字にする
     ctx.textAlign = 'left';
-    ctx.font = `14px ${FONT}`;
+    const room = (own ? markX : x + w - 12 - lvW) - 4 - (x + 12) - els.length * 20 - (m.status ? 30 : 0);
+    let nameSize = 14;
+    ctx.font = `${nameSize}px ${FONT}`;
+    while (nameSize > 10 && ctx.measureText(m.name).width > room) ctx.font = `${--nameSize}px ${FONT}`;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(m.name, x + 8, y + 6 + (14 - nameSize) / 2);
+    // 属性のしるし（複合タイプは2つ並べる）
     const nw = ctx.measureText(m.name).width;
-    ctx.fillStyle = el.color; ctx.fillRect(x + 12 + nw, y + 7, 18, 14);
-    ctx.fillStyle = '#141424'; ctx.font = `11px ${FONT}`; ctx.fillText(el.name, x + 15 + nw, y + 9);
+    ctx.font = `11px ${FONT}`;
+    els.forEach((el, i) => {
+      const ex = x + 12 + nw + i * 20;
+      ctx.fillStyle = el.color; ctx.fillRect(ex, y + 7, 18, 14);
+      if (el.base) { ctx.strokeStyle = '#ffd35a'; ctx.lineWidth = 1.5; ctx.strokeRect(ex + 0.5, y + 7.5, 17, 13); } // 上位属性は金の縁
+      ctx.fillStyle = el.base === 'dark' ? '#ffffff' : '#141424'; ctx.fillText(el.name, ex + 3, y + 9);
+    });
     if (m.status) {
       const s = G.Battle.STATUS[m.status];
-      ctx.fillStyle = '#b05ab0'; ctx.fillRect(x + 34 + nw, y + 7, 28, 14);
-      ctx.fillStyle = '#ffffff'; ctx.fillText(s.short, x + 37 + nw, y + 9);
+      const sx = x + 14 + nw + els.length * 20;
+      ctx.fillStyle = '#b05ab0'; ctx.fillRect(sx, y + 7, 28, 14);
+      ctx.fillStyle = '#ffffff'; ctx.fillText(s.short, sx + 3, y + 9);
     }
     ctx.font = `10px ${FONT}`; ctx.fillStyle = '#ffd35a';
     ctx.fillText('HP', x + 8, y + 28);
@@ -189,17 +217,18 @@
     if (detailed) {
       ctx.fillStyle = '#8ab8ff'; ctx.fillText('MP', x + 8, y + 42);
       bar(ctx, x + 28, y + 44, 70, 5, d.mp, st.mp, '#5a9af0');
+      // HPの数字は右、MPの数字はMPバーのすぐ右（重ならないように）
       ctx.textAlign = 'right'; ctx.fillStyle = '#ffffff'; ctx.font = `12px ${FONT}`;
-      ctx.fillText(`${Math.ceil(d.hp)} / ${st.hp}`, x + w - 10, y + 40);
-      ctx.font = `10px ${FONT}`; ctx.fillStyle = '#a8c8ff';
-      ctx.fillText(`${Math.round(d.mp)}/${st.mp}`, x + 150, y + 41);
+      ctx.fillText(`${Math.ceil(d.hp)} / ${st.hp}`, x + w - 8, y + 40);
+      ctx.textAlign = 'left'; ctx.font = `10px ${FONT}`; ctx.fillStyle = '#a8c8ff';
+      ctx.fillText(`${Math.round(d.mp)}/${st.mp}`, x + 104, y + 41);
       // 経験値バー
       const sp = G.Species[m.speciesId];
       const lo = G.Monster.expForLevel(sp, m.level), hi = G.Monster.expForLevel(sp, m.level + 1);
       const ratio = m.level >= G.Monster.MAX_LEVEL ? 1 : (d.exp - lo) / Math.max(1, hi - lo);
       ctx.textAlign = 'left'; ctx.fillStyle = '#80e0f0'; ctx.font = `8px ${FONT}`;
-      ctx.fillText('EXP', x + 8, y + 53);
-      bar(ctx, x + 28, y + 55, w - 40, 3, Math.max(0, ratio), 1, '#40c8e0');
+      ctx.fillText('EXP', x + 8, y + 55);
+      bar(ctx, x + 28, y + 58, w - 40, 3, Math.max(0, ratio), 1, '#40c8e0');
     }
     ctx.textAlign = 'left';
   }
@@ -232,7 +261,7 @@
       drawStone(ctx, b);
       drawFx(ctx, b);
       infoBox(ctx, b, 'enemy', 14, 16, 210, false);
-      infoBox(ctx, b, 'player', 256, 176, 212, true);
+      infoBox(ctx, b, 'player', 256, 172, 212, true); // コマンド枠はこの下（CSS の .ui-layer.battle）
       drawPartyDots(ctx, b);
       if (b.screenFlash > 0) {
         ctx.fillStyle = `rgba(255,255,255,${Math.min(0.6, b.screenFlash)})`;

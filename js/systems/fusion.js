@@ -2,7 +2,7 @@
 //   ・結果は親の種族IDの組み合わせで固定（選ぶ順番は問わない）
 //     公式レシピがあればその子、無ければ汎用ルール（js/data/fusionRules.js：系統とランク）で決まる
 //   ・子の能力は子の種族データから計算し、親の能力値はコピーしない
-//   ・技：子の初期技に加え、親の習得済み技から最大2つを継承（装備は最大4つ）
+//   ・技：子の初期技に加え、親の習得済み技から最大2つを継承（装備はランクで 4〜6つ）
 //   ・特性：固有特性は必ず持ち、親由来の追加特性は最大1つ
 //   ・個体値：親A・親Bから2能力ずつ継承（高い個体値ほど選ばれやすい）、残りはランダム（js/systems/individual.js）
 //   ・努力値：引き継がない（子は0から育て直す。完成個体のコピーを防ぐ）
@@ -38,15 +38,22 @@
         line = R.familyTable[`${x}+${y}`] || pa.line;
       }
       const up = Math.max(G.rankIndex(pa.rank), G.rankIndex(pb.rank)) >= G.rankIndex(R.upgradeFrom);
-      const rank = up ? R.highRank : R.lowRank;
-      const wild = G.SpeciesOrder.map((id) => G.Species[id]).filter((sp) => sp.obtain === 'wild' && sp.rank === rank);
-      let cands = wild.filter((sp) => sp.line === line);
-      if (!cands.length) cands = wild.filter((sp) => sp.el === pa.el || sp.el === pb.el);
-      if (!cands.length) cands = wild;
+      const ranks = up ? R.highRanks : R.lowRanks;
+      // 子の候補：野生で出会える種族のうち、進化で姿を変えた種族（進化先）ではないもの
+      const evolved = F.evolvedForms();
+      const pool = (rank) => G.SpeciesOrder.map((id) => G.Species[id]).filter((sp) => sp.obtain === 'wild' && sp.rank === rank && !evolved.has(sp.id));
+      const shares = (sp) => G.elementsOf(sp).some((el) => G.elementsOf(pa).includes(el) || G.elementsOf(pb).includes(el));
+      // 同じ系統 → 親と同じ属性 → だれでも、の順に、ランクの高い方から探す
+      let cands = [];
+      for (const test of [(sp) => sp.line === line, shares, () => true]) {
+        for (const rank of ranks) { cands = pool(rank).filter(test); if (cands.length) break; }
+        if (cands.length) break;
+      }
       if (!cands.length) return null;
+      const elRank = (sp) => (G.elementsOf(sp).includes(pa.el) ? 0 : G.elementsOf(sp).includes(pb.el) ? 1 : 2);
       const score = (sp) => [
         sp.id === pa.id || sp.id === pb.id ? 1 : 0,          // 親と同じ種族はなるべく避ける
-        sp.el === pa.el ? 0 : sp.el === pb.el ? 1 : 2,      // 主の親の属性を優先
+        elRank(sp),                                          // 主の親の属性を優先
         Number(sp.id),
       ];
       cands.sort((s, t) => {
@@ -55,6 +62,12 @@
         return 0;
       });
       return cands[0].id;
+    },
+
+    // 進化先になる種族（配合では生まれない）
+    evolvedForms() {
+      if (!F._evolved) F._evolved = new Set(G.SpeciesOrder.flatMap((id) => G.evolutionTargets(id)));
+      return F._evolved;
     },
 
     // 配合できるか（できない理由の文、できるなら null）
@@ -105,11 +118,41 @@
       for (const id of a.moves.concat(b.moves)) if (!out.includes(id) && G.Moves[id] && G.Moves[id].inherit === false) out.push(id);
       return out;
     },
-    // 子の装備技：継承技（最大2）→ 子の初期技 の順で最大4つ
+    // 誕生後に子の技を選びなおす（配合の館の「技を選ぶ」）
+    //   選べるのは、親から受け継げる技（最大 INHERIT_MAX）と、子が今のレベルまでに覚える技。合わせて1〜持てる数（ランクで 4〜6つ）
+    //   親の技でも、子が自分で覚える技なら「子の技」として数える（受け継ぎの枠を使わない）
+    childOwnMoves(child) { return G.Monster.learnedUpTo(G.Species[child.speciesId], child.level); },
+    //   受け継いだ技は、親のときの強化段階（+1 など）のまま
+    setChildMoves(child, picks, parentMoves, parentStages = {}) {
+      const own = F.childOwnMoves(child);
+      const moves = [];
+      for (const id of picks) if (!moves.includes(id) && (own.includes(id) || parentMoves.includes(id))) moves.push(id);
+      const inherited = moves.filter((id) => !own.includes(id));
+      if (!moves.length || moves.length > G.Monster.maxMoves(child.speciesId) || inherited.length > INHERIT_MAX) return false;
+      child.moves = moves;
+      child.inheritedMoves = inherited;
+      F.pinChildMoves(child, parentStages);
+      G.Lineage.record(child);
+      return true;
+    },
+    // 子の技の強化段階：自分で覚える技は種族が覚えるレベルから、受け継いだ技は親の段階のまま
+    pinChildMoves(child, parentStages) {
+      child.moveLv = null;
+      G.MoveStage.pin(child);
+      for (const id of child.inheritedMoves) G.MoveStage.setStage(child, id, parentStages[id] || 1);
+    },
+    // 親の技の強化段階（両親とも持っていれば高い方）
+    parentStages(a, b) {
+      const out = {};
+      for (const p of [a, b]) for (const id of p.moves) out[id] = Math.max(out[id] || 1, G.MoveStage.stage(p, id));
+      return out;
+    },
+
+    // 子の装備技：継承技（最大2）→ 子の初期技 の順で、持てる数まで
     childMoves(speciesId, level, inherited) {
       const own = G.Monster.movesAtLevel(G.Species[speciesId], level);
       const moves = inherited.slice(0, INHERIT_MAX);
-      for (const id of own) if (moves.length < G.Monster.MAX_MOVES && !moves.includes(id)) moves.push(id);
+      for (const id of own) if (moves.length < G.Monster.maxMoves(speciesId) && !moves.includes(id)) moves.push(id);
       return moves;
     },
 
@@ -158,6 +201,8 @@
           how: 'fusion',
           where: '配合の館',
         });
+        const parentStages = F.parentStages(a, b);
+        F.pinChildMoves(child, parentStages);
 
         // --- 3) 系譜に親を記録 → 親を消費 → 子を配置 ---
         G.Lineage.record(a);
@@ -170,10 +215,13 @@
         if (res.recipe) G.Dex.recordRecipe(res.recipe);
         else (s.ruleFound || (s.ruleFound = {}))[G.FusionRecipes.pairKey(a.speciesId, b.speciesId)] = res.speciesId;
         s.fusionCount = (s.fusionCount || 0) + 1;
+        // 配合の記念に、経験値アイテム（生まれた子のランクで決まる）。生まれたばかりの子を育てやすくする
+        const gift = G.ItemDrops.fusion[G.Species[child.speciesId].rank];
+        if (gift) G.addItem(gift[0], gift[1]);
 
         const ri = G.rankIndex(G.Species[child.speciesId].rank);
         const tier = res.kind === 'rule' ? 'rule' : ri >= 7 ? 'super' : ri >= 5 ? 'rare' : 'recipe';
-        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
+        return { child, recipe: res.recipe, kind: res.kind, tier, dest, inheritedMoves: inherit, parentMoves: allowed, parentStages, gift, inheritedTrait: child.inheritedTrait, ivSource: iv.source };
       } catch (e) {
         // --- 失敗：親だけ消えた状態にならないよう、すべて元に戻す ---
         s.party.splice(0, s.party.length, ...backup.party);

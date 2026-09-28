@@ -102,7 +102,13 @@ body {
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 17px;
+  max-height: calc(100% - 24px); /* 道具やお店の品が多いときは、一覧（.menu-list）だけがスクロールする */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
+.menu > * { flex: none; }
+.menu > .menu-list { flex: 0 1 auto; min-height: 3em; overflow-y: auto; padding-right: 8px; }
 .menu.wide { min-width: 320px; max-width: 60%; }
 .menu-title { color: var(--accent); font-size: 14px; margin-bottom: 4px; }
 .menu-row { display: flex; align-items: center; padding: 2px 0; }
@@ -110,6 +116,10 @@ body {
 .menu-row.disabled { color: #6c7090; }
 .menu-row .soon { margin-left: auto; font-size: 11px; color: #6c7090; padding-left: 10px; }
 .menu-row .count { margin-left: auto; padding-left: 16px; }
+.use-qty { display: flex; align-items: center; gap: 10px; margin: 8px 4px 0; }
+.use-qty .qty-num { font-size: 20px; color: #ffd35a; min-width: 4em; text-align: center; }
+.use-qty .qty-arrow { color: #8a90b8; font-size: 12px; }
+.use-qty .count { margin-left: auto; font-size: 12px; color: #a8b0d0; }
 .menu-desc { margin-top: 8px; min-height: 2.8em; font-size: 14px; color: #d0d4ea; border-top: 1px solid #3a4068; padding-top: 6px; }
 .menu-empty { color: var(--muted); }
 .menu-hint { margin-top: 6px; font-size: 12px; color: var(--muted); text-align: right; }
@@ -238,7 +248,11 @@ kbd {
   font-size: 15px;
   overflow: hidden;
 }
-.scr-title { color: var(--accent); font-size: 17px; display: flex; gap: 14px; align-items: baseline; }
+/* 狭い画面では、全画面メニューを情報バー〜タッチボタンの上まで広げる（位置は js/ui/screens.js の fitLayer） */
+.ui-layer.full.expanded { position: fixed; left: 8px; right: 8px; z-index: 20; background: #14172e; }
+.ui-layer.battle.docked { position: fixed; width: auto; bottom: auto; z-index: 20; font-size: 15px; background: #14172e; padding: 6px 10px; }
+.ui-layer.battle.docked .bt-hint { display: none; } /* タッチ操作ではキーの説明はいらない */
+.scr-title { color: var(--accent); font-size: 17px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; row-gap: 4px; }
 .scr-title .tab { font-size: 13px; color: var(--muted); padding: 1px 8px; border: 1px solid #3a4068; border-radius: 4px; }
 .scr-title .tab.on { color: var(--text); border-color: var(--accent); }
 .scr-body { flex: 1; min-height: 0; }
@@ -330,12 +344,18 @@ table.moves td { padding: 2px 4px 2px 0; }
   padding: 8px 12px;
   font-size: 16px;
 }
-.bt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px; }
+.bt-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 6px; }
+.bt-cmd.move .mv-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.mv-plus { color: #ffd35a; font-size: 11px; margin-left: 1px; }
+.bt-grid.main { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 4px; }
 .bt-cmd { display: flex; align-items: center; padding: 2px 4px; border-radius: 4px; white-space: nowrap; }
 .bt-cmd .cursor { width: 1.2em; color: var(--accent); flex: none; }
 .bt-cmd.sel { background: rgba(255, 211, 90, 0.1); }
 .bt-cmd.disabled { color: #6c7090; }
-.bt-cmd.move { font-size: 14px; }
+.bt-cmd.move { font-size: 13px; padding: 2px 2px; }
+.bt-cmd.move .cursor { width: 0.8em; }
+.bt-cmd.move small { font-size: 10px; }
+.bt-cmd.move .eff { margin: 0 1px; }
 .bt-cmd.move .mv-name { flex: 1; overflow: hidden; text-overflow: ellipsis; }
 .bt-cmd.move .badge.el { font-size: 10px; padding: 0 3px; }
 .bt-info { font-size: 12px; color: #cfd3ea; margin-top: 4px; border-top: 1px solid #3a4068; padding-top: 3px; }
@@ -446,6 +466,27 @@ table.moves td { padding: 2px 4px 2px 0; }
 /* ---------- 育成情報（種族値・個体値・努力値） ---------- */
 .bar.ev i { background: #d070f0; }
 .muted { color: var(--muted); }
+.bt-info .charged { color: var(--accent); font-weight: normal; }
+.badge.el.upper { box-shadow: 0 0 0 1px #ffd35a inset; }
+.eff { font-weight: normal; font-size: 12px; }
+.eff.up { color: #ff9a5a; }
+.eff.down { color: #8a9ac0; }
+.eff.stab { color: #8ad0ff; }
+.bt-cmd.move .eff { margin-right: 4px; }
+
+/* ---------- 配合表 ---------- */
+.rc-body { display: flex; flex-direction: column; gap: 6px; }
+.rc-list { flex: 1; overflow-y: auto; min-height: 0; }
+.rc-row { display: flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 4px; font-size: 13px; white-space: nowrap; }
+.rc-row.sel { background: rgba(255, 211, 90, 0.12); outline: 1px solid var(--accent); }
+.rc-row.unknown { color: var(--muted); }
+.rc-row .mon-img.icon, .rc-row .dex-unknown { width: 28px; height: 28px; flex: none; }
+.rc-name { min-width: 7em; overflow: hidden; text-overflow: ellipsis; }
+.rc-name.result { min-width: 8em; font-weight: bold; }
+.rc-op { color: var(--muted); padding: 0 2px; }
+.rc-row .badge.rank { margin-left: 2px; }
+.rc-detail { border-top: 1px solid #353c63; padding-top: 4px; min-height: 3.2em; font-size: 13px; line-height: 1.5; }
+@media (max-width: 640px) { .rc-name { min-width: 0; } .rc-name.result { min-width: 0; } }
 .nowrap { white-space: nowrap; }
 .info-body { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
 .info-head { display: flex; gap: 10px; align-items: center; }
@@ -499,6 +540,14 @@ table.moves td { padding: 2px 4px 2px 0; }
   .info-table .bar, .ev-row .bar { display: none; }
   .info-head .portrait img.big { width: 48px; height: 48px; }
   .scr-title .tab { white-space: nowrap; }
+  /* 中央に出る小窓（お店・せってい・セーブ）とメニューは、画面の幅に収める */
+  .ui-layer.menu.center { min-width: 0; width: calc(100% - 24px); }
+  .menu.wide { min-width: 0; max-width: none; left: 12px; }
+  /* 一覧＋詳細の2列は、縦に並べる（上：一覧、下：詳細） */
+  .two-col { grid-template-columns: 1fr; grid-template-rows: minmax(0, 2fr) minmax(0, 3fr); gap: 8px; }
+  .mon-detail { border-top: 1px solid #3a4068; padding-top: 6px; }
+  .ui-layer.full { padding: 8px 10px; font-size: 14px; }
+  .scr-hint { font-size: 11px; }
 }
 
 .hidden { display: none !important; }
@@ -506,6 +555,83 @@ table.moves td { padding: 2px 4px 2px 0; }
 @media (max-width: 640px) {
   body { padding: 8px 16px; }
   #hud { font-size: 14px; gap: 4px 12px; }
-  #message { font-size: 15px; min-height: 96px; }
+  #message { font-size: 15px; min-height: 120px; } /* バトルのコマンドもここに出るので、少し高めに */
   .hud-loc { margin-left: 0; }
 }
+.catch-rate { margin-left: auto; margin-right: 10px; font-size: 12px; color: #c8d0f0; }
+.catch-rate b { color: #ffd35a; font-size: 14px; }
+
+/* =====================================================================
+   枠のサイズの統一：中身（文字数・行数）で枠の大きさが変わらないようにする
+   ・メニュー（小）          幅 200px 固定（高さは項目数で決まる）
+   ・右のパネル（もちもの・主人公）  幅 58%・高さは画面いっぱいで固定。一覧だけがスクロールし、説明と操作説明は下にそろう
+   ・中央の小窓（お店・セーブ・せってい・技を忘れる） 幅 460px・高さ 76% で固定
+   ・バトルのコマンド          幅 47%・高さ 44% で固定（中身が多いときは中だけスクロール）
+   ・メッセージ欄            高さ固定（3行）
+   ・説明欄（道具・技・捕獲など）   高さ固定（2〜3行。はみ出したら中だけスクロール）
+   ・1行の名前・項目は、はみ出したら「…」で切る。説明文は折り返す
+   ===================================================================== */
+.menu { width: 200px; min-width: 0; }
+.menu.wide { width: 58%; min-width: 0; max-width: none; height: calc(100% - 24px); }
+.ui-layer.menu.center { width: min(460px, calc(100% - 24px)); min-width: 0; height: 76%; }
+.menu.wide > .menu-list { flex: 1 1 auto; }
+.menu.wide > .menu-hint { margin-top: auto; padding-top: 6px; }
+.menu-desc { height: 4.6em; min-height: 0; overflow-y: auto; flex: none; }
+.menu-row { white-space: nowrap; min-width: 0; }
+.menu-row > .count, .menu-row > .catch-rate, .menu-row > .check, .menu-row > .cursor { flex: none; }
+.mon-row-main > div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dex-row { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.detail-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#message { height: 118px; min-height: 0; overflow-y: auto; }
+.ui-layer.battle { height: 44%; max-height: none; }
+.bt-info { height: 4.2em; overflow-y: auto; }
+@media (max-width: 640px) {
+  #message { height: 128px; min-height: 0; }
+  .menu.wide { width: auto; left: 12px; }
+}
+.bt-info, .menu-desc, #message { scrollbar-width: thin; }
+.ui-layer.battle { display: flex; flex-direction: column; }
+.ui-layer.battle > * { flex: none; }
+.ui-layer.battle > .bt-hint { margin-top: auto; padding-top: 2px; }
+/* スマホ（コマンドがメッセージ欄に重なるとき）：説明は1行にして、はみ出したら「…」 */
+.ui-layer.battle.docked .bt-info { height: auto; overflow: hidden; }
+.ui-layer.battle.docked .bt-info small, .ui-layer.battle.docked .bt-info > * { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ui-layer.battle.docked .bt-info br { display: none; }
+@media (max-width: 640px) { .ui-layer.menu.center { height: calc(100% - 16px); } }
+/* スマホ：画面が小さいので、メニューの字と説明欄を少し小さくし、キー操作の説明は出さない（A・Bボタンで操作する） */
+@media (max-width: 640px) {
+  .menu { font-size: 15px; padding: 6px 10px; }
+  .menu-desc { height: 3.2em; font-size: 13px; margin-top: 4px; padding-top: 4px; }
+  .menu-hint { display: none; }
+}
+/* 図鑑の番号（No.001）：名前より少しだけ小さく、読みやすい色で */
+.dex-no { font-size: 0.9em; color: #c8cce8; margin-right: 2px; font-variant-numeric: tabular-nums; }
+/* 一覧の行は縮めない（はみ出しは一覧のスクロールで見る） */
+.mon-list > *, .rc-list > *, .menu-list > * { flex: none; }
+/* 図鑑の一覧：名前だけを「…」で切り、番号と印は必ず見せる。一覧の列を少し広く */
+.dex-row { overflow: visible; text-overflow: clip; }
+.dex-row > .dex-no, .dex-row > .tag, .dex-row > img, .dex-row > .dex-unknown { flex: none; }
+.dex-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.two-col.dex-cols, .scr-body.two-col:has(.dex-list) { grid-template-columns: minmax(200px, 42%) 1fr; }
+@media (max-width: 640px) { .scr-body.two-col:has(.dex-list) { grid-template-columns: 1fr; } }
+/* =====================================================================
+   バトルのコマンド枠（元のレイアウト：自分の幻獣の情報は右下）
+   ・枠は自分の情報の下に、横長で固定（上 70% 〜 下端、幅 60%）。自分の幻獣の絵（左下）とは重ならない
+   ・コマンドは 4列×2行、技は 2列（最大4行）、幻獣の入れかえは 2列にして、行数を減らす
+   ・キー操作の説明は画面下の操作説明にあるので、枠の中には出さない
+   ===================================================================== */
+.ui-layer.battle { top: 70%; bottom: 8px; height: auto; width: 60%; max-height: none; padding: 6px 12px; }
+.ui-layer.battle > .bt-hint { display: none; }
+.bt-grid.main { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.bt-grid:not(.main) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 8px; }
+.bt-cmd.move { padding: 0 2px; line-height: 1.35; }
+.bt-list2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 8px; }
+.bt-list2 .mon-row { padding: 1px 4px; gap: 4px; }
+.bt-list2 .bar { width: 50px; }
+.bt-info { height: 3.3em; }
+.ui-layer.battle .menu-row { padding: 0; }
+.mon-row-title { display: flex; align-items: baseline; gap: 4px; }
+.mon-row-title > * { flex: none; }
+.mon-row-title > .mon-row-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* バトル：説明欄は、枠の残りの高さを使う（枠の大きさは変わらない） */
+.ui-layer.battle > .bt-info { flex: 1 1 auto; height: auto; min-height: 2.4em; }

@@ -49,7 +49,41 @@
     ';': { base: C.tall, d: C.tallD, l: C.tallL },
     'G': { base: '#2f6a32', d: '#1e4a24', l: '#4f8f45' },
     'A': { base: '#6a5a4e', d: '#4a3a32', l: '#9a7a5e' },
+    'E': { base: '#c8dcec', d: '#8aa8c8', l: '#f4faff' },
   };
+
+  // ---------- 北の氷原 ----------
+  function snow(ctx, r) {
+    P(ctx, 0, 0, 16, 16, '#e8f0f8');
+    for (let i = 0; i < 6; i++) P(ctx, Math.floor(r() * 15), Math.floor(r() * 15), 2, 1, r() < 0.5 ? '#d0dcea' : '#ffffff');
+    if (r() < 0.3) P(ctx, 3 + Math.floor(r() * 9), 3 + Math.floor(r() * 9), 1, 1, '#a8c0d8');
+  }
+  function ice(ctx, r, frame) {
+    P(ctx, 0, 0, 16, 16, '#9ccbe8');
+    P(ctx, 0, 0, 16, 1, '#c8e4f4');
+    for (let i = 0; i < 3; i++) {
+      const x = Math.floor(r() * 12), y = 2 + Math.floor(r() * 12);
+      P(ctx, x, y, 4, 1, '#d8eefa'); P(ctx, x + 1, y + 1, 2, 1, '#7ab0d8');
+    }
+    P(ctx, (frame * 4 + 3) % 14, 7, 2, 1, '#ffffff'); // きらめき
+  }
+  function snowpine(ctx, r) {
+    snow(ctx, r);
+    P(ctx, 3, 14, 10, 2, 'rgba(40,60,90,0.25)');
+    P(ctx, 7, 12, 2, 4, '#5a3a1e');
+    const layers = [[1, 6], [4, 9], [7, 12], [10, 14]];
+    for (const [y, w] of layers) {
+      P(ctx, 8 - Math.floor(w / 2), y, w, 3, '#1f4a3a');
+      P(ctx, 8 - Math.floor(w / 2) + 1, y, w - 2, 1, '#f4faff'); // 枝につもった雪
+    }
+    P(ctx, 7, 0, 2, 2, '#f4faff');
+  }
+  function icerock(ctx, r) {
+    snow(ctx, r);
+    P(ctx, 2, 13, 12, 2, 'rgba(40,60,90,0.25)');
+    P(ctx, 3, 5, 10, 9, '#6aa0cc'); P(ctx, 4, 4, 8, 1, '#6aa0cc');
+    P(ctx, 4, 5, 8, 7, '#a8d4f0'); P(ctx, 5, 5, 3, 3, '#e8f6ff'); P(ctx, 9, 8, 2, 3, '#e8f6ff');
+  }
 
   // ---------- 港・火山 ----------
   function sand(ctx, r) {
@@ -391,6 +425,7 @@
     'g': forestground, 'G': (ctx, r, f, v) => tallgrass(ctx, r, f, v, TALL.G), 'Y': pine, 'h': bridge,
     'K': cliff, 'M': cavemouth, 'O': forestrock, 'v': forestflowers,
     's': sand, 'a': ash, 'A': (ctx, r, f, v) => tallgrass(ctx, r, f, v, TALL.A), 'l': lava, 'n': obsidian,
+    'e': snow, 'E': (ctx, r, f, v) => tallgrass(ctx, r, f, v, TALL.E), 'i': ice, 'P': snowpine, 'I': icerock,
     'f': cavefloor, 'z': caverough, 'R': cavewall, 'C': crystal, 'B': boulder, 'W': cavewater,
     'L': (ctx, r, f, v) => stairs(ctx, r, f, v, true), 'U': (ctx, r, f, v) => stairs(ctx, r, f, v, false), 'X': sealgate,
   };

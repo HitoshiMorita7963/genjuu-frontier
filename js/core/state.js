@@ -17,6 +17,8 @@
         ruleFound: {},    // 汎用ルールで試した組み合わせ { "親ID+親ID": 子の種族ID }
         lineage: {},      // 親子系譜 { 個体ID: { speciesId, name, level, generation, parentInstanceIds } }
         playTime: 0,
+        tamer: { exp: 0 }, // 幻獣使いレベルの経験値（js/systems/tamer.js）
+        visited: {},       // 行ったことのあるマップ { マップID: true }（スキル『ワープ』）
       };
     },
   };
@@ -29,6 +31,8 @@
 
   G.addItem = (id, n = 1) => {
     const items = G.state.items;
+    // なくならない道具（絆石）は、1つ持っていれば何度でも使える
+    if (G.Items[id] && G.Items[id].infinite) { if (n > 0) items[id] = 1; return; }
     items[id] = (items[id] || 0) + n;
     if (items[id] <= 0) delete items[id];
   };

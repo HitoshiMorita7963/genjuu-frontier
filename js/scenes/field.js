@@ -78,7 +78,9 @@
     F.particles = [];
     F.lastBump = null;
     Object.assign(G.state.player, { map: id, x, y, dir });
+    G.Tamer.visit(id); // スキル『ワープ』の行き先に使う
     F.pendingEnter = true;
+    F.dropsRefill = true; // 落とし物の補充（F.updateDrops）
     G.UI.refresh();
     G.Audio.bgm(F.bgmName());
     if (m.autosave) G.autoSave();
@@ -113,6 +115,9 @@
   F.npcAt = (x, y) => F.npcs.find((n) => (n.x === x && n.y === y) || (n.moving && n.toX === x && n.toY === y));
   F.signAt = (x, y) => F.map.signs.find((s) => s.x === x && s.y === y);
   F.itemAt = (x, y) => F.map.items.find((it) => it.x === x && it.y === y && !G.hasFlag(it.flag));
+  // フィールドの落とし物（一定時間ごとに現れる道具。G.state.fieldDrops[マップID] = { next, items: [{ x, y, item, count }] }）
+  F.drops = () => { const d = G.state.fieldDrops && G.state.fieldDrops[F.map.id]; return d ? d.items : []; };
+  F.dropAt = (x, y) => F.drops().find((d) => d.x === x && d.y === y);
   F.objectAt = (x, y) => F.map.objects.find((o) => (!o.visible || o.visible()) && x >= o.x && x < o.x + (o.w || 1) && y >= o.y && y < o.y + (o.h || 1));
   F.buildingAt = (x, y) => F.map.buildings.find((b) => x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h);
   F.warpAt = (x, y) => F.map.warps.find((w) => x >= w.x && x < w.x + (w.w || 1) && y >= w.y && y < w.y + (w.h || 1) &&
@@ -128,7 +133,7 @@
     const m = F.map;
     if (x < 0 || y < 0 || x >= m.w || y >= m.h) return true;
     if (F.solid[y * m.w + x]) return true;
-    if (F.itemAt(x, y)) return true;
+    if (F.itemAt(x, y) || F.dropAt(x, y)) return true;
     for (const n of F.npcs) {
       if (n === self) continue;
       if ((n.x === x && n.y === y) || (n.moving && n.toX === x && n.toY === y)) return true;
@@ -187,6 +192,7 @@
     const p = F.p;
     F.lastBump = null;
     Object.assign(G.state.player, { x: p.x, y: p.y, dir: p.dir });
+    G.Tamer.onStep(); // 歩数で効くスキル（気配消し・呼び寄せ）
 
     const w = F.warpAt(p.x, p.y);
     if (w) {
@@ -211,10 +217,17 @@
       F.rustle(p.x, p.y);
       const enc = F.map.encounter;
       const canFight = G.state.party.some((m) => m.hp > 0);
+      // スキル：呼び寄せ（出会いやすい）・気配消し（先頭の幻獣より弱い幻獣は出てこない）
+      const skill = G.Tamer.stepSkill();
+      const rate = G.Encounters[enc] ? G.Encounters[enc].rate * (skill === 'lure' ? G.TamerConfig.SKILL.LURE_RATE : 1) : 0;
       if (F.safeSteps > 0) F.safeSteps--; // 戦闘直後の数歩は遭遇しない
-      else if (enc && canFight && G.hasFlag('seenTallGrass') && Math.random() < G.Encounters[enc].rate) {
-        F.startWildBattle(enc);
-        return true;
+      else if (enc && canFight && G.hasFlag('seenTallGrass') && Math.random() < rate) {
+        const roll = G.rollEncounter(enc);
+        const lead = G.state.party.find((m) => m.hp > 0);
+        if (!(skill === 'repel' && lead && roll.level < lead.level)) {
+          F.startWildBattle(enc, roll);
+          return true;
+        }
       }
       if (!G.hasFlag('seenTallGrass')) {
         G.setFlag('seenTallGrass');
@@ -229,9 +242,9 @@
   };
 
   // ---------------- バトル ----------------
-  F.startWildBattle = function (key) {
+  F.startWildBattle = function (key, rolled) {
     const e = G.Encounters[key];
-    const r = G.rollEncounter(key);
+    const r = rolled || G.rollEncounter(key);
     const wild = G.Monster.create(r.speciesId, r.level, { how: 'wild', where: e.where });
     G.Events.run(async () => {
       G.Audio.se('encounter');
@@ -246,13 +259,7 @@
   F.afterBattle = async function (result) {
     F.safeSteps = 3;
     if (result !== 'lose') {
-      // レベルが上がった幻獣の進化判定（場所条件は現在のマップの出現区分で判定）
-      const place = F.map.place || F.map.encounter;
-      for (const m of G.Battle.lastLeveled || []) {
-        if (m.hp <= 0 || !G.state.party.includes(m)) continue;
-        const to = G.Growth.evolutionTarget(m, { place });
-        if (to) await G.Growth.evolve(m, to, G.E);
-      }
+      await F.checkEvolutions(G.Battle.lastLeveled || [], G.E);
       return;
     }
     const lost = Math.floor(G.state.money / 4);
@@ -267,6 +274,77 @@
       `幻獣たちは元気になりました。${lost > 0 ? `\n（あわてて ${lost}G 落としてしまった……）` : ''}`,
       '無理をしてはいけませんよ。',
     ]);
+  };
+
+  // レベルが上がった幻獣の進化判定（場所条件は現在のマップの出現区分で判定）。バトルのあと・経験値アイテムのあと
+  F.checkEvolutions = async function (mons, E) {
+    const place = F.map.place || F.map.encounter;
+    for (const m of mons) {
+      if (m.hp <= 0 || !G.state.party.includes(m)) continue;
+      const to = G.Growth.evolutionTarget(m, { place });
+      if (to) await G.Growth.evolve(m, to, E);
+      else {
+        const hint = G.Growth.branchHint(m, { place });
+        if (hint) await E.narrate(hint);
+      }
+    }
+  };
+
+  // ---------------- 落とし物 ----------------
+  //   野生の幻獣が出るマップに、一定時間（プレイ時間）ごとに道具が現れる。取っても、時間がたてばまた現れる
+  //   マップに入るたびに 3〜5個 になるまで補充し、いるあいだも一定時間ごとに増える（上限 5個）
+  F.updateDrops = function () {
+    if (!F.map.encounter || !G.state) return;
+    const cfg = G.ItemDrops.field;
+    const now = G.state.playTime;
+    const all = G.state.fieldDrops || (G.state.fieldDrops = {});
+    const gap = () => cfg.interval[0] + Math.random() * (cfg.interval[1] - cfg.interval[0]);
+    const d = all[F.map.id] || (all[F.map.id] = { next: now + gap(), items: [] });
+    // マップに入った直後：3〜5個になるまで補充する
+    if (F.dropsRefill) {
+      F.dropsRefill = false;
+      const want = cfg.onEnter[0] + Math.floor(Math.random() * (cfg.onEnter[1] - cfg.onEnter[0] + 1));
+      for (let guard = 0; d.items.length < want && guard < 10; guard++) F.addDrop(d);
+      d.next = now + gap();
+    }
+    for (let guard = 0; now >= d.next && guard < 10; guard++) {
+      if (d.items.length >= cfg.max) { d.next = now + gap(); break; }
+      F.addDrop(d);
+      d.next += gap();
+    }
+  };
+  F.addDrop = function (d) {
+    const spot = F.dropSpot();
+    if (!spot) return;
+    const [item, , count] = G.ItemDrops.roll(G.ItemDrops.field.table);
+    d.items.push({ x: spot.x, y: spot.y, item, count });
+  };
+  // 落とし物を置ける場所：主人公から歩いて行ける、何もない床（出入口・イベントの場所・人のいる場所とその近くは避ける）
+  F.dropSpot = function () {
+    const m = F.map, p = F.p;
+    const ng = new Set();
+    const ban = (x, y, r = 0) => { for (let j = -r; j <= r; j++) for (let i = -r; i <= r; i++) ng.add((y + j) * m.w + x + i); };
+    for (const w of m.warps) for (let j = 0; j < (w.h || 1); j++) for (let i = 0; i < (w.w || 1); i++) ban(w.x + i, w.y + j, 1);
+    for (const t of m.triggers || []) for (let j = 0; j < (t.h || 1); j++) for (let i = 0; i < (t.w || 1); i++) ban(t.x + i, t.y + j);
+    for (const n of m.npcs) ban(n.x, n.y, 1);
+    for (const n of F.npcs) ban(n.x, n.y);
+    ban(p.x, p.y, 1);
+    // 主人公の位置から歩いて行ける床を探す
+    const seen = new Uint8Array(m.w * m.h);
+    const q = [[p.x, p.y]];
+    seen[p.y * m.w + p.x] = 1;
+    const cands = [];
+    while (q.length) {
+      const [x, y] = q.shift();
+      if (!ng.has(y * m.w + x) && !F.itemAt(x, y) && !F.dropAt(x, y)) cands.push({ x, y });
+      for (const v of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const nx = x + v[0], ny = y + v[1];
+        if (nx < 0 || ny < 0 || nx >= m.w || ny >= m.h || seen[ny * m.w + nx]) continue;
+        seen[ny * m.w + nx] = 1;
+        if (!F.solid[ny * m.w + nx] && !F.itemAt(nx, ny) && !F.signAt(nx, ny)) q.push([nx, ny]);
+      }
+    }
+    return cands.length ? cands[Math.floor(Math.random() * cands.length)] : null;
   };
 
   // マップごとのBGM（map.bgm で個別指定もできる）
@@ -310,6 +388,16 @@
     const sign = F.signAt(x, y);
     if (sign) { G.Events.run((E) => E.narrate(sign.text)); return; }
 
+    const drop = F.dropAt(x, y);
+    if (drop) {
+      const list = F.drops();
+      list.splice(list.indexOf(drop), 1);
+      G.Events.run(async (E) => {
+        await E.narrate('何か 落ちている……！');
+        await E.give(drop.item, drop.count || 1);
+      });
+      return;
+    }
     const item = F.itemAt(x, y);
     if (item) {
       G.Events.run(async (E) => {
@@ -393,6 +481,7 @@
   F.update = function (dt) {
     F.t += dt;
     G.state.playTime += dt;
+    if (!F.p.moving && !(F.trans && F.trans.phase === 'out')) F.updateDrops(); // 画面が明るくなる前に補充しておく
 
     for (const pt of F.particles) { pt.life -= dt; pt.x += pt.vx * dt; pt.y += pt.vy * dt; pt.vy += 160 * dt; }
     F.particles = F.particles.filter((pt) => pt.life > 0);
@@ -475,6 +564,7 @@
     for (const it of m.items) {
       if (!G.hasFlag(it.flag)) G.Sprites.drawItem(ctx, it.x * T - camX, it.y * T - camY, F.t);
     }
+    for (const d of F.drops()) G.Sprites.drawDrop(ctx, d.x * T - camX, d.y * T - camY, F.t + d.x * 0.7, (G.Items[d.item] || {}).color);
 
     // キャラクター（手前ほど後に描く）
     const actors = F.npcs.map((n) => ({ m: n, look: n.look })).concat([{ m: F.p, look: G.Story.playerLook(G.state.player.gender) }]);

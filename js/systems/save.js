@@ -57,14 +57,21 @@
     const out = Object.assign(base, st);
     out.player = Object.assign(base.player, st.player || {});
     for (const k of ['items', 'flags', 'dex', 'recipesFound', 'ruleFound', 'lineage']) out[k] = st[k] || {};
+    // 幻獣使いレベルがなかったころのセーブ：図鑑・レシピ・物語の進み具合から経験値を見積もる
+    if (!st.tamer) out.tamer = { exp: G.Tamer.estimate(out) };
+    if (!st.visited) out.visited = G.Tamer.estimateVisited(out);
+    // 絆石はなくならない道具になった：持っていた数に関係なく1つ（博士からもらった後なら、使い切っていても）
+    if (out.items.bondstone || out.flags.gotStarter) out.items.bondstone = 1;
     for (const k of ['party', 'storage']) out[k] = (st[k] || []).filter((m) => m && G.Species[m.speciesId]);
     // ver.2 以前の個体：個体ボーナス（0〜15）を個体値（0〜31）に換算し、努力値を 0 で追加（能力値はほぼ変わらない）
     for (const m of out.party.concat(out.storage)) {
       G.Individual.ensure(m);
+      if (!m.moveLv) G.MoveStage.pin(m); // 技の強化の記録がなかったころ：種族が覚えるレベル（なければ今のレベル）で覚えたことにする
       const max = G.Monster.stats(m);
       m.hp = Math.min(m.hp, max.hp);
       m.mp = Math.min(m.mp, max.mp);
     }
+    for (const m of out.storage) G.Monster.healFull(m); // 預かり所の幻獣は、いつも HP・MP 満タン
     // 個体IDの通し番号が既存の個体と重ならないようにする
     out.uidSeq = Math.max(out.uidSeq || 0, ...out.party.concat(out.storage).map((m) => m.instanceId || 0),
       ...Object.keys(out.lineage).map(Number));

@@ -1,7 +1,7 @@
 // =====================================================================
 //  個体の育成：種族値・個体値・努力値
 // =====================================================================
-//  種族値（G.Species[id].stats）… 種族そのものの能力。全個体共通。js/data/speciesStats.js
+//  種族値（G.Species[id].stats）… 種族そのものの能力。全個体共通。正本は data/monster_frontier.json（speciesStats）
 //  個体値（ivHp 〜 ivSpecialDefense）… 生まれつきの才能 0〜31。レベルアップでの伸び方に効く
 //  努力値（evHp 〜 evSpecialDefense）… プレイヤーが育てた結果。戦闘・訓練所・特訓アイテムで増える
 //
@@ -26,28 +26,6 @@
   const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
   const randIv = () => G.Util.randInt(C.IV_MAX + 1);
 
-  // ---------------- 種族値を種族データに取りこむ ----------------
-  (function applySpeciesStats() {
-    const T = G.SpeciesStatTable || {};
-    const report = G.DataReport || { errors: [], warnings: [] };
-    for (const id of G.SpeciesOrder) {
-      const sp = G.Species[id];
-      const row = T[id];
-      if (!row) { report.errors.push(`${id} ${sp.name}: 種族値が未設定です（js/data/speciesStats.js）`); continue; }
-      sp.stats = {};
-      for (const k of KEYS) {
-        if (!(row[k] > 0)) report.errors.push(`${id} ${sp.name}: 種族値「${NAMES[k]}」が不正です`);
-        sp.stats[k] = row[k] || 1;
-      }
-      sp.statTotal = KEYS.reduce((a, k) => a + sp.stats[k], 0);
-      sp.evYield = {};
-      for (const [k, v] of Object.entries(row.ev || {})) {
-        if (!IV_FIELD[k]) report.errors.push(`${id} ${sp.name}: 努力値報酬の能力「${k}」が不正です`);
-        else sp.evYield[k] = v;
-      }
-    }
-  })();
-
   const I = G.Individual = {
     KEYS, IV_FIELD, EV_FIELD, NAMES,
 
@@ -70,7 +48,8 @@
     // 個体値による成長補正（段階補正 ＋ 1ポイントごとの微調整）
     ivGrowth(iv) { return I.tier(iv).mul + (iv - C.IV_MAX / 2) * C.IV_FINE; },
     rank(iv) { return C.IV_RANKS.find((r) => iv <= r.max) || C.IV_RANKS[C.IV_RANKS.length - 1]; },
-    appraised() { return G.hasFlag(C.APPRAISAL_FLAG); },
+    // 個体値の数値と評価が見られるか：鑑定屋で鑑定してもらった、または 幻獣使いのスキル『鑑定眼』を覚えた
+    appraised() { return G.hasFlag(C.APPRAISAL_FLAG) || !!(G.Tamer && G.state && G.Tamer.hasSkill('eye')); },
 
     // ---------------- 努力値 ----------------
     ev(m, k) { return m[EV_FIELD[k]] || 0; },

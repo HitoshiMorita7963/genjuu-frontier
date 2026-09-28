@@ -75,7 +75,7 @@
           ? `<div class="qty-box">${G.Items[cur].name} × <b>${this.qty}</b>　＝　<b>${this.price(cur) * this.qty} G</b>` +
             `<br><small>↑↓：±1　←→：±10　Z：${this.tab === 'buy' ? '買う' : '売る'}　X：やめる</small></div>` : '';
         return `<div class="scr-title">${esc(shop.name)} ${tabs}<span class="shop-money">所持金 ${G.state.money.toLocaleString()} G</span></div>` +
-          rows + qtyBox +
+          `<div class="menu-list">${rows}</div>` + qtyBox +
           `<div class="menu-desc">${this.note ? esc(this.note) : cur ? G.Items[cur].desc : ''}</div>` +
           '<div class="menu-hint">↑↓：えらぶ　←→：買う／売る　Z：けってい　X：でる</div>';
       },

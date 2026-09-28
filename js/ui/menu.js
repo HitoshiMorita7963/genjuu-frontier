@@ -9,7 +9,9 @@
     { id: 'monsters', label: '幻獣' },
     { id: 'items', label: 'もちもの' },
     { id: 'status', label: '主人公' },
+    { id: 'skills', label: 'スキル' },
     { id: 'dex', label: '図鑑' },
+    { id: 'recipes', label: '配合表' },
     { id: 'save', label: 'セーブ' },
     { id: 'settings', label: 'せってい' },
     { id: 'close', label: 'とじる' },
@@ -36,7 +38,9 @@
             if (e.id === 'monsters') G.Screens.open(G.UIScreens.party());
             if (e.id === 'items') G.Screens.open(G.UIScreens.items());
             if (e.id === 'status') G.Screens.open(G.UIScreens.status());
+            if (e.id === 'skills') G.Screens.open(G.UIScreens.skills());
             if (e.id === 'dex') G.Screens.open(G.UIScreens.dex());
+            if (e.id === 'recipes') G.Screens.open(G.UIScreens.recipeBook());
             if (e.id === 'save') G.Screens.open(G.UIScreens.save());
             if (e.id === 'settings') G.Screens.open(G.UIScreens.settings());
           }
@@ -50,21 +54,146 @@
       };
     },
 
+    // 幻獣使いのスキル（幻獣使いレベルで覚える）。ワープは、行き先を選ぶ
+    skills() {
+      return {
+        layout: 'menu wide',
+        sel: 0,
+        mode: 'list', // list | warp | radar
+        wsel: 0,
+        note: '',
+        update(In) {
+          const r = () => G.Screens.render();
+          if (this.mode === 'radar') {
+            if (In.consume('cancel') || In.consume('confirm')) { this.mode = 'list'; r(); }
+            return;
+          }
+          if (this.mode === 'warp') {
+            const spots = G.Tamer.warpSpots();
+            if (spots.length && In.consume('up')) { this.wsel = cycle(this.wsel, spots.length, -1); r(); }
+            if (spots.length && In.consume('down')) { this.wsel = cycle(this.wsel, spots.length, 1); r(); }
+            if (In.consume('cancel')) { this.mode = 'list'; r(); return; }
+            if (In.consume('confirm') && spots.length) {
+              const w = spots[this.wsel];
+              G.Screens.closeAll();
+              G.UI.toast(`${w.name}へ ワープ！`);
+              G.Field.warp(w.map, w.x, w.y, w.dir);
+            }
+            return;
+          }
+          const list = G.TamerSkills;
+          if (In.consume('up')) { this.sel = cycle(this.sel, list.length, -1); this.note = ''; r(); }
+          if (In.consume('down')) { this.sel = cycle(this.sel, list.length, 1); this.note = ''; r(); }
+          if (In.consume('cancel')) return G.Screens.close();
+          if (In.consume('confirm')) {
+            const s = list[this.sel];
+            if (!G.Tamer.hasSkill(s.id)) this.note = `幻獣使いLv${s.level}で 覚える スキルだ。`;
+            else this.use(s);
+            r();
+          }
+        },
+        // スキルを使う（ワープ・レーダーは、次の画面へ）
+        use(s) {
+          const T = G.Tamer, F = G.Field;
+          const outdoor = G.MapData[G.state.player.map] && G.MapData[G.state.player.map].encounter;
+          if (s.id === 'warp') { this.mode = 'warp'; this.wsel = 0; return; }
+          if (s.id === 'radar') {
+            if (!outdoor) { this.note = 'ここには 野生の幻獣が いないようだ。'; return; }
+            this.mode = 'radar'; this.wsel = 0; return;
+          }
+          if (s.id === 'escape') {
+            const w = T.escapeSpot(G.state.player.map);
+            if (!w) { this.note = 'ここでは 使えない。'; return; }
+            G.Screens.closeAll();
+            G.UI.toast(`${w.name}の 入口へ もどった！`);
+            F.warp(w.map, w.x, w.y, w.dir);
+            return;
+          }
+          if (s.id === 'repel' || s.id === 'lure') {
+            T.startStepSkill(s.id);
+            this.note = `${s.name}を 使った！（${G.TamerConfig.SKILL.STEPS}歩のあいだ 効く）`;
+            return;
+          }
+          if (s.id === 'eye') { this.note = '鑑定眼は 覚えていれば いつも効く。仲間の 育成情報で 才能の数値が、絆石を 選ぶ画面で 相手の才能が 見える。'; return; }
+          if (s.id === 'heal') {
+            const wait = T.healWait();
+            if (wait > 0) { this.note = `まだ 使えない。（あと ${Math.floor(wait / 60)}分${wait % 60}秒）`; return; }
+            G.Party.healAll();
+            (G.state.skillCd || (G.state.skillCd = {})).heal = G.state.playTime + G.TamerConfig.SKILL.HEAL_COOLDOWN;
+            G.Audio.se('heal');
+            G.UI.refresh();
+            this.note = 'あたたかい光が パーティを 包んだ……\n幻獣たちは すっかり 元気になった！';
+          }
+        },
+        html() {
+          if (this.mode === 'radar') {
+            // 幻獣レーダー：この地域に出る幻獣（見たことがなければ ？？？？）。仲間にしていない種族に印
+            const enc = G.Encounters[G.MapData[G.state.player.map].encounter];
+            const ids = [...new Set(enc.table.map((r) => r[0]))].sort((a, b) => G.Species[a].no - G.Species[b].no);
+            const d = G.state.dex;
+            const rows = ids.map((id) => {
+              const e = d[id], sp = G.Species[id];
+              const mark = e && e.owned ? '<span class="tag own">済</span>' : '<span class="tag fz">未</span>';
+              return `<div class="menu-row"><span class="cursor"></span><span class="dex-no">${G.dexNoLabel(id)}</span>&nbsp;${e ? esc(sp.name) : '？？？？'}` +
+                `<span class="count">${sp.rank}ランク　${mark}</span></div>`;
+            }).join('');
+            const left = ids.filter((id) => !(d[id] && d[id].owned)).length;
+            return `<div class="menu-title">幻獣レーダー：${esc(enc.where)}</div><div class="menu-list">${rows}</div>` +
+              `<div class="menu-desc">この地域の幻獣 ${ids.length}種のうち、まだ 仲間にしていないのは ${left}種。</div><div class="menu-hint">X：もどる</div>`;
+          }
+          if (this.mode === 'warp') {
+            const spots = G.Tamer.warpSpots();
+            return '<div class="menu-title">ワープ：どこへ 行く？</div>' +
+              `<div class="menu-list">${spots.length ? spots.map((w, i) => `<div class="menu-row${i === this.wsel ? ' sel' : ''}"><span class="cursor">${i === this.wsel ? '▶' : ''}</span>${esc(w.name)}` +
+                `${w.map === G.state.player.map ? '<span class="count">いまいる場所</span>' : ''}</div>`).join('') : '<div class="menu-empty">まだ 行ける場所が ない。</div>'}</div>` +
+              '<div class="menu-desc">一度 行ったことのある場所へ、一瞬で 移動する。</div><div class="menu-hint">Z：ワープする　X：もどる</div>';
+          }
+          const rows = G.TamerSkills.map((s, i) => {
+            const ok = G.Tamer.hasSkill(s.id);
+            return `<div class="menu-row${i === this.sel ? ' sel' : ''}${ok ? '' : ' disabled'}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>${esc(s.name)}` +
+              `<span class="count">${ok ? '' : `幻獣使いLv${s.level}で 覚える`}</span></div>`;
+          }).join('');
+          const cur = G.TamerSkills[this.sel];
+          return `<div class="menu-title">スキル（幻獣使いLv${G.Tamer.level()}）</div><div class="menu-list">${rows}</div>` +
+            `<div class="menu-desc">${esc(this.note || (cur ? cur.desc : ''))}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
+        },
+      };
+    },
+
     items() {
       return {
         layout: 'menu wide',
         sel: 0,
         target: null, // 使う道具を選んだ後、対象を選ぶ
         tsel: 0,
+        qty: 0,       // 経験値アイテム・特訓の書：使う個数を選んでいるとき 1 以上
         note: '',
         update(In) {
           const ids = Object.keys(G.state.items);
+          if (this.target && this.qty) {
+            const max = this.maxQty(this.target, G.state.party[this.tsel]);
+            const step = (d) => { this.qty = Math.max(1, Math.min(max, this.qty + d)); G.Screens.render(); };
+            if (In.consume('left')) step(-1);
+            if (In.consume('right')) step(1);
+            if (In.consume('up')) step(10);
+            if (In.consume('down')) step(-10);
+            if (In.consume('cancel')) { this.qty = 0; G.Screens.render(); return; }
+            if (In.consume('confirm')) { const n = this.qty; this.qty = 0; this.apply(this.target, G.state.party[this.tsel], n); }
+            return;
+          }
           if (this.target) {
             const n = G.state.party.length;
             if (In.consume('up')) { this.tsel = cycle(this.tsel, n, -1); this.note = ''; G.Screens.render(); }
             if (In.consume('down')) { this.tsel = cycle(this.tsel, n, 1); this.note = ''; G.Screens.render(); }
             if (In.consume('cancel')) { this.target = null; this.note = ''; G.Screens.render(); return; }
-            if (In.consume('confirm')) this.apply(this.target, G.state.party[this.tsel]);
+            if (In.consume('confirm')) {
+              const m = G.state.party[this.tsel];
+              // 2個以上持っていて、まとめて使える道具なら、個数を選ぶ
+              const why = this.cannotUse(this.target, m);
+              if (why) { this.note = why; G.Screens.render(); }
+              else if (this.maxQty(this.target, m) > 1) { this.qty = 1; this.note = ''; G.Screens.render(); }
+              else this.apply(this.target, m, 1);
+            }
             return;
           }
           if (ids.length && In.consume('up')) { this.sel = cycle(this.sel, ids.length, -1); this.note = ''; G.Screens.render(); }
@@ -72,7 +201,7 @@
           if (In.consume('cancel')) return G.Screens.close();
           if (In.consume('confirm') && ids.length) {
             const it = G.Items[ids[this.sel]];
-            if (['heal', 'status', 'evolve', 'boost', 'ev', 'evreset'].includes(it.type)) {
+            if (['heal', 'status', 'revive', 'evolve', 'boost', 'ev', 'evreset', 'exp'].includes(it.type)) {
               if (!G.state.party.length) this.note = '幻獣を 連れていない。';
               else { this.target = ids[this.sel]; this.tsel = 0; }
             } else {
@@ -81,7 +210,22 @@
             G.Screens.render();
           }
         },
-        apply(id, m) {
+        // まとめて使える道具（経験値アイテム・特訓の書）で、使えないときの理由
+        cannotUse(id, m) {
+          const it = G.Items[id];
+          if (it.type === 'exp' && m.level >= G.Monster.MAX_LEVEL) return `${m.name}は もう これ以上 レベルが 上がらない。`;
+          if (it.type === 'ev' && !G.Individual.evRoom(m, it.stat)) return `${m.name}の ${G.Individual.NAMES[it.stat]}は これ以上 鍛えられない。`;
+          return null;
+        },
+        // まとめて使える最大の個数（持っている数まで。上限に届く数より多くは使わない）
+        maxQty(id, m) {
+          const it = G.Items[id];
+          const have = G.state.items[id] || 0;
+          if (it.type === 'exp') return G.Growth.expItemsToMax(m, id, have);
+          if (it.type === 'ev') return Math.max(1, Math.min(have, Math.ceil(G.Individual.evRoom(m, it.stat) / (it.gain || G.GrowthConfig.EV_ITEM_GAIN))));
+          return 1;
+        },
+        apply(id, m, n = 1) {
           const it = G.Items[id];
           if (it.type === 'evolve') {
             const to = G.Growth.evolutionTarget(m, { item: id });
@@ -91,13 +235,39 @@
             G.Events.run((E) => G.Growth.evolve(m, to, E));
             return;
           }
+          if (it.type === 'exp') {
+            // 経験値アイテム：レベルアップ・技の習得・進化の演出があるので、メニューを閉じてイベントとして進める
+            if (m.level >= G.Monster.MAX_LEVEL) { this.note = `${m.name}は もう これ以上 レベルが 上がらない。`; G.Screens.render(); return; }
+            const amount = G.Growth.expItemAmount(m, id, n);
+            const back = { sel: this.sel, tsel: this.tsel, id };
+            G.addItem(id, -n);
+            G.Screens.closeAll();
+            G.Events.run(async (E) => {
+              G.Audio.se('heal');
+              await E.narrate(`${m.name}は ${it.name}を ${n > 1 ? `${n}こ ` : ''}食べた！`);
+              const ui = { msg: (t) => E.narrate(t) };
+              if (await G.Growth.gainExp(m, amount, ui)) await G.Field.checkEvolutions([m], E);
+              G.UI.refresh();
+              // もちもの画面にもどる（続けて使えるように）
+              G.Screens.open(G.UIScreens.menu());
+              const scr = G.UIScreens.items();
+              if (G.state.items[back.id]) Object.assign(scr, { sel: back.sel, target: back.id, tsel: back.tsel });
+              G.Screens.open(scr);
+            });
+            return;
+          }
           if (it.type === 'ev') {
             const I = G.Individual;
             const before = G.Monster.stats(m).hp;
-            const got = I.addEv(m, it.stat, it.gain || G.GrowthConfig.EV_ITEM_GAIN);
+            let got = 0, used = 0;
+            for (; used < n; used++) {
+              const g = I.addEv(m, it.stat, it.gain || G.GrowthConfig.EV_ITEM_GAIN);
+              if (!g) break;
+              got += g;
+            }
             m.hp += G.Monster.stats(m).hp - before; // 最大HPが増えた分だけ、今のHPも増やす
             if (!got) { this.note = `${m.name}の ${I.NAMES[it.stat]}は これ以上 鍛えられない。`; G.Screens.render(); return; }
-            G.addItem(id, -1);
+            G.addItem(id, -used);
             this.note = `${m.name}の ${I.NAMES[it.stat]}の努力値が ${got} 上がった！（${I.ev(m, it.stat)}／${G.GrowthConfig.EV_MAX_STAT}）`;
           } else if (it.type === 'evreset') {
             if (!G.Individual.evTotal(m)) { this.note = `${m.name}は まだ 育成されていない。`; G.Screens.render(); return; }
@@ -115,17 +285,34 @@
         },
         html() {
           const ids = Object.keys(G.state.items);
+          if (this.target && this.qty) {
+            const m = G.state.party[this.tsel];
+            const it = G.Items[this.target];
+            const max = this.maxQty(this.target, m);
+            let after = '';
+            if (it.type === 'exp') after = `Lv${m.level} → Lv${G.Growth.levelAfterExp(m, G.Growth.expItemAmount(m, this.target, this.qty))}（経験値 +${G.Growth.expItemAmount(m, this.target, this.qty)}）`;
+            if (it.type === 'ev') {
+              const I = G.Individual;
+              const add = Math.min(I.evRoom(m, it.stat), (it.gain || G.GrowthConfig.EV_ITEM_GAIN) * this.qty);
+              after = `${I.NAMES[it.stat]}の努力値 ${I.ev(m, it.stat)} → ${I.ev(m, it.stat) + add}（上限 ${G.GrowthConfig.EV_MAX_STAT}）`;
+            }
+            return `<div class="menu-title">${it.name}を いくつ使う？</div>` +
+              `<div class="menu-list">${P().row(m, true, '')}</div>` +
+              `<div class="use-qty"><span class="qty-arrow">◀</span><b class="qty-num">× ${this.qty}</b><span class="qty-arrow">▶</span>` +
+              `<span class="count">持っている数 ${G.state.items[this.target] || 0}　最大 ${max}</span></div>` +
+              `<div class="menu-desc">${esc(after)}</div><div class="menu-hint">←→：1ずつ　↑↓：10ずつ　Z：使う　X：もどる</div>`;
+          }
           if (this.target) {
             return `<div class="menu-title">${G.Items[this.target].name}を だれに使う？</div>` +
-              G.state.party.map((m, i) => P().row(m, i === this.tsel, m.status ? ` <span class="tag">${G.Battle.STATUS[m.status].short}</span>` : '')).join('') +
+              `<div class="menu-list">${G.state.party.map((m, i) => P().row(m, i === this.tsel, m.status ? ` <span class="tag">${G.Battle.STATUS[m.status].short}</span>` : '')).join('')}</div>` +
               `<div class="menu-desc">${esc(this.note)}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
           }
           const rows = ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
-              `${G.Items[id].name}<span class="count">×${G.state.items[id]}</span></div>`).join('')
+              `${G.Items[id].name}<span class="count">×${G.Items[id].infinite ? '∞' : G.state.items[id]}</span></div>`).join('')
             : '<div class="menu-empty">なにも持っていない。</div>';
           const cur = ids[this.sel];
-          return '<div class="menu-title">もちもの</div>' + rows +
+          return `<div class="menu-title">もちもの</div><div class="menu-list">${rows}</div>` +
             `<div class="menu-desc">${this.note ? esc(this.note) : cur ? G.Items[cur].desc : ''}</div><div class="menu-hint">Z：使う　X：もどる</div>`;
         },
       };
@@ -141,6 +328,8 @@
           return '<div class="menu-title">主人公</div>' +
             `<table class="status"><tr><th>なまえ</th><td>${esc(s.player.name)}</td></tr>` +
             `<tr><th>しゅべつ</th><td>${s.player.gender === 'girl' ? '少女' : '少年'}・幻獣使い見習い</td></tr>` +
+            `<tr><th>幻獣使いLv</th><td>${G.Tamer.level()}<small>${G.Tamer.toNext() ? `（次のLvまで ${G.Tamer.toNext()}）` : '（最高レベル）'}</small></td></tr>` +
+            `<tr><th>絆を結べる</th><td>${Object.entries(G.TamerConfig.RANK_LEVEL).filter(([r]) => !['SS', 'SSS', 'EX'].includes(r)).map(([r, lv]) => `<span class="nowrap${G.Tamer.level() >= lv ? '' : ' muted'}">${r}${G.Tamer.level() >= lv ? '' : `(Lv${lv})`}</span>`).join(' ')}</td></tr>` +
             `<tr><th>所持金</th><td>${s.money.toLocaleString()} G</td></tr>` +
             `<tr><th>仲間の幻獣</th><td>パーティ ${s.party.length} 体／預かり所 ${s.storage.length} 体</td></tr>` +
             `<tr><th>図鑑</th><td>${dexOwned} / ${G.SpeciesOrder.length} 種</td></tr>` +
@@ -308,7 +497,7 @@
           if (a === '並べかえ') { this.mode = 'swap'; this.swapFrom = this.sel; this.note = 'どの幻獣と 入れかえる？'; }
           else if (a === '預ける') {
             if (G.state.party.filter((x) => x !== m && x.hp > 0).length === 0) this.note = '戦える幻獣が いなくなってしまう！';
-            else { G.Party.remove(m); G.state.storage.push(m); this.note = `${m.name}を 預かり所へ 預けた。`; this.sel = Math.max(0, this.sel - 1); }
+            else { G.Party.remove(m); G.Party.toStorage(m); this.note = `${m.name}を 預かり所へ 預けた。（HP・MPは 満タンに なった）`; this.sel = Math.max(0, this.sel - 1); }
           } else if (a === 'パーティに加える') {
             if (G.state.party.length >= G.Monster.PARTY_MAX) this.note = 'パーティが いっぱいだ！';
             else { G.Party.remove(m); G.state.party.push(m); this.note = `${m.name}が パーティに 加わった。`; this.sel = Math.max(0, this.sel - 1); }

@@ -41,7 +41,7 @@
     ],
     items: [
       { x: 2, y: 4, item: 'steelclaw', count: 1, flag: 'item_cave_claw' },
-      { x: 25, y: 9, item: 'bondstone2', count: 2, flag: 'item_cave_bond2' },
+      { x: 25, y: 9, item: 'expM', count: 1, flag: 'item_cave_bond2' },
       { x: 8, y: 16, item: 'cure', count: 1, flag: 'item_cave_cure' },
       { x: 22, y: 18, item: 'money', count: 500, flag: 'item_cave_money' },
     ],
@@ -51,14 +51,14 @@
         look: { helmet: '#e0b030', beard: '#5a3a2a', shirt: '#6a5a4a', pants: '#3a3a3a' },
         talk: [
           'この洞窟の岩肌には『灯石』がうまっている。\nほんのり光る石だが、それだけじゃ足元はおぼつかねえ。',
-          '奥へ進むほど、幻獣も手ごわくなる。\nイシコロンは、この洞窟の中で鍛えると姿を変えるって話だ。',
+          '奥へ進むほど、幻獣も手ごわくなる。\nコケガメやツチダマは、この洞窟の中で鍛えると姿を変えるって話だ。',
         ],
       },
       {
         id: 'hiker', name: '山男', x: 12, y: 16, dir: 'down', wander: 2,
         look: { hat: '#4a7a4a', beard: '#3a2a1a', shirt: '#8a4a3a', pants: '#3a3a3a' },
         talk: [
-          '地底湖のほとりには、目の見えない魚の幻獣がいるらしい。',
+          '地底湖のほとりには、水辺の幻獣も棲んでいるらしい。\nミズタマリやイワガメを見かけたってやつがいたな。',
           '北東の階段を下りると、さらに深い階層だ。\n……最近、奥から妙な音が聞こえるんだよな。',
         ],
       },
@@ -121,7 +121,7 @@
     },
     items: [
       { x: 4, y: 13, item: 'hipotion', count: 2, flag: 'item_cave2_hipotion' },
-      { x: 27, y: 11, item: 'bondstone3', count: 1, flag: 'item_cave2_bond3' },
+      { x: 27, y: 11, item: 'expM', count: 2, flag: 'item_cave2_bond3' },
       { x: 8, y: 4, item: 'powerseed', count: 1, flag: 'item_cave2_seed' },
       { x: 22, y: 3, item: 'money', count: 800, flag: 'item_cave2_money' },
     ],
@@ -149,7 +149,7 @@
           if (E.flag('sawHoodedForest')) {
             await E.say('老冒険者', '黒いフードの者を見た？\n……なるほどのう。やつら、封印に用があるのかもしれん。');
           }
-          await E.say('老冒険者', '言い伝えでは、封印の守護者は岩と鋼の体をもつという。\n雷は通じず、炎も効きにくい……水や風、氷の技を用意しておくことじゃ。\n手前の階で、先に回復しておくのも忘れるでないぞ。');
+          await E.say('老冒険者', '言い伝えでは、封印の守護者は大地の力をもつという。\n雷はほとんど効かん……風の技を用意しておくことじゃ。\n手前の階で、先に回復しておくのも忘れるでないぞ。');
         },
       },
     ],

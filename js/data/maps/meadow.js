@@ -55,7 +55,7 @@
     ],
     items: [
       { x: 31, y: 18, item: 'potion', count: 1, flag: 'item_meadow_potion' },
-      { x: 3, y: 19, item: 'bondstone', count: 2, flag: 'item_meadow_bondstone' },
+      { x: 3, y: 19, item: 'expS', count: 3, flag: 'item_meadow_bondstone' },
       { x: 12, y: 8, item: 'powerseed', count: 1, flag: 'item_meadow_seed' },
       { x: 31, y: 12, item: 'blackemblem', count: 1, flag: 'item_meadow_emblem' },
     ],
@@ -89,7 +89,7 @@
               'いいだろう、通ってよし！',
               '試練を越えた証だ。これを持っていけ。',
             ]);
-            await E.give('bondstone2', 2);
+            await E.give('expS', 5);
             await E.say('森の番人ボルグ', '森の奥には『灯石の洞窟』がある。\n……近ごろ、黒いフードの連中が出入りしているらしい。気をつけるんだぞ。');
             E.set('forestOpen');
             G.autoSave();

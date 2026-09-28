@@ -29,6 +29,12 @@
     'A': { name: 'ashtall', encounter: true, tall: true },
     'l': { name: 'lava', solid: true, anim: 4, inspect: '煮えたぎる溶岩だ。近づくだけで肌が焼けそうだ。' },
     'n': { name: 'obsidian', solid: true, inspect: '黒く光る溶岩石だ。' },
+    // --- 北の氷原 ---
+    'e': { name: 'snow' },
+    'E': { name: 'snowtall', encounter: true, tall: true },
+    'i': { name: 'ice', solid: true, anim: 4, inspect: '厚く凍りついた湖だ。氷の下で、何かが青く光っている……。' },
+    'P': { name: 'snowpine', solid: true, inspect: '雪をかぶったモミの木だ。枝がしなって、今にも雪が落ちてきそう。' },
+    'I': { name: 'icerock', solid: true, inspect: '透きとおった氷の岩だ。ひんやりとした冷気がただよってくる。' },
     // --- 洞窟 ---
     'f': { name: 'cavefloor' },
     'z': { name: 'caverough', encounter: true },

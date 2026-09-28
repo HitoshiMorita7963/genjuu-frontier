@@ -69,7 +69,7 @@
     ],
     items: [
       { x: 13, y: 3, item: 'hipotion', count: 1, flag: 'item_forest_hipotion' },
-      { x: 4, y: 17, item: 'bondstone2', count: 1, flag: 'item_forest_bond2' },
+      { x: 4, y: 17, item: 'expS', count: 3, flag: 'item_forest_bond2' },
       { x: 31, y: 16, item: 'money', count: 300, flag: 'item_forest_money' },
       { x: 22, y: 24, item: 'cure', count: 2, flag: 'item_forest_cure' },
       { x: 32, y: 12, item: 'powerseed', count: 1, flag: 'item_forest_seed' },
@@ -80,7 +80,7 @@
         look: { hat: '#a04a2a', beard: '#6a4a2a', shirt: '#7a3a2a', pants: '#3a3a2a' },
         talk: [
           'よう、ここは『ささやきの森』だ。\n風が吹くと、木々がひそひそ話しているように聞こえるだろう？',
-          '森の幻獣は、夜になると……いや、この森はいつだって薄暗いがな。\n闇属性のやつらが多いから、光や風の技が役に立つぞ。',
+          'この森には、土や光の幻獣が多い。\n土のやつらには風の技、光のやつらには闇の技がよく効くぞ。',
         ],
       },
       {

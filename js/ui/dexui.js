@@ -5,7 +5,7 @@
 
   const esc = (s) => G.escapeHtml(s);
   const P = () => G.UIParts;
-  const OBTAIN = { wild: '野生', fusion: '配合限定' };
+  const OBTAIN = { wild: '野生', fusion: '配合限定', evolve: '進化でのみ' };
   // 配合レシピの表示：見つけていれば「A + B → C」、まだなら伏せる
   function recipeLine(sp) {
     const rc = G.fusionRecipes.find((r) => r.resultId === sp.id);
@@ -22,7 +22,7 @@
       filter: 'all', // all | owned | fused
       list() {
         const d = G.state.dex;
-        return G.SpeciesOrder.filter((id) => {
+        return G.DexOrder.filter((id) => {
           if (this.filter === 'owned') return d[id] && d[id].owned;
           if (this.filter === 'fused') return d[id] && d[id].fused;
           return true;
@@ -43,25 +43,21 @@
         if (In.consume('cancel')) G.Screens.close();
         In.consume('confirm');
       },
-      afterRender(el) {
-        const s = el.querySelector('.dex-row.sel');
-        if (s) s.scrollIntoView({ block: 'nearest' });
-      },
       html() {
         const d = G.state.dex;
-        const all = G.SpeciesOrder;
+        const all = G.DexOrder;
         const seen = all.filter((id) => d[id]).length;
         const owned = all.filter((id) => d[id] && d[id].owned).length;
         const list = this.list();
         const rows = list.length ? list.map((id, i) => {
           const e = d[id];
-          const no = String(all.indexOf(id) + 1).padStart(3, '0');
+          const no = String(G.Species[id].no).padStart(3, '0');
           const name = e ? G.Species[id].name : '？？？？';
           const icon = e
             ? `<img class="mon-img icon" src="${e.owned ? G.MonsterGfx.dataURL(id) : G.MonsterGfx.silhouetteURL(id)}" alt="">`
             : '<span class="dex-unknown">?</span>';
           const mark = e && e.owned ? (e.fused ? '<span class="tag fz">配</span>' : '<span class="tag own">●</span>') : '';
-          return `<div class="dex-row${i === this.sel ? ' sel' : ''}${e ? '' : ' unknown'}">${icon}<small>No.${no}</small> ${esc(name)} ${mark}</div>`;
+          return `<div class="dex-row${i === this.sel ? ' sel' : ''}${e ? '' : ' unknown'}">${icon}<span class="dex-no">No.${no}</span><span class="dex-name">${esc(name)}</span>${mark}</div>`;
         }).join('') : '<div class="menu-empty">該当する幻獣はいない。</div>';
 
         const id = list[this.sel];
@@ -69,7 +65,7 @@
         if (id) {
           const e = d[id];
           const sp = G.Species[id];
-          const no = String(all.indexOf(id) + 1).padStart(3, '0');
+          const no = String(G.Species[id].no).padStart(3, '0');
           if (!e) {
             detail = `<div class="dex-detail-empty"><div class="dex-unknown big">?</div><div>No.${no}　？？？？</div>` +
               '<div class="small">まだ見たことのない幻獣だ。</div></div>';
@@ -87,7 +83,8 @@
               recipeLine(sp) +
               `<div class="small">記録した場所：${esc(e.where || '---')}</div>` +
               `<div class="small">特性：${sp.traits.map((t) => G.Traits[t].name).join('／')}</div></div></div>` +
-              `<div class="desc">${esc(sp.desc)}</div>`;
+              `<div class="desc">${esc(sp.desc)}</div>` +
+              `<div class="small">覚える技：${sp.learn.map(([lv, mid]) => `<span class="nowrap">Lv${lv} ${esc(G.Moves[mid].name)}</span>`).join('／')}</div>`;
           }
         }
         const f = { all: 'すべて', owned: '仲間にした', fused: '配合で発見' }[this.filter];

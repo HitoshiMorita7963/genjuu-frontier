@@ -27,6 +27,17 @@
     return `${P().bar(v, max, 'ev')}<small>${v}</small>`;
   }
 
+  // 進化の系統（図鑑で見たことのない姿は ？？？？）と、次の進化の条件
+  function evoText(m) {
+    const chain = G.evolutionChain(m.speciesId);
+    if (chain.length < 2) return '進化しない';
+    const known = (id) => id === m.speciesId || (G.state.dex[id] && G.state.dex[id].seen);
+    const name = (id) => (id === m.speciesId ? `<b>${esc(G.Species[id].name)}</b>` : known(id) ? esc(G.Species[id].name) : '？？？？');
+    const names = chain.map((stage) => stage.map(name).join('／')).join(' → ');
+    const evo = G.Species[m.speciesId].evo;
+    return names + `<small>${evo ? `次の進化：${esc(G.evolutionConditionText(evo))}` : '最後の姿'}</small>`;
+  }
+
   const PAGES = ['能力', '才能・育成', '系譜・継承'];
 
   G.UIScreens.monsterInfo = function (m, startPage = 0) {
@@ -36,13 +47,14 @@
       update(In) {
         if (In.consume('left')) { this.page = cycle(this.page, PAGES.length, -1); G.Screens.render(); }
         if (In.consume('right')) { this.page = cycle(this.page, PAGES.length, 1); G.Screens.render(); }
-        if (In.consume('cancel') || In.consume('confirm')) G.Screens.close();
+        if (In.consume('cancel') || In.consume('confirm')) return G.Screens.close();
+        G.Screens.scrollKeys(In, '.info-body'); // 画面に収まらないときは ↑↓ でスクロール
       },
       head() {
         const sp = G.Species[m.speciesId];
         return `<div class="info-head">${portrait(m)}<div>` +
-          `<div class="detail-name"><small>No.${sp.id}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
-          `${P().speciesHead(sp)}<div class="small">役割：${esc(sp.role)}型　成長：${G.Monster.GROWTH_NAMES[sp.growth]}</div>` +
+          `<div class="detail-name"><span class="dex-no">${G.dexNoLabel(sp.id)}</span> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
+          `${P().speciesHead(sp)}<div class="small" title="${esc((G.StatRules.ARCHETYPES[sp.archetype] || {}).desc || '')}">型：${esc(sp.archetype)}　看板：${I().NAMES[sp.signature] || '―'}　成長：${G.Monster.GROWTH_NAMES[sp.growth]}</div>` +
           `<div class="titles">${titleBadges(m)}</div></div></div>`;
       },
       // 1ページ目：能力値の内訳
@@ -57,7 +69,7 @@
           `<td>${I().appraised() ? `<small>${I().ivTotal(m)}／${6 * C().IV_MAX}</small>` : ''}</td>` +
           `<td><small>${I().evTotal(m)}／${C().EV_MAX_TOTAL}</small></td></tr></table>` +
           `<div class="info-note">成長傾向：${esc(I().growthText(m))}</div>` +
-          `<div class="info-note small">MP ${st.mp}　命中 ${st.acc}　回避 ${st.eva}</div>`;
+          `<div class="info-note small">MP ${st.mp}</div>`;
       },
       // 2ページ目：才能（個体値）と育成（努力値）
       pageTalent() {
@@ -96,14 +108,15 @@
           `<tr><th>配合値</th><td>${m.fusionBonus || 0}<small>${esc(I().bloodlineText(m))}</small></td></tr>` +
           `<tr><th>入手</th><td>${how}${m.origin && m.origin.where ? `（${esc(m.origin.where)}）` : ''}</td></tr>` +
           `<tr><th>継承した技</th><td>${inhMoves}</td></tr>` +
-          `<tr><th>継承した特性</th><td>${inhTrait}</td></tr></table>` +
+          `<tr><th>継承した特性</th><td>${inhTrait}</td></tr>` +
+          `<tr><th>進化</th><td>${evoText(m)}</td></tr></table>` +
           `<div><div class="info-sub">親</div>${pn.length ? `<div class="parents">${pn.map(parent).join('')}</div>` : '<div class="small muted">配合で生まれた個体ではない。</div>'}</div></div>`;
       },
       html() {
         const tabs = PAGES.map((p, i) => `<span class="tab${i === this.page ? ' on' : ''}">${p}</span>`).join('');
         const body = [this.pageStats, this.pageTalent, this.pageLineage][this.page].call(this);
         return `<div class="scr-title">育成情報 ${tabs}</div><div class="scr-body info-body">${this.head()}${body}</div>` +
-          '<div class="scr-hint">←→：ページ　X：もどる</div>';
+          '<div class="scr-hint">←→：ページ　↑↓：スクロール　X：もどる</div>';
       },
     };
   };

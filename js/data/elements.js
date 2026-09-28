@@ -1,5 +1,5 @@
 // 属性・系統・ランクの定義
-//   公式データ（data/monster_frontier_100.json）の日本語表記との対応も、ここで管理する。
+//   公式データ（data/monster_frontier.json）の日本語表記との対応も、ここで管理する。
 (function (G) {
   'use strict';
 
@@ -14,29 +14,73 @@
     wind:    { name: '風', color: '#6ac8b8' },
     light:   { name: '光', color: '#f4e48a' },
     dark:    { name: '闇', color: '#7a5aa8' },
-    ice:     { name: '氷', color: '#9ae0f4' },
+    // 上位属性（base = 下位の属性）。下位の相性をそのまま引き継ぎ、さらに下位に強い
+    ice:     { name: '氷', color: '#9ae0f4', base: 'water' },
+    blaze:   { name: '焔', color: '#e0302a', base: 'fire' },
+    storm:   { name: '嵐', color: '#3aa89a', base: 'wind' },
+    bolt:    { name: '霆', color: '#f0a020', base: 'thunder' },
+    crystal: { name: '晶', color: '#b08ae0', base: 'earth' },
+    holy:    { name: '聖', color: '#fff4c0', base: 'light' },
+    abyss:   { name: '冥', color: '#4a2a6a', base: 'dark' },
   };
   // 公式データの表記 → 内部キー
-  G.ElementByName = { 炎: 'fire', 水: 'water', 風: 'wind', 地: 'earth', 雷: 'thunder', 光: 'light', 闇: 'dark', 氷: 'ice', 無: 'none', 草: 'grass' };
+  G.ElementByName = {
+    炎: 'fire', 水: 'water', 風: 'wind', 地: 'earth', 雷: 'thunder', 光: 'light', 闇: 'dark', 無: 'none', 草: 'grass',
+    氷: 'ice', 焔: 'blaze', 嵐: 'storm', 霆: 'bolt', 晶: 'crystal', 聖: 'holy', 冥: 'abyss',
+  };
+  // 下位の属性（上位属性なら下位、そうでなければ自分）／上位属性か
+  G.baseElement = (el) => (G.Elements[el] && G.Elements[el].base) || el;
+  G.isUpperElement = (el) => !!(G.Elements[el] && G.Elements[el].base);
 
-  // 相性表：攻撃側 → 防御側 の倍率（記載なしは等倍）
-  //   2 = 効果抜群 / 0.5 = いまひとつ / 0 = 無効
-  G.TypeChart = {
-    fire:    { grass: 2, wind: 2, ice: 2, water: 0.5, earth: 0.5, fire: 0.5 },
-    water:   { fire: 2, earth: 2, grass: 0.5, water: 0.5 },
-    grass:   { water: 2, earth: 2, fire: 0.5, wind: 0.5, grass: 0.5 },
-    thunder: { water: 2, wind: 2, earth: 0, grass: 0.5, thunder: 0.5 },
-    earth:   { fire: 2, thunder: 2, wind: 0, grass: 0.5 },
-    wind:    { grass: 2, earth: 2, thunder: 0.5, fire: 0.5 },
-    light:   { dark: 2, light: 0.5, fire: 0.5 },
-    dark:    { light: 2, wind: 2, dark: 0.5 },
-    ice:     { wind: 2, earth: 2, water: 0.5, fire: 0.5, ice: 0.5 },
+  // 相性：ジャンケンのような「めぐり」（設計者の指定）
+  //   水 → 炎 → 風 → 地（土） → 雷 → 水 …（矢印の先に強い＝2倍、逆向きは弱い＝0.5倍）
+  //   光 ⇄ 闇（おたがいに2倍）。無は、どの属性とも等倍
+  //   めぐりの属性は「得意な相手1つ・苦手な相手1つ」になる。無効（0倍）はない
+  //
+  // 上位属性（水→氷、炎→焔、風→嵐、雷→霆、地→晶、光→聖、闇→冥）
+  //   ・相性は下位の属性をそのまま引き継ぐ（攻めも守りも）。例：氷は炎に強く、雷に弱い
+  //   ・さらに、上位は下位に強い：上位 → 下位 は2倍、下位 → 上位 は0.5倍（例：氷 → 水 2倍、水 → 氷 0.5倍）
+  //   ・下位とその上位は、複合タイプとして組み合わせない（弱点が4倍になるため）
+  G.ElementCycle = ['water', 'fire', 'wind', 'earth', 'thunder'];
+  G.TypeChart = {}; // 下位の属性どうしの相性
+  G.ElementCycle.forEach((el, i) => {
+    const next = G.ElementCycle[(i + 1) % G.ElementCycle.length];
+    const prev = G.ElementCycle[(i - 1 + G.ElementCycle.length) % G.ElementCycle.length];
+    G.TypeChart[el] = { [next]: 2, [prev]: 0.5 };
+  });
+  G.TypeChart.light = { dark: 2 };
+  G.TypeChart.dark = { light: 2 };
+
+  // 1つの属性どうしの倍率（上位属性は下位として相性を引き、同じ系統なら上位が強い）
+  function single(atkEl, defEl) {
+    const a = G.baseElement(atkEl), d = G.baseElement(defEl);
+    if (a === d && a !== 'none') {
+      const au = G.isUpperElement(atkEl), du = G.isUpperElement(defEl);
+      return au && !du ? 2 : !au && du ? 0.5 : 1;
+    }
+    const row = G.TypeChart[a] || {};
+    return row[d] === undefined ? 1 : row[d];
+  }
+  // 攻撃の属性 → 防御側の属性（1つ、または複合タイプの2つ）の倍率。複合タイプは掛け算
+  G.typeMultiplier = (atkEl, defEls) => {
+    const list = Array.isArray(defEls) ? defEls : [defEls];
+    return list.reduce((mul, el) => mul * single(atkEl, el), 1);
   };
-  G.typeMultiplier = (atkEl, defEl) => {
-    const row = G.TypeChart[atkEl];
-    if (!row || row[defEl] === undefined) return 1;
-    return row[defEl];
+  // その種族の属性（複合タイプなら2つ）
+  G.elementsOf = (sp) => sp.els || [sp.el];
+  // タイプ一致（技の属性が、使い手の属性のどれかと同じ。無属性は一致しない）
+  //   倍率：上位属性の幻獣が、その上位属性の技を使う → 2倍 ／ それ以外の一致 → 1.5倍
+  //   上位属性の幻獣が下位の属性の技を使ったとき（例：焔の幻獣が炎の技）も、相性を引き継ぐので 1.5倍
+  G.stabMultiplier = (moveEl, sp) => {
+    if (moveEl === 'none') return 1;
+    const els = G.elementsOf(sp);
+    if (els.includes(moveEl)) return G.isUpperElement(moveEl) ? 2 : 1.5;
+    if (els.some((el) => G.isUpperElement(el) && G.baseElement(el) === moveEl)) return 1.5;
+    return 1;
   };
+  G.isStab = (moveEl, sp) => G.stabMultiplier(moveEl, sp) > 1;
+  // 表示用の属性名（例：「水・風」）
+  G.elementLabel = (sp) => G.elementsOf(sp).map((el) => G.Elements[el].name).join('・');
 
   // 系統（公式データの8系統。machine は旧データ用に残している）
   G.Lineages = {

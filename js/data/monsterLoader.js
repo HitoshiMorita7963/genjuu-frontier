@@ -1,5 +1,5 @@
 // =====================================================================
-//  公式モンスターデータの読み込み（正本: data/monster_frontier_100.json）
+//  公式モンスターデータの読み込み（正本: data/monster_frontier.json）
 // =====================================================================
 //  ・G.monsterSpecies（= G.Species）… 種族データ。IDは設計書の "001"〜"100"
 //  ・G.fusionRecipes（= G.FusionRecipes.recipes）… 配合レシピ。種族データとは独立
@@ -25,8 +25,10 @@
   // 成長型 → 経験値の伸び
   const GROWTH = { 速度: 'fast', 攻撃: 'normal', 特殊: 'normal', 支援: 'normal', 耐久: 'slow', 万能: 'slow' };
   // ランク → 捕獲しやすさ（配合限定は野生に出ないので実質使わない）
-  const CATCH = { F: 190, E: 140, D: 90, C: 50, B: 30, A: 15, S: 6, SS: 4, SSS: 3, EX: 2 };
-  const OBTAIN = { 野生: 'wild', 配合限定: 'fusion' };
+  // 捕まえやすさ（255 で、HPが残りわずかなら絆石でも必ず成功）。HPが多いほど・ランクが高いほど難しい
+  //   幻獣使いレベルが必要レベルを超えた分だけ、さらに上がる（js/systems/tamer.js）
+  const CATCH = { F: 235, E: 190, D: 140, C: 100, B: 70, A: 40, S: 25, SS: 15, SSS: 10, EX: 6 };
+  const OBTAIN = { 野生: 'wild', 配合限定: 'fusion', 進化: 'evolve' }; // 進化 = 進化でのみ出会える
 
   // ---------------- 見た目（ドット絵のパラメータ）を系統・属性・名前から決める ----------------
   const PAL = {
@@ -35,6 +37,10 @@
     thunder: ['#e8c02a', '#fff8d0', '#3a3a4a'], light: ['#f4ecb0', '#ffffff', '#f0c8f0'],
     dark: ['#5a4a78', '#b8a8d8', '#f0d040'], ice: ['#9ad8f0', '#ffffff', '#5aa8d8'],
     none: ['#e8e4f0', '#ffffff', '#ffd35a'],
+    // 上位属性（下位より濃く・強い色）
+    blaze: ['#d8401e', '#ffe0b0', '#ffe070'], storm: ['#2e9a8a', '#e0f4ee', '#c8e8ff'],
+    bolt: ['#f0a818', '#fff4c0', '#5a3a8a'], crystal: ['#9a7ad0', '#f0e8ff', '#e0d0ff'],
+    holy: ['#fff0b8', '#ffffff', '#ffd35a'], abyss: ['#3a2458', '#9a80c0', '#e04070'],
   };
   function shade(hex, amt) {
     const n = parseInt(hex.slice(1), 16);
@@ -96,7 +102,10 @@
   }
 
   // ---------------- 配合ヒント（答えを直接言わない） ----------------
-  const EL_WORD = { fire: '炎を宿す', water: '水をまとう', wind: '風に乗る', earth: '大地の', thunder: '雷をはらむ', light: '光を放つ', dark: '闇にひそむ', ice: '凍てつく', none: 'まっさらな' };
+  const EL_WORD = {
+    fire: '炎を宿す', water: '水をまとう', wind: '風に乗る', earth: '大地の', thunder: '雷をはらむ', light: '光を放つ', dark: '闇にひそむ', ice: '凍てつく', none: 'まっさらな',
+    blaze: '焔を燃やす', storm: '嵐を呼ぶ', bolt: '霆をまとう', crystal: '結晶の', holy: '聖なる', abyss: '冥府の',
+  };
   const FAM_WORD = { 獣: '獣', 鳥: '鳥', 植物: '草花', 水棲: '水の生き物', 虫: '虫', 魔獣: '魔獣', 精霊: '精霊', 竜: '竜' };
   const phrase = (sp) => `${EL_WORD[sp.el]}${FAM_WORD[sp.family]}`;
 
@@ -104,11 +113,19 @@
   const S = {};
   const order = [];
   if (!RAW || !Array.isArray(RAW.monsters)) {
-    err('公式データ（G.RawMonsterData）が読み込まれていません。js/data/monster_frontier_100.js を確認してください。');
+    err('公式データ（G.RawMonsterData）が読み込まれていません。js/data/monster_frontier.js を確認してください。');
   } else {
     for (const r of RAW.monsters) {
       if (S[r.id]) { err(`ID重複: ${r.id}`); continue; }
       const el = G.ElementByName[r.element];
+      const el2 = r.element2 ? G.ElementByName[r.element2] : null; // 複合タイプの2つめの属性
+      if (r.element2 && (!el2 || el2 === el)) err(`${r.id} ${r.name}: 2つめの属性「${r.element2}」が不正です`);
+      if (el && el2 && G.baseElement(el) === G.baseElement(el2)) err(`${r.id} ${r.name}: 下位とその上位の属性（${r.element}・${r.element2}）は組み合わせられません`);
+      // 上位属性はDランク以上（北の氷原のFランクの氷4種は例外として認める）
+      const UPPER_OK_F = ['122', '124', '126', '130'];
+      if ([el, el2].some((e) => e && G.isUpperElement(e)) && G.rankIndex(r.rank) < G.rankIndex('D') && !UPPER_OK_F.includes(r.id)) {
+        err(`${r.id} ${r.name}: 上位属性はDランク以上の種族だけが持てます`);
+      }
       const line = G.LineageByName[r.family];
       const ri = G.rankIndex(r.rank);
       if (!el) err(`${r.id} ${r.name}: 未対応の属性「${r.element}」`);
@@ -117,15 +134,32 @@
       if (!OBTAIN[r.obtain]) err(`${r.id} ${r.name}: 未対応の入手区分「${r.obtain}」`);
       const bs = r.baseStats;
       for (const m of r.initialMoveCandidates) if (!G.Moves[m]) err(`${r.id} ${r.name}: 技「${m}」が未定義`);
+      for (const [, m] of r.learnset || []) if (!G.Moves[m]) err(`${r.id} ${r.name}: 覚える技「${m}」が未定義`);
       if (!G.Traits[r.innateTrait]) err(`${r.id} ${r.name}: 特性「${r.innateTrait}」が未定義`);
       const c = r.initialMoveCandidates;
+      // 種族値（正本は JSON の speciesStats。作り方のルールは js/data/statRules.js）
+      const SR = G.StatRules;
+      const stats = {};
+      for (const k of SR.KEYS) {
+        const v = r.speciesStats && r.speciesStats[SR.JP[k]];
+        if (!(v > 0)) err(`${r.id} ${r.name}: 種族値「${SR.JP[k]}」が未設定です（node tools/species-stats.js）`);
+        stats[k] = v > 0 ? v : 1;
+      }
+      if (!SR.ARCHETYPES[r.archetype]) err(`${r.id} ${r.name}: 型「${r.archetype}」が未定義`);
+      const evYield = {};
+      for (const [name, v] of Object.entries(r.evYield || {})) {
+        if (!SR.BY_JP[name]) err(`${r.id} ${r.name}: 努力値報酬の能力「${name}」が不正`);
+        else evYield[SR.BY_JP[name]] = v;
+      }
       S[r.id] = {
         id: r.id,
-        no: Number(r.id),
+        no: r.dexNo || Number(r.id), // 図鑑の番号（進化した姿は進化前のすぐ後ろ。tools/dex-order.js で振る）
         name: r.name,
         family: r.family,          // 設計書の表記（表示用）
-        element: r.element,
-        el: el || 'none',
+        element: r.element2 ? `${r.element}・${r.element2}` : r.element, // 表示用
+        el: el || 'none',          // 1つめの属性（見た目・配合のヒントなどに使う）
+        el2: el2 || null,          // 2つめの属性（複合タイプのみ）
+        els: el2 ? [el || 'none', el2] : [el || 'none'],
         line: line || 'beast',
         rank: r.rank,
         role: r.role,
@@ -134,20 +168,26 @@
         obtain: OBTAIN[r.obtain] || 'fusion',
         wild: r.obtain === '野生',
         region: r.region,
-        habitat: r.region || '配合でのみ誕生',
+        habitat: r.region || (r.obtain === '進化' ? '進化でのみ出会える' : '配合でのみ誕生'),
         base: [conv(bs.HP), mpBase(bs, r.role), conv(bs['攻撃']), conv(bs['防御']), conv(bs['素早さ']), conv(bs['特殊攻撃']), conv(bs['特殊防御'])],
-        raw: bs,                   // 設計書の基礎値（図鑑などで表示）
-        acc: bs['命中'],
-        eva: bs['回避'],
+        raw: bs,                   // 設計書の基礎値（MP・経験値の計算に使う。命中・回避の欄は使わない）
+        stats,                     // 種族値 { hp, atk, def, spd, sat, sdf }
+        statTotal: SR.KEYS.reduce((a, k) => a + stats[k], 0),
+        archetype: r.archetype,    // 型（物理アタッカー など）
+        signature: SR.BY_JP[r.signature] || null, // 看板能力
+        weakness: SR.BY_JP[r.weakness] || null,   // 苦手な能力
+        tier: r.tier || '標準',
+        evYield,                   // 倒したときの努力値
         innateTrait: r.innateTrait,
         traits: [r.innateTrait],
         moveCandidates: c.slice(),
-        // 初期技候補：1つめ・2つめはLv1から、3つめ（強力な技）はLv10で覚える
-        learn: [[1, c[0]], [1, c[1]], [10, c[2]]].filter((x) => x[1]),
+        // レベルアップで覚える技 [[レベル, 技], ...]（tools/species-moves.js で作る）。ない場合は技候補を Lv1・Lv1・Lv10 で覚える
+        learn: r.learnset ? r.learnset.map((x) => x.slice()) : [[1, c[0]], [1, c[1]], [10, c[2]]].filter((x) => x[1]),
         catch: CATCH[r.rank] || 50,
         desc: r.description,
         recipeDisplay: r.recipe ? r.recipe.display : null,
-        look: lookFor(r, el || 'none', Math.max(0, ri)),
+        // 見た目：系統・属性・名前から自動で決め、JSON の look があれば上書き（分岐進化の姿を描き分けるときなど）
+        look: Object.assign(lookFor(r, el || 'none', Math.max(0, ri)), el2 ? { c3: PAL[el2][0] } : {}, r.look || {}), // 複合タイプはアクセントの色が2つめの属性
       };
       order.push(r.id);
     }
@@ -160,7 +200,7 @@
   const byPair = {};
   for (const r of (RAW && RAW.monsters) || []) {
     if (!r.recipe) {
-      if (r.obtain !== '野生') err(`${r.id} ${r.name}: 配合限定なのにレシピがありません`);
+      if (r.obtain === '配合限定') err(`${r.id} ${r.name}: 配合限定なのにレシピがありません`);
       continue;
     }
     const [a, b] = r.recipe.parentIds;
@@ -189,7 +229,12 @@
   }
 
   G.Species = G.monsterSpecies = S;
-  G.SpeciesOrder = order;
+  G.SpeciesOrder = order; // 種族IDの順（内部用）
+  // 図鑑の番号の順（図鑑・配合表などの表示用）
+  G.DexOrder = order.slice().sort((a, b) => S[a].no - S[b].no);
+  G.DexOrder.forEach((id, i) => { if (i && S[id].no === S[G.DexOrder[i - 1]].no) err(`${id} ${S[id].name}: 図鑑番号 ${S[id].no} が重複しています`); });
+  // 図鑑の番号の表示（例：「No.082」）。会話などでは種族IDではなく、これを使う
+  G.dexNoLabel = (id) => `No.${String(S[id] ? S[id].no : 0).padStart(3, '0')}`;
   G.FusionRecipes = {
     recipes,          // 全レシピ（重複で使われないものも含む）
     byPair,           // 親IDペア → 採用レシピ
