@@ -560,3 +560,78 @@ table.moves td { padding: 2px 4px 2px 0; }
 }
 .catch-rate { margin-left: auto; margin-right: 10px; font-size: 12px; color: #c8d0f0; }
 .catch-rate b { color: #ffd35a; font-size: 14px; }
+
+/* =====================================================================
+   枠のサイズの統一：中身（文字数・行数）で枠の大きさが変わらないようにする
+   ・メニュー（小）          幅 200px 固定（高さは項目数で決まる）
+   ・右のパネル（もちもの・主人公）  幅 58%・高さは画面いっぱいで固定。一覧だけがスクロールし、説明と操作説明は下にそろう
+   ・中央の小窓（お店・セーブ・せってい・技を忘れる） 幅 460px・高さ 76% で固定
+   ・バトルのコマンド          幅 47%・高さ 44% で固定（中身が多いときは中だけスクロール）
+   ・メッセージ欄            高さ固定（3行）
+   ・説明欄（道具・技・捕獲など）   高さ固定（2〜3行。はみ出したら中だけスクロール）
+   ・1行の名前・項目は、はみ出したら「…」で切る。説明文は折り返す
+   ===================================================================== */
+.menu { width: 200px; min-width: 0; }
+.menu.wide { width: 58%; min-width: 0; max-width: none; height: calc(100% - 24px); }
+.ui-layer.menu.center { width: min(460px, calc(100% - 24px)); min-width: 0; height: 76%; }
+.menu.wide > .menu-list { flex: 1 1 auto; }
+.menu.wide > .menu-hint { margin-top: auto; padding-top: 6px; }
+.menu-desc { height: 4.6em; min-height: 0; overflow-y: auto; flex: none; }
+.menu-row { white-space: nowrap; min-width: 0; }
+.menu-row > .count, .menu-row > .catch-rate, .menu-row > .check, .menu-row > .cursor { flex: none; }
+.mon-row-main > div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dex-row { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.detail-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#message { height: 118px; min-height: 0; overflow-y: auto; }
+.ui-layer.battle { height: 44%; max-height: none; }
+.bt-info { height: 4.2em; overflow-y: auto; }
+@media (max-width: 640px) {
+  #message { height: 128px; min-height: 0; }
+  .menu.wide { width: auto; left: 12px; }
+}
+.bt-info, .menu-desc, #message { scrollbar-width: thin; }
+.ui-layer.battle { display: flex; flex-direction: column; }
+.ui-layer.battle > * { flex: none; }
+.ui-layer.battle > .bt-hint { margin-top: auto; padding-top: 2px; }
+/* スマホ（コマンドがメッセージ欄に重なるとき）：説明は1行にして、はみ出したら「…」 */
+.ui-layer.battle.docked .bt-info { height: auto; overflow: hidden; }
+.ui-layer.battle.docked .bt-info small, .ui-layer.battle.docked .bt-info > * { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ui-layer.battle.docked .bt-info br { display: none; }
+@media (max-width: 640px) { .ui-layer.menu.center { height: calc(100% - 16px); } }
+/* スマホ：画面が小さいので、メニューの字と説明欄を少し小さくし、キー操作の説明は出さない（A・Bボタンで操作する） */
+@media (max-width: 640px) {
+  .menu { font-size: 15px; padding: 6px 10px; }
+  .menu-desc { height: 3.2em; font-size: 13px; margin-top: 4px; padding-top: 4px; }
+  .menu-hint { display: none; }
+}
+/* 図鑑の番号（No.001）：名前より少しだけ小さく、読みやすい色で */
+.dex-no { font-size: 0.9em; color: #c8cce8; margin-right: 2px; font-variant-numeric: tabular-nums; }
+/* 一覧の行は縮めない（はみ出しは一覧のスクロールで見る） */
+.mon-list > *, .rc-list > *, .menu-list > * { flex: none; }
+/* 図鑑の一覧：名前だけを「…」で切り、番号と印は必ず見せる。一覧の列を少し広く */
+.dex-row { overflow: visible; text-overflow: clip; }
+.dex-row > .dex-no, .dex-row > .tag, .dex-row > img, .dex-row > .dex-unknown { flex: none; }
+.dex-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.two-col.dex-cols, .scr-body.two-col:has(.dex-list) { grid-template-columns: minmax(200px, 42%) 1fr; }
+@media (max-width: 640px) { .scr-body.two-col:has(.dex-list) { grid-template-columns: 1fr; } }
+/* =====================================================================
+   バトルのコマンド枠（元のレイアウト：自分の幻獣の情報は右下）
+   ・枠は自分の情報の下に、横長で固定（上 70% 〜 下端、幅 60%）。自分の幻獣の絵（左下）とは重ならない
+   ・コマンドは 4列×2行、技は 2列（最大4行）、幻獣の入れかえは 2列にして、行数を減らす
+   ・キー操作の説明は画面下の操作説明にあるので、枠の中には出さない
+   ===================================================================== */
+.ui-layer.battle { top: 70%; bottom: 8px; height: auto; width: 60%; max-height: none; padding: 6px 12px; }
+.ui-layer.battle > .bt-hint { display: none; }
+.bt-grid.main { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.bt-grid:not(.main) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 8px; }
+.bt-cmd.move { padding: 0 2px; line-height: 1.35; }
+.bt-list2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 8px; }
+.bt-list2 .mon-row { padding: 1px 4px; gap: 4px; }
+.bt-list2 .bar { width: 50px; }
+.bt-info { height: 3.3em; }
+.ui-layer.battle .menu-row { padding: 0; }
+.mon-row-title { display: flex; align-items: baseline; gap: 4px; }
+.mon-row-title > * { flex: none; }
+.mon-row-title > .mon-row-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* バトル：説明欄は、枠の残りの高さを使う（枠の大きさは変わらない） */
+.ui-layer.battle > .bt-info { flex: 1 1 auto; height: auto; min-height: 2.4em; }

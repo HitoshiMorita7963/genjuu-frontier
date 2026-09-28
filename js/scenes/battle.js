@@ -172,7 +172,7 @@
     if (!m) return;
     const st = G.Monster.stats(m);
     const d = b.disp[side];
-    const h = detailed ? 62 : 46;
+    const h = detailed ? 68 : 46;
     ctx.fillStyle = 'rgba(20,22,44,0.9)'; ctx.fillRect(x, y, w, h);
     const boss = side === 'enemy' && b.trainer && b.trainer.boss;
     ctx.strokeStyle = boss ? '#f06070' : '#e9e4d4'; ctx.lineWidth = 2; ctx.strokeRect(x + 1, y + 1, w - 2, h - 2);
@@ -217,17 +217,18 @@
     if (detailed) {
       ctx.fillStyle = '#8ab8ff'; ctx.fillText('MP', x + 8, y + 42);
       bar(ctx, x + 28, y + 44, 70, 5, d.mp, st.mp, '#5a9af0');
+      // HPの数字は右、MPの数字はMPバーのすぐ右（重ならないように）
       ctx.textAlign = 'right'; ctx.fillStyle = '#ffffff'; ctx.font = `12px ${FONT}`;
-      ctx.fillText(`${Math.ceil(d.hp)} / ${st.hp}`, x + w - 10, y + 40);
-      ctx.font = `10px ${FONT}`; ctx.fillStyle = '#a8c8ff';
-      ctx.fillText(`${Math.round(d.mp)}/${st.mp}`, x + 150, y + 41);
+      ctx.fillText(`${Math.ceil(d.hp)} / ${st.hp}`, x + w - 8, y + 40);
+      ctx.textAlign = 'left'; ctx.font = `10px ${FONT}`; ctx.fillStyle = '#a8c8ff';
+      ctx.fillText(`${Math.round(d.mp)}/${st.mp}`, x + 104, y + 41);
       // 経験値バー
       const sp = G.Species[m.speciesId];
       const lo = G.Monster.expForLevel(sp, m.level), hi = G.Monster.expForLevel(sp, m.level + 1);
       const ratio = m.level >= G.Monster.MAX_LEVEL ? 1 : (d.exp - lo) / Math.max(1, hi - lo);
       ctx.textAlign = 'left'; ctx.fillStyle = '#80e0f0'; ctx.font = `8px ${FONT}`;
-      ctx.fillText('EXP', x + 8, y + 53);
-      bar(ctx, x + 28, y + 55, w - 40, 3, Math.max(0, ratio), 1, '#40c8e0');
+      ctx.fillText('EXP', x + 8, y + 55);
+      bar(ctx, x + 28, y + 58, w - 40, 3, Math.max(0, ratio), 1, '#40c8e0');
     }
     ctx.textAlign = 'left';
   }
@@ -260,7 +261,7 @@
       drawStone(ctx, b);
       drawFx(ctx, b);
       infoBox(ctx, b, 'enemy', 14, 16, 210, false);
-      infoBox(ctx, b, 'player', 256, 176, 212, true);
+      infoBox(ctx, b, 'player', 256, 172, 212, true); // コマンド枠はこの下（CSS の .ui-layer.battle）
       drawPartyDots(ctx, b);
       if (b.screenFlash > 0) {
         ctx.fillStyle = `rgba(255,255,255,${Math.min(0.6, b.screenFlash)})`;

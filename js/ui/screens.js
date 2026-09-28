@@ -49,7 +49,7 @@
     const dock = narrow && /\bbattle\b/.test(layout);
     el.classList.toggle('expanded', wide);
     el.classList.toggle('docked', dock);
-    el.style.top = el.style.bottom = el.style.left = el.style.right = el.style.maxHeight = '';
+    el.style.top = el.style.bottom = el.style.left = el.style.right = el.style.maxHeight = el.style.height = '';
     if (!wide && !dock) return;
     const pad = document.getElementById('touch-pad');
     const padTop = pad && !pad.classList.contains('hidden') ? pad.getBoundingClientRect().top : window.innerHeight;
@@ -63,7 +63,7 @@
     el.style.top = `${msg.top}px`;
     el.style.left = `${msg.left}px`;
     el.style.right = `${window.innerWidth - msg.right}px`;
-    el.style.maxHeight = `${Math.max(msg.height, padTop - msg.top - 6)}px`;
+    el.style.maxHeight = el.style.height = `${Math.max(msg.height, padTop - msg.top - 6)}px`; // 高さは固定（中身で変わらない）
   }
   window.addEventListener('resize', () => { const s = G.Screens.top(); if (s && el) fitLayer(s); });
 
@@ -159,7 +159,8 @@
       const aura = G.Individual.aura(m);
       return `<div class="mon-row${selected ? ' sel' : ''}">` +
         `${P.img(m.speciesId, 'icon')}` +
-        `<div class="mon-row-main"><div>${esc(m.name)} <small>Lv${m.level}</small>${aura ? ` <span class="aura-mark aura-${aura}">✦</span>` : ''}${extra}</div>` +
+        // 名前だけを「…」で切り、Lv・しるし（戦闘中など）は必ず見せる
+        `<div class="mon-row-main"><div class="mon-row-title"><span class="mon-row-name">${esc(m.name)}</span><small>Lv${m.level}</small>${aura ? ` <span class="aura-mark aura-${aura}">✦</span>` : ''}${extra}</div>` +
         `<div class="mon-row-sub">${P.bar(m.hp, st.hp)}<small>${m.hp}/${st.hp}</small></div></div></div>`;
     },
     // 種族の基本情報
@@ -188,7 +189,7 @@
       const parents = pn.length === 2
         ? `<div class="small">親：${esc(pn[0].name)} ＋ ${esc(pn[1].name)}</div>` : '';
       return `<div class="detail-head">${P.img(m.speciesId, 'big')}<div>` +
-        `<div class="detail-name"><small>${G.dexNoLabel(sp.id)}</small> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
+        `<div class="detail-name"><span class="dex-no">${G.dexNoLabel(sp.id)}</span> ${esc(m.name)} <small>Lv${m.level}</small></div>` +
         `${P.speciesHead(sp)}` +
         `<div class="small">HP ${P.bar(m.hp, st.hp)} ${m.hp}/${st.hp}</div>` +
         `<div class="small">MP ${P.bar(m.mp, st.mp, 'mp')} ${m.mp}/${st.mp}</div>` +
