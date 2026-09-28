@@ -19,7 +19,6 @@
     { id: 'run', label: '逃げる' },
   ];
   const CAT = { phys: '物理', spec: '特殊', stat: '補助' };
-  const EYE = { hp: 'HP', atk: '攻', def: '防', spd: '速', sat: '特攻', sdf: '特防' }; // 鑑定眼で見る才能の短い名前
   const stones = () => ['bondstone', 'bondstone2', 'bondstone3'].filter((id) => G.state.items[id] > 0);
 
   function partyRows(b, sel, note) {
@@ -180,7 +179,7 @@
           body = '<div class="bt-title">どの絆石を 投げる？</div>' + (ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
               `<span class="stone-icon" style="--c:${G.Items[id].color}"></span>${G.Items[id].name}<span class="catch-rate">捕獲率 <b>${pct(id)}%</b></span><span class="count">×${G.Items[id].infinite ? '∞' : G.state.items[id]}</span></div>`).join('') +
-              `<div class="bt-info"><small>${esc(foe.name)}は ${hint}${foe.status ? '（状態異常で 成功しやすい）' : ''}　あと <b>${G.CatchRules.maxFails - b.catchFails}</b>回 失敗で 怒る${G.Tamer.hasSkill('eye') ? `<br>才能（鑑定眼）：${G.Individual.KEYS.map((k) => `<span class="nowrap">${EYE[k]}<b class="iv-rank iv-${G.Individual.rank(G.Individual.iv(foe, k)).rank}">${G.Individual.rank(G.Individual.iv(foe, k)).rank}</b></span>`).join(' ')}` : ''}<br>幻獣使いLv${G.Tamer.level()}（${G.Species[foe.speciesId].rank}ランクは Lv${G.Tamer.needLevel(G.Species[foe.speciesId])}〜・捕獲率 ×${G.Tamer.catchBonus(G.Species[foe.speciesId]).toFixed(2)}）</small></div>`
+              `<div class="bt-info"><small>${esc(foe.name)}は ${hint}${foe.status ? '（状態異常で 成功しやすい）' : ''}　あと <b>${G.CatchRules.maxFails - b.catchFails}</b>回 失敗で 怒る<br>幻獣使いLv${G.Tamer.level()}（${G.Species[foe.speciesId].rank}ランクは Lv${G.Tamer.needLevel(G.Species[foe.speciesId])}〜・捕獲率 ×${G.Tamer.catchBonus(G.Species[foe.speciesId]).toFixed(2)}）</small></div>`
             : '<div class="menu-empty">絆石を 持っていない。</div>');
         } else if (this.view === 'items') {
           const ids = G.ItemUse.battleItems();

@@ -146,20 +146,13 @@
       // セーブデータの概要
       if (S.mode === 'menu' && S.sel === 1 && S.saveInfo) {
         const i = S.saveInfo;
-        const lines = [
-          [`${i.name}　${i.place}${i.chapter1 ? '　★第1章クリア' : ''}`, '#ffd35a'],
-          [`プレイ時間 ${i.playTime}　仲間 ${i.party}体${i.lead ? `（${i.lead}）` : ''}`, '#d8dcf0'],
-        ];
-        // 枠は文字に合わせて広げる（画面の幅まで）。それでも入らなければ字を小さくする
-        const maxW = W - 24;
-        let size = 11;
-        ctx.font = `${size}px "DotGothic16", sans-serif`;
-        const widest = () => Math.max(...lines.map(([t]) => ctx.measureText(t).width));
-        while (size > 8 && widest() + 24 > maxW) ctx.font = `${--size}px "DotGothic16", sans-serif`;
-        const bw = Math.min(maxW, Math.max(260, widest() + 24));
         ctx.fillStyle = 'rgba(16,18,40,0.85)';
-        ctx.fillRect(W / 2 - bw / 2, 290, bw, 44);
-        lines.forEach(([t, c], k) => { ctx.fillStyle = c; ctx.fillText(t, W / 2, 302 + k * 16); });
+        ctx.fillRect(W / 2 - 130, 290, 260, 44);
+        ctx.font = '11px "DotGothic16", sans-serif';
+        ctx.fillStyle = '#ffd35a';
+        ctx.fillText(`${i.name}　${i.place}　${i.chapter1 ? '★第1章クリア' : ''}`, W / 2, 302);
+        ctx.fillStyle = '#d8dcf0';
+        ctx.fillText(`プレイ時間 ${i.playTime}　仲間 ${i.party}体${i.lead ? `（${i.lead}）` : ''}`, W / 2, 318);
       } else {
         ctx.font = '10px "DotGothic16", sans-serif';
         ctx.fillStyle = 'rgba(255,255,255,0.7)';

@@ -192,7 +192,6 @@
     const p = F.p;
     F.lastBump = null;
     Object.assign(G.state.player, { x: p.x, y: p.y, dir: p.dir });
-    G.Tamer.onStep(); // 歩数で効くスキル（気配消し・呼び寄せ）
 
     const w = F.warpAt(p.x, p.y);
     if (w) {
@@ -217,17 +216,10 @@
       F.rustle(p.x, p.y);
       const enc = F.map.encounter;
       const canFight = G.state.party.some((m) => m.hp > 0);
-      // スキル：呼び寄せ（出会いやすい）・気配消し（先頭の幻獣より弱い幻獣は出てこない）
-      const skill = G.Tamer.stepSkill();
-      const rate = G.Encounters[enc] ? G.Encounters[enc].rate * (skill === 'lure' ? G.TamerConfig.SKILL.LURE_RATE : 1) : 0;
       if (F.safeSteps > 0) F.safeSteps--; // 戦闘直後の数歩は遭遇しない
-      else if (enc && canFight && G.hasFlag('seenTallGrass') && Math.random() < rate) {
-        const roll = G.rollEncounter(enc);
-        const lead = G.state.party.find((m) => m.hp > 0);
-        if (!(skill === 'repel' && lead && roll.level < lead.level)) {
-          F.startWildBattle(enc, roll);
-          return true;
-        }
+      else if (enc && canFight && G.hasFlag('seenTallGrass') && Math.random() < G.Encounters[enc].rate) {
+        F.startWildBattle(enc);
+        return true;
       }
       if (!G.hasFlag('seenTallGrass')) {
         G.setFlag('seenTallGrass');
@@ -242,9 +234,9 @@
   };
 
   // ---------------- バトル ----------------
-  F.startWildBattle = function (key, rolled) {
+  F.startWildBattle = function (key) {
     const e = G.Encounters[key];
-    const r = rolled || G.rollEncounter(key);
+    const r = G.rollEncounter(key);
     const wild = G.Monster.create(r.speciesId, r.level, { how: 'wild', where: e.where });
     G.Events.run(async () => {
       G.Audio.se('encounter');

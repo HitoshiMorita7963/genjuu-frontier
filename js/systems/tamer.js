@@ -94,40 +94,7 @@
   ];
   G.TamerSkills = [
     { id: 'warp', name: 'ワープ', level: 5, desc: '一度 行ったことのある 村や洞窟などへ、一瞬で 移動する。' },
-    { id: 'escape', name: '脱出', level: 8, desc: '洞窟や草原などから、その地域の 入口へ もどる。' },
-    { id: 'repel', name: '気配消し', level: 10, desc: 'しばらく（100歩）、先頭の幻獣より レベルの低い 野生の幻獣が 出てこない。' },
-    { id: 'lure', name: '呼び寄せ', level: 12, desc: 'しばらく（100歩）、草むらで 野生の幻獣に 出会いやすくなる。' },
-    { id: 'radar', name: '幻獣レーダー', level: 15, desc: 'いまいる地域に 出る幻獣を 調べる。まだ 仲間にしていない 種族には 印がつく。' },
-    { id: 'eye', name: '鑑定眼', level: 20, desc: '幻獣の 才能（個体値）が 見える。仲間の 育成情報・配合の結果・戦闘で 絆石を 選ぶときの 相手。（覚えたら いつも効く）' },
-    { id: 'heal', name: '癒しの手', level: 25, desc: 'パーティを 全回復する（ひんしの幻獣も 生き返る）。一度 使うと、しばらく 使えない。' },
   ];
-  // スキルの数値
-  C.SKILL = {
-    STEPS: 100,          // 気配消し・呼び寄せが続く歩数
-    LURE_RATE: 2.5,      // 呼び寄せ：草むらで出会う確率の倍率
-    HEAL_COOLDOWN: 300,  // 癒しの手：次に使えるまでの時間（秒・プレイ時間）
-  };
-  // 歩数で効くスキル（気配消し・呼び寄せ。どちらか一方だけ）
-  T.stepSkill = () => { const s = G.state.skillSteps; return s && s.left > 0 ? s.id : null; };
-  T.startStepSkill = (id) => { G.state.skillSteps = { id, left: C.SKILL.STEPS }; };
-  // 1歩ごとに呼ぶ。効果が切れたら通知
-  T.onStep = () => {
-    const s = G.state.skillSteps;
-    if (!s || s.left <= 0) return;
-    s.left--;
-    if (s.left <= 0) { try { G.UI.toast(`${G.TamerSkills.find((x) => x.id === s.id).name}の 効果が 切れた。`); } catch (e) { /* テスト */ } }
-  };
-  // 癒しの手：あと何秒で使えるか（0 なら使える）
-  T.healWait = () => Math.max(0, Math.ceil(((G.state.skillCd && G.state.skillCd.heal) || 0) - G.state.playTime));
-  // 脱出：いまいる地域の入口（洞窟の奥は、洞窟の入口）
-  const ESCAPE_TO = { cave2: 'cave1' };
-  T.escapeSpot = (mapId) => {
-    const to = ESCAPE_TO[mapId] || mapId;
-    const w = WARP_SPOTS.find((x) => x.map === to && G.MapData[to] && G.MapData[to].encounter);
-    if (!w) return null;
-    const wp = G.MapData[w.from].warps.find((x) => x.to === to);
-    return wp ? Object.assign({}, w, { x: wp.tx, y: wp.ty, dir: wp.dir || 'down' }) : null;
-  };
   T.skills = () => G.TamerSkills.filter((s) => T.level() >= s.level);
   T.hasSkill = (id) => T.skills().some((s) => s.id === id);
   // ワープできる場所（一度行ったことがある場所だけ）。着く位置はマップの出入口から決める

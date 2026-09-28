@@ -3,9 +3,9 @@
   'use strict';
 
   G.Shops = {
-    sorano: { name: 'ソラノ商店', items: ['potion', 'cure', 'revive', 'powerseed'] },
-    forestHut: { name: '森の行商人', items: ['potion', 'hipotion', 'cure', 'revive'] },
-    lumiere: { name: 'リュミエール港商会', items: ['potion', 'hipotion', 'cure', 'revive', 'revive2', 'moondrop', 'powerseed',
+    sorano: { name: 'ソラノ商店', items: ['potion', 'cure', 'powerseed'] },
+    forestHut: { name: '森の行商人', items: ['potion', 'hipotion', 'cure'] },
+    lumiere: { name: 'リュミエール港商会', items: ['potion', 'hipotion', 'cure', 'moondrop', 'powerseed',
       'hpBook', 'atkBook', 'defBook', 'spdBook', 'satBook', 'sdfBook', 'forgetHerb'] },
   };
 })(window.Game);

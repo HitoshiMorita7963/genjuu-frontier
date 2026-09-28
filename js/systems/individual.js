@@ -48,8 +48,7 @@
     // 個体値による成長補正（段階補正 ＋ 1ポイントごとの微調整）
     ivGrowth(iv) { return I.tier(iv).mul + (iv - C.IV_MAX / 2) * C.IV_FINE; },
     rank(iv) { return C.IV_RANKS.find((r) => iv <= r.max) || C.IV_RANKS[C.IV_RANKS.length - 1]; },
-    // 個体値の数値と評価が見られるか：鑑定屋で鑑定してもらった、または 幻獣使いのスキル『鑑定眼』を覚えた
-    appraised() { return G.hasFlag(C.APPRAISAL_FLAG) || !!(G.Tamer && G.state && G.Tamer.hasSkill('eye')); },
+    appraised() { return G.hasFlag(C.APPRAISAL_FLAG); },
 
     // ---------------- 努力値 ----------------
     ev(m, k) { return m[EV_FIELD[k]] || 0; },

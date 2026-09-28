@@ -8,9 +8,7 @@
     // 対象の幻獣に使えるか
     usableOn(id, m) {
       const it = G.Items[id];
-      if (!it) return false;
-      if (it.type === 'revive') return m.hp <= 0; // ひんしの幻獣にだけ使える
-      if (m.hp <= 0) return false;
+      if (!it || m.hp <= 0) return false;
       if (it.type === 'heal') return m.hp < G.Monster.stats(m).hp;
       if (it.type === 'status') return !!m.status;
       return false;
@@ -20,12 +18,6 @@
       if (!G.ItemUse.usableOn(id, m)) return null;
       const it = G.Items[id];
       G.addItem(id, -1);
-      if (it.type === 'revive') {
-        const max = G.Monster.stats(m).hp;
-        m.hp = Math.max(1, Math.floor(max * it.revive));
-        m.status = null;
-        return `${m.name}は 元気を 取りもどした！（HP ${m.hp}/${max}）`;
-      }
       if (it.type === 'heal') {
         const max = G.Monster.stats(m).hp;
         const before = m.hp;
@@ -36,7 +28,7 @@
       return `${m.name}の 状態異常が なおった！`;
     },
     battleItems() {
-      return Object.keys(G.state.items).filter((id) => ['heal', 'status', 'revive'].includes(G.Items[id].type));
+      return Object.keys(G.state.items).filter((id) => ['heal', 'status'].includes(G.Items[id].type));
     },
   };
 })(window.Game);
