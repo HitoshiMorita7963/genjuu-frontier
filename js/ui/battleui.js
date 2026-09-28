@@ -170,11 +170,13 @@
           const ids = stones();
           const foe = b.sides.enemy.mon;
           const st = G.Monster.stats(foe);
+          // 捕獲率：この絆石を今投げたときに成功する確率（HP・状態異常・絆石の種類で変わる）
+          const pct = (id) => Math.round(b.catchChance(foe, id) * 100);
           const hint = foe.hp <= st.hp * 0.25 ? 'かなり弱っている！' : foe.hp <= st.hp * 0.5 ? '弱ってきている。' : 'まだまだ元気だ……';
           body = '<div class="bt-title">どの絆石を 投げる？</div>' + (ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
-              `<span class="stone-icon" style="--c:${G.Items[id].color}"></span>${G.Items[id].name}<span class="count">×${G.state.items[id]}</span></div>`).join('') +
-              `<div class="bt-info"><small>${esc(foe.name)}は ${hint}${foe.status ? '（状態異常だと成功しやすい）' : ''}</small></div>`
+              `<span class="stone-icon" style="--c:${G.Items[id].color}"></span>${G.Items[id].name}<span class="catch-rate">捕獲率 <b>${pct(id)}%</b></span><span class="count">×${G.state.items[id]}</span></div>`).join('') +
+              `<div class="bt-info"><small>${esc(foe.name)}は ${hint}${foe.status ? '（状態異常なので成功しやすい）' : '　HPを減らす・状態異常にすると成功しやすい'}</small></div>`
             : '<div class="menu-empty">絆石を 持っていない。</div>');
         } else if (this.view === 'items') {
           const ids = G.ItemUse.battleItems();
