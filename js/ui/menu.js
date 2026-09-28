@@ -168,8 +168,15 @@
         tsel: 0,
         qty: 0,       // 経験値アイテム・特訓の書：使う個数を選んでいるとき 1 以上
         note: '',
-        update(In) {
+        // 並べる道具（デモプレイ用の無限モードでは、持っていない経験値アイテムも並べる）
+        ids() {
           const ids = Object.keys(G.state.items);
+          if (G.Settings.demoExp) for (const id in G.Items) if (G.demoInfinite(id) && !ids.includes(id)) ids.push(id);
+          return ids;
+        },
+        have(id) { return G.demoInfinite(id) ? 999 : G.state.items[id] || 0; },
+        update(In) {
+          const ids = this.ids();
           if (this.target && this.qty) {
             const max = this.maxQty(this.target, G.state.party[this.tsel]);
             const step = (d) => { this.qty = Math.max(1, Math.min(max, this.qty + d)); G.Screens.render(); };
@@ -220,7 +227,7 @@
         // まとめて使える最大の個数（持っている数まで。上限に届く数より多くは使わない）
         maxQty(id, m) {
           const it = G.Items[id];
-          const have = G.state.items[id] || 0;
+          const have = this.have(id);
           if (it.type === 'exp') return G.Growth.expItemsToMax(m, id, have);
           if (it.type === 'ev') return Math.max(1, Math.min(have, Math.ceil(G.Individual.evRoom(m, it.stat) / (it.gain || G.GrowthConfig.EV_ITEM_GAIN))));
           return 1;
@@ -240,7 +247,7 @@
             if (m.level >= G.Monster.MAX_LEVEL) { this.note = `${m.name}は もう これ以上 レベルが 上がらない。`; G.Screens.render(); return; }
             const amount = G.Growth.expItemAmount(m, id, n);
             const back = { sel: this.sel, tsel: this.tsel, id };
-            G.addItem(id, -n);
+            if (!G.demoInfinite(id)) G.addItem(id, -n);
             G.Screens.closeAll();
             G.Events.run(async (E) => {
               G.Audio.se('heal');
@@ -251,7 +258,7 @@
               // もちもの画面にもどる（続けて使えるように）
               G.Screens.open(G.UIScreens.menu());
               const scr = G.UIScreens.items();
-              if (G.state.items[back.id]) Object.assign(scr, { sel: back.sel, target: back.id, tsel: back.tsel });
+              if (scr.have(back.id)) Object.assign(scr, { sel: back.sel, target: back.id, tsel: back.tsel });
               G.Screens.open(scr);
             });
             return;
@@ -284,7 +291,7 @@
           G.Screens.render();
         },
         html() {
-          const ids = Object.keys(G.state.items);
+          const ids = this.ids();
           if (this.target && this.qty) {
             const m = G.state.party[this.tsel];
             const it = G.Items[this.target];
@@ -299,7 +306,7 @@
             return `<div class="menu-title">${it.name}を いくつ使う？</div>` +
               `<div class="menu-list">${P().row(m, true, '')}</div>` +
               `<div class="use-qty"><span class="qty-arrow">◀</span><b class="qty-num">× ${this.qty}</b><span class="qty-arrow">▶</span>` +
-              `<span class="count">持っている数 ${G.state.items[this.target] || 0}　最大 ${max}</span></div>` +
+              `<span class="count">持っている数 ${G.demoInfinite(this.target) ? '∞' : G.state.items[this.target] || 0}　最大 ${max}</span></div>` +
               `<div class="menu-desc">${esc(after)}</div><div class="menu-hint">←→：1ずつ　↑↓：10ずつ　Z：使う　X：もどる</div>`;
           }
           if (this.target) {
@@ -309,7 +316,7 @@
           }
           const rows = ids.length
             ? ids.map((id, i) => `<div class="menu-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
-              `${G.Items[id].name}<span class="count">×${G.Items[id].infinite ? '∞' : G.state.items[id]}</span></div>`).join('')
+              `${G.Items[id].name}<span class="count">×${G.Items[id].infinite || G.demoInfinite(id) ? '∞' : G.state.items[id]}</span></div>`).join('')
             : '<div class="menu-empty">なにも持っていない。</div>';
           const cur = ids[this.sel];
           return `<div class="menu-title">もちもの</div><div class="menu-list">${rows}</div>` +
@@ -393,6 +400,7 @@
         { key: 'autosave', label: 'オートセーブ', show: () => (S.autosave ? 'ON' : 'OFF'), step: () => { S.autosave = !S.autosave; } },
         { key: 'touch', label: 'タッチボタン', show: () => ({ auto: '自動', on: '表示', off: '非表示' })[S.touch || 'auto'],
           step: (d) => { const o = ['auto', 'on', 'off']; S.touch = o[(o.indexOf(S.touch || 'auto') + (d || 1) + 3) % 3]; } },
+        { key: 'demoExp', label: '経験値アイテム無限（デモ）', show: () => (S.demoExp ? 'ON' : 'OFF'), step: () => { S.demoExp = !S.demoExp; } },
       ];
       function vol(v) { return `<span class="vol">${'■'.repeat(v)}${'□'.repeat(10 - v)}</span> ${v}`; }
       return {
@@ -409,7 +417,7 @@
           return '<div class="menu-title">せってい</div>' + ROWS.map((r, i) =>
             `<div class="menu-row setting-row${i === this.sel ? ' sel' : ''}"><span class="cursor">${i === this.sel ? '▶' : ''}</span>` +
             `${r.label}<span class="count">◀ ${r.show()} ▶</span></div>`).join('') +
-            '<div class="menu-desc">オートセーブ：村に着いたとき・回復したとき・大事な戦いのあとに、自動で記録します。<br>Mキーで いつでもサウンドのON/OFFを切りかえられます。</div>' +
+            '<div class="menu-desc">オートセーブ：村に着いたとき・回復したとき・大事な戦いのあとに、自動で記録します。<br>Mキーで いつでもサウンドのON/OFFを切りかえられます。<br>経験値アイテム無限：デモプレイ用。経験値アイテムを 持っていなくても もちものに並び、使っても なくなりません。</div>' +
             '<div class="menu-hint">↑↓：えらぶ　←→：変更　X：もどる</div>';
         },
       };
