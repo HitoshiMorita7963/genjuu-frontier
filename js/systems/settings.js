@@ -3,7 +3,7 @@
   'use strict';
 
   const KEY = 'genjuu-frontier/settings';
-  const DEFAULTS = { textSpeed: 1, bgm: 6, se: 7, autosave: true, muted: false, touch: 'auto' };
+  const DEFAULTS = { textSpeed: 1, bgm: 6, se: 7, autosave: true, muted: false, touch: 'auto', demoExp: false };
   const TEXT_SPEEDS = [28, 48, 90]; // 文字/秒（おそい・ふつう・はやい）
 
   G.Settings = Object.assign({}, DEFAULTS);
@@ -23,5 +23,8 @@
     if (G.Touch) G.Touch.apply();
   };
 
-  G.TEXT_SPEED_NAMES = ['おそい', 'ふつう', 'はやい'];
+  // デモプレイ用：経験値アイテムを無限に使えるモード（持っていなくても もちものに並び、使ってもなくならない）
+  G.demoInfinite = (id) => !!(G.Settings.demoExp && G.Items[id] && G.Items[id].type === 'exp');
+
+  G.TEXT_SPEED_NAMES =['おそい', 'ふつう', 'はやい'];
 })(window.Game);
