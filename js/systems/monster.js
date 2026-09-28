@@ -43,10 +43,32 @@
     species: (m) => G.Species[m.speciesId],
 
     // レベル lv に到達するのに必要な累計経験値（高ランクほど少し多く必要）
+    //   進化する系統の幻獣は、系統のいちばん最初の姿のランク・成長タイプで決める（進化しても必要な量は変わらない）
     expForLevel(sp, lv) {
       if (lv <= 1) return 0;
-      const rankK = 1 + Math.max(0, G.rankIndex(sp.rank)) * 0.06;
-      return Math.floor(GROWTH_K[sp.growth] * rankK * lv * lv * lv);
+      const c = Mon.curveOf(sp);
+      const rankK = 1 + Math.max(0, G.rankIndex(c.rank)) * 0.06;
+      return Math.floor(GROWTH_K[c.growth] * rankK * lv * lv * lv);
+    },
+    // 経験値の量を決める種族：進化の系統のいちばん最初の姿（進化しない種族は自分）。よく呼ぶので覚えておく
+    _curve: {},
+    curveOf(sp) {
+      if (Mon._curve[sp.id]) return Mon._curve[sp.id];
+      const root = G.evolutionChain ? G.evolutionChain(sp.id)[0][0] : sp.id;
+      return (Mon._curve[sp.id] = G.Species[root] || sp);
+    },
+    // 経験値を、今のレベルの範囲に収める（系統の最初の姿が違う進化・以前のセーブで、範囲の外になったとき）
+    //   fromSp を渡すと、前の種族での「次のレベルまでの進み具合（割合）」を、そのまま保つ
+    fitExp(m, fromSp) {
+      const sp = G.Species[m.speciesId];
+      const lo = Mon.expForLevel(sp, m.level);
+      if (m.level >= Mon.MAX_LEVEL) { m.exp = lo; return; }
+      const hi = Mon.expForLevel(sp, m.level + 1);
+      if (!fromSp && m.exp >= lo && m.exp < hi) return;
+      const flo = fromSp ? Mon.expForLevel(fromSp, m.level) : lo;
+      const fhi = fromSp ? Mon.expForLevel(fromSp, m.level + 1) : hi;
+      const ratio = Math.min(Math.max(fhi > flo ? (m.exp - flo) / (fhi - flo) : 0, 0), 0.999);
+      m.exp = lo + Math.floor((hi - lo) * ratio);
     },
 
     // レベル lv までに覚える技（覚える順）

@@ -136,6 +136,7 @@
       const before = Mon().stats(m);
       G.MoveStage.pin(m); // 種族が変わっても、技の強化段階はそのまま
       m.speciesId = to;
+      Mon().fitExp(m, from); // ふつうは変わらない。系統の最初の姿が違う進化（配合で生まれた種族の進化など）のときだけ合わせる
       if (m.name === from.name) m.name = toSp.name;
       const after = Mon().stats(m);
       m.hp = Math.min(after.hp, m.hp + (after.hp - before.hp));
