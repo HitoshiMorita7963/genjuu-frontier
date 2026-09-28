@@ -216,7 +216,7 @@
     ],
     items: [
       { x: 30, y: 24, item: 'moondrop', count: 1, flag: 'item_high_moon' },
-      { x: 4, y: 4, item: 'bondstone3', count: 1, flag: 'item_high_bond3' },
+      { x: 4, y: 4, item: 'expM', count: 2, flag: 'item_high_bond3' },
     ],
     npcs: [
       {
@@ -289,7 +289,7 @@
     warps: [{ x: 33, y: 13, w: 1, h: 2, to: 'highland', tx: 1, ty: 13, keepY: true, dir: 'right' }],
     items: [
       { x: 30, y: 4, item: 'moondrop', count: 1, flag: 'item_lake_moon' },
-      { x: 3, y: 22, item: 'bondstone3', count: 1, flag: 'item_lake_bond3' },
+      { x: 3, y: 22, item: 'expM', count: 2, flag: 'item_lake_bond3' },
     ],
     npcs: [
       {
@@ -385,7 +385,7 @@
     warps: [{ x: 0, y: 12, w: 1, h: 2, to: 'highland', tx: 34, ty: 9, keepY: true, dir: 'left' }],
     items: [
       { x: 28, y: 3, item: 'spdBook', count: 1, flag: 'item_snow_spdbook' },
-      { x: 3, y: 22, item: 'bondstone3', count: 2, flag: 'item_snow_bond3' },
+      { x: 3, y: 22, item: 'expL', count: 1, flag: 'item_snow_bond3' },
       { x: 22, y: 12, item: 'forgetHerb', count: 1, flag: 'item_snow_herb' },
     ],
     npcs: [
