@@ -31,7 +31,7 @@
   const Mon = G.Monster = {
     MAX_LEVEL: 50,
     PARTY_MAX: (G.RawMonsterData && G.RawMonsterData.rules && G.RawMonsterData.rules.partyLimit) || 6,
-    STORAGE_MAX: 60,
+    STORAGE_MAX: Infinity, // 預かり所は上限なし（何体でも預けられる）
     // 同時に持てる技の数（ランクで増える）：F・E 4つ／D・C 5つ／B 以上 6つ
     MOVE_SLOTS: { F: 4, E: 4, D: 5, C: 5, B: 6, A: 6, S: 6, SS: 6, SSS: 6, EX: 6 },
     MAX_MOVES: 6, // いちばん多いとき
